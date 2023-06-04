@@ -39,4 +39,12 @@ public enum Image {
     public static let selectedCharger2 = UIImage(named: "selectedCharger2")!
     public static let selectedPill = UIImage(named: "selectedPill")!
     public static let selectedSanitaryPad = UIImage(named: "selectedSanitaryPad")!
+    
+    // MARK: - Profile
+    
+    public static let profileImage = UIImage(named: "profile")!
+    
+    // MARK: - Writing
+    
+    public static let cameraIcon = UIImage(named: "icn_camera")!
 }
