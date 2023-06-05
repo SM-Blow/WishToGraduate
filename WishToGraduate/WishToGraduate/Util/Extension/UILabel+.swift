@@ -36,7 +36,7 @@ extension UILabel {
         attributedText = attributeString
     }
     
-    func addCharacterSpacing(kernValue:Double = 0.5) {
+    func addCharacterSpacing(kernValue:Double = -0.5) {
         guard let text = text, !text.isEmpty else { return }
         let string = NSMutableAttributedString(string: text)
         string.addAttribute(NSAttributedString.Key.kern, value: kernValue, range: NSRange(location: 0, length: string.length - 1))
