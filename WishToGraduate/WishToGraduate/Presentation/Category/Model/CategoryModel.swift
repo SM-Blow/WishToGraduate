@@ -24,4 +24,15 @@ extension CategoryModel {
             CategoryModel(image: Image.charger2, title: "전자기기")
         ]
     }
+    
+    static func selectedCategoryModelData() -> [CategoryModel] {
+        return [
+            CategoryModel(image: Image.selectedAllCategory, title: "전체"),
+            CategoryModel(image: Image.selectedPill, title: "약"),
+            CategoryModel(image: Image.selectedSanitaryPad, title: "생리대"),
+            CategoryModel(image: Image.selectedCharger, title: "전자기기"),
+            CategoryModel(image: Image.selectedBook, title: "도서"),
+            CategoryModel(image: Image.selectedCharger2, title: "전자기기")
+        ]
+    }
 }

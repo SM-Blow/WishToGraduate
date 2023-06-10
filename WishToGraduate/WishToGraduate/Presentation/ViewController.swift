@@ -22,6 +22,7 @@ final class ViewController: UIViewController {
         return collectionView
     }()
     private let categoryModel = CategoryModel.categoryModelData()
+    private let selectedCategoryModel = CategoryModel.selectedCategoryModelData()
     
     // MARK: - Properties
     
@@ -85,6 +86,18 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
+            cell.imageDataBind(model: selectedCategoryModel[indexPath.row])
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
+            cell.imageDataBind(model: categoryModel[indexPath.row])
+        }
+    }
 }
 
 extension ViewController: UICollectionViewDataSource {
@@ -95,7 +108,13 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: CategoryCollectionViewCell.self, indexPath: indexPath)
-        cell.setDataBind(model: categoryModel[indexPath.row])
+        if indexPath.row == 0 {
+            cell.isSelected = true
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
+            cell.setDataBind(model: selectedCategoryModel[indexPath.row])
+        } else {
+            cell.setDataBind(model: categoryModel[indexPath.row])
+        }
         return cell
     }
 }

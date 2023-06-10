@@ -65,7 +65,7 @@ extension CategoryCollectionViewCell {
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(imageView.snp.bottom).offset(6)
+            $0.top.equalTo(imageView.snp.bottom).offset(4)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(14)
         }
@@ -76,5 +76,21 @@ extension CategoryCollectionViewCell {
     func setDataBind(model: CategoryModel) {
         imageView.image = model.image
         titleLabel.text = model.title
+    }
+    
+    func imageDataBind(model: CategoryModel) {
+        imageView.image = model.image
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                titleLabel.textColor = Color.main2_Green
+                backgroundColor = Color.circle_LightGreen
+            } else {
+                titleLabel.textColor = Color.circle_Grey
+                backgroundColor = .white
+            }
+        }
     }
 }
