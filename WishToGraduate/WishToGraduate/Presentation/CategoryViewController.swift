@@ -11,7 +11,7 @@ import Moya
 import SnapKit
 import Then
 
-final class ViewController: UIViewController {
+final class CategoryViewController: UIViewController {
     
     // MARK: - UI Components
     
@@ -37,7 +37,7 @@ final class ViewController: UIViewController {
     }
 }
 
-extension ViewController {
+extension CategoryViewController {
     
     // MARK: - UI Components Property
     
@@ -73,7 +73,7 @@ extension ViewController {
     // MARK: - @objc Methods
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension CategoryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 59, height: 59)
@@ -100,7 +100,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension CategoryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoryModel.count
