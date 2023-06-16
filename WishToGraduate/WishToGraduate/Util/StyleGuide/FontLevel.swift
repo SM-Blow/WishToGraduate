@@ -37,11 +37,11 @@ extension FontLevel {
         case .h2:
             return NotoSansKRType.medium.rawValue
         case .h2_bold:
-            return NotoSansKRType.medium.rawValue
-        case .h3:
             return NotoSansKRType.bold.rawValue
+        case .h3:
+            return NotoSansKRType.medium.rawValue
         case .h4:
-            return NotoSansKRType.regular.rawValue
+            return NotoSansKRType.bold.rawValue
         case .m1:
             return NotoSansKRType.bold.rawValue
         case .bt1:
