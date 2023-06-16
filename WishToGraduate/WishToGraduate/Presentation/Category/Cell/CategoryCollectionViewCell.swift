@@ -37,7 +37,7 @@ extension CategoryCollectionViewCell {
     private func setUI() {
         
         backgroundColor = .white
-        layer.cornerRadius = 59 / 2
+        layer.cornerRadius = bounds.width / 2
         clipsToBounds = true
         layer.shadowColor = Color.btn_darkGrey.cgColor
         layer.shadowOpacity = 0.08
