@@ -27,6 +27,8 @@ final class HomeViewController: UIViewController {
     }()
     private let categoryModel = CategoryModel.categoryModelData()
     private let selectedCategoryModel = CategoryModel.selectedCategoryModelData()
+    private let underLineView = UIView()
+    private let homeListView = HomeListView()
     
     // MARK: - Properties
     
@@ -43,6 +45,8 @@ final class HomeViewController: UIViewController {
         setUI()
         setLayout()
         setNavigationBar()
+        setDelegate()
+        setRegister()
     }
 }
 
@@ -73,10 +77,11 @@ extension HomeViewController {
             $0.image = Image.profileImage
         }
         
+        underLineView.do {
+            $0.backgroundColor = Color.line_Grey
+        }
+        
         categoryCollectionView.do {
-            $0.registerCell(CategoryCollectionViewCell.self)
-            $0.delegate = self
-            $0.dataSource = self
             $0.isScrollEnabled = true
             $0.backgroundColor = .clear
             $0.showsHorizontalScrollIndicator = false
@@ -88,7 +93,7 @@ extension HomeViewController {
     private func setLayout() {
         
         navigationStackView.addArrangedSubviews(notificationButton, searchButton)
-        view.addSubviews(categoryCollectionView)
+        view.addSubviews(categoryCollectionView, underLineView, homeListView)
         
         navigationStackView.snp.makeConstraints {
             $0.width.equalTo(72)
@@ -112,6 +117,18 @@ extension HomeViewController {
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(65)
         }
+        
+        underLineView.snp.makeConstraints {
+            $0.bottom.equalTo(homeListView.snp.top)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(1)
+        }
+        
+        homeListView.snp.makeConstraints {
+            $0.top.equalTo(categoryCollectionView.snp.bottom).offset(20)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
     }
     
     // MARK: - Methods
@@ -121,6 +138,15 @@ extension HomeViewController {
         navigationController?.navigationBar.backgroundColor = .clear
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoImage)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: navigationStackView)
+    }
+    
+    private func setDelegate() {
+        categoryCollectionView.delegate = self
+        categoryCollectionView.dataSource = self
+    }
+    
+    private func setRegister() {
+        categoryCollectionView.registerCell(CategoryCollectionViewCell.self)
     }
     
     // MARK: - @objc Methods

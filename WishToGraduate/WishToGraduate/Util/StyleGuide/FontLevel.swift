@@ -79,7 +79,7 @@ extension FontLevel {
         case .link1:
             return 11
         case .date1:
-            return 20
+            return 10
         }
     }
 }
