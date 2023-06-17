@@ -14,6 +14,11 @@ class TabBarController: UITabBarController {
     private var tabs: [UIViewController] = []
     
     // MARK: - View Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +36,10 @@ extension TabBarController {
     
     private func setTabBarItems() {
         
+        let homeVC = UINavigationController(rootViewController: HomeViewController())
+
         tabs = [
-            HomeViewController(),
+            homeVC,
             WriteViewController(),
             MyPageViewController()
         ]

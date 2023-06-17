@@ -36,11 +36,6 @@ final class HomeViewController: UIViewController {
     
     // MARK: - View Life Cycle
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setNavigationBar()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
