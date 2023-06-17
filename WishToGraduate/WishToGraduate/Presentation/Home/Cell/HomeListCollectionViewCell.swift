@@ -48,7 +48,7 @@ extension HomeListCollectionViewCell {
         clipsToBounds = true
         layer.shadowColor = Color.btn_darkGrey.cgColor
         layer.shadowOpacity = 0.12
-        layer.shadowRadius = 5
+        layer.shadowRadius = 8
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.masksToBounds = false
         
