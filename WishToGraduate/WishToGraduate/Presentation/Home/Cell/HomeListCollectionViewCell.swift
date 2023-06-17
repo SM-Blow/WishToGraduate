@@ -11,7 +11,7 @@ import Moya
 import SnapKit
 import Then
 
-final class HomeListTableViewCell: UITableViewCell {
+final class HomeListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
     
@@ -26,8 +26,8 @@ final class HomeListTableViewCell: UITableViewCell {
     
     // MARK: - View Life Cycle
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setUI()
         setLayout()
     }
@@ -37,7 +37,7 @@ final class HomeListTableViewCell: UITableViewCell {
     }
 }
 
-extension HomeListTableViewCell {
+extension HomeListCollectionViewCell {
     
     // MARK: - UI Components Property
     
@@ -62,7 +62,7 @@ extension HomeListTableViewCell {
             $0.textColor = .black
             $0.textAlignment = .center
             $0.backgroundColor = Color.btn_LightGreen
-            $0.layer.cornerRadius = 20
+            $0.layer.cornerRadius = 12
             $0.clipsToBounds = true
         }
         
@@ -72,7 +72,7 @@ extension HomeListTableViewCell {
             $0.textColor = .white
             $0.textAlignment = .center
             $0.backgroundColor = Color.main_Green
-            $0.layer.cornerRadius = 10
+            $0.layer.cornerRadius = 5
             $0.clipsToBounds = true
         }
         
@@ -114,6 +114,17 @@ extension HomeListTableViewCell {
     }
     
     // MARK: - Methods
+    
+    func setDataBind(model: HomeListModel) {
+        titleLabel.text = model.title
+        if (model.borrow == 1) {
+            borrowLabel.text = "빌려요"
+        } else {
+            borrowLabel.text = "빌려줄게요"
+        }
+        transactionLabel.isHidden = model.transaction
+        timeLabel.text = model.time
+    }
     
     // MARK: - @objc Methods
 }
