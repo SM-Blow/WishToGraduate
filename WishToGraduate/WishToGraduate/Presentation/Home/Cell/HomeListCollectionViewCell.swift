@@ -55,6 +55,7 @@ extension HomeListCollectionViewCell {
         titleLabel.do {
             $0.font = .fontGuide(.m1)
             $0.textColor = .black
+            $0.addCharacterSpacing()
         }
         
         borrowLabel.do {
@@ -79,6 +80,7 @@ extension HomeListCollectionViewCell {
         timeLabel.do {
             $0.font = .fontGuide(.date1)
             $0.textColor = .black
+            $0.addCharacterSpacing()
         }
     }
     
