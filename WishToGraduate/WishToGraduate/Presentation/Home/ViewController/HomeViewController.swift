@@ -13,6 +13,12 @@ import Then
 
 final class HomeViewController: UIViewController {
     
+    private typealias CategorySectionType = Category
+    
+    private enum Category: CaseIterable {
+        case all, pill, sanitaryPad, charger, book, charger2
+    }
+    
     // MARK: - UI Components
     
     private let navigationStackView = UIStackView()
@@ -164,6 +170,22 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
             cell.imageDataBind(model: selectedCategoryModel[indexPath.row])
+        }
+        
+        let category = Category.allCases[indexPath.row]
+        switch category {
+        case .all:
+            print("all")
+        case .pill:
+            print("pill")
+        case .sanitaryPad:
+            print("sa")
+        case .charger:
+            print("c")
+        case .book:
+            print("book")
+        case .charger2:
+            print("c2")
         }
     }
     
