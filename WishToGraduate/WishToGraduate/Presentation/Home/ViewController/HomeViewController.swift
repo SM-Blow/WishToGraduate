@@ -36,10 +36,6 @@ final class HomeViewController: UIViewController {
     
     // MARK: - View Life Cycle
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = false
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -133,8 +129,7 @@ extension HomeViewController {
     
     // MARK: - Methods
     
-    private func setNavigationBar() {
-        navigationController?.navigationBar.isHidden = false
+    func setNavigationBar() {
         navigationController?.navigationBar.backgroundColor = .clear
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoImage)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: navigationStackView)
