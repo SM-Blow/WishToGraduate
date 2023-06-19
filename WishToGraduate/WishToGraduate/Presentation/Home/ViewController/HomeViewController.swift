@@ -11,13 +11,11 @@ import Moya
 import SnapKit
 import Then
 
+protocol CategoryProtocol: AnyObject {
+    func categoryType(category: CategorySection)
+}
+
 final class HomeViewController: UIViewController {
-    
-    private typealias CategorySectionType = Category
-    
-    private enum Category: CaseIterable {
-        case all, pill, sanitaryPad, charger, book, charger2
-    }
     
     // MARK: - UI Components
     
@@ -37,6 +35,8 @@ final class HomeViewController: UIViewController {
     private let homeListView = HomeListView()
     
     // MARK: - Properties
+    
+    weak var categoryDelegate: CategoryProtocol?
     
     // MARK: - Initializer
     
@@ -172,20 +172,20 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             cell.imageDataBind(model: selectedCategoryModel[indexPath.row])
         }
         
-        let category = Category.allCases[indexPath.row]
+        let category = CategorySection.allCases[indexPath.row]
         switch category {
         case .all:
-            print("all")
+            categoryDelegate?.categoryType(category: .all)
         case .pill:
-            print("pill")
+            categoryDelegate?.categoryType(category: .pill)
         case .sanitaryPad:
-            print("sa")
+            categoryDelegate?.categoryType(category: .sanitaryPad)
         case .charger:
-            print("c")
+            categoryDelegate?.categoryType(category: .charger)
         case .book:
-            print("book")
+            categoryDelegate?.categoryType(category: .book)
         case .charger2:
-            print("c2")
+            categoryDelegate?.categoryType(category: .charger2)
         }
     }
     
