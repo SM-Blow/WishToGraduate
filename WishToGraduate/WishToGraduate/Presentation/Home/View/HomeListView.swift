@@ -20,11 +20,9 @@ final class HomeListView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
-    private var homeListDummyModel = HomeListModel.homeListModelDummyData()
+    private var homeListDummyModel: [HomeListModel] = HomeListModel.homeListModelDummyData()
     
     // MARK: - Properties
-    
-    weak var viewController: HomeViewController?
     
     // MARK: - Initializer
     
@@ -73,11 +71,29 @@ extension HomeListView {
     private func setDelegate() {
         listCollectionView.delegate = self
         listCollectionView.dataSource = self
-        viewController?.categoryDelegate = self
     }
     
     private func setRegister() {
         listCollectionView.registerCell(HomeListCollectionViewCell.self)
+    }
+    
+    func setListModel(category: CategorySection) {
+        print("setListmodel")
+        switch category {
+        case .all:
+            homeListDummyModel = HomeListModel.homeListModelDummyData()
+        case .pill:
+            homeListDummyModel = HomeListModel.fillDummyData()
+        case .sanitaryPad:
+            homeListDummyModel = HomeListModel.homeListModelDummyData()
+        case .charger:
+            homeListDummyModel = HomeListModel.fillDummyData()
+        case .book:
+            homeListDummyModel = HomeListModel.homeListModelDummyData()
+        case .charger2:
+            homeListDummyModel = HomeListModel.fillDummyData()
+        }
+        listCollectionView.reloadData()
     }
     
     // MARK: - @objc Methods
@@ -108,26 +124,5 @@ extension HomeListView: UICollectionViewDataSource {
         let cell = collectionView.dequeueCell(type: HomeListCollectionViewCell.self, indexPath: indexPath)
         cell.setDataBind(model: homeListDummyModel[indexPath.row])
         return cell
-    }
-}
-
-extension HomeListView: CategoryProtocol {
-    
-    func categoryType(category: CategorySection) {
-        print(":Asdfasdfadsfasdf")
-        switch category {
-        case .all:
-            print("all")
-        case .pill:
-            print("pill")
-        case .sanitaryPad:
-            print("pill")
-        case .charger:
-            print("pill")
-        case .book:
-            print("pill")
-        case .charger2:
-            print("pill")
-        }
     }
 }
