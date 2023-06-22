@@ -16,7 +16,7 @@ final class HomeListCollectionViewCell: UICollectionViewCell {
     // MARK: - UI Components
     
     private let titleLabel = UILabel()
-    private let borrowLabel = UILabel()
+    private let borrowLabel = BorrowLabel()
     private let transactionLabel = UILabel()
     private let timeLabel = UILabel()
     
@@ -55,16 +55,17 @@ extension HomeListCollectionViewCell {
         titleLabel.do {
             $0.font = .fontGuide(.m1)
             $0.textColor = .black
+            $0.addCharacterSpacing()
         }
         
-        borrowLabel.do {
-            $0.font = .fontGuide(.bt1)
-            $0.textColor = .black
-            $0.textAlignment = .center
-            $0.backgroundColor = Color.btn_LightGreen
-            $0.layer.cornerRadius = 12
-            $0.clipsToBounds = true
-        }
+//        borrowLabel.do {
+//            $0.font = .fontGuide(.bt1)
+//            $0.textColor = .black
+//            $0.textAlignment = .center
+//            $0.backgroundColor = Color.btn_LightGreen
+//            $0.layer.cornerRadius = 12
+//            $0.clipsToBounds = true
+//        }
         
         transactionLabel.do {
             $0.text = "거래중"
@@ -79,6 +80,7 @@ extension HomeListCollectionViewCell {
         timeLabel.do {
             $0.font = .fontGuide(.date1)
             $0.textColor = .black
+            $0.addCharacterSpacing()
         }
     }
     
@@ -96,8 +98,8 @@ extension HomeListCollectionViewCell {
         borrowLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalTo(titleLabel.snp.trailing).offset(9)
-            $0.width.equalTo(43)
-            $0.height.equalTo(22)
+//            $0.width.equalTo(43)
+//            $0.height.equalTo(22)
         }
         
         transactionLabel.snp.makeConstraints {
@@ -118,8 +120,10 @@ extension HomeListCollectionViewCell {
     func setDataBind(model: HomeListModel) {
         titleLabel.text = model.title
         if (model.borrow == 1) {
+            borrowLabel.labelStatus(status: .borrow)
             borrowLabel.text = "빌려요"
         } else {
+            borrowLabel.labelStatus(status: .lend)
             borrowLabel.text = "빌려줄게요"
         }
         transactionLabel.isHidden = model.transaction

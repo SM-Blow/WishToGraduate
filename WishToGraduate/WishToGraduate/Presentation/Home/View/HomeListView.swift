@@ -20,9 +20,11 @@ final class HomeListView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
-    private let homeListDummyModel = HomeListModel.homeListModelDummyData()
+    private var homeListDummyModel = HomeListModel.homeListModelDummyData()
     
     // MARK: - Properties
+    
+    weak var viewController: HomeViewController?
     
     // MARK: - Initializer
     
@@ -71,6 +73,7 @@ extension HomeListView {
     private func setDelegate() {
         listCollectionView.delegate = self
         listCollectionView.dataSource = self
+        viewController?.categoryDelegate = self
     }
     
     private func setRegister() {
@@ -105,5 +108,26 @@ extension HomeListView: UICollectionViewDataSource {
         let cell = collectionView.dequeueCell(type: HomeListCollectionViewCell.self, indexPath: indexPath)
         cell.setDataBind(model: homeListDummyModel[indexPath.row])
         return cell
+    }
+}
+
+extension HomeListView: CategoryProtocol {
+    
+    func categoryType(category: CategorySection) {
+        print(":Asdfasdfadsfasdf")
+        switch category {
+        case .all:
+            print("all")
+        case .pill:
+            print("pill")
+        case .sanitaryPad:
+            print("pill")
+        case .charger:
+            print("pill")
+        case .book:
+            print("pill")
+        case .charger2:
+            print("pill")
+        }
     }
 }

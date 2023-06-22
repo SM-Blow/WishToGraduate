@@ -11,6 +11,10 @@ import Moya
 import SnapKit
 import Then
 
+protocol CategoryProtocol: AnyObject {
+    func categoryType(category: CategorySection)
+}
+
 final class HomeViewController: UIViewController {
     
     // MARK: - UI Components
@@ -31,6 +35,8 @@ final class HomeViewController: UIViewController {
     private let homeListView = HomeListView()
     
     // MARK: - Properties
+    
+    weak var categoryDelegate: CategoryProtocol?
     
     // MARK: - Initializer
     
@@ -164,6 +170,22 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
             cell.imageDataBind(model: selectedCategoryModel[indexPath.row])
+        }
+        
+        let category = CategorySection.allCases[indexPath.row]
+        switch category {
+        case .all:
+            categoryDelegate?.categoryType(category: .all)
+        case .pill:
+            categoryDelegate?.categoryType(category: .pill)
+        case .sanitaryPad:
+            categoryDelegate?.categoryType(category: .sanitaryPad)
+        case .charger:
+            categoryDelegate?.categoryType(category: .charger)
+        case .book:
+            categoryDelegate?.categoryType(category: .book)
+        case .charger2:
+            categoryDelegate?.categoryType(category: .charger2)
         }
     }
     
