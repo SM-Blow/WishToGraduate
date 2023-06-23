@@ -144,6 +144,7 @@ extension HomeViewController {
     private func setDelegate() {
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
+        categoryDelegate = self
     }
     
     private func setRegister() {
@@ -184,8 +185,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             categoryDelegate?.categoryType(category: .charger)
         case .book:
             categoryDelegate?.categoryType(category: .book)
-        case .charger2:
-            categoryDelegate?.categoryType(category: .charger2)
+        case .other:
+            categoryDelegate?.categoryType(category: .other)
         }
     }
     
@@ -212,5 +213,15 @@ extension HomeViewController: UICollectionViewDataSource {
             cell.setDataBind(model: categoryModel[indexPath.row])
         }
         return cell
+    }
+}
+
+extension HomeViewController: CategoryProtocol {
+    
+    func categoryType(category: CategorySection) {
+        homeListView.setListModel(category: category)
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
     }
 }

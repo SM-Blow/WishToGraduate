@@ -21,7 +21,7 @@ extension CategoryModel {
             CategoryModel(image: Image.sanitaryPad, title: "생리대"),
             CategoryModel(image: Image.charger, title: "전자기기"),
             CategoryModel(image: Image.book, title: "도서"),
-            CategoryModel(image: Image.charger2, title: "전자기기")
+            CategoryModel(image: Image.other, title: "기타")
         ]
     }
     
@@ -32,7 +32,7 @@ extension CategoryModel {
             CategoryModel(image: Image.selectedSanitaryPad, title: "생리대"),
             CategoryModel(image: Image.selectedCharger, title: "전자기기"),
             CategoryModel(image: Image.selectedBook, title: "도서"),
-            CategoryModel(image: Image.selectedCharger2, title: "전자기기")
+            CategoryModel(image: Image.selectedOther, title: "기타")
         ]
     }
 }
