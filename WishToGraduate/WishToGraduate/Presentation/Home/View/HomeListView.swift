@@ -89,7 +89,7 @@ extension HomeListView {
             homeListDummyModel = HomeListModel.fillDummyData()
         case .book:
             homeListDummyModel = HomeListModel.homeListModelDummyData()
-        case .charger2:
+        case .other:
             homeListDummyModel = HomeListModel.fillDummyData()
         }
         listCollectionView.reloadData()

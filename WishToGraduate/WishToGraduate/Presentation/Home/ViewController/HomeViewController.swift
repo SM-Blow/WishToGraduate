@@ -185,8 +185,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             categoryDelegate?.categoryType(category: .charger)
         case .book:
             categoryDelegate?.categoryType(category: .book)
-        case .charger2:
-            categoryDelegate?.categoryType(category: .charger2)
+        case .other:
+            categoryDelegate?.categoryType(category: .other)
         }
     }
     

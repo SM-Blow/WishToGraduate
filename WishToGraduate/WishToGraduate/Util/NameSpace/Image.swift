@@ -30,13 +30,13 @@ public enum Image {
     public static let allCategory = UIImage(named: "allCategory")!
     public static let book = UIImage(named: "book")!
     public static let charger = UIImage(named: "charger")!
-    public static let charger2 = UIImage(named: "charger2")!
+    public static let other = UIImage(named: "other")!
     public static let pill = UIImage(named: "pill")!
     public static let sanitaryPad = UIImage(named: "sanitaryPad")!
     public static let selectedAllCategory = UIImage(named: "selectedAllCategory")!
     public static let selectedBook = UIImage(named: "selectedBook")!
     public static let selectedCharger = UIImage(named: "selectedCharger")!
-    public static let selectedCharger2 = UIImage(named: "selectedCharger2")!
+    public static let selectedOther = UIImage(named: "selectedOther")!
     public static let selectedPill = UIImage(named: "selectedPill")!
     public static let selectedSanitaryPad = UIImage(named: "selectedSanitaryPad")!
     
