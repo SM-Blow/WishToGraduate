@@ -78,7 +78,6 @@ extension HomeListView {
     }
     
     func setListModel(category: CategorySection) {
-        print("setListmodel")
         switch category {
         case .all:
             homeListDummyModel = HomeListModel.homeListModelDummyData()

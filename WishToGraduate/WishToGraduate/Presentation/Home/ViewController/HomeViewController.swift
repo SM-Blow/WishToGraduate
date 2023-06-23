@@ -220,5 +220,8 @@ extension HomeViewController: CategoryProtocol {
     
     func categoryType(category: CategorySection) {
         homeListView.setListModel(category: category)
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
