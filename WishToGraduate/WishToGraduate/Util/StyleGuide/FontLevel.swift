@@ -63,7 +63,7 @@ extension FontLevel {
         case .placeholder:
             return 14
         case .h1:
-            return 12
+            return 18
         case .h2:
             return 12
         case .h2_bold:

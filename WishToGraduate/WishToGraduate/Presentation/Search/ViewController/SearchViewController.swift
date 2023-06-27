@@ -50,7 +50,9 @@ extension SearchViewController {
     
     private func setNavigationBar() {
         navigationController?.navigationBar.backgroundColor = Color.light_Green
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Color.main_Green, .font: UIFont.fontGuide(.h1)
+        navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: Color.main_Green,
+            .font: UIFont.fontGuide(.h1)
         ]
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeImageView)
         navigationItem.title = "검색하기"
