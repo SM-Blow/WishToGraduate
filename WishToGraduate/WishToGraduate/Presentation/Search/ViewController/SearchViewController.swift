@@ -14,7 +14,7 @@ class SearchViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let closeImageView = UIImageView()
+    private let backImageView = UIImageView()
     private let underLineView = UIView()
     private let searchView = UIView()
     private let searchButton = UIButton()
@@ -23,6 +23,10 @@ class SearchViewController: UIViewController {
     private let searchListView = HomeListView()
     
     // MARK: - View Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +44,8 @@ extension SearchViewController {
         
         view.backgroundColor = Color.light_Green
         
-        closeImageView.do {
-            $0.image = Image.closeButton
+        backImageView.do {
+            $0.image = Image.backButton
         }
         
         underLineView.do {
@@ -123,7 +127,23 @@ extension SearchViewController {
             .foregroundColor: Color.main_Green,
             .font: UIFont.fontGuide(.h1)
         ]
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeImageView)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: Image.backButton,
+            style: .plain,
+            target: self,
+            action: #selector(backButtonTapped))
         navigationItem.title = "검색하기"
+        navigationController?.navigationBar.tintColor = Color.main_Green
+    }
+    
+    private func popToHomeVC() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc
+    private func backButtonTapped() {
+        popToHomeVC()
     }
 }
