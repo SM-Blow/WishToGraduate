@@ -16,6 +16,7 @@ class SearchViewController: UIViewController {
     
     private let closeImageView = UIImageView()
     private let underLineView = UIView()
+    private let searchButton = UIButton()
     private let searchTextField = UITextField()
     
     // MARK: - View Life Cycle
@@ -44,6 +45,10 @@ extension SearchViewController {
             $0.backgroundColor = Color.line_Grey
         }
         
+        searchButton.do {
+            $0.setImage(Image.searchButton, for: .normal)
+        }
+        
         searchTextField.do {
             $0.placeholder = "키워드를 입력해주세요."
             $0.textColor = .black
@@ -52,6 +57,8 @@ extension SearchViewController {
             $0.layer.borderWidth = 1
             $0.setLeftPaddingPoints(12)
             $0.font = .fontGuide(.placeholder)
+            $0.rightView = searchButton
+            $0.rightViewMode = .always
         }
     }
     
@@ -65,6 +72,10 @@ extension SearchViewController {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(1)
+        }
+        
+        searchButton.snp.makeConstraints {
+            $0.width.height.equalTo(35)
         }
         
         searchTextField.snp.makeConstraints {
