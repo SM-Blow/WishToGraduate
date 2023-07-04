@@ -10,6 +10,10 @@ import UIKit
 import Then
 import SnapKit
 
+protocol SearchProtocol: AnyObject {
+    func searchType(type: SearchSection)
+}
+
 class SearchViewController: UIViewController {
     
     // MARK: - UI Components
@@ -22,10 +26,15 @@ class SearchViewController: UIViewController {
     private let searchTextField = UITextField()
     private let searchListView = HomeListView()
     
+    // MARK: - Properties
+    
+    weak var searchDelegate: SearchProtocol?
+    
     // MARK: - View Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = true
+        emptyListActivation()
     }
 
     override func viewDidLoad() {
@@ -33,6 +42,8 @@ class SearchViewController: UIViewController {
         setUI()
         setLayout()
         setNavigationBar()
+        setDelegate()
+        setAddTarget()
     }
 }
 
@@ -136,8 +147,24 @@ extension SearchViewController {
         navigationController?.navigationBar.tintColor = Color.main_Green
     }
     
+    private func setDelegate() {
+        searchDelegate = self
+    }
+    
+    private func setAddTarget() {
+        searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+    }
+    
     private func popToHomeVC() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    private func emptyListActivation() {
+        searchDelegate?.searchType(type: .empty)
+    }
+    
+    private func searchListActivation() {
+        searchDelegate?.searchType(type: .search)
     }
     
     // MARK: - @objc Methods
@@ -145,5 +172,17 @@ extension SearchViewController {
     @objc
     private func backButtonTapped() {
         popToHomeVC()
+    }
+    
+    @objc
+    private func searchButtonTapped() {
+        searchListActivation()
+    }
+}
+
+extension SearchViewController: SearchProtocol {
+    
+    func searchType(type: SearchSection) {
+        searchListView.setSearchListModel(type: type)
     }
 }

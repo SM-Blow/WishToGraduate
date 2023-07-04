@@ -60,6 +60,7 @@
 		03931B102A2CB57900B235D9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 03931B0F2A2CB57900B235D9 /* Kingfisher */; };
 		03931B122A2CB68B00B235D9 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B112A2CB68B00B235D9 /* NetworkLoggerPlugin.swift */; };
 		03931B142A2CB85600B235D9 /* APIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B132A2CB85600B235D9 /* APIConst.swift */; };
+		03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B004A62A546ECD00E71CA7 /* SearchSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +115,7 @@
 		03931B032A2CB3D700B235D9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		03931B112A2CB68B00B235D9 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		03931B132A2CB85600B235D9 /* APIConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConst.swift; sourceTree = "<group>"; };
+		03B004A62A546ECD00E71CA7 /* SearchSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				034650862A49C7140024AEC6 /* ViewController */,
+				03B004A52A546EAD00E71CA7 /* Model */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -452,6 +455,14 @@
 			path = NameSpace;
 			sourceTree = "<group>";
 		};
+		03B004A52A546EAD00E71CA7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03B004A62A546ECD00E71CA7 /* SearchSection.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -543,6 +554,7 @@
 				0308DA542A2DF7CF00B784B9 /* UIFont+.swift in Sources */,
 				035615602A3C89E300CC9A5E /* HomeViewController.swift in Sources */,
 				03931AD92A2CA76200B235D9 /* Model.swift in Sources */,
+				03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */,
 				03931B122A2CB68B00B235D9 /* NetworkLoggerPlugin.swift in Sources */,
 				03931B002A2CB39D00B235D9 /* UIViewController+.swift in Sources */,
 				035615572A3C4F1500CC9A5E /* CategoryCollectionViewCell.swift in Sources */,
