@@ -49,6 +49,7 @@ final class HomeViewController: UIViewController {
         setNavigationBar()
         setDelegate()
         setRegister()
+        setAddTarget()
     }
 }
 
@@ -129,7 +130,7 @@ extension HomeViewController {
         homeListView.snp.makeConstraints {
             $0.top.equalTo(categoryCollectionView.snp.bottom).offset(20)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalToSuperview()
         }
     }
     
@@ -151,7 +152,21 @@ extension HomeViewController {
         categoryCollectionView.registerCell(CategoryCollectionViewCell.self)
     }
     
+    private func setAddTarget() {
+        searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+    }
+    
+    private func pushToSearchVC() {
+        let searchVC = SearchViewController()
+        self.navigationController?.pushViewController(searchVC, animated: true)
+    }
+    
     // MARK: - @objc Methods
+    
+    @objc
+    private func searchButtonTapped() {
+        pushToSearchVC()
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
