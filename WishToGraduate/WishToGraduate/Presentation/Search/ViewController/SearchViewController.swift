@@ -15,6 +15,7 @@ class SearchViewController: UIViewController {
     // MARK: - UI Components
     
     private let closeImageView = UIImageView()
+    private let underLineView = UIView()
     
     // MARK: - View Life Cycle
 
@@ -32,18 +33,28 @@ extension SearchViewController {
     
     private func setUI() {
         
-        view.backgroundColor = Color.light_Green
+        view.backgroundColor = .white
         
         closeImageView.do {
             $0.image = Image.closeButton
         }
         
+        underLineView.do {
+            $0.backgroundColor = Color.line_Grey
+        }
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
         
+        view.addSubviews(underLineView)
+        
+        underLineView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(1)
+        }
     }
     
     // MARK: - Methods
