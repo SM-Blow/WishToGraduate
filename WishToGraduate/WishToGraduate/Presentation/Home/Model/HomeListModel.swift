@@ -43,4 +43,8 @@ extension HomeListModel {
             HomeListModel(title: "타이레놀", borrow: 1, transaction: true, time: "2023.05.20 13:00까지")
         ]
     }
+    
+    static func emptyDummyData() -> [HomeListModel] {
+        return []
+    }
 }

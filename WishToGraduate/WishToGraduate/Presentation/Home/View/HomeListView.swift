@@ -95,6 +95,16 @@ extension HomeListView {
         listCollectionView.reloadData()
     }
     
+    func setSearchListModel(type: SearchSection) {
+        switch type {
+        case .empty:
+            homeListDummyModel = HomeListModel.emptyDummyData()
+        case .search:
+            homeListDummyModel = HomeListModel.homeListModelDummyData()
+        }
+        listCollectionView.reloadData()
+    }
+    
     // MARK: - @objc Methods
 }
 
