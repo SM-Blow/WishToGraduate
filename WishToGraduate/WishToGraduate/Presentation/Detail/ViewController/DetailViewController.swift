@@ -42,6 +42,28 @@ final class DetailViewController: UIViewController {
     }
     private let photoView = UIView()
     private let middleUnderLineView = UIView()
+    private let profileImageView = UIImageView()
+    private let nicknameLabel = UILabel().then {
+        $0.text = "두두"
+        $0.textColor = .black
+        $0.font = .fontGuide(.title_bold)
+    }
+    private let duedateLabel = UILabel().then {
+        $0.text = "2023.05.20 13:30까지"
+        $0.textColor = .black
+        $0.font = .fontGuide(.h2)
+    }
+    private let untilLabel = UILabel().then {
+        $0.text = "Until"
+        $0.textColor = Color.main2_Green
+        $0.font = .fontGuide(.h2_bold)
+    }
+    private let titleLabel = UILabel().then {
+        $0.text = "생리대 중형 한 개"
+        $0.textColor = .black
+        $0.font = .fontGuide(.title_bold)
+    }
+    private let borrowLabel = BorrowLabel()
     
     // MARK: - Properties
     
@@ -54,6 +76,7 @@ final class DetailViewController: UIViewController {
         setUI()
         setLayout()
         setNavigationBar()
+        setBorrowBtn()
     }
 }
 
@@ -65,11 +88,14 @@ extension DetailViewController {
         
         view.backgroundColor = Color.light_Green
         naviView.backgroundColor = .white
+        headerView.backgroundColor = .white
+        containerView.backgroundColor = .white
         backImageView.image = Image.backButton
         topUnderLineView.backgroundColor = Color.line_Grey
         bottomUnderLineView.backgroundColor = Color.line_Grey
         middleUnderLineView.backgroundColor = Color.line_Grey
         contentView.backgroundColor = Color.textview_Grey
+        profileImageView.image = Image.profileImage
     }
     
     // MARK: - Layout Helper
@@ -78,6 +104,8 @@ extension DetailViewController {
         
         bottomButtonView.addSubviews(doubleCheckButton)
         containerView.addSubviews(headerView, titleView, contentView, middleUnderLineView)
+        headerView.addSubviews(profileImageView, nicknameLabel, duedateLabel, untilLabel)
+        titleView.addSubviews(titleLabel, borrowLabel)
         view.addSubviews(topUnderLineView, naviView, containerView, bottomButtonView, bottomUnderLineView)
         
         topUnderLineView.snp.makeConstraints {
@@ -139,6 +167,36 @@ extension DetailViewController {
             $0.height.equalTo(96)
             $0.bottom.equalToSuperview()
         }
+        
+        profileImageView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(23)
+        }
+        
+        nicknameLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(profileImageView.snp.trailing).offset(15)
+        }
+        
+        duedateLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(23)
+        }
+        
+        untilLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalTo(duedateLabel.snp.leading).offset(-7)
+        }
+        
+        titleLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(23)
+        }
+        
+        borrowLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(titleLabel.snp.trailing).offset(12)
+        }
     }
     
     // MARK: - Methods
@@ -155,6 +213,19 @@ extension DetailViewController {
             target: self,
             action: #selector(backButtonTapped))
         navigationController?.navigationBar.tintColor = Color.main_Green
+    }
+    
+    // 빌려요, 빌려줄게요 버튼 분기처리
+    private func setBorrowBtn() {
+        // 일단 1로 세팅
+        let borrow = 1
+        if (borrow == 1) {
+            borrowLabel.labelStatus(status: .borrow2)
+            borrowLabel.text = "빌려요"
+        } else {
+            borrowLabel.labelStatus(status: .lend2)
+            borrowLabel.text = "빌려줄게요"
+        }
     }
     
     // MARK: - @objc Methods

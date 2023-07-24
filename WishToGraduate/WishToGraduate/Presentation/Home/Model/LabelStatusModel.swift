@@ -10,4 +10,6 @@ import UIKit
 enum LabelStatus {
     case borrow
     case lend
+    case borrow2
+    case lend2
 }
