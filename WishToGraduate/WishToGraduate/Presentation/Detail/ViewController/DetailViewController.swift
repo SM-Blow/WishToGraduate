@@ -64,6 +64,15 @@ final class DetailViewController: UIViewController {
         $0.font = .fontGuide(.title_bold)
     }
     private let borrowLabel = BorrowLabel()
+    private let transactionLabel = UILabel().then {
+        $0.text = "거래중"
+        $0.font = .fontGuide(.bt1)
+        $0.textColor = .white
+        $0.textAlignment = .center
+        $0.backgroundColor = Color.main_Green
+        $0.layer.cornerRadius = 3
+        $0.clipsToBounds = true
+    }
     
     // MARK: - Properties
     
@@ -105,7 +114,7 @@ extension DetailViewController {
         bottomButtonView.addSubviews(doubleCheckButton)
         containerView.addSubviews(headerView, titleView, contentView, middleUnderLineView)
         headerView.addSubviews(profileImageView, nicknameLabel, duedateLabel, untilLabel)
-        titleView.addSubviews(titleLabel, borrowLabel)
+        titleView.addSubviews(titleLabel, borrowLabel, transactionLabel)
         view.addSubviews(topUnderLineView, naviView, containerView, bottomButtonView, bottomUnderLineView)
         
         topUnderLineView.snp.makeConstraints {
@@ -196,6 +205,13 @@ extension DetailViewController {
         borrowLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalTo(titleLabel.snp.trailing).offset(12)
+        }
+        
+        transactionLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(borrowLabel.snp.trailing).offset(8)
+            $0.width.equalTo(39)
+            $0.height.equalTo(19)
         }
     }
     
