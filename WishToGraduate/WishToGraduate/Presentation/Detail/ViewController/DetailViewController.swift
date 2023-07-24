@@ -18,10 +18,9 @@ final class DetailViewController: UIViewController {
     private let backImageView = UIImageView()
     private let topUnderLineView = UIView()
     private let bottomUnderLineView = UIView()
-    private let  = UIView().then {
+    private let naviView = UIView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
-//    private let detailView = UIView()
     private let bottomButtonView = UIView()
     private let containerView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
@@ -35,6 +34,14 @@ final class DetailViewController: UIViewController {
         $0.isEnabled = false
         $0.layer.cornerRadius = 10
     }
+    
+    private let headerView = UIView()
+    private let titleView = UIView()
+    private let contentView = UIView().then {
+        $0.layer.cornerRadius = 20
+    }
+    private let photoView = UIView()
+    private let middleUnderLineView = UIView()
     
     // MARK: - Properties
     
@@ -57,14 +64,12 @@ extension DetailViewController {
     private func setUI() {
         
         view.backgroundColor = Color.light_Green
-        .backgroundColor = .white
+        naviView.backgroundColor = .white
         backImageView.image = Image.backButton
         topUnderLineView.backgroundColor = Color.line_Grey
         bottomUnderLineView.backgroundColor = Color.line_Grey
-        
-        // 임시
-        containerView.backgroundColor = .white
-        bottomButtonView.backgroundColor = .white
+        middleUnderLineView.backgroundColor = Color.line_Grey
+        contentView.backgroundColor = Color.textview_Grey
     }
     
     // MARK: - Layout Helper
@@ -72,7 +77,8 @@ extension DetailViewController {
     private func setLayout() {
         
         bottomButtonView.addSubviews(doubleCheckButton)
-        view.addSubviews(topUnderLineView, , containerView, bottomButtonView, bottomUnderLineView)
+        containerView.addSubviews(headerView, titleView, contentView, middleUnderLineView)
+        view.addSubviews(topUnderLineView, naviView, containerView, bottomButtonView, bottomUnderLineView)
         
         topUnderLineView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -80,14 +86,14 @@ extension DetailViewController {
             $0.height.equalTo(1)
         }
         
-        .snp.makeConstraints {
+        naviView.snp.makeConstraints {
             $0.top.equalTo(topUnderLineView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(61)
         }
 
         containerView.snp.makeConstraints {
-            $0.top.equalTo(.snp.bottom)
+            $0.top.equalTo(topUnderLineView.snp.bottom)
             $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
 
@@ -107,6 +113,31 @@ extension DetailViewController {
             $0.top.equalToSuperview().offset(15)
             $0.leading.trailing.equalToSuperview().inset(22)
             $0.height.equalTo(45)
+        }
+        
+        headerView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(70)
+        }
+        
+        middleUnderLineView.snp.makeConstraints {
+            $0.top.equalTo(headerView.snp.bottom)
+            $0.leading.trailing.equalTo(headerView).inset(23)
+            $0.height.equalTo(1)
+        }
+        
+        titleView.snp.makeConstraints {
+            $0.top.equalTo(middleUnderLineView.snp.bottom)
+            $0.leading.trailing.equalTo(headerView)
+            $0.height.equalTo(67)
+        }
+
+        contentView.snp.makeConstraints {
+            $0.top.equalTo(titleView.snp.bottom)
+            $0.leading.trailing.equalTo(headerView).inset(23)
+            $0.height.equalTo(96)
+            $0.bottom.equalToSuperview()
         }
     }
     
