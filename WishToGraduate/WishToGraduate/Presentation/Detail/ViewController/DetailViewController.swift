@@ -273,123 +273,13 @@ extension DetailViewController {
         }
     }
     
-    private func please() {
-
-        headerView.snp.updateConstraints {
-            $0.top.equalToSuperview()
-        }
-    }
     private func setTextLayout() {
-
-        bottomButtonView.addSubviews(doubleCheckButton)
-        containerView.addSubviews(headerView, titleView, contentView, middleUnderLineView)
-        contentView.addSubview(contentLabel)
-        headerView.addSubviews(profileImageView, nicknameLabel, duedateLabel, untilLabel)
-        titleView.addSubviews(titleLabel, borrowLabel, transactionLabel)
-        view.addSubviews(topUnderLineView, naviView, containerView, bottomButtonView, bottomUnderLineView)
-        
-        topUnderLineView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(1)
-        }
-        
-        naviView.snp.makeConstraints {
-            $0.top.equalTo(topUnderLineView.snp.bottom)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(61)
-        }
-
-        containerView.snp.makeConstraints {
-            $0.top.equalTo(topUnderLineView.snp.bottom)
-            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
-        }
-
-        bottomButtonView.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(81)
-        }
-
-        bottomUnderLineView.snp.makeConstraints {
-            $0.top.equalTo(bottomButtonView.snp.top).offset(-1)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(1)
-        }
-
-        doubleCheckButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(15)
-            $0.leading.trailing.equalToSuperview().inset(22)
-            $0.height.equalTo(45)
-        }
-        
-        headerView.snp.makeConstraints {
+        headerView.snp.remakeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(70)
         }
-        
-        middleUnderLineView.snp.makeConstraints {
-            $0.top.equalTo(headerView.snp.bottom)
-            $0.leading.trailing.equalTo(headerView).inset(23)
-            $0.height.equalTo(1)
-        }
-        
-        titleView.snp.makeConstraints {
-            $0.top.equalTo(middleUnderLineView.snp.bottom)
-            $0.leading.trailing.equalTo(headerView)
-            $0.height.equalTo(67)
-        }
-
-        contentView.snp.makeConstraints {
-            $0.top.equalTo(titleView.snp.bottom)
-            $0.leading.trailing.equalTo(headerView).inset(23)
-            $0.height.equalTo(96)
-            $0.bottom.equalToSuperview()
-        }
-        
-        profileImageView.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().offset(23)
-        }
-        
-        nicknameLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalTo(profileImageView.snp.trailing).offset(15)
-        }
-        
-        duedateLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(23)
-        }
-        
-        untilLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.trailing.equalTo(duedateLabel.snp.leading).offset(-7)
-        }
-        
-        titleLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().offset(23)
-        }
-        
-        borrowLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalTo(titleLabel.snp.trailing).offset(12)
-        }
-        
-        transactionLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalTo(borrowLabel.snp.trailing).offset(8)
-            $0.width.equalTo(39)
-            $0.height.equalTo(19)
-        }
-        
-        contentLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(14)
-            $0.leading.equalToSuperview().offset(16)
-        }
-
+        self.view.setNeedsUpdateConstraints()
     }
     
     // MARK: - @objc Methods
@@ -401,8 +291,10 @@ extension DetailViewController {
             setLayout()
         case .text:
             photoImageView.isHidden = true
-            setTextLayout()
-            please()
+            setLayout()
+            DispatchQueue.main.async {
+                self.setTextLayout()
+            }
         }
     }
     
