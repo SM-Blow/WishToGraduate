@@ -344,8 +344,8 @@ extension DetailViewController {
     
     @objc
     private func bottomBtnTapped(_ sender: UIButton) {
-
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let actionSheet = UIAlertController(title: nil, message: "해당하는 항목을 골라주세요.", preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "거래전", style: .default, handler: {(ACTION: UIAlertAction) in
             print("거래전")
             self.stateType = .yet
