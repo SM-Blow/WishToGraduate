@@ -18,7 +18,14 @@ final class DetailViewController: UIViewController {
         case text
     }
     
+    enum StateType: CaseIterable {
+        case yet
+        case ing
+        case end
+    }
+    
     private var detailType: DetailType = .text
+    private var stateType: StateType = .yet
     
     // MARK: - UI Components
     
@@ -98,10 +105,12 @@ final class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         detailType = .text
+        stateType = .end
         setUI()
         photoOrTextLayout()
         setNavigationBar()
         setBorrowBtn()
+        setTransactionLabel()
     }
 }
 
@@ -284,6 +293,7 @@ extension DetailViewController {
     
     // MARK: - @objc Methods
     
+    // 사진, 글만 있는 글 레이아웃 분기처리
     @objc
     private func photoOrTextLayout() {
         switch detailType {
@@ -294,6 +304,27 @@ extension DetailViewController {
             setLayout()
             DispatchQueue.main.async {
                 self.setTextLayout()
+            }
+        }
+    }
+    
+    // 거래중, 완료 버튼 분기처리
+    private func setTransactionLabel() {
+        switch stateType {
+        case .yet:
+            transactionLabel.isHidden = true
+        case .ing:
+            transactionLabel.isHidden = false
+        case .end:
+            transactionLabel.isHidden = false
+            transactionLabel.text = "완료"
+            transactionLabel.backgroundColor = Color.btn_darkGrey
+            
+            transactionLabel.snp.remakeConstraints {
+                $0.centerY.equalToSuperview()
+                $0.leading.equalTo(borrowLabel.snp.trailing).offset(8)
+                $0.width.equalTo(30)
+                $0.height.equalTo(19)
             }
         }
     }
