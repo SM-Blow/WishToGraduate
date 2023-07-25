@@ -13,6 +13,11 @@ import Then
 
 final class DetailViewController: UIViewController {
     
+    enum UserType: CaseIterable {
+        case mine
+        case other
+    }
+    
     enum DetailType: CaseIterable {
         case photo
         case text
@@ -26,6 +31,7 @@ final class DetailViewController: UIViewController {
     
     private var detailType: DetailType = .text
     private var stateType: StateType = .yet
+    private var userType: UserType = .mine
     
     // MARK: - UI Components
     
@@ -46,7 +52,6 @@ final class DetailViewController: UIViewController {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .fontGuide(.title_bold)
         $0.layer.cornerRadius = 10
-        $0.addTarget(self, action: #selector(bottomBtnTapped), for: .touchUpInside)
     }
     
     private let headerView = UIView()
@@ -104,7 +109,7 @@ final class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        detailType = .text
+        setBottomButton()
         setUI()
         photoOrTextLayout()
         setNavigationBar()
@@ -337,13 +342,29 @@ extension DetailViewController {
         }
     }
     
+    private func setBottomButton() {
+        switch userType {
+        case .mine:
+            bottomButton.setTitle("거래 상태 바꾸기", for: .normal)
+            bottomButton.addTarget(self, action: #selector(changeTransactionState), for: .touchUpInside)
+        case .other:
+            bottomButton.setTitle("연락하기", for: .normal)
+            bottomButton.addTarget(self, action: #selector(contactButtonTapped), for: .touchUpInside)
+        }
+    }
+    
     @objc
     private func backButtonTapped() {
         print("이전")
     }
     
     @objc
-    private func bottomBtnTapped(_ sender: UIButton) {
+    private func contactButtonTapped() {
+        print("연락하러 갑시당")
+    }
+    
+    @objc
+    private func changeTransactionState(_ sender: UIButton) {
         
         let actionSheet = UIAlertController(title: nil, message: "해당하는 항목을 골라주세요.", preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "거래전", style: .default, handler: {(ACTION: UIAlertAction) in
