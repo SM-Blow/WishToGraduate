@@ -154,7 +154,7 @@ extension DetailViewController {
         }
     }
     
-    private func setPhotoLayout() {
+    private func setLayout() {
         
         bottomButtonView.addSubviews(doubleCheckButton)
         containerView.addSubviews(photoImageView, headerView, titleView, contentView, middleUnderLineView)
@@ -273,6 +273,12 @@ extension DetailViewController {
         }
     }
     
+    private func please() {
+
+        headerView.snp.updateConstraints {
+            $0.top.equalToSuperview()
+        }
+    }
     private func setTextLayout() {
 
         bottomButtonView.addSubviews(doubleCheckButton)
@@ -392,14 +398,16 @@ extension DetailViewController {
     private func photoOrTextLayout() {
         switch detailType {
         case .photo:
-            setPhotoLayout()
+            setLayout()
         case .text:
+            photoImageView.isHidden = true
             setTextLayout()
+            please()
         }
     }
     
     @objc
     private func backButtonTapped() {
-//        popToHomeVC()
+        
     }
 }
