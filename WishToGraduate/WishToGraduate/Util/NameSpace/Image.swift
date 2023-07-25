@@ -47,4 +47,7 @@ public enum Image {
     // MARK: - Writing
     
     public static let cameraIcon = UIImage(named: "icn_camera")!
+    
+    // MARK: - Writing
+    public static let example = UIImage(named: "examplePhoto")!
 }
