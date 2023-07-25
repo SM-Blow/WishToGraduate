@@ -13,6 +13,13 @@ import Then
 
 final class DetailViewController: UIViewController {
     
+    enum DetailType: CaseIterable {
+        case photo
+        case text
+    }
+    
+    private var detailType: DetailType = .text
+    
     // MARK: - UI Components
     
     private let backImageView = UIImageView()
@@ -40,7 +47,6 @@ final class DetailViewController: UIViewController {
     private let contentView = UIView().then {
         $0.layer.cornerRadius = 20
     }
-    private let photoView = UIView()
     private let middleUnderLineView = UIView()
     private let profileImageView = UIImageView()
     private let nicknameLabel = UILabel().then {
@@ -74,6 +80,15 @@ final class DetailViewController: UIViewController {
         $0.clipsToBounds = true
     }
     
+    private let contentLabel = UILabel().then {
+        $0.text = "생리대 아무거나 중형 빌려요\n아무 브랜드 상관없어요\n지금 도서관인데 학교 어디든지 괜찮아요!"
+        $0.font = .fontGuide(.h2)
+        $0.textColor = .black
+        $0.lineBreakMode = .byWordWrapping
+        $0.numberOfLines = 0
+    }
+    private let photoImageView = UIImageView()
+    
     // MARK: - Properties
     
     // MARK: - Initializer
@@ -82,8 +97,9 @@ final class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        detailType = .text
         setUI()
-        setLayout()
+        photoOrTextLayout()
         setNavigationBar()
         setBorrowBtn()
     }
@@ -105,14 +121,163 @@ extension DetailViewController {
         middleUnderLineView.backgroundColor = Color.line_Grey
         contentView.backgroundColor = Color.textview_Grey
         profileImageView.image = Image.profileImage
+        photoImageView.image = Image.example
+        
     }
     
-    // MARK: - Layout Helper
+    // MARK: - Methods
     
-    private func setLayout() {
+    private func setNavigationBar() {
+        navigationController?.navigationBar.backgroundColor = .clear
+        navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: Color.main_Green,
+            .font: UIFont.fontGuide(.h1)
+        ]
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: Image.backButton,
+            style: .plain,
+            target: self,
+            action: #selector(backButtonTapped))
+        navigationController?.navigationBar.tintColor = Color.main_Green
+    }
+    
+    // 빌려요, 빌려줄게요 버튼 분기처리
+    private func setBorrowBtn() {
+        // 일단 1로 세팅
+        let borrow = 1
+        if (borrow == 1) {
+            borrowLabel.labelStatus(status: .borrow2)
+            borrowLabel.text = "빌려요"
+        } else {
+            borrowLabel.labelStatus(status: .lend2)
+            borrowLabel.text = "빌려줄게요"
+        }
+    }
+    
+    private func setPhotoLayout() {
         
         bottomButtonView.addSubviews(doubleCheckButton)
+        containerView.addSubviews(photoImageView, headerView, titleView, contentView, middleUnderLineView)
+        contentView.addSubview(contentLabel)
+        headerView.addSubviews(profileImageView, nicknameLabel, duedateLabel, untilLabel)
+        titleView.addSubviews(titleLabel, borrowLabel, transactionLabel)
+        view.addSubviews(topUnderLineView, naviView, containerView, bottomButtonView, bottomUnderLineView)
+        
+        topUnderLineView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(1)
+        }
+        
+        naviView.snp.makeConstraints {
+            $0.top.equalTo(topUnderLineView.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(61)
+        }
+
+        containerView.snp.makeConstraints {
+            $0.top.equalTo(topUnderLineView.snp.bottom)
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+
+        bottomButtonView.snp.makeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(81)
+        }
+
+        bottomUnderLineView.snp.makeConstraints {
+            $0.top.equalTo(bottomButtonView.snp.top).offset(-1)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(1)
+        }
+
+        doubleCheckButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(15)
+            $0.leading.trailing.equalToSuperview().inset(22)
+            $0.height.equalTo(45)
+        }
+        
+        photoImageView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.width.equalToSuperview()
+            $0.height.equalTo(250)
+        }
+        
+        headerView.snp.makeConstraints {
+            $0.top.equalTo(photoImageView.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(70)
+        }
+        
+        middleUnderLineView.snp.makeConstraints {
+            $0.top.equalTo(headerView.snp.bottom)
+            $0.leading.trailing.equalTo(headerView).inset(23)
+            $0.height.equalTo(1)
+        }
+        
+        titleView.snp.makeConstraints {
+            $0.top.equalTo(middleUnderLineView.snp.bottom)
+            $0.leading.trailing.equalTo(headerView)
+            $0.height.equalTo(67)
+        }
+
+        contentView.snp.makeConstraints {
+            $0.top.equalTo(titleView.snp.bottom)
+            $0.leading.trailing.equalTo(headerView).inset(23)
+            $0.height.equalTo(96)
+            $0.bottom.equalToSuperview()
+        }
+        
+        profileImageView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(23)
+        }
+        
+        nicknameLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(profileImageView.snp.trailing).offset(15)
+        }
+        
+        duedateLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(23)
+        }
+        
+        untilLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalTo(duedateLabel.snp.leading).offset(-7)
+        }
+        
+        titleLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(23)
+        }
+        
+        borrowLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(titleLabel.snp.trailing).offset(12)
+        }
+        
+        transactionLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(borrowLabel.snp.trailing).offset(8)
+            $0.width.equalTo(39)
+            $0.height.equalTo(19)
+        }
+        
+        contentLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(14)
+            $0.leading.equalToSuperview().offset(16)
+        }
+    }
+    
+    private func setTextLayout() {
+
+        bottomButtonView.addSubviews(doubleCheckButton)
         containerView.addSubviews(headerView, titleView, contentView, middleUnderLineView)
+        contentView.addSubview(contentLabel)
         headerView.addSubviews(profileImageView, nicknameLabel, duedateLabel, untilLabel)
         titleView.addSubviews(titleLabel, borrowLabel, transactionLabel)
         view.addSubviews(topUnderLineView, naviView, containerView, bottomButtonView, bottomUnderLineView)
@@ -213,38 +378,25 @@ extension DetailViewController {
             $0.width.equalTo(39)
             $0.height.equalTo(19)
         }
-    }
-    
-    // MARK: - Methods
-    
-    private func setNavigationBar() {
-        navigationController?.navigationBar.backgroundColor = .clear
-        navigationController?.navigationBar.titleTextAttributes = [
-            .foregroundColor: Color.main_Green,
-            .font: UIFont.fontGuide(.h1)
-        ]
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: Image.backButton,
-            style: .plain,
-            target: self,
-            action: #selector(backButtonTapped))
-        navigationController?.navigationBar.tintColor = Color.main_Green
-    }
-    
-    // 빌려요, 빌려줄게요 버튼 분기처리
-    private func setBorrowBtn() {
-        // 일단 1로 세팅
-        let borrow = 1
-        if (borrow == 1) {
-            borrowLabel.labelStatus(status: .borrow2)
-            borrowLabel.text = "빌려요"
-        } else {
-            borrowLabel.labelStatus(status: .lend2)
-            borrowLabel.text = "빌려줄게요"
+        
+        contentLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(14)
+            $0.leading.equalToSuperview().offset(16)
         }
+
     }
     
     // MARK: - @objc Methods
+    
+    @objc
+    private func photoOrTextLayout() {
+        switch detailType {
+        case .photo:
+            setPhotoLayout()
+        case .text:
+            setTextLayout()
+        }
+    }
     
     @objc
     private func backButtonTapped() {
