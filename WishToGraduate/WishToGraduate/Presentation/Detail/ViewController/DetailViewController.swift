@@ -40,13 +40,13 @@ final class DetailViewController: UIViewController {
         $0.showsVerticalScrollIndicator = false
     }
     
-    private lazy var doubleCheckButton = UIButton(type: .system).then {
+    private lazy var bottomButton = UIButton(type: .system).then {
         $0.setTitle("거래 상태 바꾸기", for: .normal)
         $0.backgroundColor = Color.main2_Green
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .fontGuide(.title_bold)
-        $0.isEnabled = false
         $0.layer.cornerRadius = 10
+        $0.addTarget(self, action: #selector(bottomBtnTapped), for: .touchUpInside)
     }
     
     private let headerView = UIView()
@@ -105,7 +105,6 @@ final class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         detailType = .text
-        stateType = .end
         setUI()
         photoOrTextLayout()
         setNavigationBar()
@@ -165,7 +164,7 @@ extension DetailViewController {
     
     private func setLayout() {
         
-        bottomButtonView.addSubviews(doubleCheckButton)
+        bottomButtonView.addSubviews(bottomButton)
         containerView.addSubviews(photoImageView, headerView, titleView, contentView, middleUnderLineView)
         contentView.addSubview(contentLabel)
         headerView.addSubviews(profileImageView, nicknameLabel, duedateLabel, untilLabel)
@@ -201,7 +200,7 @@ extension DetailViewController {
             $0.height.equalTo(1)
         }
 
-        doubleCheckButton.snp.makeConstraints {
+        bottomButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(15)
             $0.leading.trailing.equalToSuperview().inset(22)
             $0.height.equalTo(45)
@@ -315,6 +314,15 @@ extension DetailViewController {
             transactionLabel.isHidden = true
         case .ing:
             transactionLabel.isHidden = false
+            transactionLabel.text = "거래중"
+            transactionLabel.backgroundColor = Color.main_Green
+            
+            transactionLabel.snp.remakeConstraints {
+                $0.centerY.equalToSuperview()
+                $0.leading.equalTo(borrowLabel.snp.trailing).offset(8)
+                $0.width.equalTo(39)
+                $0.height.equalTo(19)
+            }
         case .end:
             transactionLabel.isHidden = false
             transactionLabel.text = "완료"
@@ -331,6 +339,39 @@ extension DetailViewController {
     
     @objc
     private func backButtonTapped() {
+        print("이전")
+    }
+    
+    @objc
+    private func bottomBtnTapped(_ sender: UIButton) {
+
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "거래전", style: .default, handler: {(ACTION: UIAlertAction) in
+            print("거래전")
+            self.stateType = .yet
+            DispatchQueue.main.async {
+                self.setTransactionLabel()
+            }
+        }))
         
+        actionSheet.addAction(UIAlertAction(title: "거래중", style: .default, handler: {(ACTION: UIAlertAction) in
+            print("거래중")
+            self.stateType = .ing
+            DispatchQueue.main.async {
+                self.setTransactionLabel()
+            }
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "거래완료", style: .default, handler: {(ACTION: UIAlertAction) in
+            print("거래완료")
+            self.stateType = .end
+            DispatchQueue.main.async {
+                self.setTransactionLabel()
+            }
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+
+        self.present(actionSheet, animated: true, completion: nil)
     }
 }
