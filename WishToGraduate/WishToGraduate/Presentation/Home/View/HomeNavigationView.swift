@@ -20,6 +20,8 @@ final class HomeNavigationView: UIView {
     
     // MARK: - Properties
     
+    var searchButtonHandler: (() -> Void)?
+    
     // MARK: - Initializer
     
     // MARK: - View Life Cycle
@@ -28,6 +30,7 @@ final class HomeNavigationView: UIView {
         super.init(frame: frame)
         setUI()
         setLayout()
+        setAddTarget()
     }
     
     required init?(coder: NSCoder) {
@@ -80,5 +83,14 @@ extension HomeNavigationView {
     
     // MARK: - Methods
     
+    private func setAddTarget() {
+        searchButton.addTarget(self, action: #selector(searchButtonDidTapped), for: .touchUpInside)
+    }
+    
     // MARK: - @objc Methods
+    
+    @objc
+    private func searchButtonDidTapped() {
+        searchButtonHandler?()
+    }
 }

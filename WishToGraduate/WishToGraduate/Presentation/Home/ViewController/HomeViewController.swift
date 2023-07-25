@@ -50,6 +50,7 @@ final class HomeViewController: UIViewController {
         setLayout()
         setDelegate()
         setRegister()
+        setButton()
     }
 }
 
@@ -115,7 +116,7 @@ extension HomeViewController {
         categoryCollectionView.registerCell(CategoryCollectionViewCell.self)
     }
     
-    private func pushToSearchVC() {
+    func searchButtonDidTapped() {
         let searchVC = SearchViewController()
         self.navigationController?.pushViewController(searchVC, animated: true)
     }
@@ -123,8 +124,10 @@ extension HomeViewController {
     // MARK: - @objc Methods
     
     @objc
-    private func searchButtonTapped() {
-        pushToSearchVC()
+    private func setButton() {
+        navigationView.searchButtonHandler  = { [weak self] in
+            self?.searchButtonDidTapped()
+        }
     }
 }
 
