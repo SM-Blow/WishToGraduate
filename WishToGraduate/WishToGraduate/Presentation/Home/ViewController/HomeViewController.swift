@@ -19,10 +19,7 @@ final class HomeViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let navigationStackView = UIStackView()
-    private let notificationButton = UIButton()
-    private let searchButton = UIButton()
-    private let logoImage = UIImageView()
+    private let navigationView = HomeNavigationView()
     private lazy var categoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -44,16 +41,15 @@ final class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
+        navigationController?.isNavigationBarHidden = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setLayout()
-        setNavigationBar()
         setDelegate()
         setRegister()
-        setAddTarget()
     }
 }
 
@@ -64,25 +60,6 @@ extension HomeViewController {
     private func setUI() {
         
         view.backgroundColor = Color.light_Green
-        
-        navigationStackView.do {
-            $0.isLayoutMarginsRelativeArrangement = true
-            $0.alignment = .trailing
-            $0.distribution = .equalCentering
-            $0.spacing = 2
-        }
-        
-        notificationButton.do {
-            $0.setImage(Image.notificationButton, for: .normal)
-        }
-        
-        searchButton.do {
-            $0.setImage(Image.searchButton, for: .normal)
-        }
-        
-        logoImage.do {
-            $0.image = Image.profileImage
-        }
         
         underLineView.do {
             $0.backgroundColor = Color.line_Grey
@@ -98,29 +75,17 @@ extension HomeViewController {
     // MARK: - Layout Helper
     
     private func setLayout() {
+    
+        view.addSubviews(navigationView, categoryCollectionView, underLineView, homeListView)
         
-        navigationStackView.addArrangedSubviews(notificationButton, searchButton)
-        view.addSubviews(categoryCollectionView, underLineView, homeListView)
-        
-        navigationStackView.snp.makeConstraints {
-            $0.width.equalTo(72)
-            $0.height.equalTo(35)
-        }
-        
-        notificationButton.snp.makeConstraints {
-            $0.width.height.equalTo(35)
-        }
-        
-        searchButton.snp.makeConstraints {
-            $0.width.height.equalTo(35)
-        }
-        
-        logoImage.snp.makeConstraints {
-            $0.width.height.equalTo(41)
+        navigationView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(52)
         }
         
         categoryCollectionView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).inset(19)
+            $0.top.equalTo(navigationView.snp.bottom).offset(10)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(65)
         }
@@ -140,12 +105,6 @@ extension HomeViewController {
     
     // MARK: - Methods
     
-    func setNavigationBar() {
-        navigationController?.navigationBar.backgroundColor = .clear
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoImage)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: navigationStackView)
-    }
-    
     private func setDelegate() {
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
@@ -154,10 +113,6 @@ extension HomeViewController {
     
     private func setRegister() {
         categoryCollectionView.registerCell(CategoryCollectionViewCell.self)
-    }
-    
-    private func setAddTarget() {
-        searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
     }
     
     private func pushToSearchVC() {
