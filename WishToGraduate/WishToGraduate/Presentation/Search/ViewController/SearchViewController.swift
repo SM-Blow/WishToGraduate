@@ -34,6 +34,7 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = true
+        navigationController?.isNavigationBarHidden = true
         emptyListActivation()
     }
 
