@@ -148,8 +148,8 @@ extension SearchViewController {
         searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
     }
     
-    private func popToHomeVC() {
-        navigationController?.popViewController(animated: true)
+    private func dismissToHomeVC() {
+        dismiss(animated: true)
     }
     
     private func emptyListActivation() {
@@ -170,7 +170,7 @@ extension SearchViewController {
     @objc
     private func setButton() {
         navigationView.closeButtonHandler  = { [weak self] in
-            self?.popToHomeVC()
+            self?.dismissToHomeVC()
         }
     }
 }

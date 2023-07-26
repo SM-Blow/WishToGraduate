@@ -116,9 +116,10 @@ extension HomeViewController {
         categoryCollectionView.registerCell(CategoryCollectionViewCell.self)
     }
     
-    func searchButtonDidTapped() {
+    func presentToSearchVC() {
         let searchVC = SearchViewController()
-        self.navigationController?.pushViewController(searchVC, animated: true)
+        searchVC.modalPresentationStyle = .fullScreen
+        self.present(searchVC, animated: true)
     }
     
     // MARK: - @objc Methods
@@ -126,7 +127,7 @@ extension HomeViewController {
     @objc
     private func setButton() {
         navigationView.searchButtonHandler  = { [weak self] in
-            self?.searchButtonDidTapped()
+            self?.presentToSearchVC()
         }
     }
 }
