@@ -27,7 +27,7 @@ public enum Color {
     
     // MARK: - Grey
     
-    public static let textView_Grey = UIColor(named: "textview_grey")!
+    public static let textview_Grey = UIColor(named: "textview_grey")!
     public static let line_Grey = UIColor(named: "line_grey")!
     public static let circle_Grey = UIColor(named: "circle_grey")!
     public static let placeholder_Grey = UIColor(named: "placeholder_grey")!
