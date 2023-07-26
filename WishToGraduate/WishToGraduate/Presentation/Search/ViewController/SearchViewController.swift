@@ -18,7 +18,7 @@ class SearchViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let searchNavigationView = SearchNavigationView()
+    private let navigationView = SearchNavigationView()
     private let backImageView = UIImageView()
     private let underLineView = UIView()
     private let searchView = UIView()
@@ -45,6 +45,7 @@ class SearchViewController: UIViewController {
         setLayout()
         setDelegate()
         setAddTarget()
+        setButton()
     }
 }
 
@@ -95,16 +96,16 @@ extension SearchViewController {
         
         searchButtonView.addSubviews(searchButton)
         searchView.addSubviews(searchTextField)
-        view.addSubviews(searchNavigationView, underLineView, searchView, searchListView)
+        view.addSubviews(navigationView, underLineView, searchView, searchListView)
         
-        searchNavigationView.snp.makeConstraints {
+        navigationView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(52)
         }
         
         underLineView.snp.makeConstraints {
-            $0.top.equalTo(searchNavigationView.snp.bottom)
+            $0.top.equalTo(navigationView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(1)
         }
@@ -162,13 +163,15 @@ extension SearchViewController {
     // MARK: - @objc Methods
     
     @objc
-    private func backButtonTapped() {
-        popToHomeVC()
+    private func searchButtonTapped() {
+        searchListActivation()
     }
     
     @objc
-    private func searchButtonTapped() {
-        searchListActivation()
+    private func setButton() {
+        navigationView.closeButtonHandler  = { [weak self] in
+            self?.popToHomeVC()
+        }
     }
 }
 

@@ -17,12 +17,17 @@ final class SearchNavigationView: UIView {
     private let titleLabel = UILabel()
     private let closeButton = UIButton()
     
+    // MARK: - Properties
+    
+    var closeButtonHandler: (() -> Void)?
+    
     // MARK: - View Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
         setLayout()
+        setAddTarget()
     }
     
     required init?(coder: NSCoder) {
@@ -64,5 +69,18 @@ extension SearchNavigationView {
             $0.trailing.equalToSuperview().inset(8)
             $0.centerY.equalToSuperview()
         }
+    }
+    
+    // MARK: - Methods
+    
+    private func setAddTarget() {
+        closeButton.addTarget(self, action: #selector(closeButtonDidTapped), for: .touchUpInside)
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc
+    private func closeButtonDidTapped() {
+        closeButtonHandler?()
     }
 }
