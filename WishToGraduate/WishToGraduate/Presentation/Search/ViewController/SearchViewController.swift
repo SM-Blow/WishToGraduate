@@ -18,6 +18,7 @@ class SearchViewController: UIViewController {
     
     // MARK: - UI Components
     
+    private let searchNavigationView = SearchNavigationView()
     private let backImageView = UIImageView()
     private let underLineView = UIView()
     private let searchView = UIView()
@@ -42,7 +43,6 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
-        setNavigationBar()
         setDelegate()
         setAddTarget()
     }
@@ -95,10 +95,16 @@ extension SearchViewController {
         
         searchButtonView.addSubviews(searchButton)
         searchView.addSubviews(searchTextField)
-        view.addSubviews(underLineView, searchView, searchListView)
+        view.addSubviews(searchNavigationView, underLineView, searchView, searchListView)
+        
+        searchNavigationView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(52)
+        }
         
         underLineView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(searchNavigationView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(1)
         }
@@ -132,21 +138,6 @@ extension SearchViewController {
     }
     
     // MARK: - Methods
-    
-    private func setNavigationBar() {
-        navigationController?.navigationBar.backgroundColor = .clear
-        navigationController?.navigationBar.titleTextAttributes = [
-            .foregroundColor: Color.main_Green,
-            .font: UIFont.fontGuide(.h1)
-        ]
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: Image.backButton,
-            style: .plain,
-            target: self,
-            action: #selector(backButtonTapped))
-        navigationItem.title = "검색하기"
-        navigationController?.navigationBar.tintColor = Color.main_Green
-    }
     
     private func setDelegate() {
         searchDelegate = self

@@ -14,9 +14,8 @@ final class SearchNavigationView: UIView {
     
     // MARK: - UI Components
     
-    // MARK: - Properties
-    
-    // MARK: - Initializer
+    private let titleLabel = UILabel()
+    private let closeButton = UIButton()
     
     // MARK: - View Life Cycle
     
@@ -37,15 +36,33 @@ extension SearchNavigationView {
     
     private func setUI() {
         
+        backgroundColor = Color.light_Green
+        
+        titleLabel.do {
+            $0.text = "검색하기"
+            $0.font = .fontGuide(.h1)
+            $0.textColor = Color.main_Green
+        }
+        
+        closeButton.do {
+            $0.setImage(Image.closeButton, for: .normal)
+        }
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
         
+        addSubviews(titleLabel, closeButton)
+        
+        titleLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
+        
+        closeButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(8)
+            $0.centerY.equalToSuperview()
+        }
     }
-    
-    // MARK: - Methods
-    
-    // MARK: - @objc Methods
 }
