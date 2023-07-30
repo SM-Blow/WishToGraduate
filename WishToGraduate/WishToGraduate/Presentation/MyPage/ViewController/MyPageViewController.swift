@@ -17,6 +17,7 @@ final class MyPageViewController: UIViewController {
     
     private let navigationView = MyPageNavigationView()
     private let myProfileView = MyProfileView()
+    private let underLineView = UIView()
     
     // MARK: - Properties
     
@@ -43,13 +44,16 @@ extension MyPageViewController {
         
         view.backgroundColor = Color.light_Green
     
+        underLineView.do {
+            $0.backgroundColor = Color.line_Grey
+        }
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
         
-        view.addSubviews(navigationView, myProfileView)
+        view.addSubviews(navigationView, myProfileView, underLineView)
         
         navigationView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -61,6 +65,12 @@ extension MyPageViewController {
             $0.top.equalTo(navigationView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(235)
+        }
+        
+        underLineView.snp.makeConstraints {
+            $0.top.equalTo(myProfileView.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(1)
         }
     }
     
