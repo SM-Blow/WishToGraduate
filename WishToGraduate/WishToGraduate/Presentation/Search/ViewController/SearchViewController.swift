@@ -18,6 +18,7 @@ class SearchViewController: UIViewController {
     
     // MARK: - UI Components
     
+    private let navigationView = SearchNavigationView()
     private let backImageView = UIImageView()
     private let underLineView = UIView()
     private let searchView = UIView()
@@ -34,6 +35,7 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = true
+        navigationController?.isNavigationBarHidden = true
         emptyListActivation()
     }
 
@@ -41,9 +43,9 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
-        setNavigationBar()
         setDelegate()
         setAddTarget()
+        setButton()
     }
 }
 
@@ -94,10 +96,16 @@ extension SearchViewController {
         
         searchButtonView.addSubviews(searchButton)
         searchView.addSubviews(searchTextField)
-        view.addSubviews(underLineView, searchView, searchListView)
+        view.addSubviews(navigationView, underLineView, searchView, searchListView)
+        
+        navigationView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(52)
+        }
         
         underLineView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(navigationView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(1)
         }
@@ -132,21 +140,6 @@ extension SearchViewController {
     
     // MARK: - Methods
     
-    private func setNavigationBar() {
-        navigationController?.navigationBar.backgroundColor = .clear
-        navigationController?.navigationBar.titleTextAttributes = [
-            .foregroundColor: Color.main_Green,
-            .font: UIFont.fontGuide(.h1)
-        ]
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: Image.backButton,
-            style: .plain,
-            target: self,
-            action: #selector(backButtonTapped))
-        navigationItem.title = "검색하기"
-        navigationController?.navigationBar.tintColor = Color.main_Green
-    }
-    
     private func setDelegate() {
         searchDelegate = self
     }
@@ -155,8 +148,8 @@ extension SearchViewController {
         searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
     }
     
-    private func popToHomeVC() {
-        navigationController?.popViewController(animated: true)
+    private func dismissToHomeVC() {
+        dismiss(animated: true)
     }
     
     private func emptyListActivation() {
@@ -170,13 +163,15 @@ extension SearchViewController {
     // MARK: - @objc Methods
     
     @objc
-    private func backButtonTapped() {
-        popToHomeVC()
+    private func searchButtonTapped() {
+        searchListActivation()
     }
     
     @objc
-    private func searchButtonTapped() {
-        searchListActivation()
+    private func setButton() {
+        navigationView.closeButtonHandler  = { [weak self] in
+            self?.dismissToHomeVC()
+        }
     }
 }
 
