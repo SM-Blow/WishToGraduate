@@ -16,6 +16,7 @@ final class MyPageViewController: UIViewController {
     // MARK: - UI Components
     
     private let navigationView = MyPageNavigationView()
+    private let myProfileView = MyProfileView()
     
     // MARK: - Properties
     
@@ -48,7 +49,7 @@ extension MyPageViewController {
     
     private func setLayout() {
         
-        view.addSubviews(navigationView)
+        view.addSubviews(navigationView, myProfileView)
         
         navigationView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -56,6 +57,11 @@ extension MyPageViewController {
             $0.height.equalTo(52)
         }
         
+        myProfileView.snp.makeConstraints {
+            $0.top.equalTo(navigationView.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(235)
+        }
     }
     
     // MARK: - Methods
