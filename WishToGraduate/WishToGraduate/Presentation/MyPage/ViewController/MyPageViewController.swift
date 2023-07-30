@@ -105,6 +105,7 @@ extension MyPageViewController {
     
     private func setRegister() {
         myWritingCollectionView.registerCell(HomeListCollectionViewCell.self)
+        myWritingCollectionView.registerHeader(MyWritingHeaderView.self)
     }
     
     // MARK: - @objc Methods
@@ -122,6 +123,17 @@ extension MyPageViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableCell(kind: kind, type: MyWritingHeaderView.self, indexPath: indexPath)
+        return headerView
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let width: CGFloat = collectionView.frame.width
+        let height: CGFloat = 44
+        return CGSize(width: width, height: height)
     }
 }
 
