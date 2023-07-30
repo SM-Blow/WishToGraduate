@@ -63,6 +63,7 @@
 		03931B122A2CB68B00B235D9 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B112A2CB68B00B235D9 /* NetworkLoggerPlugin.swift */; };
 		03931B142A2CB85600B235D9 /* APIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B132A2CB85600B235D9 /* APIConst.swift */; };
 		03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B004A62A546ECD00E71CA7 /* SearchSection.swift */; };
+		98A955F32A60F97400B9BFD3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A955F22A60F97400B9BFD3 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +121,7 @@
 		03931B112A2CB68B00B235D9 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		03931B132A2CB85600B235D9 /* APIConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConst.swift; sourceTree = "<group>"; };
 		03B004A62A546ECD00E71CA7 /* SearchSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSection.swift; sourceTree = "<group>"; };
+		98A955F22A60F97400B9BFD3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,6 +398,7 @@
 		03931AE12A2CAD7E00B235D9 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				98A955F02A60F8E200B9BFD3 /* Detail */,
 				0356155C2A3C89C200CC9A5E /* Home */,
 				034650832A49C6900024AEC6 /* Search */,
 				035079252A3DFA82007F28DF /* Write */,
@@ -475,6 +478,22 @@
 				03B004A62A546ECD00E71CA7 /* SearchSection.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		98A955F02A60F8E200B9BFD3 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				98A955F12A60F92200B9BFD3 /* ViewController */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		98A955F12A60F92200B9BFD3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				98A955F22A60F97400B9BFD3 /* DetailViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -575,6 +594,7 @@
 				03931AF82A2CB36400B235D9 /* UILabel+.swift in Sources */,
 				03931AEC2A2CB30E00B235D9 /* UITextField+.swift in Sources */,
 				0350792E2A3EDE29007F28DF /* CategorySection.swift in Sources */,
+				98A955F32A60F97400B9BFD3 /* DetailViewController.swift in Sources */,
 				0370F3A02A442A9C00A9AF28 /* LabelStatusModel.swift in Sources */,
 				03931AFA2A2CB37700B235D9 /* UIButton+.swift in Sources */,
 				03931AE02A2CAD6D00B235D9 /* GeneralResponse.swift in Sources */,
@@ -754,6 +774,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -781,6 +802,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

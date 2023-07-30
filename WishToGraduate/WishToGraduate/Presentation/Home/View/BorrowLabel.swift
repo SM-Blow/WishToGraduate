@@ -10,7 +10,7 @@ import UIKit
 class BorrowLabel: UILabel {
     
     private var width: CGFloat = 0
-    private let height: CGFloat = 22
+    private var height: CGFloat = 0
 
     init() {
         super.init(frame: .zero)
@@ -37,7 +37,7 @@ extension BorrowLabel {
         textColor = .black
         textAlignment = .center
         backgroundColor = Color.btn_LightGreen
-        layer.cornerRadius = 12
+        layer.cornerRadius = 14
         clipsToBounds = true
     }
     
@@ -45,8 +45,18 @@ extension BorrowLabel {
         switch (status) {
         case .borrow:
             self.width = 43
+            self.height = 22
         case .lend:
             self.width = 60
+            self.height = 22
+        case .borrow2:
+            self.width = 55
+            self.height = 28
+            self.font = .fontGuide(.h2_bold)
+        case .lend2:
+            self.width = 76
+            self.height = 28
+            self.font = .fontGuide(.h2_bold)
         }
     }
 }
