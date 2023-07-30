@@ -35,11 +35,9 @@ class TabBarController: UITabBarController {
 extension TabBarController {
     
     private func setTabBarItems() {
-        
-        let homeVC = UINavigationController(rootViewController: HomeViewController())
 
         tabs = [
-            homeVC,
+            HomeViewController(),
             WriteViewController(),
             MyPageViewController()
         ]
