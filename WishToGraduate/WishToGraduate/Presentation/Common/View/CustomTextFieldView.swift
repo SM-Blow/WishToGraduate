@@ -49,6 +49,8 @@ extension CustomTextFieldView {
             $0.layer.cornerRadius = 10
             $0.clipsToBounds = true
             $0.makeShadow(radius: 5, offset: CGSize(width: 0, height: 0), opacity: 0.08)
+            $0.backgroundColor = .white
+            $0.setLeftPaddingPoints(14)
         }
     }
     
@@ -63,7 +65,7 @@ extension CustomTextFieldView {
         
         textField.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalTo(23)
+            $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(50)
         }
     }
