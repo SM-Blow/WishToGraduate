@@ -17,6 +17,13 @@ class CustomTextFieldView: UIView {
     private let titleLabel = UILabel()
     private let textField = UITextField()
     
+    // MARK: - Properties
+    
+    var isTitleIncluded: Bool {
+        get { !titleLabel.isHidden }
+        set { titleLabel.isHidden = !newValue }
+    }
+    
     // MARK: - Initializer
     
     init(type: String) {
@@ -40,6 +47,7 @@ extension CustomTextFieldView {
             $0.text = type
             $0.font = .fontGuide(.m1)
             $0.textColor = Color.placeholder_Grey
+            $0.isHidden = true
         }
         
         textField.do {

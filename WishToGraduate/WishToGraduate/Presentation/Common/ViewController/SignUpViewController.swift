@@ -48,6 +48,18 @@ extension SignUpViewController {
             $0.textColor = Color.main_Green
             $0.font = .fontGuide(.h1)
         }
+        
+        idTextField.do {
+            $0.isTitleIncluded = true
+        }
+        
+        passwordTextField.do {
+            $0.isTitleIncluded = true
+        }
+        
+        nickNameTextField.do {
+            $0.isTitleIncluded = true
+        }
     }
     
     // MARK: - Layout Helper
