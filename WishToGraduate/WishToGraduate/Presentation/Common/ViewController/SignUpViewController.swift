@@ -81,7 +81,7 @@ extension SignUpViewController {
         }
         
         idTextField.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(52)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(23)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(23)
             $0.height.equalTo(80)
         }
