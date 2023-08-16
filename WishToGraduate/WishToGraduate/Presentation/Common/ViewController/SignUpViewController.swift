@@ -104,8 +104,4 @@ extension SignUpViewController {
             $0.height.equalTo(50)
         }
     }
-    
-    // MARK: - Methods
-    
-    // MARK: - @objc Methods
 }
