@@ -12,7 +12,7 @@ enum CheckButtonState {
     case notAllow
 }
 
-final class CheckButton: UIButton {
+final class CustomCheckButton: UIButton {
     
     // MARK: - Initializer
     
@@ -30,7 +30,7 @@ final class CheckButton: UIButton {
     func setUI(_ title: String) {
         layer.cornerRadius = 10
         titleLabel?.font = .fontGuide(.title_bold)
-        titleLabel?.text = title
+        setTitle(title, for: .normal)
         setState(.allow)
     }
     

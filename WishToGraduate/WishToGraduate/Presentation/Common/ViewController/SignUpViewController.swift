@@ -19,10 +19,8 @@ final class SignUpViewController: UIViewController {
     private let titleLabel = UILabel()
     private let idTextField = CustomTextFieldView(type: "아이디")
     private let passwordTextField = CustomTextFieldView(type: "비밀번호")
-    
-    // MARK: - Properties
-    
-    // MARK: - Initializer
+    private let nickNameTextField = CustomTextFieldView(type: "닉네임")
+    private let signUpButton = CustomCheckButton(title: "회원가입")
     
     // MARK: - View Life Cycle
     
@@ -56,7 +54,8 @@ extension SignUpViewController {
     
     private func setLayout() {
         
-        view.addSubviews(logoImageView, titleLabel, idTextField, passwordTextField)
+        view.addSubviews(logoImageView, titleLabel,
+                         idTextField, passwordTextField, nickNameTextField, signUpButton)
         
         logoImageView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(55)
@@ -78,7 +77,19 @@ extension SignUpViewController {
         passwordTextField.snp.makeConstraints {
             $0.top.equalTo(idTextField.snp.bottom).offset(16)
             $0.leading.trailing.equalTo(idTextField)
-            $0.height.equalTo(80)
+            $0.height.equalTo(idTextField)
+        }
+        
+        nickNameTextField.snp.makeConstraints {
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(16)
+            $0.leading.trailing.equalTo(idTextField)
+            $0.height.equalTo(idTextField)
+        }
+        
+        signUpButton.snp.makeConstraints {
+            $0.top.equalTo(nickNameTextField.snp.bottom).offset(31)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(23)
+            $0.height.equalTo(50)
         }
     }
     

@@ -43,7 +43,7 @@ extension CustomTextFieldView {
         }
         
         textField.do {
-            $0.placeholder = "\(type)을 입력하세요."
+            $0.placeholder = "\(type)를 입력하세요."
             $0.font = .fontGuide(.m1)
             $0.textColor = Color.placeholder_Grey
             $0.layer.cornerRadius = 10
