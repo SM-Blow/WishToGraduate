@@ -342,8 +342,8 @@
 		0370B4AA2A8CF9D000005400 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				0370B4B22A8D1DFC00005400 /* SignInViewController.swift */,
-				0370B4AE2A8D151900005400 /* SignUpViewController.swift */,
+				0370B4B72A8E202200005400 /* SignUp */,
+				0370B4B62A8E201B00005400 /* SignIn */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -355,6 +355,22 @@
 				0370B4B02A8D17E100005400 /* CustomCheckButton.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0370B4B62A8E201B00005400 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				0370B4B22A8D1DFC00005400 /* SignInViewController.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		0370B4B72A8E202200005400 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				0370B4AE2A8D151900005400 /* SignUpViewController.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		03931AB22A2CA5F700B235D9 = {
