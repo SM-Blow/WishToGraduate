@@ -16,6 +16,7 @@ final class ChatListViewController: UIViewController {
     // MARK: - UI Components
     
     private let navigationView = CustomNavigationView(title: "채팅")
+    private let chatListView = ChatListView()
     
     // MARK: - Properties
     
@@ -48,12 +49,18 @@ extension ChatListViewController {
     
     private func setLayout() {
         
-        view.addSubviews(navigationView)
+        view.addSubviews(navigationView, chatListView)
         
         navigationView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(52)
+        }
+        
+        chatListView.snp.makeConstraints {
+            $0.top.equalTo(navigationView.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalToSuperview()
         }
         
     }
