@@ -15,13 +15,17 @@ final class ChatListViewController: UIViewController {
     
     // MARK: - UI Components
     
-    
+    private let navigationView = CustomNavigationView(title: "채팅")
     
     // MARK: - Properties
     
     // MARK: - Initializer
     
     // MARK: - View Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +40,21 @@ extension ChatListViewController {
     
     private func setUI() {
         
+        view.backgroundColor = Color.light_Green
+        
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
+        
+        view.addSubviews(navigationView)
+        
+        navigationView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(52)
+        }
         
     }
     

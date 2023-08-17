@@ -16,6 +16,7 @@ final class CustomNavigationView: UIView {
     
     private let titleLabel = UILabel()
     private let closeButton = UIButton()
+    private let underLineView = UIView()
     
     // MARK: - Properties
     
@@ -52,13 +53,17 @@ extension CustomNavigationView {
         closeButton.do {
             $0.setImage(Image.closeButton, for: .normal)
         }
+        
+        underLineView.do {
+            $0.backgroundColor = Color.line_Grey
+        }
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
         
-        addSubviews(titleLabel, closeButton)
+        addSubviews(titleLabel, closeButton, underLineView)
         
         titleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -68,6 +73,12 @@ extension CustomNavigationView {
         closeButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(8)
             $0.centerY.equalToSuperview()
+        }
+        
+        underLineView.snp.makeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(1)
         }
     }
     
