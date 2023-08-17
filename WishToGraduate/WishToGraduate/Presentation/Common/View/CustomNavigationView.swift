@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class SearchNavigationView: UIView {
+final class CustomNavigationView: UIView {
     
     // MARK: - UI Components
     
@@ -23,9 +23,9 @@ final class SearchNavigationView: UIView {
     
     // MARK: - View Life Cycle
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUI()
+    init(title: String) {
+        super.init(frame: .zero)
+        setUI(title)
         setLayout()
         setAddTarget()
     }
@@ -35,16 +35,16 @@ final class SearchNavigationView: UIView {
     }
 }
 
-extension SearchNavigationView {
+extension CustomNavigationView {
     
     // MARK: - UI Components Property
     
-    private func setUI() {
+    private func setUI(_ title: String) {
         
         backgroundColor = Color.light_Green
         
         titleLabel.do {
-            $0.text = "검색하기"
+            $0.text = title
             $0.font = .fontGuide(.h1)
             $0.textColor = Color.main_Green
         }

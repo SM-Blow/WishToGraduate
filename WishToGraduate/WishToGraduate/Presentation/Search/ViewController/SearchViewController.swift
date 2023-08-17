@@ -18,7 +18,7 @@ class SearchViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let navigationView = SearchNavigationView()
+    private let navigationView = CustomNavigationView(title: "검색하기")
     private let backImageView = UIImageView()
     private let underLineView = UIView()
     private let searchView = UIView()
