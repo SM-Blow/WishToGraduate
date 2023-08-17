@@ -20,7 +20,6 @@ class SearchViewController: UIViewController {
     
     private let navigationView = CustomNavigationView(title: "검색하기")
     private let backImageView = UIImageView()
-    private let underLineView = UIView()
     private let searchView = UIView()
     private let searchButton = UIButton()
     private let searchButtonView = UIView()
@@ -61,10 +60,6 @@ extension SearchViewController {
             $0.image = Image.backButton
         }
         
-        underLineView.do {
-            $0.backgroundColor = Color.line_Grey
-        }
-        
         searchView.do {
             $0.backgroundColor = .white
         }
@@ -96,7 +91,7 @@ extension SearchViewController {
         
         searchButtonView.addSubviews(searchButton)
         searchView.addSubviews(searchTextField)
-        view.addSubviews(navigationView, underLineView, searchView, searchListView)
+        view.addSubviews(navigationView, searchView, searchListView)
         
         navigationView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -104,18 +99,12 @@ extension SearchViewController {
             $0.height.equalTo(52)
         }
         
-        underLineView.snp.makeConstraints {
-            $0.top.equalTo(navigationView.snp.bottom)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(1)
-        }
-        
         searchButton.snp.makeConstraints {
             $0.width.height.equalTo(35)
         }
         
         searchView.snp.makeConstraints {
-            $0.top.equalTo(underLineView.snp.bottom)
+            $0.top.equalTo(navigationView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(61)
         }
