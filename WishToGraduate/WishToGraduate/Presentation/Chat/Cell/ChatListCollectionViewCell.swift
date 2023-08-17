@@ -38,7 +38,11 @@ extension ChatListCollectionViewCell {
     
     private func setUI() {
         
-        backgroundColor = .clear
+        backgroundColor = .white
+        layer.cornerRadius = 10
+        clipsToBounds = true
+        layer.shadowColor = Color.btn_darkGrey.cgColor
+        makeShadow(radius: 8, offset: CGSize(width: 0, height: 0), opacity: 0.12)
         
         profileImageView.do {
             $0.image = Image.profileImage

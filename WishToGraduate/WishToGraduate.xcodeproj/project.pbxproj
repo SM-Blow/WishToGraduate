@@ -39,6 +39,7 @@
 		0370B4B32A8D1DFC00005400 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4B22A8D1DFC00005400 /* SignInViewController.swift */; };
 		0370B4BB2A8E20EF00005400 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4BA2A8E20EF00005400 /* ChatListViewController.swift */; };
 		0370B4BE2A8E25C000005400 /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4BD2A8E25C000005400 /* ChatListView.swift */; };
+		0370B4C12A8E274400005400 /* ChatListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4C02A8E274400005400 /* ChatListCollectionViewCell.swift */; };
 		0370F39E2A4427F900A9AF28 /* BorrowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370F39D2A4427F900A9AF28 /* BorrowLabel.swift */; };
 		0370F3A02A442A9C00A9AF28 /* LabelStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370F39F2A442A9C00A9AF28 /* LabelStatusModel.swift */; };
 		03931ABF2A2CA5F700B235D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931ABE2A2CA5F700B235D9 /* AppDelegate.swift */; };
@@ -108,6 +109,7 @@
 		0370B4B22A8D1DFC00005400 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		0370B4BA2A8E20EF00005400 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		0370B4BD2A8E25C000005400 /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
+		0370B4C02A8E274400005400 /* ChatListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCollectionViewCell.swift; sourceTree = "<group>"; };
 		0370F39D2A4427F900A9AF28 /* BorrowLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowLabel.swift; sourceTree = "<group>"; };
 		0370F39F2A442A9C00A9AF28 /* LabelStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStatusModel.swift; sourceTree = "<group>"; };
 		03931ABB2A2CA5F700B235D9 /* WishToGraduate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WishToGraduate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -374,6 +376,7 @@
 			children = (
 				0370B4BC2A8E25A300005400 /* View */,
 				0370B4B92A8E20CA00005400 /* ViewController */,
+				0370B4BF2A8E272800005400 /* Cell */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -392,6 +395,14 @@
 				0370B4BD2A8E25C000005400 /* ChatListView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0370B4BF2A8E272800005400 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0370B4C02A8E274400005400 /* ChatListCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		03931AB22A2CA5F700B235D9 = {
@@ -726,6 +737,7 @@
 				035079272A3DFA9E007F28DF /* WriteViewController.swift in Sources */,
 				031CBDFF2A6FE45100301F06 /* HomeNavigationView.swift in Sources */,
 				0308DA562A2DF82C00B784B9 /* NSMutableAttributedString+.swift in Sources */,
+				0370B4C12A8E274400005400 /* ChatListCollectionViewCell.swift in Sources */,
 				0308DA4F2A2DEEB300B784B9 /* NotoSansKRType.swift in Sources */,
 				03931AD72A2CA75B00B235D9 /* DTO.swift in Sources */,
 				03931AFE2A2CB39100B235D9 /* UIImage+.swift in Sources */,
