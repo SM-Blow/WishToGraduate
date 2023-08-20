@@ -33,6 +33,10 @@
 		035615652A3CAABC00CC9A5E /* HomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615642A3CAABC00CC9A5E /* HomeListView.swift */; };
 		035615672A3CAEA600CC9A5E /* HomeListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615662A3CAEA600CC9A5E /* HomeListCollectionViewCell.swift */; };
 		035615692A3CB4A300CC9A5E /* HomeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615682A3CB4A300CC9A5E /* HomeListModel.swift */; };
+		0370B4AD2A8CFAF600005400 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4AC2A8CFAF600005400 /* CustomTextFieldView.swift */; };
+		0370B4AF2A8D151900005400 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4AE2A8D151900005400 /* SignUpViewController.swift */; };
+		0370B4B12A8D17E100005400 /* CustomCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4B02A8D17E100005400 /* CustomCheckButton.swift */; };
+		0370B4B32A8D1DFC00005400 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4B22A8D1DFC00005400 /* SignInViewController.swift */; };
 		0370F39E2A4427F900A9AF28 /* BorrowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370F39D2A4427F900A9AF28 /* BorrowLabel.swift */; };
 		0370F3A02A442A9C00A9AF28 /* LabelStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370F39F2A442A9C00A9AF28 /* LabelStatusModel.swift */; };
 		03931ABF2A2CA5F700B235D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931ABE2A2CA5F700B235D9 /* AppDelegate.swift */; };
@@ -96,6 +100,10 @@
 		035615642A3CAABC00CC9A5E /* HomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListView.swift; sourceTree = "<group>"; };
 		035615662A3CAEA600CC9A5E /* HomeListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListCollectionViewCell.swift; sourceTree = "<group>"; };
 		035615682A3CB4A300CC9A5E /* HomeListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListModel.swift; sourceTree = "<group>"; };
+		0370B4AC2A8CFAF600005400 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTextFieldView.swift; path = WishToGraduate/Presentation/Common/View/CustomTextFieldView.swift; sourceTree = SOURCE_ROOT; };
+		0370B4AE2A8D151900005400 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0370B4B02A8D17E100005400 /* CustomCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckButton.swift; sourceTree = "<group>"; };
+		0370B4B22A8D1DFC00005400 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		0370F39D2A4427F900A9AF28 /* BorrowLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowLabel.swift; sourceTree = "<group>"; };
 		0370F39F2A442A9C00A9AF28 /* LabelStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStatusModel.swift; sourceTree = "<group>"; };
 		03931ABB2A2CA5F700B235D9 /* WishToGraduate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WishToGraduate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -322,6 +330,49 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		0370B4A92A8CF9B000005400 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0370B4AB2A8CF9DD00005400 /* View */,
+				0370B4AA2A8CF9D000005400 /* ViewController */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0370B4AA2A8CF9D000005400 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0370B4B72A8E202200005400 /* SignUp */,
+				0370B4B62A8E201B00005400 /* SignIn */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0370B4AB2A8CF9DD00005400 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0370B4AC2A8CFAF600005400 /* CustomTextFieldView.swift */,
+				0370B4B02A8D17E100005400 /* CustomCheckButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0370B4B62A8E201B00005400 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				0370B4B22A8D1DFC00005400 /* SignInViewController.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		0370B4B72A8E202200005400 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				0370B4AE2A8D151900005400 /* SignUpViewController.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		03931AB22A2CA5F700B235D9 = {
 			isa = PBXGroup;
 			children = (
@@ -415,6 +466,7 @@
 		03931AE12A2CAD7E00B235D9 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				0370B4A92A8CF9B000005400 /* Common */,
 				98A955F02A60F8E200B9BFD3 /* Detail */,
 				0356155C2A3C89C200CC9A5E /* Home */,
 				034650832A49C6900024AEC6 /* Search */,
@@ -624,6 +676,7 @@
 				03931ABF2A2CA5F700B235D9 /* AppDelegate.swift in Sources */,
 				0356155A2A3C55BE00CC9A5E /* CategoryModel.swift in Sources */,
 				03931AE82A2CB2E200B235D9 /* UIView+.swift in Sources */,
+				0370B4B32A8D1DFC00005400 /* SignInViewController.swift in Sources */,
 				03931AC12A2CA5F700B235D9 /* SceneDelegate.swift in Sources */,
 				035079222A3DF831007F28DF /* TabBarController.swift in Sources */,
 				0330CA772A7627E1004CE2D7 /* MyWritingHeaderView.swift in Sources */,
@@ -633,11 +686,14 @@
 				0370F39E2A4427F900A9AF28 /* BorrowLabel.swift in Sources */,
 				0308DA522A2DEF9D00B784B9 /* FontLevel.swift in Sources */,
 				03931AF62A2CB35700B235D9 /* UIImageView+.swift in Sources */,
+				0370B4AD2A8CFAF600005400 /* CustomTextFieldView.swift in Sources */,
 				03931AEE2A2CB31C00B235D9 /* UIStackView+.swift in Sources */,
+				0370B4B12A8D17E100005400 /* CustomCheckButton.swift in Sources */,
 				03931AFC2A2CB38300B235D9 /* UITabBar+.swift in Sources */,
 				03931B142A2CB85600B235D9 /* APIConst.swift in Sources */,
 				03931AF02A2CB32E00B235D9 /* UITableView+.swift in Sources */,
 				03931AEA2A2CB2F000B235D9 /* NSObject+.swift in Sources */,
+				0370B4AF2A8D151900005400 /* SignUpViewController.swift in Sources */,
 				03931AF42A2CB34A00B235D9 /* String+.swift in Sources */,
 				035615692A3CB4A300CC9A5E /* HomeListModel.swift in Sources */,
 				035079242A3DF881007F28DF /* TabBarItem.swift in Sources */,
