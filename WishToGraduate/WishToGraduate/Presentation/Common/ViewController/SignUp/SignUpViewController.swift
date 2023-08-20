@@ -59,6 +59,7 @@ extension SignUpViewController {
         
         nickNameTextField.do {
             $0.isTitleIncluded = true
+            $0.nickNamePlaceholder()
         }
     }
     
