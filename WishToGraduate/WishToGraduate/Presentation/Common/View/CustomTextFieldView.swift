@@ -77,4 +77,8 @@ extension CustomTextFieldView {
             $0.height.equalTo(50)
         }
     }
+    
+    func nickNamePlaceholder() {
+        textField.placeholder = "닉네임을 입력하세요."
+    }
 }
