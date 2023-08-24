@@ -17,7 +17,7 @@
 		0308DA542A2DF7CF00B784B9 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA532A2DF7CF00B784B9 /* UIFont+.swift */; };
 		0308DA562A2DF82C00B784B9 /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA552A2DF82C00B784B9 /* NSMutableAttributedString+.swift */; };
 		031CBDFF2A6FE45100301F06 /* HomeNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CBDFE2A6FE45100301F06 /* HomeNavigationView.swift */; };
-		031CBE022A6FE90600301F06 /* SearchNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CBE012A6FE90600301F06 /* SearchNavigationView.swift */; };
+		031CBE022A6FE90600301F06 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CBE012A6FE90600301F06 /* CustomNavigationView.swift */; };
 		0330CA6E2A7616E4004CE2D7 /* MyPageNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0330CA6D2A7616E4004CE2D7 /* MyPageNavigationView.swift */; };
 		0330CA702A761AFB004CE2D7 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0330CA6F2A761AFB004CE2D7 /* MyProfileView.swift */; };
 		0330CA772A7627E1004CE2D7 /* MyWritingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0330CA762A7627E1004CE2D7 /* MyWritingHeaderView.swift */; };
@@ -37,6 +37,9 @@
 		0370B4AF2A8D151900005400 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4AE2A8D151900005400 /* SignUpViewController.swift */; };
 		0370B4B12A8D17E100005400 /* CustomCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4B02A8D17E100005400 /* CustomCheckButton.swift */; };
 		0370B4B32A8D1DFC00005400 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4B22A8D1DFC00005400 /* SignInViewController.swift */; };
+		0370B4BB2A8E20EF00005400 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4BA2A8E20EF00005400 /* ChatListViewController.swift */; };
+		0370B4BE2A8E25C000005400 /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4BD2A8E25C000005400 /* ChatListView.swift */; };
+		0370B4C12A8E274400005400 /* ChatListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4C02A8E274400005400 /* ChatListCollectionViewCell.swift */; };
 		0370F39E2A4427F900A9AF28 /* BorrowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370F39D2A4427F900A9AF28 /* BorrowLabel.swift */; };
 		0370F3A02A442A9C00A9AF28 /* LabelStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370F39F2A442A9C00A9AF28 /* LabelStatusModel.swift */; };
 		03931ABF2A2CA5F700B235D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931ABE2A2CA5F700B235D9 /* AppDelegate.swift */; };
@@ -84,7 +87,7 @@
 		0308DA532A2DF7CF00B784B9 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		0308DA552A2DF82C00B784B9 /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
 		031CBDFE2A6FE45100301F06 /* HomeNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationView.swift; sourceTree = "<group>"; };
-		031CBE012A6FE90600301F06 /* SearchNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigationView.swift; sourceTree = "<group>"; };
+		031CBE012A6FE90600301F06 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 		0330CA6D2A7616E4004CE2D7 /* MyPageNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageNavigationView.swift; sourceTree = "<group>"; };
 		0330CA6F2A761AFB004CE2D7 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		0330CA762A7627E1004CE2D7 /* MyWritingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWritingHeaderView.swift; sourceTree = "<group>"; };
@@ -104,6 +107,9 @@
 		0370B4AE2A8D151900005400 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0370B4B02A8D17E100005400 /* CustomCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckButton.swift; sourceTree = "<group>"; };
 		0370B4B22A8D1DFC00005400 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		0370B4BA2A8E20EF00005400 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		0370B4BD2A8E25C000005400 /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
+		0370B4C02A8E274400005400 /* ChatListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCollectionViewCell.swift; sourceTree = "<group>"; };
 		0370F39D2A4427F900A9AF28 /* BorrowLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowLabel.swift; sourceTree = "<group>"; };
 		0370F39F2A442A9C00A9AF28 /* LabelStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStatusModel.swift; sourceTree = "<group>"; };
 		03931ABB2A2CA5F700B235D9 /* WishToGraduate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WishToGraduate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,14 +177,6 @@
 			path = StyleGuide;
 			sourceTree = "<group>";
 		};
-		031CBE002A6FE8F300301F06 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				031CBE012A6FE90600301F06 /* SearchNavigationView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		0330CA6C2A7616D1004CE2D7 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				034650862A49C7140024AEC6 /* ViewController */,
-				031CBE002A6FE8F300301F06 /* View */,
 				03B004A52A546EAD00E71CA7 /* Model */,
 			);
 			path = Search;
@@ -351,6 +348,7 @@
 		0370B4AB2A8CF9DD00005400 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				031CBE012A6FE90600301F06 /* CustomNavigationView.swift */,
 				0370B4AC2A8CFAF600005400 /* CustomTextFieldView.swift */,
 				0370B4B02A8D17E100005400 /* CustomCheckButton.swift */,
 			);
@@ -371,6 +369,40 @@
 				0370B4AE2A8D151900005400 /* SignUpViewController.swift */,
 			);
 			path = SignUp;
+			sourceTree = "<group>";
+		};
+		0370B4B82A8E20BB00005400 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				0370B4BC2A8E25A300005400 /* View */,
+				0370B4B92A8E20CA00005400 /* ViewController */,
+				0370B4BF2A8E272800005400 /* Cell */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		0370B4B92A8E20CA00005400 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0370B4BA2A8E20EF00005400 /* ChatListViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0370B4BC2A8E25A300005400 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0370B4BD2A8E25C000005400 /* ChatListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0370B4BF2A8E272800005400 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0370B4C02A8E274400005400 /* ChatListCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		03931AB22A2CA5F700B235D9 = {
@@ -466,6 +498,7 @@
 		03931AE12A2CAD7E00B235D9 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				0370B4B82A8E20BB00005400 /* Chat */,
 				0370B4A92A8CF9B000005400 /* Common */,
 				98A955F02A60F8E200B9BFD3 /* Detail */,
 				0356155C2A3C89C200CC9A5E /* Home */,
@@ -658,10 +691,12 @@
 				03931AD92A2CA76200B235D9 /* Model.swift in Sources */,
 				03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */,
 				03931B122A2CB68B00B235D9 /* NetworkLoggerPlugin.swift in Sources */,
+				0370B4BB2A8E20EF00005400 /* ChatListViewController.swift in Sources */,
 				03931B002A2CB39D00B235D9 /* UIViewController+.swift in Sources */,
 				035615572A3C4F1500CC9A5E /* CategoryCollectionViewCell.swift in Sources */,
 				03931AF82A2CB36400B235D9 /* UILabel+.swift in Sources */,
 				03931AEC2A2CB30E00B235D9 /* UITextField+.swift in Sources */,
+				0370B4BE2A8E25C000005400 /* ChatListView.swift in Sources */,
 				0350792E2A3EDE29007F28DF /* CategorySection.swift in Sources */,
 				98A955F32A60F97400B9BFD3 /* DetailViewController.swift in Sources */,
 				0370F3A02A442A9C00A9AF28 /* LabelStatusModel.swift in Sources */,
@@ -669,7 +704,7 @@
 				03931AE02A2CAD6D00B235D9 /* GeneralResponse.swift in Sources */,
 				03931B022A2CB3D100B235D9 /* Image.swift in Sources */,
 				0330CA702A761AFB004CE2D7 /* MyProfileView.swift in Sources */,
-				031CBE022A6FE90600301F06 /* SearchNavigationView.swift in Sources */,
+				031CBE022A6FE90600301F06 /* CustomNavigationView.swift in Sources */,
 				03931AC32A2CA5F700B235D9 /* CategoryViewController.swift in Sources */,
 				0330CA6E2A7616E4004CE2D7 /* MyPageNavigationView.swift in Sources */,
 				035615652A3CAABC00CC9A5E /* HomeListView.swift in Sources */,
@@ -702,6 +737,7 @@
 				035079272A3DFA9E007F28DF /* WriteViewController.swift in Sources */,
 				031CBDFF2A6FE45100301F06 /* HomeNavigationView.swift in Sources */,
 				0308DA562A2DF82C00B784B9 /* NSMutableAttributedString+.swift in Sources */,
+				0370B4C12A8E274400005400 /* ChatListCollectionViewCell.swift in Sources */,
 				0308DA4F2A2DEEB300B784B9 /* NotoSansKRType.swift in Sources */,
 				03931AD72A2CA75B00B235D9 /* DTO.swift in Sources */,
 				03931AFE2A2CB39100B235D9 /* UIImage+.swift in Sources */,

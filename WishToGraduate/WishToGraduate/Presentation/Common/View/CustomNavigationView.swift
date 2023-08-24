@@ -10,12 +10,13 @@ import UIKit
 import SnapKit
 import Then
 
-final class SearchNavigationView: UIView {
+final class CustomNavigationView: UIView {
     
     // MARK: - UI Components
     
     private let titleLabel = UILabel()
     private let closeButton = UIButton()
+    private let underLineView = UIView()
     
     // MARK: - Properties
     
@@ -23,9 +24,9 @@ final class SearchNavigationView: UIView {
     
     // MARK: - View Life Cycle
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUI()
+    init(title: String) {
+        super.init(frame: .zero)
+        setUI(title)
         setLayout()
         setAddTarget()
     }
@@ -35,16 +36,16 @@ final class SearchNavigationView: UIView {
     }
 }
 
-extension SearchNavigationView {
+extension CustomNavigationView {
     
     // MARK: - UI Components Property
     
-    private func setUI() {
+    private func setUI(_ title: String) {
         
         backgroundColor = Color.light_Green
         
         titleLabel.do {
-            $0.text = "검색하기"
+            $0.text = title
             $0.font = .fontGuide(.h1)
             $0.textColor = Color.main_Green
         }
@@ -52,13 +53,17 @@ extension SearchNavigationView {
         closeButton.do {
             $0.setImage(Image.closeButton, for: .normal)
         }
+        
+        underLineView.do {
+            $0.backgroundColor = Color.line_Grey
+        }
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
         
-        addSubviews(titleLabel, closeButton)
+        addSubviews(titleLabel, closeButton, underLineView)
         
         titleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -68,6 +73,12 @@ extension SearchNavigationView {
         closeButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(8)
             $0.centerY.equalToSuperview()
+        }
+        
+        underLineView.snp.makeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(1)
         }
     }
     
