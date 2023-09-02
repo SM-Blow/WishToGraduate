@@ -56,6 +56,10 @@ extension SearchViewController {
         
         view.backgroundColor = Color.light_Green
         
+        navigationView.do {
+            $0.isCloseButtonIncluded = true
+        }
+        
         backImageView.do {
             $0.image = Image.backButton
         }
