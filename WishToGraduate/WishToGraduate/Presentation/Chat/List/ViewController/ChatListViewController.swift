@@ -18,10 +18,6 @@ final class ChatListViewController: UIViewController {
     private let navigationView = CustomNavigationView(title: "채팅")
     private let chatListView = ChatListView()
     
-    // MARK: - Properties
-    
-    // MARK: - Initializer
-    
     // MARK: - View Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,8 +60,4 @@ extension ChatListViewController {
         }
         
     }
-    
-    // MARK: - Methods
-    
-    // MARK: - @objc Methods
 }
