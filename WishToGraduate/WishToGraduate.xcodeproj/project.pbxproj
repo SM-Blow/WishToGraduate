@@ -374,9 +374,8 @@
 		0370B4B82A8E20BB00005400 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				0370B4BC2A8E25A300005400 /* View */,
-				0370B4B92A8E20CA00005400 /* ViewController */,
-				0370B4BF2A8E272800005400 /* Cell */,
+				03FD529D2AA3496300899F4F /* List */,
+				03FD529E2AA3497200899F4F /* Chatting */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -580,6 +579,47 @@
 				03B004A62A546ECD00E71CA7 /* SearchSection.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		03FD529D2AA3496300899F4F /* List */ = {
+			isa = PBXGroup;
+			children = (
+				0370B4BC2A8E25A300005400 /* View */,
+				0370B4B92A8E20CA00005400 /* ViewController */,
+				0370B4BF2A8E272800005400 /* Cell */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		03FD529E2AA3497200899F4F /* Chatting */ = {
+			isa = PBXGroup;
+			children = (
+				03FD529F2AA34A0800899F4F /* View */,
+				03FD52A02AA34A0E00899F4F /* ViewController */,
+				03FD52A12AA34A1900899F4F /* Cell */,
+			);
+			path = Chatting;
+			sourceTree = "<group>";
+		};
+		03FD529F2AA34A0800899F4F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		03FD52A02AA34A0E00899F4F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		03FD52A12AA34A1900899F4F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		98A955F02A60F8E200B9BFD3 /* Detail */ = {
