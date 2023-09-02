@@ -36,6 +36,7 @@ final class ChattingViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setTapScreen()
     }
 }
 
@@ -129,5 +130,19 @@ extension ChattingViewController {
     
     // MARK: - Methods
     
+    private func setTapScreen() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScreen))
+        tapGestureRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
     // MARK: - @objc Methods
+    
+    @objc
+    private func didTapScreen(_ gesture: UITapGestureRecognizer) {
+        let touchLocation = gesture.location(in: self.view)
+        if !messageFieldView.frame.contains(touchLocation) {
+            self.view.endEditing(true)
+        }
+    }
 }
