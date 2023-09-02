@@ -102,9 +102,9 @@ extension ChattingViewController {
         }
         
         messageFieldView.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(81)
+            $0.height.equalTo(61)
         }
         
         messageFieldLineView.snp.makeConstraints {
