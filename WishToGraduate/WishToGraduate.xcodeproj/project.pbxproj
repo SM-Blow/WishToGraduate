@@ -74,6 +74,7 @@
 		03931B142A2CB85600B235D9 /* APIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B132A2CB85600B235D9 /* APIConst.swift */; };
 		03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B004A62A546ECD00E71CA7 /* SearchSection.swift */; };
 		03FD52A32AA34B1F00899F4F /* ChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD52A22AA34B1F00899F4F /* ChattingViewController.swift */; };
+		03FD52A52AA3647500899F4F /* ChattingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD52A42AA3647500899F4F /* ChattingView.swift */; };
 		98A955F32A60F97400B9BFD3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A955F22A60F97400B9BFD3 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +144,7 @@
 		03931B132A2CB85600B235D9 /* APIConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConst.swift; sourceTree = "<group>"; };
 		03B004A62A546ECD00E71CA7 /* SearchSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSection.swift; sourceTree = "<group>"; };
 		03FD52A22AA34B1F00899F4F /* ChattingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewController.swift; sourceTree = "<group>"; };
+		03FD52A42AA3647500899F4F /* ChattingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingView.swift; sourceTree = "<group>"; };
 		98A955F22A60F97400B9BFD3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -606,6 +608,7 @@
 		03FD529F2AA34A0800899F4F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				03FD52A42AA3647500899F4F /* ChattingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -738,6 +741,7 @@
 				0370B4BB2A8E20EF00005400 /* ChatListViewController.swift in Sources */,
 				03931B002A2CB39D00B235D9 /* UIViewController+.swift in Sources */,
 				035615572A3C4F1500CC9A5E /* CategoryCollectionViewCell.swift in Sources */,
+				03FD52A52AA3647500899F4F /* ChattingView.swift in Sources */,
 				03931AF82A2CB36400B235D9 /* UILabel+.swift in Sources */,
 				03931AEC2A2CB30E00B235D9 /* UITextField+.swift in Sources */,
 				0370B4BE2A8E25C000005400 /* ChatListView.swift in Sources */,

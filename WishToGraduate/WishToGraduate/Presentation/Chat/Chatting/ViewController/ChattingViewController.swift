@@ -16,6 +16,7 @@ final class ChattingViewController: UIViewController {
     // MARK: - UI Components
     
     private let chattingNavigationBar = CustomNavigationView(title: "")
+    private let chattingView = ChattingView()
     private let messageFieldView = UIView()
     private let messageFieldLineView = UIView()
     private let inputTextFieldView = UITextField()
@@ -85,12 +86,18 @@ extension ChattingViewController {
     private func setLayout() {
         
         messageFieldView.addSubviews(messageFieldLineView, inputTextFieldView, sendButton)
-        view.addSubviews(chattingNavigationBar, messageFieldView)
+        view.addSubviews(chattingNavigationBar, chattingView, messageFieldView)
         
         chattingNavigationBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(52)
+        }
+        
+        chattingView.snp.makeConstraints {
+            $0.top.equalTo(chattingNavigationBar.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalTo(messageFieldView.snp.top)
         }
         
         messageFieldView.snp.makeConstraints {
