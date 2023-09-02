@@ -73,6 +73,7 @@
 		03931B122A2CB68B00B235D9 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B112A2CB68B00B235D9 /* NetworkLoggerPlugin.swift */; };
 		03931B142A2CB85600B235D9 /* APIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B132A2CB85600B235D9 /* APIConst.swift */; };
 		03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B004A62A546ECD00E71CA7 /* SearchSection.swift */; };
+		03FD52A32AA34B1F00899F4F /* ChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD52A22AA34B1F00899F4F /* ChattingViewController.swift */; };
 		98A955F32A60F97400B9BFD3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A955F22A60F97400B9BFD3 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +142,7 @@
 		03931B112A2CB68B00B235D9 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		03931B132A2CB85600B235D9 /* APIConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConst.swift; sourceTree = "<group>"; };
 		03B004A62A546ECD00E71CA7 /* SearchSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSection.swift; sourceTree = "<group>"; };
+		03FD52A22AA34B1F00899F4F /* ChattingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewController.swift; sourceTree = "<group>"; };
 		98A955F22A60F97400B9BFD3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -611,6 +613,7 @@
 		03FD52A02AA34A0E00899F4F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				03FD52A22AA34B1F00899F4F /* ChattingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				03931AF22A2CB33B00B235D9 /* UICollectionView+.swift in Sources */,
 				0308DA542A2DF7CF00B784B9 /* UIFont+.swift in Sources */,
 				035615602A3C89E300CC9A5E /* HomeViewController.swift in Sources */,
+				03FD52A32AA34B1F00899F4F /* ChattingViewController.swift in Sources */,
 				03931AD92A2CA76200B235D9 /* Model.swift in Sources */,
 				03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */,
 				03931B122A2CB68B00B235D9 /* NetworkLoggerPlugin.swift in Sources */,
