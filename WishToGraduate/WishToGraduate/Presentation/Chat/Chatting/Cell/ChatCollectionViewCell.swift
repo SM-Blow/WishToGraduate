@@ -44,12 +44,14 @@ extension ChatCollectionViewCell {
             $0.backgroundColor = .white
             $0.layer.cornerRadius = 10
             $0.clipsToBounds = true
+            $0.textAlignment = .natural
             $0.makeShadow(radius: 8, offset: CGSize(width: 0, height: 0), opacity: 0.12)
         }
         
         timeLabel.do {
             $0.font = .fontGuide(.date1)
             $0.textColor = Color.placeholder_Grey
+            $0.text = "14:45"
         }
     }
     
@@ -64,7 +66,8 @@ extension ChatCollectionViewCell {
         }
         
         timeLabel.snp.makeConstraints {
-            $0.leading.equalTo(messageTextView.snp.trailing).offset(6)
+//            $0.leading.equalTo(messageTextView.snp.trailing).offset(6)
+            $0.bottom.equalTo(messageTextView)
         }
     }
     
@@ -84,10 +87,16 @@ extension ChatCollectionViewCell {
             messageTextView.snp.makeConstraints {
                 $0.leading.equalToSuperview().inset(23)
             }
+            timeLabel.snp.makeConstraints {
+                $0.leading.equalTo(messageTextView.snp.trailing).offset(6)
+            }
         case .send:
             messageTextView.backgroundColor = Color.light_Green
             messageTextView.snp.makeConstraints {
                 $0.trailing.equalToSuperview().inset(23)
+            }
+            timeLabel.snp.makeConstraints {
+                $0.trailing.equalTo(messageTextView.snp.leading).offset(-6)
             }
         }
     }
