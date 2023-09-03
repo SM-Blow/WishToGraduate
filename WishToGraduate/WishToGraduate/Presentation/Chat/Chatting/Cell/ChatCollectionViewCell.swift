@@ -70,7 +70,7 @@ extension ChatCollectionViewCell {
     
     // MARK: - Methods
     
-    private func setDataBind(_ model: ChatModel) {
+    func setDataBind(_ model: ChatModel) {
         guard let font = messageTextView.font else { return }
         messageTextView.text = model.message
         let estimatedFrame = model.message.getEstimatedFrame(with: font)
