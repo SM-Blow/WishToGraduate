@@ -33,6 +33,7 @@ final class ChatView: UIView {
         setLayout()
         setDelegate()
         setRegister()
+        addKeyboardObserver()
     }
     
     required init?(coder: NSCoder) {
@@ -74,6 +75,43 @@ extension ChatView {
     private func setRegister() {
         chatCollectionView.registerCell(ChatCollectionViewCell.self)
     }
+    
+    private func addKeyboardObserver() {
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(keyboardWillShow),
+                name: UIResponder.keyboardWillShowNotification,
+                object: nil)
+//            NotificationCenter.default.addObserver(
+//                self,
+//                selector: #selector(keyboardWillHide),
+//                name: UIResponder.keyboardWillHideNotification,
+//                object: nil)
+        }
+    
+    
+    @objc
+    private func keyboardWillShow(_ notification: NSNotification) {
+//        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
+//            return
+//        }
+//        let keyboardHeight = keyboardFrame.height
+//        let containerViewMaxY = chatCollectionView.frame.maxY
+//        let screenHeight = UIScreen.main.bounds.height
+//        let distance = keyboardHeight - containerViewMaxY
+//
+//        UIView.animate(withDuration: 0.25) {
+//            self.chatCollectionView.frame.origin.y = distance > 0 ? -distance : 0
+//        }
+        chatCollectionView.scrollToItem(at: IndexPath(row: chatModel.count - 1, section: 0), at: .top, animated: true)
+    }
+    
+//    @objc
+//    private func keyboardWillHide() {
+//        UIView.animate(withDuration: 0.25) {
+//            self.chatCollectionView.frame.origin.y = 0
+//        }
+//    }
 }
 
 extension ChatView: UICollectionViewDelegateFlowLayout {
