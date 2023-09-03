@@ -87,9 +87,9 @@ extension ChatView: UICollectionViewDelegateFlowLayout {
         return 23
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        <#code#>
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 28, left: 0, bottom: 28, right: 0)
+    }
 }
 
 extension ChatView: UICollectionViewDataSource {
