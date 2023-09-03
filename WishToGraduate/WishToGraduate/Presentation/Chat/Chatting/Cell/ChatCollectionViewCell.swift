@@ -45,6 +45,7 @@ extension ChatCollectionViewCell {
             $0.layer.cornerRadius = 10
             $0.clipsToBounds = true
             $0.textAlignment = .natural
+            $0.isEditable = false
             $0.makeShadow(radius: 8, offset: CGSize(width: 0, height: 0), opacity: 0.12)
         }
         
@@ -66,7 +67,6 @@ extension ChatCollectionViewCell {
         }
         
         timeLabel.snp.makeConstraints {
-//            $0.leading.equalTo(messageTextView.snp.trailing).offset(6)
             $0.bottom.equalTo(messageTextView)
         }
     }
