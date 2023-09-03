@@ -37,6 +37,7 @@ final class ChattingViewController: UIViewController {
         setUI()
         setLayout()
         setTapScreen()
+        setDelegate()
     }
 }
 
@@ -77,6 +78,7 @@ extension ChattingViewController {
             $0.backgroundColor = .white
             $0.layer.cornerRadius = 20
             $0.clipsToBounds = true
+            $0.isUserInteractionEnabled = false
             $0.titleLabel?.font = .fontGuide(.h2)
             $0.makeBorder(width: 1, color: Color.line_Grey)
         }
@@ -136,6 +138,28 @@ extension ChattingViewController {
         view.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    private func setDelegate() {
+        inputTextFieldView.delegate = self
+    }
+    
+    private func setTextFieldState(_ text: Bool) {
+        if text {
+            sendButtonSetState(true)
+        } else {
+            sendButtonSetState(false)
+        }
+    }
+    
+    private func sendButtonSetState(_ state: Bool) {
+        if state == true {
+            sendButton.setTitleColor(.black, for: .normal)
+            sendButton.isUserInteractionEnabled = true
+        } else {
+            sendButton.setTitleColor(Color.placeholder_Grey, for: .normal)
+            sendButton.isUserInteractionEnabled = false
+        }
+    }
+    
     // MARK: - @objc Methods
     
     @objc
@@ -144,5 +168,13 @@ extension ChattingViewController {
         if !messageFieldView.frame.contains(touchLocation) {
             self.view.endEditing(true)
         }
+    }
+}
+
+extension ChattingViewController: UITextFieldDelegate {
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        textField.textColor = .black
+        setTextFieldState(textField.hasText)
     }
 }
