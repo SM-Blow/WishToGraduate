@@ -11,7 +11,7 @@ import Moya
 import SnapKit
 import Then
 
-final class ChattingViewController: UIViewController {
+final class ChatViewController: UIViewController {
     
     // MARK: - UI Components
     
@@ -41,7 +41,7 @@ final class ChattingViewController: UIViewController {
     }
 }
 
-extension ChattingViewController {
+extension ChatViewController {
     
     // MARK: - UI Components Property
     
@@ -171,7 +171,7 @@ extension ChattingViewController {
     }
 }
 
-extension ChattingViewController: UITextFieldDelegate {
+extension ChatViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         textField.textColor = .black
