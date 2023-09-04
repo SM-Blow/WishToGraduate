@@ -17,12 +17,45 @@ final class ChatCollectionViewCell: UICollectionViewCell {
     private let messageTextView = UITextView()
     private let timeLabel = UILabel()
     
+    // MARK: - Properties
+    
+//    var chatType: ChatType? {
+//        didSet {
+//            switch chatType {
+//            case .send:
+//                messageTextView.backgroundColor = .white
+//                messageTextView.snp.makeConstraints {
+//                    $0.leading.equalToSuperview().inset(23)
+//                }
+//                timeLabel.snp.makeConstraints {
+//                    $0.leading.equalTo(messageTextView.snp.trailing).offset(6)
+//                }
+//            case .receive:
+//                messageTextView.backgroundColor = Color.light_Green
+//                messageTextView.snp.makeConstraints {
+//                    $0.trailing.equalToSuperview().inset(23)
+//                }
+//                timeLabel.snp.makeConstraints {
+//                    $0.trailing.equalTo(messageTextView.snp.leading).offset(-6)
+//                }
+//            case .none:
+//                return
+//            }
+//        }
+//    }
+    
     // MARK: - View Life Cycle
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+//        setEstimatedFrame()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
         setLayout()
+//        setEstimatedFrame()
     }
     
     required init?(coder: NSCoder) {
@@ -68,6 +101,16 @@ extension ChatCollectionViewCell {
         
         timeLabel.snp.makeConstraints {
             $0.bottom.equalTo(messageTextView)
+        }
+    }
+    
+    func setEstimatedFrame() {
+        if let text = messageTextView.text {
+            guard let font = messageTextView.font else { return }
+            let estimatedFrame = text.getEstimatedFrame(with: font)
+            messageTextView.snp.makeConstraints {
+                $0.width.equalTo(estimatedFrame.width + 22)
+            }
         }
     }
     

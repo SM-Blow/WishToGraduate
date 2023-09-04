@@ -151,7 +151,7 @@ extension ChatViewController {
     }
     
     private func sendButtonSetState(_ state: Bool) {
-        if state == true {
+        if state {
             sendButton.setTitleColor(.black, for: .normal)
             sendButton.isUserInteractionEnabled = true
         } else {
@@ -173,8 +173,17 @@ extension ChatViewController {
 
 extension ChatViewController: UITextFieldDelegate {
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.placeholder = ""
+    }
+    
     func textFieldDidChangeSelection(_ textField: UITextField) {
         textField.textColor = .black
         setTextFieldState(textField.hasText)
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.placeholder = "메시지를 입력하세요."
+        return true
     }
 }

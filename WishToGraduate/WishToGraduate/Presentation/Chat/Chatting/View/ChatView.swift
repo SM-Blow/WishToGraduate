@@ -77,41 +77,19 @@ extension ChatView {
     }
     
     private func addKeyboardObserver() {
-            NotificationCenter.default.addObserver(
-                self,
-                selector: #selector(keyboardWillShow),
-                name: UIResponder.keyboardWillShowNotification,
-                object: nil)
-//            NotificationCenter.default.addObserver(
-//                self,
-//                selector: #selector(keyboardWillHide),
-//                name: UIResponder.keyboardWillHideNotification,
-//                object: nil)
-        }
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil)
+    }
     
+    // MARK: - @objc Methods
     
     @objc
     private func keyboardWillShow(_ notification: NSNotification) {
-//        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
-//            return
-//        }
-//        let keyboardHeight = keyboardFrame.height
-//        let containerViewMaxY = chatCollectionView.frame.maxY
-//        let screenHeight = UIScreen.main.bounds.height
-//        let distance = keyboardHeight - containerViewMaxY
-//
-//        UIView.animate(withDuration: 0.25) {
-//            self.chatCollectionView.frame.origin.y = distance > 0 ? -distance : 0
-//        }
         chatCollectionView.scrollToItem(at: IndexPath(row: chatModel.count - 1, section: 0), at: .top, animated: true)
     }
-    
-//    @objc
-//    private func keyboardWillHide() {
-//        UIView.animate(withDuration: 0.25) {
-//            self.chatCollectionView.frame.origin.y = 0
-//        }
-//    }
 }
 
 extension ChatView: UICollectionViewDelegateFlowLayout {
@@ -139,6 +117,7 @@ extension ChatView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: ChatCollectionViewCell.self, indexPath: indexPath)
         cell.setDataBind(chatModel[indexPath.row])
+//        cell.chatType = chatModel[indexPath.row].chatType
         return cell
     }
 }
