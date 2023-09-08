@@ -19,43 +19,42 @@ final class ChatCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-//    var chatType: ChatType? {
-//        didSet {
-//            switch chatType {
-//            case .send:
-//                messageTextView.backgroundColor = .white
-//                messageTextView.snp.makeConstraints {
-//                    $0.leading.equalToSuperview().inset(23)
-//                }
-//                timeLabel.snp.makeConstraints {
-//                    $0.leading.equalTo(messageTextView.snp.trailing).offset(6)
-//                }
-//            case .receive:
-//                messageTextView.backgroundColor = Color.light_Green
-//                messageTextView.snp.makeConstraints {
-//                    $0.trailing.equalToSuperview().inset(23)
-//                }
-//                timeLabel.snp.makeConstraints {
-//                    $0.trailing.equalTo(messageTextView.snp.leading).offset(-6)
-//                }
-//            case .none:
-//                return
-//            }
-//        }
-//    }
+    var chatType: ChatType? {
+        didSet {
+            switch chatType {
+            case .send:
+                messageTextView.backgroundColor = .white
+                messageTextView.snp.remakeConstraints {
+                    $0.leading.equalToSuperview().inset(23)
+                }
+                timeLabel.snp.remakeConstraints {
+                    $0.leading.equalTo(messageTextView.snp.trailing).offset(6)
+                }
+            case .receive:
+                messageTextView.backgroundColor = Color.light_Green
+                messageTextView.snp.remakeConstraints {
+                    $0.trailing.equalToSuperview().inset(23)
+                }
+                timeLabel.snp.remakeConstraints {
+                    $0.trailing.equalTo(messageTextView.snp.leading).offset(-6)
+                }
+            case .none:
+                return
+            }
+        }
+    }
     
     // MARK: - View Life Cycle
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-//        setEstimatedFrame()
-    }
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+////        setEstimatedFrame()
+//    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
         setLayout()
-//        setEstimatedFrame()
     }
     
     required init?(coder: NSCoder) {
@@ -123,22 +122,58 @@ extension ChatCollectionViewCell {
         messageTextView.snp.makeConstraints {
             $0.width.equalTo(estimatedFrame.width + 22)
         }
-        
+
         switch model.chatType {
         case .receive:
+            messageTextView.removeConstraints(messageTextView.constraints)
             messageTextView.backgroundColor = .white
             messageTextView.snp.makeConstraints {
                 $0.leading.equalToSuperview().inset(23)
+//                $0.width.equalTo(estimatedFrame.width + 22)
             }
             timeLabel.snp.makeConstraints {
                 $0.leading.equalTo(messageTextView.snp.trailing).offset(6)
             }
         case .send:
+            messageTextView.removeConstraints(messageTextView.constraints)
             messageTextView.backgroundColor = Color.light_Green
             messageTextView.snp.makeConstraints {
                 $0.trailing.equalToSuperview().inset(23)
+//                $0.width.equalTo(estimatedFrame.width + 22)
             }
             timeLabel.snp.makeConstraints {
+                $0.trailing.equalTo(messageTextView.snp.leading).offset(-6)
+            }
+        }
+    }
+    
+    func remakeLayout(model: ChatModel) {
+        guard let font = messageTextView.font else { return }
+        messageTextView.text = model.message
+        let estimatedFrame = model.message.getEstimatedFrame(with: font)
+        messageTextView.snp.makeConstraints {
+            $0.width.equalTo(estimatedFrame.width + 22)
+        }
+        
+        switch model.chatType {
+        case .receive:
+            messageTextView.removeConstraints(messageTextView.constraints)
+            messageTextView.backgroundColor = .white
+            messageTextView.snp.remakeConstraints {
+                $0.leading.equalToSuperview().inset(23)
+//                $0.width.equalTo(estimatedFrame.width + 22)
+            }
+            timeLabel.snp.remakeConstraints {
+                $0.leading.equalTo(messageTextView.snp.trailing).offset(6)
+            }
+        case .send:
+            messageTextView.removeConstraints(messageTextView.constraints)
+            messageTextView.backgroundColor = Color.light_Green
+            messageTextView.snp.remakeConstraints {
+                $0.trailing.equalToSuperview().inset(23)
+//                $0.width.equalTo(estimatedFrame.width + 22)
+            }
+            timeLabel.snp.remakeConstraints {
                 $0.trailing.equalTo(messageTextView.snp.leading).offset(-6)
             }
         }

@@ -117,7 +117,7 @@ extension ChatView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: ChatCollectionViewCell.self, indexPath: indexPath)
         cell.setDataBind(chatModel[indexPath.row])
-//        cell.chatType = chatModel[indexPath.row].chatType
+        cell.remakeLayout(model: chatModel[indexPath.row])
         return cell
     }
 }
