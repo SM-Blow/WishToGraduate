@@ -38,6 +38,7 @@ final class ChatViewController: UIViewController {
         setLayout()
         setTapScreen()
         setDelegate()
+        setAddTarget()
     }
 }
 
@@ -142,6 +143,10 @@ extension ChatViewController {
         inputTextFieldView.delegate = self
     }
     
+    private func setAddTarget() {
+        sendButton.addTarget(self, action: #selector(sendButtonDidTapped), for: .touchUpInside)
+    }
+    
     private func setTextFieldState(_ text: Bool) {
         if text {
             sendButtonSetState(true)
@@ -168,6 +173,12 @@ extension ChatViewController {
         if !messageFieldView.frame.contains(touchLocation) {
             self.view.endEditing(true)
         }
+    }
+    
+    @objc
+    private func sendButtonDidTapped() {
+        print("전송버튼 탭")
+        print(inputTextFieldView.text ?? "")
     }
 }
 
