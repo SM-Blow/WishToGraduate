@@ -46,11 +46,6 @@ final class ChatCollectionViewCell: UICollectionViewCell {
     
     // MARK: - View Life Cycle
     
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-////        setEstimatedFrame()
-//    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
@@ -125,21 +120,21 @@ extension ChatCollectionViewCell {
 
         switch model.chatType {
         case .receive:
-            messageTextView.removeConstraints(messageTextView.constraints)
+//            messageTextView.removeConstraints(messageTextView.constraints)
             messageTextView.backgroundColor = .white
             messageTextView.snp.makeConstraints {
                 $0.leading.equalToSuperview().inset(23)
-//                $0.width.equalTo(estimatedFrame.width + 22)
+                $0.width.equalTo(estimatedFrame.width + 22)
             }
             timeLabel.snp.makeConstraints {
                 $0.leading.equalTo(messageTextView.snp.trailing).offset(6)
             }
         case .send:
-            messageTextView.removeConstraints(messageTextView.constraints)
+//            messageTextView.removeConstraints(messageTextView.constraints)
             messageTextView.backgroundColor = Color.light_Green
             messageTextView.snp.makeConstraints {
                 $0.trailing.equalToSuperview().inset(23)
-//                $0.width.equalTo(estimatedFrame.width + 22)
+                $0.width.equalTo(estimatedFrame.width + 22)
             }
             timeLabel.snp.makeConstraints {
                 $0.trailing.equalTo(messageTextView.snp.leading).offset(-6)
@@ -147,6 +142,7 @@ extension ChatCollectionViewCell {
         }
     }
     
+    // 라벨 레이아웃 다시 잡아주는 함수
     func remakeLayout(model: ChatModel) {
         guard let font = messageTextView.font else { return }
         messageTextView.text = model.message
