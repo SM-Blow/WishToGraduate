@@ -37,6 +37,9 @@ final class WriteViewController: UIViewController {
     //    private let collectionView = UICollectionView()
     
     private let categoryLabel = UILabel()
+    
+    let categoryModel = CategoryModel.categoryModelData()
+    let selectedCategoryModel = CategoryModel.selectedCategoryModelData()
     private lazy var categoryCollectionView: CategoryCollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -49,10 +52,15 @@ final class WriteViewController: UIViewController {
     private let deadLineLabel = UILabel()
     private let deadLineView = UIView()
     
+    private let bottomView = UIView()
+    private let bottomLine = UIView()
+    private let writeButton = UIButton(type: .system)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setDelegate()
     }
     
 }
@@ -112,12 +120,23 @@ private extension WriteViewController {
         borrowLabel.do {
             $0.font = .fontGuide(.title)
         }
+        
+        bottomView.backgroundColor = .white
+        bottomLine.backgroundColor = Color.line_Grey
+        writeButton.do {
+            $0.setTitle("글 작성하기", for: .normal)
+            $0.backgroundColor = Color.main2_Green
+            $0.setTitleColor(.white, for: .normal)
+            $0.titleLabel?.font = .fontGuide(.title_bold)
+            $0.layer.cornerRadius = 10
+        }
     }
     
     func setLayout() {
-        view.addSubviews(navigationView, scrollView)
+        view.addSubviews(navigationView, scrollView, bottomView)
         scrollView.addSubviews(
             photoView, titleLabel, titleTextField, borrowLabel, categoryLabel, categoryCollectionView, contentsLabel, contentsTextView, deadLineLabel)
+        bottomView.addSubviews(bottomLine, writeButton)
         
         navigationView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -126,7 +145,25 @@ private extension WriteViewController {
         
         scrollView.snp.makeConstraints {
             $0.top.equalTo(navigationView.snp.bottom)
-            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(88)
+        }
+        
+        bottomView.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(81)
+        }
+        
+        bottomLine.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(1)
+        }
+        
+        writeButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(15)
+            $0.leading.trailing.equalToSuperview().inset(22)
+            $0.height.equalTo(45)
         }
         
         photoView.snp.makeConstraints {
@@ -179,6 +216,36 @@ private extension WriteViewController {
             $0.top.equalTo(contentsTextView.snp.bottom).offset(22)
             $0.leading.equalTo(contentsTextView.snp.leading)
             $0.bottom.equalToSuperview().inset(50)
+        }
+    }
+    
+    func setDelegate() {
+        categoryCollectionView.delegate = self
+    }
+}
+
+extension WriteViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 59, height: 59)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 6
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
+            cell.imageDataBind(model: categoryModel[indexPath.row])
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
+            cell.imageDataBind(model: selectedCategoryModel[indexPath.row])
         }
     }
 }

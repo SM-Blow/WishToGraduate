@@ -20,6 +20,8 @@ final class HomeViewController: UIViewController {
     // MARK: - UI Components
     
     private let navigationView = HomeNavigationView()
+    let categoryModel = CategoryModel.categoryModelData()
+    let selectedCategoryModel = CategoryModel.selectedCategoryModelData()
     private lazy var categoryCollectionView: CategoryCollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -125,11 +127,29 @@ extension HomeViewController {
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 59, height: 59)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 6
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
+            cell.imageDataBind(model: categoryModel[indexPath.row])
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
-            cell.imageDataBind(model: self.categoryCollectionView.selectedCategoryModel[indexPath.row])
+            cell.imageDataBind(model: selectedCategoryModel[indexPath.row])
         }
-
+        
         let category = CategorySection.allCases[indexPath.row]
         switch category {
         case .all:
@@ -144,12 +164,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             categoryDelegate?.categoryType(category: .book)
         case .other:
             categoryDelegate?.categoryType(category: .other)
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
-            cell.imageDataBind(model: self.categoryCollectionView.categoryModel[indexPath.row])
         }
     }
 }
