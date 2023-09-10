@@ -194,7 +194,7 @@ extension DetailViewController {
         }
 
         bottomButtonView.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(81)
         }
