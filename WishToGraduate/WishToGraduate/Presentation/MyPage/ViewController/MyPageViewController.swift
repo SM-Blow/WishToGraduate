@@ -17,6 +17,7 @@ final class MyPageViewController: UIViewController {
     
     private let navigationView = MyPageNavigationView()
     private let myProfileView = MyProfileView()
+    private let myPageSectionTab = MyPageSectionTab()
     private lazy var myWritingCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -63,7 +64,7 @@ extension MyPageViewController {
     
     private func setLayout() {
         
-        view.addSubviews(navigationView, myProfileView, myWritingCollectionView)
+        view.addSubviews(navigationView, myProfileView, myPageSectionTab, myWritingCollectionView)
         
         navigationView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -77,8 +78,14 @@ extension MyPageViewController {
             $0.height.equalTo(235)
         }
         
-        myWritingCollectionView.snp.makeConstraints {
+        myPageSectionTab.snp.makeConstraints {
             $0.top.equalTo(myProfileView.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(53)
+        }
+        
+        myWritingCollectionView.snp.makeConstraints {
+            $0.top.equalTo(myPageSectionTab.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(500)
         }
