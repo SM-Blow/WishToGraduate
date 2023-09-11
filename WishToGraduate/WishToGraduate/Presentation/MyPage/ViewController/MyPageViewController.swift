@@ -43,6 +43,7 @@ final class MyPageViewController: UIViewController {
         setLayout()
         setDelegate()
         setRegister()
+        setButton()
     }
 }
 
@@ -102,7 +103,26 @@ extension MyPageViewController {
         myWritingCollectionView.registerCell(HomeListCollectionViewCell.self)
     }
     
-    // MARK: - @objc Methods
+    private func myWritingTab() {
+        print("myWritingTab")
+    }
+    
+    private func myScarpTab() {
+        print("myScrapTab")
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc
+    private func setButton() {
+        myPageSectionTab.myWritingButtonHandler = { [weak self] in
+            self?.myWritingTab()
+        }
+        
+        myPageSectionTab.myScarpButtonHandler = { [weak self] in
+            self?.myScarpTab()
+        }
+    }
 }
 
 extension MyPageViewController: UICollectionViewDelegateFlowLayout {

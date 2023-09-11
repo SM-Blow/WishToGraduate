@@ -22,6 +22,9 @@ final class MyPageSectionTab: UIView {
     
     // MARK: - Properties
     
+    var myWritingButtonHandler: (() -> Void)?
+    var myScarpButtonHandler: (() -> Void)?
+    
     // MARK: - Initializer
     
     // MARK: - View Life Cycle
@@ -30,6 +33,8 @@ final class MyPageSectionTab: UIView {
         super.init(frame: frame)
         setUI()
         setLayout()
+        setAddTarget()
+        setButton(button: myWritingButton, state: true)
     }
     
     required init?(coder: NSCoder) {
@@ -111,5 +116,34 @@ extension MyPageSectionTab {
     
     // MARK: - Methods
     
+    private func setAddTarget() {
+        myWritingButton.addTarget(self, action: #selector(myWritingButtonDidTapped), for: .touchUpInside)
+        myScrapButton.addTarget(self, action: #selector(myScrapButtonDidTapped), for: .touchUpInside)
+    }
+    
+    private func setButton(button: UIButton, state: Bool) {
+        if state {
+            button.titleLabel?.font = .fontGuide(.m1)
+            button.setTitleColor(Color.main_Green, for: .normal)
+        } else {
+            button.titleLabel?.font = .fontGuide(.h3)
+            button.setTitleColor(Color.placeholder_Grey, for: .normal)
+        }
+    }
+    
     // MARK: - @objc Methods
+        
+    @objc
+    private func myWritingButtonDidTapped() {
+        setButton(button: myWritingButton, state: true)
+        setButton(button: myScrapButton, state: false)
+        myWritingButtonHandler?()
+    }
+    
+    @objc
+    private func myScrapButtonDidTapped() {
+        setButton(button: myScrapButton, state: true)
+        setButton(button: myWritingButton, state: false)
+        myScarpButtonHandler?()
+    }
 }
