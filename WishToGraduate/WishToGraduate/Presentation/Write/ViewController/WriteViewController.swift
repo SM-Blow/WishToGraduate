@@ -14,6 +14,7 @@ final class WriteViewController: UIViewController {
     
     // MARK: - Properties
     private let contentsTextViewPlaceholer = "내용을 작성해주세요."
+    private var borrowTypeCollectionViewDelegate: BorrowTypeCollectionViewDelegate?
     
     // MARK: - UI Components
     private let navigationView = WriteNavigationView()
@@ -34,12 +35,15 @@ final class WriteViewController: UIViewController {
     private let titleTextField = UITextField()
     
     private let borrowLabel = UILabel()
-    //    private let collectionView = UICollectionView()
+    private lazy var borrowTypeCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.isScrollEnabled = false
+        return collectionView
+    }()
     
     private let categoryLabel = UILabel()
-    
-    let categoryModel = CategoryModel.categoryModelData()
-    let selectedCategoryModel = CategoryModel.selectedCategoryModelData()
     private lazy var categoryCollectionView: CategoryCollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -56,6 +60,8 @@ final class WriteViewController: UIViewController {
     private let bottomLine = UIView()
     private let writeButton = UIButton(type: .system)
     
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -63,6 +69,9 @@ final class WriteViewController: UIViewController {
         setDelegate()
     }
     
+    deinit {
+        borrowTypeCollectionViewDelegate = nil
+    }
 }
 
 private extension WriteViewController {
@@ -135,7 +144,7 @@ private extension WriteViewController {
     func setLayout() {
         view.addSubviews(navigationView, scrollView, bottomView)
         scrollView.addSubviews(
-            photoView, titleLabel, titleTextField, borrowLabel, categoryLabel, categoryCollectionView, contentsLabel, contentsTextView, deadLineLabel)
+            photoView, titleLabel, titleTextField, borrowLabel, borrowTypeCollectionView, categoryLabel, categoryCollectionView, contentsLabel, contentsTextView, deadLineLabel)
         bottomView.addSubviews(bottomLine, writeButton)
         
         navigationView.snp.makeConstraints {
@@ -189,9 +198,14 @@ private extension WriteViewController {
             $0.leading.equalTo(titleTextField.snp.leading)
         }
         
-        /// borrowLabel 수정하기
+        borrowTypeCollectionView.snp.makeConstraints {
+            $0.top.equalTo(borrowLabel.snp.bottom).offset(10)
+            $0.height.equalTo(30)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+        }
+        
         categoryLabel.snp.makeConstraints {
-            $0.top.equalTo(borrowLabel.snp.bottom).offset(22)
+            $0.top.equalTo(borrowTypeCollectionView.snp.bottom).offset(22)
             $0.leading.equalTo(borrowLabel.snp.leading)
         }
         
@@ -220,33 +234,12 @@ private extension WriteViewController {
     }
     
     func setDelegate() {
-        categoryCollectionView.delegate = self
-    }
-}
-
-extension WriteViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 59, height: 59)
+        borrowTypeCollectionViewDelegate = BorrowTypeCollectionViewDelegate()
+        categoryCollectionView.delegate = borrowTypeCollectionViewDelegate
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 6
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
-            cell.imageDataBind(model: categoryModel[indexPath.row])
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
-            cell.imageDataBind(model: selectedCategoryModel[indexPath.row])
-        }
+    func setRegister() {
+        borrowTypeCollectionView.registerCell(BorrowTypeCollectionViewCell.self)
     }
 }
 

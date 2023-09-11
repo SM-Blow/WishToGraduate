@@ -7,14 +7,32 @@
 
 import UIKit
 
-class BorrowTypeCollectionViewDelegate: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+final class BorrowTypeCollectionViewDelegate: NSObject, UICollectionViewDelegateFlowLayout {
+    
+    let categoryModel = CategoryModel.categoryModelData()
+    let selectedCategoryModel = CategoryModel.selectedCategoryModelData()
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 59, height: 59)
     }
-    */
-
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 6
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
+            cell.imageDataBind(model: categoryModel[indexPath.row])
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
+            cell.imageDataBind(model: selectedCategoryModel[indexPath.row])
+        }
+    }
 }
