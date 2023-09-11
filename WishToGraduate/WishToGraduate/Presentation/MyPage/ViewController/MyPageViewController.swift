@@ -17,7 +17,6 @@ final class MyPageViewController: UIViewController {
     
     private let navigationView = MyPageNavigationView()
     private let myProfileView = MyProfileView()
-    private let underLineView = UIView()
     private lazy var myWritingCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -53,10 +52,6 @@ extension MyPageViewController {
     private func setUI() {
         
         view.backgroundColor = Color.light_Green
-    
-        underLineView.do {
-            $0.backgroundColor = Color.line_Grey
-        }
         
         myWritingCollectionView.do {
             $0.backgroundColor = .clear
@@ -68,8 +63,7 @@ extension MyPageViewController {
     
     private func setLayout() {
         
-        view.addSubviews(navigationView, myProfileView, underLineView,
-                         myWritingCollectionView)
+        view.addSubviews(navigationView, myProfileView, myWritingCollectionView)
         
         navigationView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -83,14 +77,8 @@ extension MyPageViewController {
             $0.height.equalTo(235)
         }
         
-        underLineView.snp.makeConstraints {
-            $0.top.equalTo(myProfileView.snp.bottom)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(1)
-        }
-        
         myWritingCollectionView.snp.makeConstraints {
-            $0.top.equalTo(underLineView.snp.bottom)
+            $0.top.equalTo(myProfileView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(500)
         }
