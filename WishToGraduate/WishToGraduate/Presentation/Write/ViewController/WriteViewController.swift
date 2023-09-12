@@ -71,11 +71,16 @@ final class WriteViewController: UIViewController {
         setLayout()
         setRegister()
         setDelegate()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
     }
     
     deinit {
         borrowTypeCollectionViewDelegate = nil
         categoryCollectionViewDelegate = nil
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -287,11 +292,11 @@ private extension WriteViewController {
     
     func setToolBar() {
         let toolBar = UIToolbar()
-
+        
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonHandeler))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonHandeler))
-
+        
         toolBar.items = [cancelButton, flexibleSpace, doneButton]
         toolBar.sizeToFit()
 
@@ -314,6 +319,24 @@ private extension WriteViewController {
         deadLineTextField.text = nil
         deadLineTextField.resignFirstResponder()
     }
+    
+    @objc
+    func keyboardWillShow(_ notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+            scrollView.contentInset = contentInsets
+            scrollView.scrollIndicatorInsets = contentInsets
+            scrollView.setContentOffset(CGPoint(x: 0, y: keyboardSize.height), animated: true)
+        }
+    }
+
+    @objc
+    func keyboardWillHide(_ notification: Notification) {
+        let contentInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+    }
+
 }
 
 extension WriteViewController: UITextViewDelegate {
