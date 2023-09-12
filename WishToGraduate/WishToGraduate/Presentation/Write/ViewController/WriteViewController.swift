@@ -15,6 +15,7 @@ final class WriteViewController: UIViewController {
     // MARK: - Properties
     private let contentsTextViewPlaceholer = "내용을 작성해주세요."
     private var borrowTypeCollectionViewDelegate: BorrowTypeCollectionViewDelegate?
+    private var categoryCollectionViewDelegate: CategoryCollectionViewDelegate?
     
     // MARK: - UI Components
     private let navigationView = WriteNavigationView()
@@ -66,11 +67,13 @@ final class WriteViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setRegister()
         setDelegate()
     }
     
     deinit {
         borrowTypeCollectionViewDelegate = nil
+        categoryCollectionViewDelegate = nil
     }
 }
 
@@ -235,7 +238,10 @@ private extension WriteViewController {
     
     func setDelegate() {
         borrowTypeCollectionViewDelegate = BorrowTypeCollectionViewDelegate()
-        categoryCollectionView.delegate = borrowTypeCollectionViewDelegate
+        categoryCollectionViewDelegate = CategoryCollectionViewDelegate()
+        borrowTypeCollectionView.delegate = borrowTypeCollectionViewDelegate
+        borrowTypeCollectionView.dataSource = borrowTypeCollectionViewDelegate
+        categoryCollectionView.delegate = categoryCollectionViewDelegate
     }
     
     func setRegister() {

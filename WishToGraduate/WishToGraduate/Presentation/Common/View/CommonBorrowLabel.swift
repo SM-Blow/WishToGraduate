@@ -36,13 +36,17 @@ final class CommonBorrowLabel: UILabel {
     }
 }
 
-private extension CommonBorrowLabel {
-    func setUI() {
+extension CommonBorrowLabel {
+    private func setUI() {
         font = .fontGuide(.bt1)
         textColor = .black
         textAlignment = .center
         backgroundColor = Color.btn_LightGreen
         layer.cornerRadius = 14
         clipsToBounds = true
+    }
+    
+    func setText(_ text: String) {
+        self.text = text
     }
 }
