@@ -692,6 +692,39 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3B3677882AAF42B400FF4ED1 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				3B3677892AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift */,
+				3B36778B2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		3B45268C2AB0C63000D8CE37 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3B45268D2AB0C65200D8CE37 /* BorrowTypeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3BD2E38B2AAE489E00220B44 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3BD2E38C2AAE48B400220B44 /* BorrowTypeCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3BFA40522AADF76400382B9B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3BFA40532AADF77A00382B9B /* WriteNavigationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		98A955F02A60F8E200B9BFD3 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -802,6 +835,7 @@
 				3B3677872AAF374400FF4ED1 /* CommonBorrowLabel.swift in Sources */,
 				03FD52A32AA34B1F00899F4F /* ChatViewController.swift in Sources */,
 				03FD52A72AA4739200899F4F /* ChatCollectionViewCell.swift in Sources */,
+				3B3677872AAF374400FF4ED1 /* CommonBorrowLabel.swift in Sources */,
 				03931AD92A2CA76200B235D9 /* Model.swift in Sources */,
 				03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */,
 				03931B122A2CB68B00B235D9 /* NetworkLoggerPlugin.swift in Sources */,
