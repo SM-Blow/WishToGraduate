@@ -38,10 +38,6 @@ extension ChatListViewController {
     private func setUI() {
         
         view.backgroundColor = Color.light_Green
-        
-        navigationView.do {
-            $0.isCloseButtonIncluded = true
-        }
     }
     
     // MARK: - Layout Helper

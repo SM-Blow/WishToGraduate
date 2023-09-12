@@ -47,4 +47,18 @@ extension HomeListModel {
     static func emptyDummyData() -> [HomeListModel] {
         return []
     }
+    
+    static func myWritingDummyData() -> [HomeListModel] {
+        return [
+            HomeListModel(title: "생리대 중형 한 개", borrow: 1, transaction: false, time: "2023.05.20 13:00까지"),
+            HomeListModel(title: "생리대 중형 한 개", borrow: 1, transaction: false, time: "2023.05.20 13:00까지"),
+            HomeListModel(title: "생리대 중형 한 개", borrow: 1, transaction: false, time: "2023.05.20 13:00까지")
+        ]
+    }
+    
+    static func myScrapDummyData() -> [HomeListModel] {
+        return [
+            HomeListModel(title: "생리대 중형 한 개", borrow: 1, transaction: false, time: "2023.05.20 13:00까지")
+        ]
+    }
 }

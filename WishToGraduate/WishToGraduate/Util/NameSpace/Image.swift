@@ -14,9 +14,11 @@ public enum Image {
     public static let home = UIImage(named: "home")!
     public static let writing = UIImage(named: "writing")!
     public static let myProfile = UIImage(named: "myProfile")!
+    public static let chat = UIImage(named: "chat")!
     public static let selectedHome = UIImage(named: "selectedHome")!
     public static let selectedWriting = UIImage(named: "selectedWriting")!
     public static let selectedMyProfile = UIImage(named: "selectedMyProfile")!
+    public static let selectedChat = UIImage(named: "selectedChat")!
     
     // MARK: - Home
     
