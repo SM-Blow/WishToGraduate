@@ -67,6 +67,7 @@ final class WriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        setToolBar()
         setLayout()
         setRegister()
         setDelegate()
@@ -284,9 +285,34 @@ private extension WriteViewController {
         return selectFormatter.string(from: date).appending(timeFormatter.string(from: Date()))
     }
     
+    func setToolBar() {
+        let toolBar = UIToolbar()
+
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonHandeler))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonHandeler))
+
+        toolBar.items = [cancelButton, flexibleSpace, doneButton]
+        toolBar.sizeToFit()
+
+        deadLineTextField.inputAccessoryView = toolBar
+    }
+    
     @objc
     func dateChange(_ sender: UIDatePicker) {
         deadLineTextField.text = dateFormat(date: sender.date)
+    }
+    
+    @objc
+    func doneButtonHandeler(_ sender: UIBarButtonItem) {
+        deadLineTextField.text = dateFormat(date: deadLineDatePicker.date)
+        deadLineTextField.resignFirstResponder()
+    }
+    
+    @objc
+    func cancelButtonHandeler(_ sender: UIBarButtonItem) {
+        deadLineTextField.text = nil
+        deadLineTextField.resignFirstResponder()
     }
 }
 
