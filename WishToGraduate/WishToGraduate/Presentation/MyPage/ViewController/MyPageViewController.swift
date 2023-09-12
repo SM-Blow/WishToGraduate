@@ -13,6 +13,11 @@ import Then
 
 final class MyPageViewController: UIViewController {
     
+    private enum MyPageTab {
+        case writing
+        case scrap
+    }
+    
     // MARK: - UI Components
     
     private let navigationView = MyPageNavigationView()
@@ -27,7 +32,9 @@ final class MyPageViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var homeListDummyModel: [HomeListModel] = HomeListModel.homeListModelDummyData()
+    private var myPageTab: MyPageTab = .writing
+    private var myWritingDummyModel: [HomeListModel] = HomeListModel.myWritingDummyData()
+    private var myScrapDummyModel: [HomeListModel] = HomeListModel.myScrapDummyData()
     
     // MARK: - Initializer
     
@@ -104,11 +111,13 @@ extension MyPageViewController {
     }
     
     private func myWritingTab() {
-        print("myWritingTab")
+        myPageTab = .writing
+        myWritingCollectionView.reloadData()
     }
     
     private func myScarpTab() {
-        print("myScrapTab")
+        myPageTab = .scrap
+        myWritingCollectionView.reloadData()
     }
     
     // MARK: - @objc Methods
@@ -143,12 +152,22 @@ extension MyPageViewController: UICollectionViewDelegateFlowLayout {
 extension MyPageViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return homeListDummyModel.count
+        switch (myPageTab) {
+        case .writing:
+            return myWritingDummyModel.count
+        case .scrap:
+            return myScrapDummyModel.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: HomeListCollectionViewCell.self, indexPath: indexPath)
-        cell.setDataBind(model: homeListDummyModel[indexPath.row])
+        switch (myPageTab) {
+        case .writing:
+            cell.setDataBind(model: myWritingDummyModel[indexPath.row])
+        case .scrap:
+            cell.setDataBind(model: myScrapDummyModel[indexPath.row])
+        }
         return cell
     }
 }
