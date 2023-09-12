@@ -16,11 +16,23 @@ final class CustomNavigationView: UIView {
     
     private let titleLabel = UILabel()
     private let closeButton = UIButton()
+    private let backButton = UIButton()
     private let underLineView = UIView()
     
     // MARK: - Properties
     
     var closeButtonHandler: (() -> Void)?
+    var backButtonHandler: (() -> Void)?
+    
+    var isBackButtonIncluded: Bool {
+        get { !backButton.isHidden }
+        set { backButton.isHidden = !newValue }
+    }
+    
+    var isCloseButtonIncluded: Bool {
+        get { !closeButton.isHidden }
+        set { closeButton.isHidden = !newValue }
+    }
     
     // MARK: - View Life Cycle
     
@@ -52,6 +64,12 @@ extension CustomNavigationView {
         
         closeButton.do {
             $0.setImage(Image.closeButton, for: .normal)
+            $0.isHidden = true
+        }
+        
+        backButton.do {
+            $0.setImage(Image.backButton, for: .normal)
+            $0.isHidden = true
         }
         
         underLineView.do {
@@ -63,7 +81,7 @@ extension CustomNavigationView {
     
     private func setLayout() {
         
-        addSubviews(titleLabel, closeButton, underLineView)
+        addSubviews(titleLabel, closeButton, backButton, underLineView)
         
         titleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -72,6 +90,11 @@ extension CustomNavigationView {
         
         closeButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(8)
+            $0.centerY.equalToSuperview()
+        }
+        
+        backButton.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(8)
             $0.centerY.equalToSuperview()
         }
         
@@ -86,6 +109,7 @@ extension CustomNavigationView {
     
     private func setAddTarget() {
         closeButton.addTarget(self, action: #selector(closeButtonDidTapped), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(backButtonDidTapped), for: .touchUpInside)
     }
     
     // MARK: - @objc Methods
@@ -93,5 +117,10 @@ extension CustomNavigationView {
     @objc
     private func closeButtonDidTapped() {
         closeButtonHandler?()
+    }
+    
+    @objc
+    private func backButtonDidTapped() {
+        backButtonHandler?()
     }
 }
