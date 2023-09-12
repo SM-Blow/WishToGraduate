@@ -30,7 +30,7 @@ extension TabBarItemType {
         case .home:
             return Image.home
         case .chat:
-            return Image.writing
+            return Image.chat
         case .myprofile:
             return Image.myProfile
         }
@@ -41,7 +41,7 @@ extension TabBarItemType {
         case .home:
             return Image.selectedHome
         case .chat:
-            return Image.selectedWriting
+            return Image.selectedChat
         case .myprofile:
             return Image.selectedMyProfile
         }
