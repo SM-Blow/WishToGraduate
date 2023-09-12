@@ -9,7 +9,7 @@ import UIKit
 
 enum TabBarItemType: Int, CaseIterable {
     case home
-    case writing
+    case chat
     case myprofile
 }
 
@@ -18,8 +18,8 @@ extension TabBarItemType {
         switch self {
         case .home:
             return "홈"
-        case .writing:
-            return "글쓰기"
+        case .chat:
+            return "채팅"
         case .myprofile:
             return "마이"
         }
@@ -29,7 +29,7 @@ extension TabBarItemType {
         switch self {
         case .home:
             return Image.home
-        case .writing:
+        case .chat:
             return Image.writing
         case .myprofile:
             return Image.myProfile
@@ -40,7 +40,7 @@ extension TabBarItemType {
         switch self {
         case .home:
             return Image.selectedHome
-        case .writing:
+        case .chat:
             return Image.selectedWriting
         case .myprofile:
             return Image.selectedMyProfile

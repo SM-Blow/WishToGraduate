@@ -38,7 +38,7 @@ extension TabBarController {
 
         tabs = [
             HomeViewController(),
-            WriteViewController(),
+            ChatListViewController(),
             MyPageViewController()
         ]
         
