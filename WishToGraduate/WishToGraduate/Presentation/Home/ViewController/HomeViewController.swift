@@ -20,14 +20,14 @@ final class HomeViewController: UIViewController {
     // MARK: - UI Components
     
     private let navigationView = HomeNavigationView()
-    private lazy var categoryCollectionView: UICollectionView = {
+    let categoryModel = CategoryModel.categoryModelData()
+    let selectedCategoryModel = CategoryModel.selectedCategoryModelData()
+    private lazy var categoryCollectionView: CategoryCollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = CategoryCollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
-    private let categoryModel = CategoryModel.categoryModelData()
-    private let selectedCategoryModel = CategoryModel.selectedCategoryModelData()
     private let underLineView = UIView()
     private let homeListView = HomeListView()
     
@@ -49,7 +49,6 @@ final class HomeViewController: UIViewController {
         setUI()
         setLayout()
         setDelegate()
-        setRegister()
         setButton()
     }
 }
@@ -108,12 +107,7 @@ extension HomeViewController {
     
     private func setDelegate() {
         categoryCollectionView.delegate = self
-        categoryCollectionView.dataSource = self
         categoryDelegate = self
-    }
-    
-    private func setRegister() {
-        categoryCollectionView.registerCell(CategoryCollectionViewCell.self)
     }
     
     func presentToSearchVC() {
@@ -133,7 +127,6 @@ extension HomeViewController {
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 59, height: 59)
     }
@@ -144,6 +137,12 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
+            cell.imageDataBind(model: categoryModel[indexPath.row])
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -166,31 +165,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         case .other:
             categoryDelegate?.categoryType(category: .other)
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
-            cell.imageDataBind(model: categoryModel[indexPath.row])
-        }
-    }
-}
-
-extension HomeViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoryModel.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(type: CategoryCollectionViewCell.self, indexPath: indexPath)
-        if indexPath.row == 0 {
-            cell.isSelected = true
-            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
-            cell.setDataBind(model: selectedCategoryModel[indexPath.row])
-        } else {
-            cell.setDataBind(model: categoryModel[indexPath.row])
-        }
-        return cell
     }
 }
 

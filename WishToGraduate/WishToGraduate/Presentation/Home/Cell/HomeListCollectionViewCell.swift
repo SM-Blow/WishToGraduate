@@ -16,7 +16,7 @@ final class HomeListCollectionViewCell: UICollectionViewCell {
     // MARK: - UI Components
     
     private let titleLabel = UILabel()
-    private let borrowLabel = BorrowLabel()
+    private let borrowLabel = CommonBorrowLabel()
     private let transactionLabel = UILabel()
     private let timeLabel = UILabel()
     
@@ -119,13 +119,7 @@ extension HomeListCollectionViewCell {
     
     func setDataBind(model: HomeListModel) {
         titleLabel.text = model.title
-        if (model.borrow == 1) {
-            borrowLabel.labelStatus(status: .borrow)
-            borrowLabel.text = "빌려요"
-        } else {
-            borrowLabel.labelStatus(status: .lend)
-            borrowLabel.text = "빌려줄게요"
-        }
+        borrowLabel.text = model.borrow == 1 ? "빌려요" : "빌려줄게요"
         transactionLabel.isHidden = model.transaction
         timeLabel.text = model.time
     }

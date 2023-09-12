@@ -81,7 +81,7 @@ final class DetailViewController: UIViewController {
         $0.textColor = .black
         $0.font = .fontGuide(.title_bold)
     }
-    private let borrowLabel = BorrowLabel()
+    private let borrowLabel = CommonBorrowLabel(frame: .zero)
     private let transactionLabel = UILabel().then {
         $0.text = "거래중"
         $0.font = .fontGuide(.bt1)
@@ -158,13 +158,8 @@ extension DetailViewController {
     private func setBorrowBtn() {
         // 일단 1로 세팅
         let borrow = 1
-        if (borrow == 1) {
-            borrowLabel.labelStatus(status: .borrow2)
-            borrowLabel.text = "빌려요"
-        } else {
-            borrowLabel.labelStatus(status: .lend2)
-            borrowLabel.text = "빌려줄게요"
-        }
+        borrowLabel.text = borrow == 1 ? "빌려요" : "빌려줄게요"
+        borrowLabel.font = .fontGuide(.h2_bold)
     }
     
     private func setLayout() {
@@ -194,7 +189,7 @@ extension DetailViewController {
         }
 
         bottomButtonView.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(81)
         }
