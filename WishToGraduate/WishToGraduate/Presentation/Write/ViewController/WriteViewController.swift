@@ -173,7 +173,7 @@ private extension WriteViewController {
     func setLayout() {
         view.addSubviews(navigationView, scrollView, bottomView)
         scrollView.addSubviews(
-            photoView, titleLabel, titleTextField, borrowLabel, borrowTypeCollectionView, categoryLabel, categoryCollectionView, contentsLabel, contentsTextView, deadLineLabel, deadLineTextField)
+            photoView, photoImage, photoLabel, titleLabel, titleTextField, borrowLabel, borrowTypeCollectionView, categoryLabel, categoryCollectionView, contentsLabel, contentsTextView, deadLineLabel, deadLineTextField)
         bottomView.addSubviews(bottomLine, writeButton)
         
         navigationView.snp.makeConstraints {
@@ -208,6 +208,16 @@ private extension WriteViewController {
             $0.top.equalToSuperview().inset(20)
             $0.leading.equalToSuperview().inset(23)
             $0.size.equalTo(110)
+        }
+        
+        photoImage.snp.makeConstraints {
+            $0.top.equalTo(photoView).inset(35)
+            $0.centerX.equalTo(photoView.snp.centerX)
+        }
+        
+        photoLabel.snp.makeConstraints {
+            $0.top.equalTo(photoImage.snp.bottom).offset(3)
+            $0.centerX.equalTo(photoView.snp.centerX)
         }
         
         titleLabel.snp.makeConstraints {
