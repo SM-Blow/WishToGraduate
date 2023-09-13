@@ -20,7 +20,6 @@
 		031CBE022A6FE90600301F06 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CBE012A6FE90600301F06 /* CustomNavigationView.swift */; };
 		0330CA6E2A7616E4004CE2D7 /* MyPageNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0330CA6D2A7616E4004CE2D7 /* MyPageNavigationView.swift */; };
 		0330CA702A761AFB004CE2D7 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0330CA6F2A761AFB004CE2D7 /* MyProfileView.swift */; };
-		0330CA772A7627E1004CE2D7 /* MyWritingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0330CA762A7627E1004CE2D7 /* MyWritingHeaderView.swift */; };
 		034650852A49C6AB0024AEC6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034650842A49C6AB0024AEC6 /* SearchViewController.swift */; };
 		035079222A3DF831007F28DF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035079212A3DF831007F28DF /* TabBarController.swift */; };
 		035079242A3DF881007F28DF /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035079232A3DF881007F28DF /* TabBarItem.swift */; };
@@ -72,6 +71,11 @@
 		03931B122A2CB68B00B235D9 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B112A2CB68B00B235D9 /* NetworkLoggerPlugin.swift */; };
 		03931B142A2CB85600B235D9 /* APIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B132A2CB85600B235D9 /* APIConst.swift */; };
 		03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B004A62A546ECD00E71CA7 /* SearchSection.swift */; };
+		03B169122AAF52DE00FC4891 /* MyPageSectionTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B169112AAF52DE00FC4891 /* MyPageSectionTab.swift */; };
+		03FD52A32AA34B1F00899F4F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD52A22AA34B1F00899F4F /* ChatViewController.swift */; };
+		03FD52A52AA3647500899F4F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD52A42AA3647500899F4F /* ChatView.swift */; };
+		03FD52A72AA4739200899F4F /* ChatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD52A62AA4739200899F4F /* ChatCollectionViewCell.swift */; };
+		03FD52AA2AA476AF00899F4F /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD52A92AA476AF00899F4F /* ChatModel.swift */; };
 		3B3677872AAF374400FF4ED1 /* CommonBorrowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3677862AAF374400FF4ED1 /* CommonBorrowLabel.swift */; };
 		3B36778A2AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3677892AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift */; };
 		3B36778C2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B36778B2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift */; };
@@ -96,7 +100,6 @@
 		031CBE012A6FE90600301F06 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 		0330CA6D2A7616E4004CE2D7 /* MyPageNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageNavigationView.swift; sourceTree = "<group>"; };
 		0330CA6F2A761AFB004CE2D7 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
-		0330CA762A7627E1004CE2D7 /* MyWritingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWritingHeaderView.swift; sourceTree = "<group>"; };
 		034650842A49C6AB0024AEC6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		035079212A3DF831007F28DF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		035079232A3DF881007F28DF /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
@@ -146,6 +149,11 @@
 		03931B112A2CB68B00B235D9 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		03931B132A2CB85600B235D9 /* APIConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConst.swift; sourceTree = "<group>"; };
 		03B004A62A546ECD00E71CA7 /* SearchSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSection.swift; sourceTree = "<group>"; };
+		03B169112AAF52DE00FC4891 /* MyPageSectionTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSectionTab.swift; sourceTree = "<group>"; };
+		03FD52A22AA34B1F00899F4F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		03FD52A42AA3647500899F4F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		03FD52A62AA4739200899F4F /* ChatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCollectionViewCell.swift; sourceTree = "<group>"; };
+		03FD52A92AA476AF00899F4F /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		3B3677862AAF374400FF4ED1 /* CommonBorrowLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonBorrowLabel.swift; sourceTree = "<group>"; };
 		3B3677892AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowTypeCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		3B36778B2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewDelegate.swift; sourceTree = "<group>"; };
@@ -194,7 +202,7 @@
 			children = (
 				0330CA6D2A7616E4004CE2D7 /* MyPageNavigationView.swift */,
 				0330CA6F2A761AFB004CE2D7 /* MyProfileView.swift */,
-				0330CA762A7627E1004CE2D7 /* MyWritingHeaderView.swift */,
+				03B169112AAF52DE00FC4891 /* MyPageSectionTab.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -391,9 +399,8 @@
 		0370B4B82A8E20BB00005400 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				0370B4BC2A8E25A300005400 /* View */,
-				0370B4B92A8E20CA00005400 /* ViewController */,
-				0370B4BF2A8E272800005400 /* Cell */,
+				03FD529D2AA3496300899F4F /* List */,
+				03FD529E2AA3497200899F4F /* Chatting */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -632,6 +639,92 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		03FD529D2AA3496300899F4F /* List */ = {
+			isa = PBXGroup;
+			children = (
+				0370B4BC2A8E25A300005400 /* View */,
+				0370B4B92A8E20CA00005400 /* ViewController */,
+				0370B4BF2A8E272800005400 /* Cell */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		03FD529E2AA3497200899F4F /* Chatting */ = {
+			isa = PBXGroup;
+			children = (
+				03FD529F2AA34A0800899F4F /* View */,
+				03FD52A02AA34A0E00899F4F /* ViewController */,
+				03FD52A12AA34A1900899F4F /* Cell */,
+				03FD52A82AA4767500899F4F /* Model */,
+			);
+			path = Chatting;
+			sourceTree = "<group>";
+		};
+		03FD529F2AA34A0800899F4F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				03FD52A42AA3647500899F4F /* ChatView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		03FD52A02AA34A0E00899F4F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				03FD52A22AA34B1F00899F4F /* ChatViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		03FD52A12AA34A1900899F4F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				03FD52A62AA4739200899F4F /* ChatCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		03FD52A82AA4767500899F4F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03FD52A92AA476AF00899F4F /* ChatModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3B3677882AAF42B400FF4ED1 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				3B3677892AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift */,
+				3B36778B2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		3B45268C2AB0C63000D8CE37 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3B45268D2AB0C65200D8CE37 /* BorrowTypeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3BD2E38B2AAE489E00220B44 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3BD2E38C2AAE48B400220B44 /* BorrowTypeCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3BFA40522AADF76400382B9B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3BFA40532AADF77A00382B9B /* WriteNavigationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		98A955F02A60F8E200B9BFD3 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -736,8 +829,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				03931AF22A2CB33B00B235D9 /* UICollectionView+.swift in Sources */,
+				03B169122AAF52DE00FC4891 /* MyPageSectionTab.swift in Sources */,
 				0308DA542A2DF7CF00B784B9 /* UIFont+.swift in Sources */,
 				035615602A3C89E300CC9A5E /* HomeViewController.swift in Sources */,
+				3B3677872AAF374400FF4ED1 /* CommonBorrowLabel.swift in Sources */,
+				03FD52A32AA34B1F00899F4F /* ChatViewController.swift in Sources */,
+				03FD52A72AA4739200899F4F /* ChatCollectionViewCell.swift in Sources */,
 				3B3677872AAF374400FF4ED1 /* CommonBorrowLabel.swift in Sources */,
 				03931AD92A2CA76200B235D9 /* Model.swift in Sources */,
 				03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */,
@@ -746,6 +843,7 @@
 				0370B4BB2A8E20EF00005400 /* ChatListViewController.swift in Sources */,
 				03931B002A2CB39D00B235D9 /* UIViewController+.swift in Sources */,
 				035615572A3C4F1500CC9A5E /* CategoryCollectionViewCell.swift in Sources */,
+				03FD52A52AA3647500899F4F /* ChatView.swift in Sources */,
 				03931AF82A2CB36400B235D9 /* UILabel+.swift in Sources */,
 				03931AEC2A2CB30E00B235D9 /* UITextField+.swift in Sources */,
 				0370B4BE2A8E25C000005400 /* ChatListView.swift in Sources */,
@@ -767,9 +865,9 @@
 				0370B4B32A8D1DFC00005400 /* SignInViewController.swift in Sources */,
 				03931AC12A2CA5F700B235D9 /* SceneDelegate.swift in Sources */,
 				035079222A3DF831007F28DF /* TabBarController.swift in Sources */,
-				0330CA772A7627E1004CE2D7 /* MyWritingHeaderView.swift in Sources */,
 				0350792B2A3DFAE5007F28DF /* MyPageViewController.swift in Sources */,
 				03931ADD2A2CAD5700B235D9 /* APIService.swift in Sources */,
+				03FD52AA2AA476AF00899F4F /* ChatModel.swift in Sources */,
 				03931B042A2CB3D700B235D9 /* Color.swift in Sources */,
 				0308DA522A2DEF9D00B784B9 /* FontLevel.swift in Sources */,
 				03931AF62A2CB35700B235D9 /* UIImageView+.swift in Sources */,

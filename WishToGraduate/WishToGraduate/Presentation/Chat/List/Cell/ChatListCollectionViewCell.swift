@@ -94,7 +94,4 @@ extension ChatListCollectionViewCell {
             $0.trailing.equalToSuperview().inset(13)
         }
     }
-    
-    // MARK: - Methods
-
 }

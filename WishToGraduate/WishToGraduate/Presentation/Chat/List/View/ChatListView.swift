@@ -21,10 +21,6 @@ final class ChatListView: UIView {
         return collectionView
     }()
     
-    // MARK: - Properties
-    
-    // MARK: - Initializer
-    
     // MARK: - View Life Cycle
     
     override init(frame: CGRect) {

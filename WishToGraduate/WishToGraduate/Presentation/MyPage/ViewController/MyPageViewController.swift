@@ -13,11 +13,16 @@ import Then
 
 final class MyPageViewController: UIViewController {
     
+    private enum MyPageTab {
+        case writing
+        case scrap
+    }
+    
     // MARK: - UI Components
     
     private let navigationView = MyPageNavigationView()
     private let myProfileView = MyProfileView()
-    private let underLineView = UIView()
+    private let myPageSectionTab = MyPageSectionTab()
     private lazy var myWritingCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -27,7 +32,9 @@ final class MyPageViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var homeListDummyModel: [HomeListModel] = HomeListModel.homeListModelDummyData()
+    private var myPageTab: MyPageTab = .writing
+    private var myWritingDummyModel: [HomeListModel] = HomeListModel.myWritingDummyData()
+    private var myScrapDummyModel: [HomeListModel] = HomeListModel.myScrapDummyData()
     
     // MARK: - Initializer
     
@@ -43,6 +50,7 @@ final class MyPageViewController: UIViewController {
         setLayout()
         setDelegate()
         setRegister()
+        setButton()
     }
 }
 
@@ -53,10 +61,6 @@ extension MyPageViewController {
     private func setUI() {
         
         view.backgroundColor = Color.light_Green
-    
-        underLineView.do {
-            $0.backgroundColor = Color.line_Grey
-        }
         
         myWritingCollectionView.do {
             $0.backgroundColor = .clear
@@ -68,8 +72,7 @@ extension MyPageViewController {
     
     private func setLayout() {
         
-        view.addSubviews(navigationView, myProfileView, underLineView,
-                         myWritingCollectionView)
+        view.addSubviews(navigationView, myProfileView, myPageSectionTab, myWritingCollectionView)
         
         navigationView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -83,14 +86,14 @@ extension MyPageViewController {
             $0.height.equalTo(235)
         }
         
-        underLineView.snp.makeConstraints {
+        myPageSectionTab.snp.makeConstraints {
             $0.top.equalTo(myProfileView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(1)
+            $0.height.equalTo(53)
         }
         
         myWritingCollectionView.snp.makeConstraints {
-            $0.top.equalTo(underLineView.snp.bottom)
+            $0.top.equalTo(myPageSectionTab.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(500)
         }
@@ -105,10 +108,30 @@ extension MyPageViewController {
     
     private func setRegister() {
         myWritingCollectionView.registerCell(HomeListCollectionViewCell.self)
-        myWritingCollectionView.registerHeader(MyWritingHeaderView.self)
     }
     
-    // MARK: - @objc Methods
+    private func myWritingTab() {
+        myPageTab = .writing
+        myWritingCollectionView.reloadData()
+    }
+    
+    private func myScarpTab() {
+        myPageTab = .scrap
+        myWritingCollectionView.reloadData()
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc
+    private func setButton() {
+        myPageSectionTab.myWritingButtonHandler = { [weak self] in
+            self?.myWritingTab()
+        }
+        
+        myPageSectionTab.myScarpButtonHandler = { [weak self] in
+            self?.myScarpTab()
+        }
+    }
 }
 
 extension MyPageViewController: UICollectionViewDelegateFlowLayout {
@@ -124,28 +147,27 @@ extension MyPageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableCell(kind: kind, type: MyWritingHeaderView.self, indexPath: indexPath)
-        return headerView
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let width: CGFloat = collectionView.frame.width
-        let height: CGFloat = 44
-        return CGSize(width: width, height: height)
-    }
 }
 
 extension MyPageViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return homeListDummyModel.count
+        switch (myPageTab) {
+        case .writing:
+            return myWritingDummyModel.count
+        case .scrap:
+            return myScrapDummyModel.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: HomeListCollectionViewCell.self, indexPath: indexPath)
-        cell.setDataBind(model: homeListDummyModel[indexPath.row])
+        switch (myPageTab) {
+        case .writing:
+            cell.setDataBind(model: myWritingDummyModel[indexPath.row])
+        case .scrap:
+            cell.setDataBind(model: myScrapDummyModel[indexPath.row])
+        }
         return cell
     }
 }

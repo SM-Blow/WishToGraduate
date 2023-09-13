@@ -16,7 +16,6 @@ final class MyProfileView: UIView {
     
     private let profileImage = UIImageView()
     private let nicknameLabel = UILabel()
-    private let openchatLabel = UILabel()
     private let myPointLabel = UILabel()
     
     // MARK: - View Life Cycle
@@ -50,12 +49,6 @@ extension MyProfileView {
             $0.textColor = .black
         }
         
-        openchatLabel.do {
-            $0.text = "www.kakaotalk_openchattingroom/31948"
-            $0.font = .fontGuide(.link1)
-            $0.textColor = .black
-        }
-        
         myPointLabel.do {
             $0.text = "나의 씨앗     |    9개"
             $0.font = .fontGuide(.h2)
@@ -67,7 +60,7 @@ extension MyProfileView {
     
     private func setLayout() {
         
-        addSubviews(profileImage, nicknameLabel, openchatLabel, myPointLabel)
+        addSubviews(profileImage, nicknameLabel, myPointLabel)
         
         profileImage.snp.makeConstraints {
             $0.top.equalToSuperview().inset(27)
@@ -80,13 +73,8 @@ extension MyProfileView {
             $0.centerX.equalToSuperview()
         }
         
-        openchatLabel.snp.makeConstraints {
-            $0.top.equalTo(nicknameLabel.snp.bottom).offset(6)
-            $0.centerX.equalToSuperview()
-        }
-        
         myPointLabel.snp.makeConstraints {
-            $0.top.equalTo(openchatLabel.snp.bottom).offset(31)
+            $0.top.equalTo(nicknameLabel.snp.bottom).offset(27)
             $0.centerX.equalToSuperview()
         }
     }
