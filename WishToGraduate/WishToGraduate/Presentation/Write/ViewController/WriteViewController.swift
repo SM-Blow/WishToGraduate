@@ -55,7 +55,8 @@ final class WriteViewController: UIViewController {
     private let contentsTextView = UITextView()
     
     private let deadLineLabel = UILabel()
-    private let deadLineView = UIView()
+    private let deadLineTextField = UITextField()
+    private let deadLineDatePicker = UIDatePicker()
     
     private let bottomView = UIView()
     private let bottomLine = UIView()
@@ -66,14 +67,20 @@ final class WriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        setToolBar()
         setLayout()
         setRegister()
         setDelegate()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
     }
     
     deinit {
         borrowTypeCollectionViewDelegate = nil
         categoryCollectionViewDelegate = nil
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -133,6 +140,25 @@ private extension WriteViewController {
             $0.font = .fontGuide(.title)
         }
         
+        deadLineTextField.do {
+            $0.placeholder = "게시글을 유지할 기간을 선택해주세요."
+            $0.setPlaceholderColor(placeholderColor: Color.placeholder_Grey)
+            $0.font = .fontGuide(.placeholder)
+            $0.layer.cornerRadius = 5
+            $0.layer.borderColor = Color.circle_Grey.cgColor
+            $0.layer.borderWidth = 1
+            $0.setLeftPaddingPoints(11)
+            $0.inputView = deadLineDatePicker
+            $0.delegate = self
+        }
+        
+        deadLineDatePicker.do {
+            $0.datePickerMode = .date
+            $0.preferredDatePickerStyle = .wheels
+            $0.locale = Locale(identifier: "ko-KR")
+            $0.addTarget(self, action: #selector(dateChange), for: .valueChanged)
+        }
+        
         bottomView.backgroundColor = .white
         bottomLine.backgroundColor = Color.line_Grey
         writeButton.do {
@@ -147,7 +173,7 @@ private extension WriteViewController {
     func setLayout() {
         view.addSubviews(navigationView, scrollView, bottomView)
         scrollView.addSubviews(
-            photoView, titleLabel, titleTextField, borrowLabel, borrowTypeCollectionView, categoryLabel, categoryCollectionView, contentsLabel, contentsTextView, deadLineLabel)
+            photoView, photoImage, photoLabel, titleLabel, titleTextField, borrowLabel, borrowTypeCollectionView, categoryLabel, categoryCollectionView, contentsLabel, contentsTextView, deadLineLabel, deadLineTextField)
         bottomView.addSubviews(bottomLine, writeButton)
         
         navigationView.snp.makeConstraints {
@@ -182,6 +208,16 @@ private extension WriteViewController {
             $0.top.equalToSuperview().inset(20)
             $0.leading.equalToSuperview().inset(23)
             $0.size.equalTo(110)
+        }
+        
+        photoImage.snp.makeConstraints {
+            $0.top.equalTo(photoView).inset(35)
+            $0.centerX.equalTo(photoView.snp.centerX)
+        }
+        
+        photoLabel.snp.makeConstraints {
+            $0.top.equalTo(photoImage.snp.bottom).offset(3)
+            $0.centerX.equalTo(photoView.snp.centerX)
         }
         
         titleLabel.snp.makeConstraints {
@@ -232,7 +268,13 @@ private extension WriteViewController {
         deadLineLabel.snp.makeConstraints {
             $0.top.equalTo(contentsTextView.snp.bottom).offset(22)
             $0.leading.equalTo(contentsTextView.snp.leading)
+        }
+        
+        deadLineTextField.snp.makeConstraints {
+            $0.top.equalTo(deadLineLabel.snp.bottom).offset(10)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(23)
             $0.bottom.equalToSuperview().inset(50)
+            $0.height.equalTo(43)
         }
     }
     
@@ -247,6 +289,64 @@ private extension WriteViewController {
     func setRegister() {
         borrowTypeCollectionView.registerCell(BorrowTypeCollectionViewCell.self)
     }
+    
+    func dateFormat(date: Date) -> String {
+        let selectFormatter = DateFormatter()
+        selectFormatter.dateFormat = "yyyy.MM.dd"
+        
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = " HH:mm a"
+        
+        return selectFormatter.string(from: date).appending(timeFormatter.string(from: Date()))
+    }
+    
+    func setToolBar() {
+        let toolBar = UIToolbar()
+        
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonHandeler))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonHandeler))
+        
+        toolBar.items = [cancelButton, flexibleSpace, doneButton]
+        toolBar.sizeToFit()
+
+        deadLineTextField.inputAccessoryView = toolBar
+    }
+    
+    @objc
+    func dateChange(_ sender: UIDatePicker) {
+        deadLineTextField.text = dateFormat(date: sender.date)
+    }
+    
+    @objc
+    func doneButtonHandeler(_ sender: UIBarButtonItem) {
+        deadLineTextField.text = dateFormat(date: deadLineDatePicker.date)
+        deadLineTextField.resignFirstResponder()
+    }
+    
+    @objc
+    func cancelButtonHandeler(_ sender: UIBarButtonItem) {
+        deadLineTextField.text = nil
+        deadLineTextField.resignFirstResponder()
+    }
+    
+    @objc
+    func keyboardWillShow(_ notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+            scrollView.contentInset = contentInsets
+            scrollView.scrollIndicatorInsets = contentInsets
+            scrollView.setContentOffset(CGPoint(x: 0, y: keyboardSize.height), animated: true)
+        }
+    }
+
+    @objc
+    func keyboardWillHide(_ notification: Notification) {
+        let contentInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+    }
+
 }
 
 extension WriteViewController: UITextViewDelegate {
@@ -261,7 +361,7 @@ extension WriteViewController: UITextViewDelegate {
             textView.text = contentsTextViewPlaceholer
             textView.textColor = Color.placeholder_Grey
             textView.layer.borderColor = Color.line_Grey.cgColor
-//            updateCountLabel(characterCount: 0)
+            //            updateCountLabel(characterCount: 0)
         }
     }
 }
