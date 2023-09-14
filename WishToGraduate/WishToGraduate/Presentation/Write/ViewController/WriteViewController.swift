@@ -86,11 +86,10 @@ final class WriteViewController: UIViewController {
         setLayout()
         setRegister()
         setDelegate()
+        setButton()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        photoImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addPhotoButtonDidTap)))
     }
     
     deinit {
@@ -173,7 +172,6 @@ private extension WriteViewController {
             $0.datePickerMode = .date
             $0.preferredDatePickerStyle = .wheels
             $0.locale = Locale(identifier: "ko-KR")
-            $0.addTarget(self, action: #selector(dateChange), for: .valueChanged)
         }
         
         bottomView.backgroundColor = .white
@@ -307,6 +305,15 @@ private extension WriteViewController {
         borrowTypeCollectionView.registerCell(BorrowTypeCollectionViewCell.self)
     }
     
+    func setButton() {
+        navigationView.closeButtonHandler = {[weak self] in
+            self?.dismiss(animated: true)
+        }
+        deadLineDatePicker.addTarget(self, action: #selector(dateChange), for: .valueChanged)
+        photoImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addPhotoButtonDidTap)))
+        writeButton.addTarget(self, action: #selector(writeButtonDidTap), for: .touchUpInside)
+    }
+    
     func dateFormat(date: Date) -> String {
         let selectFormatter = DateFormatter()
         selectFormatter.dateFormat = "yyyy.MM.dd"
@@ -377,6 +384,11 @@ private extension WriteViewController {
     @objc
     func addPhotoButtonDidTap() {
         openPHPicker()
+    }
+    
+    @objc
+    func writeButtonDidTap() {
+        self.dismiss(animated: true)
     }
 }
 
