@@ -33,4 +33,9 @@ extension String {
         let estimatedFrame = NSString(string: self).boundingRect(with: size, options: optionss, attributes: [.font: font], context: nil)
         return estimatedFrame
     }
+    
+    func isValidSookmyungEmail() -> Bool {
+        let pattern = ".*@sookmyung\\.ac\\.kr$"
+        return range(of: pattern, options: .regularExpression) != nil
+    }
 }

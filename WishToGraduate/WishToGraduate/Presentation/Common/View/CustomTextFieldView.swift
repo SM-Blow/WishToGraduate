@@ -15,7 +15,7 @@ class CustomTextFieldView: UIView {
     // MARK: - UI Components
     
     private let titleLabel = UILabel()
-    private let textField = UITextField()
+    let textField = UITextField()
     
     // MARK: - Properties
     

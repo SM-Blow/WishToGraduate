@@ -72,6 +72,7 @@
 		03931B142A2CB85600B235D9 /* APIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B132A2CB85600B235D9 /* APIConst.swift */; };
 		03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B004A62A546ECD00E71CA7 /* SearchSection.swift */; };
 		03B169122AAF52DE00FC4891 /* MyPageSectionTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B169112AAF52DE00FC4891 /* MyPageSectionTab.swift */; };
+		03B1691C2AB3701900FC4891 /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1691B2AB3701900FC4891 /* UIAlertController+.swift */; };
 		03FD52A32AA34B1F00899F4F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD52A22AA34B1F00899F4F /* ChatViewController.swift */; };
 		03FD52A52AA3647500899F4F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD52A42AA3647500899F4F /* ChatView.swift */; };
 		03FD52A72AA4739200899F4F /* ChatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD52A62AA4739200899F4F /* ChatCollectionViewCell.swift */; };
@@ -150,6 +151,7 @@
 		03931B132A2CB85600B235D9 /* APIConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConst.swift; sourceTree = "<group>"; };
 		03B004A62A546ECD00E71CA7 /* SearchSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSection.swift; sourceTree = "<group>"; };
 		03B169112AAF52DE00FC4891 /* MyPageSectionTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSectionTab.swift; sourceTree = "<group>"; };
+		03B1691B2AB3701900FC4891 /* UIAlertController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
 		03FD52A22AA34B1F00899F4F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		03FD52A42AA3647500899F4F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		03FD52A62AA4739200899F4F /* ChatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 				03931AFF2A2CB39D00B235D9 /* UIViewController+.swift */,
 				0308DA532A2DF7CF00B784B9 /* UIFont+.swift */,
 				0308DA552A2DF82C00B784B9 /* NSMutableAttributedString+.swift */,
+				03B1691B2AB3701900FC4891 /* UIAlertController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -815,6 +818,7 @@
 				03931AEC2A2CB30E00B235D9 /* UITextField+.swift in Sources */,
 				0370B4BE2A8E25C000005400 /* ChatListView.swift in Sources */,
 				0350792E2A3EDE29007F28DF /* CategorySection.swift in Sources */,
+				03B1691C2AB3701900FC4891 /* UIAlertController+.swift in Sources */,
 				98A955F32A60F97400B9BFD3 /* DetailViewController.swift in Sources */,
 				0370F3A02A442A9C00A9AF28 /* LabelStatusModel.swift in Sources */,
 				03931AFA2A2CB37700B235D9 /* UIButton+.swift in Sources */,

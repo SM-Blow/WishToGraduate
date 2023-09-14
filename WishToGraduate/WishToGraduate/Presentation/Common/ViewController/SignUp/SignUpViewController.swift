@@ -113,14 +113,19 @@ extension SignUpViewController {
     
     @objc
     func signupButtonDidTap() {
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let sceneDelegate = windowScene.delegate as? SceneDelegate,
-           let window = sceneDelegate.window {
-            let vc = TabBarController()
-            let rootVC = UINavigationController(rootViewController: vc)
-            rootVC.navigationController?.isNavigationBarHidden = true
-            window.rootViewController = rootVC
-            window.makeKeyAndVisible()
+        var text = idTextField.textField.text ?? ""
+        if text.isValidSookmyungEmail() {
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let sceneDelegate = windowScene.delegate as? SceneDelegate,
+               let window = sceneDelegate.window {
+                let vc = TabBarController()
+                let rootVC = UINavigationController(rootViewController: vc)
+                rootVC.navigationController?.isNavigationBarHidden = true
+                window.rootViewController = rootVC
+                window.makeKeyAndVisible()
+            }
+        } else {
+            UIAlertController.showAlert(title: "잘못된 이메일입니다.", message: "숙명 이메일을 입력해주세요.")
         }
     }
 }
