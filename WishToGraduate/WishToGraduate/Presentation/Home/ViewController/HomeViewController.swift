@@ -15,8 +15,6 @@ protocol CategoryProtocol: AnyObject {
     func categoryType(category: CategorySection)
 }
 
-
-
 final class HomeViewController: UIViewController {
     
     // MARK: - UI Components
@@ -120,8 +118,11 @@ extension HomeViewController {
     }
     
     private func pushToDetailVC() {
+        print("asdlfadfads")
         let detailVC = DetailViewController()
         self.navigationController?.pushViewController(detailVC, animated: true)
+        print(self.navigationController)
+        print("asdlfadfads````````````")
     }
     
     func presentToWriteVC() {

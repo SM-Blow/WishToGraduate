@@ -116,7 +116,10 @@ extension SignUpViewController {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let sceneDelegate = windowScene.delegate as? SceneDelegate,
            let window = sceneDelegate.window {
-            window.rootViewController = TabBarController()
+            let vc = TabBarController()
+            let rootVC = UINavigationController(rootViewController: vc)
+            rootVC.navigationController?.isNavigationBarHidden = true
+            window.rootViewController = rootVC
             window.makeKeyAndVisible()
         }
     }
