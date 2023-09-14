@@ -118,11 +118,8 @@ extension HomeViewController {
     }
     
     private func pushToDetailVC() {
-        print("asdlfadfads")
         let detailVC = DetailViewController()
         self.navigationController?.pushViewController(detailVC, animated: true)
-        print(self.navigationController)
-        print("asdlfadfads````````````")
     }
     
     func presentToWriteVC() {
