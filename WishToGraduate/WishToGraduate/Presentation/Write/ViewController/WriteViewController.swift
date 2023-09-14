@@ -9,6 +9,8 @@ import UIKit
 
 import SnapKit
 import Then
+import Photos
+import PhotosUI
 
 final class WriteViewController: UIViewController {
     
@@ -28,8 +30,21 @@ final class WriteViewController: UIViewController {
         return scrollView
     }()
     
-    private let photoView = UIView()
-    private let photoImage = UIImageView()
+    public var hasPhoto: Bool = false {
+        didSet {
+            [photoImageIcon, photoLabel].forEach {
+                $0.isHidden = hasPhoto
+            }
+        }
+    }
+    
+    public var photoImage: UIImage? = nil {
+        didSet {
+            photoImageView.image = photoImage
+        }
+    }
+    private let photoImageView = UIImageView()
+    private let photoImageIcon = UIImageView()
     private let photoLabel = UILabel()
     
     private let titleLabel = UILabel()
@@ -74,7 +89,8 @@ final class WriteViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-
+        
+        photoImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addPhotoButtonDidTap)))
     }
     
     deinit {
@@ -88,13 +104,14 @@ private extension WriteViewController {
     func setUI() {
         view.backgroundColor = Color.light_Green
         
-        photoView.do {
+        photoImageView.do {
             $0.backgroundColor = UIColor(red: 233/255, green: 234/255, blue: 237/255, alpha: 1.0)
             $0.layer.cornerRadius = 10
             $0.clipsToBounds = true
+            $0.isUserInteractionEnabled = true
         }
         
-        photoImage.do {
+        photoImageIcon.do {
             $0.image = Image.cameraIcon
         }
         
@@ -173,7 +190,7 @@ private extension WriteViewController {
     func setLayout() {
         view.addSubviews(navigationView, scrollView, bottomView)
         scrollView.addSubviews(
-            photoView, photoImage, photoLabel, titleLabel, titleTextField, borrowLabel, borrowTypeCollectionView, categoryLabel, categoryCollectionView, contentsLabel, contentsTextView, deadLineLabel, deadLineTextField)
+            photoImageView, photoImageIcon, photoLabel, titleLabel, titleTextField, borrowLabel, borrowTypeCollectionView, categoryLabel, categoryCollectionView, contentsLabel, contentsTextView, deadLineLabel, deadLineTextField)
         bottomView.addSubviews(bottomLine, writeButton)
         
         navigationView.snp.makeConstraints {
@@ -204,25 +221,25 @@ private extension WriteViewController {
             $0.height.equalTo(45)
         }
         
-        photoView.snp.makeConstraints {
+        photoImageView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(20)
             $0.leading.equalToSuperview().inset(23)
             $0.size.equalTo(110)
         }
         
-        photoImage.snp.makeConstraints {
-            $0.top.equalTo(photoView).inset(35)
-            $0.centerX.equalTo(photoView.snp.centerX)
+        photoImageIcon.snp.makeConstraints {
+            $0.top.equalTo(photoImageView).inset(35)
+            $0.centerX.equalTo(photoImageView.snp.centerX)
         }
         
         photoLabel.snp.makeConstraints {
-            $0.top.equalTo(photoImage.snp.bottom).offset(3)
-            $0.centerX.equalTo(photoView.snp.centerX)
+            $0.top.equalTo(photoImageIcon.snp.bottom).offset(3)
+            $0.centerX.equalTo(photoImageView.snp.centerX)
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(photoView.snp.bottom).offset(20)
-            $0.leading.equalTo(photoView)
+            $0.top.equalTo(photoImageView.snp.bottom).offset(20)
+            $0.leading.equalTo(photoImageView)
         }
         
         titleTextField.snp.makeConstraints {
@@ -309,8 +326,18 @@ private extension WriteViewController {
         
         toolBar.items = [cancelButton, flexibleSpace, doneButton]
         toolBar.sizeToFit()
-
+        
         deadLineTextField.inputAccessoryView = toolBar
+    }
+    
+    func openPHPicker() {
+        var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+        config.filter = .images
+        config.selectionLimit = 1
+        let controller = PHPickerViewController(configuration: config)
+        
+        controller.delegate = self
+        self.present(controller, animated: true, completion: nil)
     }
     
     @objc
@@ -339,14 +366,18 @@ private extension WriteViewController {
             scrollView.setContentOffset(CGPoint(x: 0, y: keyboardSize.height), animated: true)
         }
     }
-
+    
     @objc
     func keyboardWillHide(_ notification: Notification) {
         let contentInsets = UIEdgeInsets.zero
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
     }
-
+    
+    @objc
+    func addPhotoButtonDidTap() {
+        openPHPicker()
+    }
 }
 
 extension WriteViewController: UITextViewDelegate {
@@ -376,4 +407,34 @@ extension WriteViewController: UITextFieldDelegate {
             textField.layer.borderColor = Color.line_Grey.cgColor
         }
     }
+}
+
+extension WriteViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        guard !results.isEmpty else {
+            return
+        }
+        
+        let imageResult = results[0]
+        
+        if let assetId = imageResult.assetIdentifier {
+            DispatchQueue.main.async {
+                self.hasPhoto = true
+            }
+        }
+        if imageResult.itemProvider.canLoadObject(ofClass: UIImage.self) {
+            imageResult.itemProvider.loadObject(ofClass: UIImage.self) { (selectedImage, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    DispatchQueue.main.async {
+                        self.photoImageView.image = selectedImage as? UIImage
+                    }
+                }
+            }
+        }
+    }
+    
+    
 }
