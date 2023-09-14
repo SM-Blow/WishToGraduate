@@ -50,6 +50,7 @@ final class HomeViewController: UIViewController {
         setLayout()
         setDelegate()
         setButton()
+        setHandler()
     }
 }
 
@@ -110,10 +111,15 @@ extension HomeViewController {
         categoryDelegate = self
     }
     
-    func presentToSearchVC() {
+    private func presentToSearchVC() {
         let searchVC = SearchViewController()
         searchVC.modalPresentationStyle = .fullScreen
         self.present(searchVC, animated: true)
+    }
+    
+    private func pushToDetailVC() {
+        let detailVC = DetailViewController()
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     func presentToWriteVC() {
@@ -131,6 +137,13 @@ extension HomeViewController {
         }
         navigationView.writeButtonHandler = { [weak self] in
             self?.presentToWriteVC()
+        }
+    }
+    
+    @objc
+    private func setHandler() {
+        homeListView.pushToDetailHandler = { [weak self] in
+            self?.pushToDetailVC()
         }
     }
 }

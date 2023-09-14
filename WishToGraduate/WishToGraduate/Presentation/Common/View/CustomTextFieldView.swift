@@ -15,7 +15,7 @@ class CustomTextFieldView: UIView {
     // MARK: - UI Components
     
     private let titleLabel = UILabel()
-    private let textField = UITextField()
+    let textField = UITextField()
     
     // MARK: - Properties
     
@@ -30,6 +30,7 @@ class CustomTextFieldView: UIView {
         super.init(frame: .zero)
         setUI(type)
         setLayout(type)
+        setDelegate()
     }
     
     required init?(coder: NSCoder) {
@@ -38,6 +39,8 @@ class CustomTextFieldView: UIView {
 }
 
 extension CustomTextFieldView {
+    
+    // MARK: - UI Components Property
     
     private func setUI(_ type: String) {
         
@@ -62,6 +65,8 @@ extension CustomTextFieldView {
         }
     }
     
+    // MARK: - Layout Helper
+    
     private func setLayout(_ type: String) {
         
         addSubviews(titleLabel, textField)
@@ -78,7 +83,20 @@ extension CustomTextFieldView {
         }
     }
     
+    // MARK: - Methods
+    
+    private func setDelegate() {
+        textField.delegate = self
+    }
+    
     func nickNamePlaceholder() {
         textField.placeholder = "닉네임을 입력하세요."
+    }
+}
+
+extension CustomTextFieldView: UITextFieldDelegate {
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        textField.textColor = .black
     }
 }

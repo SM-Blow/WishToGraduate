@@ -35,8 +35,9 @@ final class DetailViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let backImageView = UIImageView()
-    private let topUnderLineView = UIView()
+    private let navigationView = CustomNavigationView(title: "").then {
+        $0.isBackButtonIncluded = true
+    }
     private let bottomUnderLineView = UIView()
     private let naviView = UIView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -112,9 +113,9 @@ final class DetailViewController: UIViewController {
         setBottomButton()
         setUI()
         photoOrTextLayout()
-        setNavigationBar()
         setBorrowBtn()
         setTransactionLabel()
+        setButton()
     }
 }
 
@@ -128,8 +129,6 @@ extension DetailViewController {
         naviView.backgroundColor = .white
         headerView.backgroundColor = .white
         containerView.backgroundColor = .white
-        backImageView.image = Image.backButton
-        topUnderLineView.backgroundColor = Color.line_Grey
         bottomUnderLineView.backgroundColor = Color.line_Grey
         middleUnderLineView.backgroundColor = Color.line_Grey
         contentView.backgroundColor = Color.textview_Grey
@@ -139,20 +138,6 @@ extension DetailViewController {
     }
     
     // MARK: - Methods
-    
-    private func setNavigationBar() {
-        navigationController?.navigationBar.backgroundColor = .clear
-        navigationController?.navigationBar.titleTextAttributes = [
-            .foregroundColor: Color.main_Green,
-            .font: UIFont.fontGuide(.h1)
-        ]
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: Image.backButton,
-            style: .plain,
-            target: self,
-            action: #selector(backButtonTapped))
-        navigationController?.navigationBar.tintColor = Color.main_Green
-    }
     
     // 빌려요, 빌려줄게요 버튼 분기처리
     private func setBorrowBtn() {
@@ -169,22 +154,22 @@ extension DetailViewController {
         contentView.addSubview(contentLabel)
         headerView.addSubviews(profileImageView, nicknameLabel, duedateLabel, untilLabel)
         titleView.addSubviews(titleLabel, borrowLabel, transactionLabel)
-        view.addSubviews(topUnderLineView, naviView, containerView, bottomButtonView, bottomUnderLineView)
+        view.addSubviews(navigationView, naviView, containerView, bottomButtonView, bottomUnderLineView)
         
-        topUnderLineView.snp.makeConstraints {
+        navigationView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(1)
+            $0.height.equalTo(52)
         }
         
         naviView.snp.makeConstraints {
-            $0.top.equalTo(topUnderLineView.snp.bottom)
+            $0.top.equalTo(navigationView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(61)
         }
 
         containerView.snp.makeConstraints {
-            $0.top.equalTo(topUnderLineView.snp.bottom)
+            $0.top.equalTo(navigationView.snp.bottom)
             $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
 
@@ -290,7 +275,18 @@ extension DetailViewController {
         self.view.setNeedsUpdateConstraints()
     }
     
+    private func popToHome() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - @objc Methods
+    
+    @objc
+    private func setButton() {
+        navigationView.backButtonHandler = { [weak self] in
+            self?.popToHome()
+        }
+    }
     
     // 사진, 글만 있는 글 레이아웃 분기처리
     @objc
