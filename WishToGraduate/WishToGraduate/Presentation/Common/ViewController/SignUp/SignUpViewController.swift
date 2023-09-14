@@ -28,6 +28,7 @@ final class SignUpViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setAddTarget()
     }
 }
 
@@ -103,6 +104,20 @@ extension SignUpViewController {
             $0.top.equalTo(nickNameTextField.snp.bottom).offset(31)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(23)
             $0.height.equalTo(50)
+        }
+    }
+    
+    private func setAddTarget() {
+        signUpButton.addTarget(self, action: #selector(signupButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc
+    func signupButtonDidTap() {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let sceneDelegate = windowScene.delegate as? SceneDelegate,
+           let window = sceneDelegate.window {
+            window.rootViewController = TabBarController()
+            window.makeKeyAndVisible()
         }
     }
 }

@@ -16,11 +16,13 @@ final class HomeNavigationView: UIView {
     
     private let logoImage = UIImageView()
     private let notificationButton = UIButton()
+    private let writeButton = UIButton()
     private let searchButton = UIButton()
     
     // MARK: - Properties
     
     var searchButtonHandler: (() -> Void)?
+    var writeButtonHandler: (() -> Void)?
     
     // MARK: - Initializer
     
@@ -57,13 +59,15 @@ extension HomeNavigationView {
         searchButton.do {
             $0.setImage(Image.searchButton, for: .normal)
         }
+        
+        writeButton.setImage(Image.selectedWriting, for: .normal)
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
         
-        addSubviews(logoImage, notificationButton, searchButton)
+        addSubviews(logoImage, notificationButton, writeButton, searchButton)
         
         logoImage.snp.makeConstraints {
             $0.centerY.equalToSuperview()
@@ -75,16 +79,24 @@ extension HomeNavigationView {
             $0.trailing.equalToSuperview().inset(8)
         }
         
-        notificationButton.snp.makeConstraints {
+        writeButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.trailing.equalTo(searchButton.snp.leading).offset(2)
+            $0.size.equalTo(20)
+            $0.trailing.equalTo(searchButton.snp.leading).offset(-2)
         }
+//
+//        notificationButton.snp.makeConstraints {
+//            $0.centerY.equalToSuperview()
+//            $0.trailing.equalTo(writeButton.snp.leading).offset(5)
+//        }
+        
     }
     
     // MARK: - Methods
     
     private func setAddTarget() {
         searchButton.addTarget(self, action: #selector(searchButtonDidTapped), for: .touchUpInside)
+        writeButton.addTarget(self, action: #selector(writeButtonDidTapped), for: .touchUpInside)
     }
     
     // MARK: - @objc Methods
@@ -92,5 +104,10 @@ extension HomeNavigationView {
     @objc
     private func searchButtonDidTapped() {
         searchButtonHandler?()
+    }
+    
+    @objc
+    private func writeButtonDidTapped() {
+        writeButtonHandler?()
     }
 }

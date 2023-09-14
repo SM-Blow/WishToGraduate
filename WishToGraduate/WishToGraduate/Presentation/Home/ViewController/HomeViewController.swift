@@ -124,12 +124,21 @@ extension HomeViewController {
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
+    func presentToWriteVC() {
+        let writeVC = WriteViewController()
+        writeVC.modalPresentationStyle = .fullScreen
+        self.present(writeVC, animated: true)
+    }
+    
     // MARK: - @objc Methods
     
     @objc
     private func setButton() {
         navigationView.searchButtonHandler  = { [weak self] in
             self?.presentToSearchVC()
+        }
+        navigationView.writeButtonHandler = { [weak self] in
+            self?.presentToWriteVC()
         }
     }
     

@@ -20,6 +20,7 @@ final class SignInViewController: UIViewController {
     private let idTextField = CustomTextFieldView(type: "아이디")
     private let passwordTextField = CustomTextFieldView(type: "비밀번호")
     private let signInButton = CustomCheckButton(title: "로그인")
+    private let signupButton = CustomCheckButton(title: "회원가입")
     
     // MARK: - View Life Cycle
     
@@ -27,6 +28,7 @@ final class SignInViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setAddTarget()
     }
 }
 
@@ -54,7 +56,7 @@ extension SignInViewController {
     private func setLayout() {
         
         view.addSubviews(logoImageView, titleLabel,
-                         idTextField, passwordTextField, signInButton)
+                         idTextField, passwordTextField, signInButton, signupButton)
         
         logoImageView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(55)
@@ -83,6 +85,32 @@ extension SignInViewController {
             $0.top.equalTo(passwordTextField.snp.bottom).offset(31)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(23)
             $0.height.equalTo(50)
+        }
+        
+        signupButton.snp.makeConstraints {
+            $0.top.equalTo(signInButton.snp.bottom).offset(16)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(23)
+            $0.height.equalTo(50)
+        }
+    }
+    
+    private func setAddTarget() {
+        signupButton.addTarget(self, action: #selector(signupButtonDidTap), for: .touchUpInside)
+        signInButton.addTarget(self, action: #selector(signinButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc
+    func signupButtonDidTap() {
+        navigationController?.pushViewController(SignUpViewController(), animated: true)
+    }
+    
+    @objc
+    func signinButtonDidTap() {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let sceneDelegate = windowScene.delegate as? SceneDelegate,
+           let window = sceneDelegate.window {
+            window.rootViewController = TabBarController()
+            window.makeKeyAndVisible()
         }
     }
 }
