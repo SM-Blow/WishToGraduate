@@ -81,6 +81,9 @@
 		3B36778A2AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3677892AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift */; };
 		3B36778C2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B36778B2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift */; };
 		3B45268E2AB0C65200D8CE37 /* BorrowTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45268D2AB0C65200D8CE37 /* BorrowTypeModel.swift */; };
+		3BA183F72AB3FC5C00C3D2D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BA183F62AB3FC5C00C3D2D6 /* GoogleService-Info.plist */; };
+		3BA183FA2AB4059100C3D2D6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3BA183F92AB4059100C3D2D6 /* FirebaseAnalytics */; };
+		3BA183FC2AB4059100C3D2D6 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 3BA183FB2AB4059100C3D2D6 /* FirebaseMessaging */; };
 		3BD2E38D2AAE48B400220B44 /* BorrowTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD2E38C2AAE48B400220B44 /* BorrowTypeCollectionViewCell.swift */; };
 		3BFA40542AADF77A00382B9B /* WriteNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFA40532AADF77A00382B9B /* WriteNavigationView.swift */; };
 		3BFA40572AAE0EF000382B9B /* CategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFA40562AAE0EF000382B9B /* CategoryCollectionView.swift */; };
@@ -160,6 +163,8 @@
 		3B3677892AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowTypeCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		3B36778B2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		3B45268D2AB0C65200D8CE37 /* BorrowTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowTypeModel.swift; sourceTree = "<group>"; };
+		3BA183EE2AB3ECB300C3D2D6 /* WishToGraduate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WishToGraduate.entitlements; sourceTree = "<group>"; };
+		3BA183F62AB3FC5C00C3D2D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3BD2E38C2AAE48B400220B44 /* BorrowTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BFA40532AADF77A00382B9B /* WriteNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNavigationView.swift; sourceTree = "<group>"; };
 		3BFA40562AAE0EF000382B9B /* CategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionView.swift; sourceTree = "<group>"; };
@@ -171,9 +176,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BA183FC2AB4059100C3D2D6 /* FirebaseMessaging in Frameworks */,
 				03931B102A2CB57900B235D9 /* Kingfisher in Frameworks */,
 				03931B072A2CB4FC00B235D9 /* Then in Frameworks */,
 				03931B0A2A2CB50E00B235D9 /* SnapKit in Frameworks */,
+				3BA183FA2AB4059100C3D2D6 /* FirebaseAnalytics in Frameworks */,
 				03931B0D2A2CB56600B235D9 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,6 +457,7 @@
 		03931ABD2A2CA5F700B235D9 /* WishToGraduate */ = {
 			isa = PBXGroup;
 			children = (
+				3BA183EE2AB3ECB300C3D2D6 /* WishToGraduate.entitlements */,
 				03931AD22A2CA72200B235D9 /* Application */,
 				03931AD32A2CA73500B235D9 /* Data */,
 				03931ADA2A2CA76900B235D9 /* Network */,
@@ -543,6 +551,7 @@
 				0308DA472A2DEDB900B784B9 /* Font */,
 				03931AE32A2CAECA00B235D9 /* AssetCatalog */,
 				03931ACC2A2CA5F900B235D9 /* Info.plist */,
+				3BA183F62AB3FC5C00C3D2D6 /* GoogleService-Info.plist */,
 				03931AC92A2CA5F900B235D9 /* LaunchScreen.storyboard */,
 			);
 			path = Resource;
@@ -732,6 +741,8 @@
 				03931B092A2CB50E00B235D9 /* SnapKit */,
 				03931B0C2A2CB56600B235D9 /* Moya */,
 				03931B0F2A2CB57900B235D9 /* Kingfisher */,
+				3BA183F92AB4059100C3D2D6 /* FirebaseAnalytics */,
+				3BA183FB2AB4059100C3D2D6 /* FirebaseMessaging */,
 			);
 			productName = WishToGraduate;
 			productReference = 03931ABB2A2CA5F700B235D9 /* WishToGraduate.app */;
@@ -766,6 +777,7 @@
 				03931B082A2CB50D00B235D9 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				03931B0B2A2CB56600B235D9 /* XCRemoteSwiftPackageReference "Moya" */,
 				03931B0E2A2CB57900B235D9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				3BA183F82AB4059100C3D2D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 03931ABC2A2CA5F700B235D9 /* Products */;
 			projectDirPath = "";
@@ -782,6 +794,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03931ACB2A2CA5F900B235D9 /* LaunchScreen.storyboard in Resources */,
+				3BA183F72AB3FC5C00C3D2D6 /* GoogleService-Info.plist in Resources */,
 				0308DA462A2CDC9200B784B9 /* Image.xcassets in Resources */,
 				0308DA4D2A2DEDD200B784B9 /* NotoSansKR-Medium.otf in Resources */,
 				03931AC82A2CA5F900B235D9 /* Assets.xcassets in Resources */,
@@ -1004,11 +1017,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = WishToGraduate/WishToGraduate.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DGT9BQA4KH;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = CQJ9UKUU35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WishToGraduate/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BLOW;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 업로드를 위해 앨범 접근 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1019,8 +1037,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kwonjeong.WishToGraduate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WishToGrate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = blowDebug;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1032,11 +1052,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WishToGraduate/WishToGraduate.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DGT9BQA4KH;
+				DEVELOPMENT_TEAM = 665TA4D5B9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WishToGraduate/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BLOW;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 업로드를 위해 앨범 접근 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1047,8 +1071,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kwonjeong.WishToGraduate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WishToGrate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1111,6 +1136,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		3BA183F82AB4059100C3D2D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1133,6 +1166,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 03931B0E2A2CB57900B235D9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		3BA183F92AB4059100C3D2D6 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3BA183F82AB4059100C3D2D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		3BA183FB2AB4059100C3D2D6 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3BA183F82AB4059100C3D2D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
