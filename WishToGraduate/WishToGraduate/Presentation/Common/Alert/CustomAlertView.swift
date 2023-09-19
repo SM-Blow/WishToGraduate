@@ -88,6 +88,13 @@ extension CustomAlertView {
         addSubviews(containerView)
         containerView.addSubviews(titleLabel, explainLabel, cancelButton, allowButton)
         
+        self.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: SizeLiterals.Screen.screenWidth * 292 / 375,
+            height: SizeLiterals.Screen.screenHeight * 158 / 812
+        )
+        
         containerView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(43)
             $0.centerY.equalToSuperview()
