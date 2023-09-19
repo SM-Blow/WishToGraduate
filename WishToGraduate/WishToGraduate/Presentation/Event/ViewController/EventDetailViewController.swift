@@ -38,10 +38,15 @@ final class EventDetailViewController: UIViewController {
     
     // MARK: - View Life Cycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setButton()
         setDateBind(eventDetailDummy)
     }
 }
@@ -69,19 +74,16 @@ extension EventDetailViewController {
         }
         
         userNameLabel.do {
-            $0.text = "소프트웨어학부"
             $0.font = .fontGuide(.title_bold)
             $0.textColor = .black
         }
         
         dateLabel.do {
-            $0.text = "Date"
             $0.font = .fontGuide(.h2_bold)
             $0.textColor = Color.main2_Green
         }
         
         dueDateLabel.do {
-            $0.text = "2023.05.20 13:30"
             $0.font = .fontGuide(.h2)
             $0.textColor = .black
         }
@@ -91,13 +93,11 @@ extension EventDetailViewController {
         }
         
         titleLabel.do {
-            $0.text = "2023 2학기 소프트웨어학부 개강총회"
             $0.font = .fontGuide(.m1)
             $0.textColor = .black
         }
         
         applicantPersonLabel.do {
-            $0.text = "161/200"
             $0.font = .fontGuide(.bt1)
             $0.backgroundColor = Color.main_Green
             $0.textColor = .white
@@ -111,16 +111,6 @@ extension EventDetailViewController {
         }
         
         contentLabel.do {
-            $0.text = """
-            안녕하세요. 소프트웨어학부 학생회 BLOW 입니다.
-            개강총회 안내글이 이어집니다.
-            개강총회 안내글이 이어집니다.
-            개강총회 안내글이 이어집니다.
-            개강총회 안내글이 이어집니다.
-            ㅇ
-            ㅇ
-            ㅇ
-            """
             $0.font = .fontGuide(.h2)
             $0.textColor = .black
             $0.numberOfLines = 0
@@ -218,6 +208,10 @@ extension EventDetailViewController {
     
     // MARK: - Methods
     
+    private func popToHome() {
+        print("popToHome")
+    }
+    
     private func setDateBind(_ model: EventDetailModel) {
         userNameLabel.text = model.userName
         dueDateLabel.text = model.date
@@ -240,4 +234,11 @@ extension EventDetailViewController {
     }
     
     // MARK: - @objc Methods
+    
+    @objc
+    private func setButton() {
+        navigationBar.backButtonHandler = { [weak self] in
+            self?.popToHome()
+        }
+    }
 }
