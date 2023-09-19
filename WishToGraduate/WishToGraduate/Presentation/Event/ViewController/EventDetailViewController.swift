@@ -138,7 +138,7 @@ extension EventDetailViewController {
         scrollView.snp.makeConstraints {
             $0.top.equalTo(navigationBar.snp.bottom)
             $0.horizontalEdges.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(SizeLiterals.Screen.screenHeight * 81 / 812 + 11)
         }
         
         stackView.snp.makeConstraints {
@@ -232,7 +232,6 @@ extension EventDetailViewController {
     private func setContentLayout(_ text: String) {
         guard let font = contentLabel.font else { return }
         let estimatedFrame = text.getEstimatedFrame(with: font)
-        print(estimatedFrame.height)
         contentView.snp.makeConstraints {
             $0.height.equalTo(67 + estimatedFrame.height + 28)
         }
