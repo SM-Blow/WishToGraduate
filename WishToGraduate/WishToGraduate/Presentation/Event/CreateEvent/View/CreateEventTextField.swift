@@ -24,6 +24,10 @@ final class CreateEventTextField: UIView {
     private let textField = UITextField()
     private let textLimit = UILabel()
     
+    // MARK: - Properties
+    
+    var maxLength: Int?
+    
     // MARK: - View Life Cycle
     
     init(type: CreateEventType) {
@@ -31,6 +35,7 @@ final class CreateEventTextField: UIView {
         setUI()
         setLayout()
         setTextField(type)
+        setDelegate()
     }
     
     required init?(coder: NSCoder) {
@@ -94,17 +99,57 @@ extension CreateEventTextField {
         switch type {
         case .eventName:
             titleLabel.text = "행사 이름 *"
-            textField.text = "행사 이름을 작성해주세요."
+            textField.placeholder = "행사 이름을 작성해주세요."
             textLimit.text = "0/30"
+            maxLength = 30
         case .hostName:
             titleLabel.text = "주최측 이름 *"
-            textField.text = "주최측 정보를 작성해주세요."
+            textField.placeholder = "주최측 정보를 작성해주세요."
             textLimit.text = "0/20"
+            maxLength = 20
         case .eventDate:
             titleLabel.text = "행사 일시 *"
-            textField.text = "행사의 일시를 선택해주세요."
+            textField.placeholder = "행사의 일시를 선택해주세요."
         }
     }
     
+    private func setDelegate() {
+        textField.delegate = self
+    }
+    
     // MARK: - @objc Methods
+}
+
+extension CreateEventTextField: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.makeBorder(width: 1, color: Color.main_Green)
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        textField.makeBorder(width: 1, color: Color.main_Green)
+        textField.placeholder = ""
+        textField.font = .fontGuide(.title)
+        textField.textColor = .black
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        guard let maxLength = self.maxLength else { return true }
+
+        let currentText = textField.text ?? ""
+        let stringRange = Range(range, in: currentText) ?? currentText.startIndex..<currentText.endIndex
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        if updatedText.count <= maxLength {
+            textLimit.text = "\(updatedText.count)/\(maxLength)"
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.makeBorder(width: 1, color: Color.circle_Grey)
+    }
 }
