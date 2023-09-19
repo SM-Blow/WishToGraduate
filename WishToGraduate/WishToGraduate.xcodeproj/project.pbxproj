@@ -33,6 +33,8 @@
 		035615692A3CB4A300CC9A5E /* HomeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615682A3CB4A300CC9A5E /* HomeListModel.swift */; };
 		0367813E2AB993F400866F31 /* SizeLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367813D2AB993F400866F31 /* SizeLiterals.swift */; };
 		036781412AB998B100866F31 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781402AB998B100866F31 /* EventDetailViewController.swift */; };
+		036781452AB9D6BD00866F31 /* EventDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781442AB9D6BD00866F31 /* EventDetailModel.swift */; };
+		036781492AB9DF4200866F31 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781482AB9DF4200866F31 /* CustomButtonView.swift */; };
 		0370B4AD2A8CFAF600005400 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4AC2A8CFAF600005400 /* CustomTextFieldView.swift */; };
 		0370B4AF2A8D151900005400 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4AE2A8D151900005400 /* SignUpViewController.swift */; };
 		0370B4B12A8D17E100005400 /* CustomCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4B02A8D17E100005400 /* CustomCheckButton.swift */; };
@@ -118,6 +120,8 @@
 		035615682A3CB4A300CC9A5E /* HomeListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListModel.swift; sourceTree = "<group>"; };
 		0367813D2AB993F400866F31 /* SizeLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiterals.swift; sourceTree = "<group>"; };
 		036781402AB998B100866F31 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		036781442AB9D6BD00866F31 /* EventDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailModel.swift; sourceTree = "<group>"; };
+		036781482AB9DF4200866F31 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		0370B4AC2A8CFAF600005400 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTextFieldView.swift; path = WishToGraduate/Presentation/Common/View/CustomTextFieldView.swift; sourceTree = SOURCE_ROOT; };
 		0370B4AE2A8D151900005400 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0370B4B02A8D17E100005400 /* CustomCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckButton.swift; sourceTree = "<group>"; };
@@ -379,15 +383,41 @@
 		0367813F2AB9988800866F31 /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				036781402AB998B100866F31 /* EventDetailViewController.swift */,
+				036781422AB9D68A00866F31 /* ViewController */,
+				036781432AB9D69300866F31 /* Model */,
 			);
 			path = Event;
+			sourceTree = "<group>";
+		};
+		036781422AB9D68A00866F31 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				036781402AB998B100866F31 /* EventDetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		036781432AB9D69300866F31 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				036781442AB9D6BD00866F31 /* EventDetailModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		036781472AB9DF2800866F31 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				036781482AB9DF4200866F31 /* CustomButtonView.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 		0370B4A92A8CF9B000005400 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				0367813B2AB9929700866F31 /* Navigation */,
+				036781472AB9DF2800866F31 /* Button */,
 				0370B4AB2A8CF9DD00005400 /* View */,
 				0370B4AA2A8CF9D000005400 /* ViewController */,
 			);
@@ -875,6 +905,7 @@
 				0370B4B32A8D1DFC00005400 /* SignInViewController.swift in Sources */,
 				03931AC12A2CA5F700B235D9 /* SceneDelegate.swift in Sources */,
 				036781412AB998B100866F31 /* EventDetailViewController.swift in Sources */,
+				036781452AB9D6BD00866F31 /* EventDetailModel.swift in Sources */,
 				035079222A3DF831007F28DF /* TabBarController.swift in Sources */,
 				0367813E2AB993F400866F31 /* SizeLiterals.swift in Sources */,
 				0350792B2A3DFAE5007F28DF /* MyPageViewController.swift in Sources */,
@@ -883,6 +914,7 @@
 				03931B042A2CB3D700B235D9 /* Color.swift in Sources */,
 				0308DA522A2DEF9D00B784B9 /* FontLevel.swift in Sources */,
 				03931AF62A2CB35700B235D9 /* UIImageView+.swift in Sources */,
+				036781492AB9DF4200866F31 /* CustomButtonView.swift in Sources */,
 				0370B4AD2A8CFAF600005400 /* CustomTextFieldView.swift in Sources */,
 				03931AEE2A2CB31C00B235D9 /* UIStackView+.swift in Sources */,
 				0370B4B12A8D17E100005400 /* CustomCheckButton.swift in Sources */,
