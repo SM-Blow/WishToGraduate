@@ -50,6 +50,7 @@ extension CustomAlertView {
         
         containerView.do {
             $0.backgroundColor = .white
+            $0.makeCornerRound(radius: 10)
         }
         
         titleLabel.do {
@@ -66,8 +67,8 @@ extension CustomAlertView {
             $0.setTitle("신청", for: .normal)
             $0.setTitleColor(.black, for: .normal)
             $0.backgroundColor = Color.circle_LightGreen
-            $0.titleLabel?.font = .fontGuide(.m1)
-            $0.makeCornerRound(radius: 20)
+            $0.titleLabel?.font = .fontGuide(.h2)
+            $0.makeCornerRound(radius: 15)
             $0.makeBorder(width: 1, color: Color.placeholder_Grey)
         }
         
@@ -75,8 +76,8 @@ extension CustomAlertView {
             $0.setTitle("취소", for: .normal)
             $0.setTitleColor(.black, for: .normal)
             $0.backgroundColor = Color.line_Grey
-            $0.titleLabel?.font = .fontGuide(.m1)
-            $0.makeCornerRound(radius: 20)
+            $0.titleLabel?.font = .fontGuide(.h2)
+            $0.makeCornerRound(radius: 15)
             $0.makeBorder(width: 1, color: Color.placeholder_Grey)
         }
     }
@@ -107,7 +108,7 @@ extension CustomAlertView {
         }
         
         explainLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(5)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(3)
             $0.centerX.equalToSuperview()
         }
         
@@ -120,7 +121,7 @@ extension CustomAlertView {
         
         allowButton.snp.makeConstraints {
             $0.top.equalTo(cancelButton)
-            $0.trailing.equalToSuperview().inset(30)
+            $0.trailing.equalToSuperview().inset(53)
             $0.width.equalTo(68)
             $0.height.equalTo(30)
         }
