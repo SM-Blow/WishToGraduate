@@ -32,12 +32,17 @@ final class EventDetailViewController: UIViewController {
     private let contentBackView = UIView()
     private let contentLabel = UILabel()
     
+    // MARK: - Properties
+    
+    private var eventDetailDummy: EventDetailModel = EventDetailModel.eventDetailModelDummyData()
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setDateBind(eventDetailDummy)
     }
 }
 
@@ -184,7 +189,7 @@ extension EventDetailViewController {
         contentView.snp.makeConstraints {
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             // 67 -> 제목부분, 192 -> 글 부분
-            $0.height.equalTo(67 + 192)
+//            $0.height.equalTo(67 + 192)
         }
         
         titleLabel.snp.makeConstraints {
@@ -202,7 +207,7 @@ extension EventDetailViewController {
         contentBackView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(27)
             $0.horizontalEdges.equalToSuperview().inset(22)
-            $0.height.equalTo(192)
+//            $0.height.equalTo(192)
         }
         
         contentLabel.snp.makeConstraints {
@@ -212,6 +217,27 @@ extension EventDetailViewController {
     }
     
     // MARK: - Methods
+    
+    private func setDateBind(_ model: EventDetailModel) {
+        userNameLabel.text = model.userName
+        dueDateLabel.text = model.date
+        titleLabel.text = model.title
+        applicantPersonLabel.text = model.applicationPerson
+        contentLabel.text = model.content
+        setContentLayout(model.content)
+    }
+    
+    private func setContentLayout(_ text: String) {
+        guard let font = contentLabel.font else { return }
+        let estimatedFrame = text.getEstimatedFrame(with: font)
+        print(estimatedFrame.height)
+        contentView.snp.makeConstraints {
+            $0.height.equalTo(67 + estimatedFrame.height + 28)
+        }
+        contentBackView.snp.makeConstraints {
+            $0.height.equalTo(estimatedFrame.height + 28)
+        }
+    }
     
     // MARK: - @objc Methods
 }
