@@ -217,7 +217,8 @@ extension EventDetailViewController {
     }
     
     private func applicationButtonDidTapped() {
-        let alert = CustomAlertView(alertType: .applicationEvent)
+        guard let title = titleLabel.text else { return }
+        let alert = CustomAlertView(alertType: .applicationEvent, title: title)
         alert.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(alert)
         alert.snp.makeConstraints {

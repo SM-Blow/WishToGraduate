@@ -28,9 +28,9 @@ final class CustomAlertView: UIView {
     
     // MARK: - View Life Cycle
     
-    init(alertType: CustomAlertType) {
+    init(alertType: CustomAlertType, title: String) {
         super.init(frame: .zero)
-        setUI()
+        setUI(title)
         setLayout()
         setAddTarget()
         setAlert(alertType)
@@ -45,7 +45,7 @@ extension CustomAlertView {
     
     // MARK: - UI Components Property
     
-    private func setUI() {
+    private func setUI(_ title: String) {
         
         self.backgroundColor = Color.background_Grey
         
@@ -55,7 +55,7 @@ extension CustomAlertView {
         }
         
         titleLabel.do {
-            $0.text = "2023 2학기 소프트웨어학부 개강총회"
+            $0.text = title
             $0.font = .fontGuide(.m1)
             $0.textColor = .black
         }
@@ -65,7 +65,6 @@ extension CustomAlertView {
         }
         
         allowButton.do {
-            $0.setTitle("신청", for: .normal)
             $0.setTitleColor(.black, for: .normal)
             $0.backgroundColor = Color.circle_LightGreen
             $0.titleLabel?.font = .fontGuide(.h2)
