@@ -38,6 +38,7 @@
 		0367814C2AB9E8AA00866F31 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367814B2AB9E8AA00866F31 /* CustomAlertView.swift */; };
 		036781512AB9FDC700866F31 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781502AB9FDC700866F31 /* CreateEventViewController.swift */; };
 		036781542AB9FE1F00866F31 /* CreateEventTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781532AB9FE1F00866F31 /* CreateEventTextField.swift */; };
+		036781562ABA0FFA00866F31 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781552ABA0FFA00866F31 /* UITextView+.swift */; };
 		0370B4AD2A8CFAF600005400 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4AC2A8CFAF600005400 /* CustomTextFieldView.swift */; };
 		0370B4AF2A8D151900005400 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4AE2A8D151900005400 /* SignUpViewController.swift */; };
 		0370B4B12A8D17E100005400 /* CustomCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4B02A8D17E100005400 /* CustomCheckButton.swift */; };
@@ -128,6 +129,7 @@
 		0367814B2AB9E8AA00866F31 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		036781502AB9FDC700866F31 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		036781532AB9FE1F00866F31 /* CreateEventTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventTextField.swift; sourceTree = "<group>"; };
+		036781552ABA0FFA00866F31 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		0370B4AC2A8CFAF600005400 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTextFieldView.swift; path = WishToGraduate/Presentation/Common/View/CustomTextFieldView.swift; sourceTree = SOURCE_ROOT; };
 		0370B4AE2A8D151900005400 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0370B4B02A8D17E100005400 /* CustomCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckButton.swift; sourceTree = "<group>"; };
@@ -702,6 +704,7 @@
 				0308DA532A2DF7CF00B784B9 /* UIFont+.swift */,
 				0308DA552A2DF82C00B784B9 /* NSMutableAttributedString+.swift */,
 				03B1691B2AB3701900FC4891 /* UIAlertController+.swift */,
+				036781552ABA0FFA00866F31 /* UITextView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -972,6 +975,7 @@
 				0370B4B12A8D17E100005400 /* CustomCheckButton.swift in Sources */,
 				03931AFC2A2CB38300B235D9 /* UITabBar+.swift in Sources */,
 				03931B142A2CB85600B235D9 /* APIConst.swift in Sources */,
+				036781562ABA0FFA00866F31 /* UITextView+.swift in Sources */,
 				03931AF02A2CB32E00B235D9 /* UITableView+.swift in Sources */,
 				03931AEA2A2CB2F000B235D9 /* NSObject+.swift in Sources */,
 				0370B4AF2A8D151900005400 /* SignUpViewController.swift in Sources */,

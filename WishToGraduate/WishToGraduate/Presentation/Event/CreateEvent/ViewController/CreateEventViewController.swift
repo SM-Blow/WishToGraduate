@@ -42,6 +42,7 @@ final class CreateEventViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setDelegate()
     }
 }
 
@@ -73,7 +74,9 @@ extension CreateEventViewController {
             $0.font = .fontGuide(.placeholder)
             $0.textColor = Color.placeholder_Grey
             $0.makeCornerRound(radius: 5)
+            $0.text = "행사 내용을 작성해주세요."
             $0.makeBorder(width: 1, color: Color.circle_Grey)
+            $0.setLeftPaddingPoints(7)
         }
         
         eventDetailTextLimitLabel.do {
@@ -144,5 +147,32 @@ extension CreateEventViewController {
     
     // MARK: - Methods
     
+    private func setDelegate() {
+        eventDetailTextView.delegate = self
+    }
+    
     // MARK: - @objc Methods
+}
+
+extension CreateEventViewController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.textColor == Color.placeholder_Grey {
+            textView.text = ""
+            textView.textColor = .black
+            textView.makeBorder(width: 1, color: Color.main_Green)
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "행사 내용을 작성해주세요." {
+            textView.text = ""
+            textView.textColor = .black
+            textView.makeBorder(width: 1, color: Color.main_Green)
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.makeBorder(width: 1, color: Color.circle_Grey)
+    }
 }

@@ -124,6 +124,7 @@ extension CreateEventTextField: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.makeBorder(width: 1, color: Color.main_Green)
+        textField.placeholder = ""
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
