@@ -17,12 +17,17 @@ final class CustomButtonView: UIView {
     private let topLineView = UIView()
     private let button = UIButton()
     
+    // MARK: - Properties
+    
+    var buttonHandler: (() -> Void)?
+    
     // MARK: - View Life Cycle
     
     init(title: String) {
         super.init(frame: .zero)
         setUI(title)
         setLayout()
+        setAddTarget()
     }
     
     required init?(coder: NSCoder) {
@@ -35,6 +40,8 @@ extension CustomButtonView {
     // MARK: - UI Components Property
     
     private func setUI(_ title: String) {
+        
+        backgroundColor = .white
         
         topLineView.do {
             $0.backgroundColor = Color.line_Grey
@@ -53,10 +60,11 @@ extension CustomButtonView {
     
     private func setLayout() {
         
-        backgroundColor = .clear
+        addSubviews(topLineView, button)
         
         topLineView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(1)
         }
         
@@ -65,5 +73,18 @@ extension CustomButtonView {
             $0.horizontalEdges.equalToSuperview().inset(22)
             $0.height.equalTo(45)
         }
+    }
+    
+    // MARK: - Methods
+    
+    private func setAddTarget() {
+        button.addTarget(self, action: #selector(buttonDidTapped), for: .touchUpInside)
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc
+    private func buttonDidTapped() {
+        buttonHandler?()
     }
 }

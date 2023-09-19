@@ -18,6 +18,7 @@ final class EventDetailViewController: UIViewController {
     private let navigationBar = CustomNavigationBar(title: "")
     private let scrollView = UIScrollView()
     private let stackView = UIStackView()
+    private let applicationButton = CustomButtonView(title: "행사 신청하기")
     
     private let userView = UIView()
     private let userProfileImageView = UIImageView()
@@ -126,7 +127,7 @@ extension EventDetailViewController {
         contentView.addSubviews(titleLabel, applicantPersonLabel, contentBackView)
         stackView.addArrangedSubviews(userView, contentView)
         scrollView.addSubviews(stackView)
-        view.addSubviews(navigationBar, scrollView)
+        view.addSubviews(navigationBar, scrollView, applicationButton)
         
         navigationBar.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -204,6 +205,12 @@ extension EventDetailViewController {
             $0.top.equalToSuperview().inset(14)
             $0.leading.equalToSuperview().inset(16)
         }
+        
+        applicationButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 81 / 812)
+        }
     }
     
     // MARK: - Methods
@@ -212,11 +219,15 @@ extension EventDetailViewController {
         print("popToHome")
     }
     
+    private func applicationButtonDidTapped() {
+        print("행사 신청하기")
+    }
+    
     private func setDateBind(_ model: EventDetailModel) {
         userNameLabel.text = model.userName
         dueDateLabel.text = model.date
         titleLabel.text = model.title
-        applicantPersonLabel.text = model.applicationPerson
+        applicantPersonLabel.text = model.applicantPersonLabel
         contentLabel.text = model.content
         setContentLayout(model.content)
     }
@@ -239,6 +250,9 @@ extension EventDetailViewController {
     private func setButton() {
         navigationBar.backButtonHandler = { [weak self] in
             self?.popToHome()
+        }
+        applicationButton.buttonHandler = { [weak self] in
+            self?.applicationButtonDidTapped()
         }
     }
 }
