@@ -179,8 +179,6 @@ extension EventDetailViewController {
         
         contentView.snp.makeConstraints {
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            // 67 -> 제목부분, 192 -> 글 부분
-//            $0.height.equalTo(67 + 192)
         }
         
         titleLabel.snp.makeConstraints {
@@ -198,7 +196,6 @@ extension EventDetailViewController {
         contentBackView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(27)
             $0.horizontalEdges.equalToSuperview().inset(22)
-//            $0.height.equalTo(192)
         }
         
         contentLabel.snp.makeConstraints {
