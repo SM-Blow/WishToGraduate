@@ -15,7 +15,7 @@ final class ChatListViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let navigationView = CustomNavigationView(title: "채팅")
+    private let navigationView = CustomNavigationBar(title: "채팅")
     private let chatListView = ChatListView()
     
     // MARK: - View Life Cycle
@@ -47,9 +47,9 @@ extension ChatListViewController {
         view.addSubviews(navigationView, chatListView)
         
         navigationView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalToSuperview()
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(52)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 96 / 812)
         }
         
         chatListView.snp.makeConstraints {

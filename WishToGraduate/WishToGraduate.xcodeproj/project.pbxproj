@@ -18,7 +18,6 @@
 		0308DA562A2DF82C00B784B9 /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA552A2DF82C00B784B9 /* NSMutableAttributedString+.swift */; };
 		031CBDFF2A6FE45100301F06 /* HomeNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CBDFE2A6FE45100301F06 /* HomeNavigationView.swift */; };
 		031CBE022A6FE90600301F06 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CBE012A6FE90600301F06 /* CustomNavigationBar.swift */; };
-		0330CA6E2A7616E4004CE2D7 /* MyPageNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0330CA6D2A7616E4004CE2D7 /* MyPageNavigationView.swift */; };
 		0330CA702A761AFB004CE2D7 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0330CA6F2A761AFB004CE2D7 /* MyProfileView.swift */; };
 		034650852A49C6AB0024AEC6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034650842A49C6AB0024AEC6 /* SearchViewController.swift */; };
 		035079222A3DF831007F28DF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035079212A3DF831007F28DF /* TabBarController.swift */; };
@@ -103,7 +102,6 @@
 		0308DA552A2DF82C00B784B9 /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
 		031CBDFE2A6FE45100301F06 /* HomeNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationView.swift; sourceTree = "<group>"; };
 		031CBE012A6FE90600301F06 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
-		0330CA6D2A7616E4004CE2D7 /* MyPageNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageNavigationView.swift; sourceTree = "<group>"; };
 		0330CA6F2A761AFB004CE2D7 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		034650842A49C6AB0024AEC6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		035079212A3DF831007F28DF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -211,7 +209,6 @@
 		0330CA6C2A7616D1004CE2D7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0330CA6D2A7616E4004CE2D7 /* MyPageNavigationView.swift */,
 				0330CA6F2A761AFB004CE2D7 /* MyProfileView.swift */,
 				03B169112AAF52DE00FC4891 /* MyPageSectionTab.swift */,
 			);
@@ -550,8 +547,8 @@
 		03931AE12A2CAD7E00B235D9 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				0370B4B82A8E20BB00005400 /* Chat */,
 				0370B4A92A8CF9B000005400 /* Common */,
+				0370B4B82A8E20BB00005400 /* Chat */,
 				98A955F02A60F8E200B9BFD3 /* Detail */,
 				0356155C2A3C89C200CC9A5E /* Home */,
 				034650832A49C6900024AEC6 /* Search */,
@@ -860,7 +857,6 @@
 				031CBE022A6FE90600301F06 /* CustomNavigationBar.swift in Sources */,
 				3BFA40572AAE0EF000382B9B /* CategoryCollectionView.swift in Sources */,
 				03931AC32A2CA5F700B235D9 /* CategoryViewController.swift in Sources */,
-				0330CA6E2A7616E4004CE2D7 /* MyPageNavigationView.swift in Sources */,
 				035615652A3CAABC00CC9A5E /* HomeListView.swift in Sources */,
 				03931ABF2A2CA5F700B235D9 /* AppDelegate.swift in Sources */,
 				0356155A2A3C55BE00CC9A5E /* CategoryModel.swift in Sources */,

@@ -18,7 +18,7 @@ class SearchViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let navigationView = CustomNavigationView(title: "검색하기")
+    private let navigationView = CustomNavigationBar(title: "검색하기")
     private let backImageView = UIImageView()
     private let searchView = UIView()
     private let searchButton = UIButton()
@@ -98,9 +98,9 @@ extension SearchViewController {
         view.addSubviews(navigationView, searchView, searchListView)
         
         navigationView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalToSuperview()
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(52)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 96 / 812)
         }
         
         searchButton.snp.makeConstraints {
