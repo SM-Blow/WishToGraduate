@@ -103,7 +103,7 @@ extension EventDetailViewController {
             $0.backgroundColor = Color.main_Green
             $0.textColor = .white
             $0.textAlignment = .center
-            $0.makeCornerRound(radius: 5)
+            $0.makeCornerRound(radius: 3)
         }
         
         contentBackView.do {
