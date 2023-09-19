@@ -35,7 +35,7 @@ final class DetailViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let navigationView = CustomNavigationView(title: "").then {
+    private let navigationView = CustomNavigationBar(title: "").then {
         $0.isBackButtonIncluded = true
     }
     private let bottomUnderLineView = UIView()
@@ -157,9 +157,9 @@ extension DetailViewController {
         view.addSubviews(navigationView, naviView, containerView, bottomButtonView, bottomUnderLineView)
         
         navigationView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalToSuperview()
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(52)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 96 / 812)
         }
         
         naviView.snp.makeConstraints {

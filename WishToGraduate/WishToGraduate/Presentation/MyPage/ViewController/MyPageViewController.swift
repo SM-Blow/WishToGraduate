@@ -20,7 +20,7 @@ final class MyPageViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let navigationView = MyPageNavigationView()
+    private let navigationView = CustomNavigationBar(title: "마이페이지")
     private let myProfileView = MyProfileView()
     private let myPageSectionTab = MyPageSectionTab()
     private lazy var myWritingCollectionView: UICollectionView = {
@@ -75,9 +75,9 @@ extension MyPageViewController {
         view.addSubviews(navigationView, myProfileView, myPageSectionTab, myWritingCollectionView)
         
         navigationView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalToSuperview()
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(52)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 96 / 812)
         }
         
         myProfileView.snp.makeConstraints {

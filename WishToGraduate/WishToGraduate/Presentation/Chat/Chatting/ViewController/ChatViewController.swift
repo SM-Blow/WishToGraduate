@@ -15,7 +15,7 @@ final class ChatViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let chattingNavigationBar = CustomNavigationView(title: "")
+    private let chattingNavigationBar = CustomNavigationBar(title: "")
     private let chattingView = ChatView()
     private let messageFieldView = UIView()
     private let messageFieldLineView = UIView()

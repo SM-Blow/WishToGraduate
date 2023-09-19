@@ -10,10 +10,12 @@ import UIKit
 import SnapKit
 import Then
 
-final class CustomNavigationView: UIView {
+final class CustomNavigationBar: UIView {
     
     // MARK: - UI Components
     
+    private let backgroundView = UIView()
+    private let navigationView = UIView()
     private let titleLabel = UILabel()
     private let closeButton = UIButton()
     private let backButton = UIButton()
@@ -48,13 +50,19 @@ final class CustomNavigationView: UIView {
     }
 }
 
-extension CustomNavigationView {
+extension CustomNavigationBar {
     
     // MARK: - UI Components Property
     
     private func setUI(_ title: String) {
         
-        backgroundColor = Color.light_Green
+        backgroundView.do {
+            $0.backgroundColor = Color.light_Green
+        }
+        
+        navigationView.do {
+            $0.backgroundColor = Color.light_Green
+        }
         
         titleLabel.do {
             $0.text = title
@@ -81,7 +89,19 @@ extension CustomNavigationView {
     
     private func setLayout() {
         
-        addSubviews(titleLabel, closeButton, backButton, underLineView)
+        navigationView.addSubviews(titleLabel, closeButton, backButton, underLineView)
+        addSubviews(navigationView, backgroundView)
+        
+        backgroundView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 44 / 812)
+        }
+        
+        navigationView.snp.makeConstraints {
+            $0.top.equalTo(backgroundView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 52 / 812)
+        }
         
         titleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -91,11 +111,13 @@ extension CustomNavigationView {
         closeButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(8)
             $0.centerY.equalToSuperview()
+            $0.size.equalTo(35)
         }
         
         backButton.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(8)
             $0.centerY.equalToSuperview()
+            $0.size.equalTo(35)
         }
         
         underLineView.snp.makeConstraints {
