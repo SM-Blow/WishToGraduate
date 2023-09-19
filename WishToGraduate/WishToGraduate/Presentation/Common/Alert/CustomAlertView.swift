@@ -143,16 +143,26 @@ extension CustomAlertView {
     
     private func setAddTarget() {
         cancelButton.addTarget(self, action: #selector(cancelButtonDidTapped), for: .touchUpInside)
+        allowButton.addTarget(self, action: #selector(allowButtonDidTapped), for: .touchUpInside)
     }
     
     private func closeAlertView() {
         removeFromSuperview()
     }
     
+    private func allowAlert() {
+        print("allow")
+    }
+    
     // MARK: - @objc Methods
     
-    @objc 
+    @objc
     private func cancelButtonDidTapped() {
         closeAlertView()
+    }
+    
+    @objc
+    private func allowButtonDidTapped() {
+        allowAlert()
     }
 }
