@@ -217,7 +217,14 @@ extension EventDetailViewController {
     }
     
     private func applicationButtonDidTapped() {
-        print("행사 신청하기")
+        guard let title = titleLabel.text else { return }
+        let alert = CustomAlertView(alertType: .applicationEvent, title: title)
+        alert.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(alert)
+        alert.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        alert.isUserInteractionEnabled = true
     }
     
     private func setDateBind(_ model: EventDetailModel) {
