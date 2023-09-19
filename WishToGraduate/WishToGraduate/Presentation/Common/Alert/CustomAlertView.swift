@@ -32,6 +32,7 @@ final class CustomAlertView: UIView {
         super.init(frame: .zero)
         setUI()
         setLayout()
+        setAddTarget()
         setAlert(alertType)
     }
     
@@ -140,5 +141,18 @@ extension CustomAlertView {
         }
     }
     
+    private func setAddTarget() {
+        cancelButton.addTarget(self, action: #selector(cancelButtonDidTapped), for: .touchUpInside)
+    }
+    
+    private func closeAlertView() {
+        removeFromSuperview()
+    }
+    
     // MARK: - @objc Methods
+    
+    @objc 
+    private func cancelButtonDidTapped() {
+        closeAlertView()
+    }
 }
