@@ -35,6 +35,7 @@
 		0366B7A02ABAF6FE0005BF0F /* AddCouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0366B79F2ABAF6FE0005BF0F /* AddCouponViewController.swift */; };
 		0366B7A42ABB55E10005BF0F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0366B7A32ABB55E10005BF0F /* HomeViewController.swift */; };
 		0366B7A62ABB5C490005BF0F /* CustomHomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0366B7A52ABB5C490005BF0F /* CustomHomeButton.swift */; };
+		0366B7A92ABB79960005BF0F /* HomeUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0366B7A82ABB79960005BF0F /* HomeUserModel.swift */; };
 		0367813E2AB993F400866F31 /* SizeLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367813D2AB993F400866F31 /* SizeLiterals.swift */; };
 		036781412AB998B100866F31 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781402AB998B100866F31 /* EventDetailViewController.swift */; };
 		036781452AB9D6BD00866F31 /* EventDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781442AB9D6BD00866F31 /* EventDetailModel.swift */; };
@@ -130,6 +131,7 @@
 		0366B79F2ABAF6FE0005BF0F /* AddCouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCouponViewController.swift; sourceTree = "<group>"; };
 		0366B7A32ABB55E10005BF0F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0366B7A52ABB5C490005BF0F /* CustomHomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHomeButton.swift; sourceTree = "<group>"; };
+		0366B7A82ABB79960005BF0F /* HomeUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUserModel.swift; sourceTree = "<group>"; };
 		0367813D2AB993F400866F31 /* SizeLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiterals.swift; sourceTree = "<group>"; };
 		036781402AB998B100866F31 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		036781442AB9D6BD00866F31 /* EventDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailModel.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				0366B7A22ABB55D00005BF0F /* ViewController */,
+				0366B7A72ABB79780005BF0F /* Model */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -427,6 +430,14 @@
 				0366B7A32ABB55E10005BF0F /* HomeViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0366B7A72ABB79780005BF0F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0366B7A82ABB79960005BF0F /* HomeUserModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		0367813B2AB9929700866F31 /* Navigation */ = {
@@ -1002,6 +1013,7 @@
 				03931AF82A2CB36400B235D9 /* UILabel+.swift in Sources */,
 				03931AEC2A2CB30E00B235D9 /* UITextField+.swift in Sources */,
 				0370B4BE2A8E25C000005400 /* ChatListView.swift in Sources */,
+				0366B7A92ABB79960005BF0F /* HomeUserModel.swift in Sources */,
 				0350792E2A3EDE29007F28DF /* CategorySection.swift in Sources */,
 				03B1691C2AB3701900FC4891 /* UIAlertController+.swift in Sources */,
 				98A955F32A60F97400B9BFD3 /* DetailViewController.swift in Sources */,
