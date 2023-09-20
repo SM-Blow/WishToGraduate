@@ -92,17 +92,21 @@ extension CustomHomeButton {
         case .share:
             titleLabel.text = "공유하기"
             explainLabel.text = "전자기기, 전공서적 등을\n공유해요"
+            iconImageView.image = Image.shareButtonImage
         case .coupon:
             titleLabel.text = "쿠폰"
             explainLabel.text = "학교 주변 가게의 쿠폰을\n간편하게 관리해요"
+            iconImageView.image = Image.couponButtonImage
             backgroundColor = Color.light_Green
         case .event:
             titleLabel.text = "행사"
             explainLabel.text = "학교 행사를 신청하고\n관리해요"
+            iconImageView.image = Image.eventButtonImage
             backgroundColor = Color.light_Green
         case .myPage:
             titleLabel.text = "마이페이지"
             explainLabel.text = "내 정보를 관리해요"
+            iconImageView.image = Image.mypageButtonImage
         }
     }
 }
