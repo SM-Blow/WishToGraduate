@@ -105,7 +105,7 @@ extension CreateEventViewController {
         stackView.snp.makeConstraints {
             $0.top.equalTo(navigationBar.snp.bottom).offset(19)
             $0.horizontalEdges.equalToSuperview().inset(23)
-            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 467 / 812)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 471 / 812)
         }
         
         eventNameView.snp.makeConstraints {
