@@ -47,18 +47,12 @@ extension CustomHomeButton {
         makeCornerRound(radius: 20)
         makeShadow(radius: 8, offset: CGSize(width: 0, height: 0), opacity: 0.12)
         
-        iconImageView.do {
-            $0.image = Image.profileImage
-        }
-        
         titleLabel.do {
-            $0.text = "공유하기"
             $0.font = .fontGuide(.title_bold)
             $0.textColor = .black
         }
         
         explainLabel.do {
-            $0.text = "전자기기, 전공서적 등을\n공유해요"
             $0.font = .fontGuide(.date1)
             $0.textColor = .black
             $0.numberOfLines = 0
