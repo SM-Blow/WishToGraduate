@@ -22,10 +22,6 @@ final class ChatViewController: UIViewController {
     private let inputTextFieldView = UITextField()
     private let sendButton = UIButton()
     
-    // MARK: - Properties
-    
-    // MARK: - Initializer
-    
     // MARK: - View Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
