@@ -29,13 +29,8 @@ final class AddCouponViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
-        setupKeyboardEvent()
         setTapScreen()
         setButton()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        removeKeyboardEvent()
     }
 }
 
@@ -102,23 +97,6 @@ extension AddCouponViewController {
     
     // MARK: - Methods
     
-    private func setupKeyboardEvent() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
-        
-    }
-    
-    private func removeKeyboardEvent() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
     private func setTapScreen() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScreen))
         tapGestureRecognizer.cancelsTouchesInView = false
@@ -134,27 +112,6 @@ extension AddCouponViewController {
     }
     
     // MARK: - @objc Methods
-    
-    @objc
-    private func keyboardWillShow(_ sender: Notification) {
-        guard let keyboardFrame = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
-              let currentTextField = UIResponder.currentResponder as? UITextField else { return }
-        let keyboardTopY = keyboardFrame.cgRectValue.origin.y
-        let convertedTextFieldFrame = view.convert(currentTextField.frame, from: currentTextField.superview)
-        let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
-        
-        if textFieldBottomY > keyboardTopY {
-            let keyboardOverlap = textFieldBottomY - keyboardTopY
-            view.frame.origin.y = -keyboardOverlap - 40
-        }
-    }
-    
-    @objc
-    private func keyboardWillHide(_ sender: Notification) {
-        if view.frame.origin.y != 0 {
-            view.frame.origin.y = 0
-        }
-    }
     
     @objc
     private func didTapScreen(_ gesture: UITapGestureRecognizer) {
