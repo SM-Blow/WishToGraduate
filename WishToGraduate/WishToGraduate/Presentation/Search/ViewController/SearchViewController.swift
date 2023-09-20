@@ -24,7 +24,7 @@ class SearchViewController: UIViewController {
     private let searchButton = UIButton()
     private let searchButtonView = UIView()
     private let searchTextField = UITextField()
-    private let searchListView = HomeListView()
+    private let searchListView = ShareListView()
     
     // MARK: - Properties
     

@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class HomeNavigationView: UIView {
+final class ShareNavigationView: UIView {
     
     // MARK: - UI Components
     
@@ -23,8 +23,6 @@ final class HomeNavigationView: UIView {
     
     var searchButtonHandler: (() -> Void)?
     var writeButtonHandler: (() -> Void)?
-    
-    // MARK: - Initializer
     
     // MARK: - View Life Cycle
     
@@ -40,7 +38,7 @@ final class HomeNavigationView: UIView {
     }
 }
 
-extension HomeNavigationView {
+extension ShareNavigationView {
     
     // MARK: - UI Components Property
     
@@ -84,12 +82,6 @@ extension HomeNavigationView {
             $0.size.equalTo(20)
             $0.trailing.equalTo(searchButton.snp.leading).offset(-2)
         }
-//
-//        notificationButton.snp.makeConstraints {
-//            $0.centerY.equalToSuperview()
-//            $0.trailing.equalTo(writeButton.snp.leading).offset(5)
-//        }
-        
     }
     
     // MARK: - Methods

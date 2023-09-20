@@ -37,7 +37,7 @@ extension TabBarController {
     private func setTabBarItems() {
 
         tabs = [
-            HomeViewController(),
+            ShareViewController(),
             ChatListViewController(),
             MyPageViewController()
         ]
