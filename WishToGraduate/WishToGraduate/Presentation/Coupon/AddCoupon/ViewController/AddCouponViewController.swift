@@ -17,7 +17,7 @@ final class AddCouponViewController: UIViewController {
     
     private let navigationBar = CustomNavigationBar(title: "쿠폰 등록")
     private let stackView = UIStackView()
-    
+    private let addCouponButton = CustomButtonView(title: "쿠폰 등록하기")
     
     // MARK: - Properties
     
@@ -50,7 +50,7 @@ extension AddCouponViewController {
     
     private func setLayout() {
         
-        view.addSubviews(navigationBar)
+        view.addSubviews(navigationBar, addCouponButton)
         
         navigationBar.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -58,6 +58,11 @@ extension AddCouponViewController {
             $0.height.equalTo(SizeLiterals.Screen.screenHeight * 96 / 812)
         }
         
+        addCouponButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 81 / 812)
+        }
     }
     
     // MARK: - Methods
