@@ -40,6 +40,10 @@ final class ChatViewController: UIViewController {
         setDelegate()
         setAddTarget()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        removeKeyboardEvent()
+    }
 }
 
 extension ChatViewController {
@@ -163,6 +167,11 @@ extension ChatViewController {
             sendButton.setTitleColor(Color.placeholder_Grey, for: .normal)
             sendButton.isUserInteractionEnabled = false
         }
+    }
+    
+    private func removeKeyboardEvent() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // MARK: - @objc Methods

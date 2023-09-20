@@ -46,6 +46,10 @@ final class CreateEventViewController: UIViewController {
         setupKeyboardEvent()
         setTapScreen()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        removeKeyboardEvent()
+    }
 }
 
 extension CreateEventViewController {
@@ -163,6 +167,11 @@ extension CreateEventViewController {
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
         
+    }
+    
+    private func removeKeyboardEvent() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // MARK: - Methods
