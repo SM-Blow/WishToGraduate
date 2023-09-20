@@ -173,6 +173,12 @@ extension CreateEventViewController: UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        textView.makeBorder(width: 1, color: Color.circle_Grey)
+        if !textView.hasText {
+            textView.makeBorder(width: 1, color: Color.circle_Grey)
+            textView.text = "행사 내용을 작성해주세요."
+            textView.textColor = Color.placeholder_Grey
+        } else {
+            textView.makeBorder(width: 1, color: Color.main_Green)
+        }
     }
 }
