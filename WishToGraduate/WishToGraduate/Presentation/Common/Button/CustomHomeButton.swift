@@ -28,6 +28,7 @@ final class CustomHomeButton: UIView {
         super.init(frame: .zero)
         setUI()
         setLayout()
+        setHomeButton(type)
     }
     
     required init?(coder: NSCoder) {
@@ -63,6 +64,8 @@ extension CustomHomeButton {
         }
     }
     
+    // MARK: - Layout Helper
+    
     private func setLayout() {
         
         addSubviews(iconImageView, titleLabel, explainLabel)
@@ -81,6 +84,25 @@ extension CustomHomeButton {
         explainLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(14)
             $0.leading.equalTo(titleLabel)
+        }
+    }
+    
+    private func setHomeButton(_ type: HomeButtonType) {
+        switch type {
+        case .share:
+            titleLabel.text = "공유하기"
+            explainLabel.text = "전자기기, 전공서적 등을\n공유해요"
+        case .coupon:
+            titleLabel.text = "쿠폰"
+            explainLabel.text = "학교 주변 가게의 쿠폰을\n간편하게 관리해요"
+            backgroundColor = Color.light_Green
+        case .event:
+            titleLabel.text = "행사"
+            explainLabel.text = "학교 행사를 신청하고\n관리해요"
+            backgroundColor = Color.light_Green
+        case .myPage:
+            titleLabel.text = "마이페이지"
+            explainLabel.text = "내 정보를 관리해요"
         }
     }
 }
