@@ -11,7 +11,7 @@ enum HomeButtonType {
     case share
     case coupon
     case event
-    case myPage
+    case mypage
 }
 
 final class CustomHomeButton: UIView {
@@ -21,6 +21,15 @@ final class CustomHomeButton: UIView {
     private let iconImageView = UIImageView()
     private let titleLabel = UILabel()
     private let explainLabel = UILabel()
+    
+    // MARK: - Properties
+    
+    private var homeButtonType: HomeButtonType?
+    
+    var shareButtonHandler: (() -> Void)?
+    var couponButtonHandler: (() -> Void)?
+    var eventButtonHandler: (() -> Void)?
+    var mypageButtonHadler: (() -> Void)?
     
     // MARK: - Initializer
 
@@ -85,6 +94,7 @@ extension CustomHomeButton {
     // MARK: - Methods
     
     private func setHomeButton(_ type: HomeButtonType) {
+        homeButtonType = type
         switch type {
         case .share:
             titleLabel.text = "공유하기"
@@ -100,7 +110,7 @@ extension CustomHomeButton {
             explainLabel.text = "학교 행사를 신청하고\n관리해요"
             iconImageView.image = Image.eventButtonImage
             backgroundColor = Color.light_Green
-        case .myPage:
+        case .mypage:
             titleLabel.text = "마이페이지"
             explainLabel.text = "내 정보를 관리해요"
             iconImageView.image = Image.mypageButtonImage
@@ -114,6 +124,17 @@ extension CustomHomeButton {
     
     @objc
     private func handleTap() {
-        print("뷰 터치")
+        guard let type = homeButtonType else { return }
+        switch type {
+        case .share:
+            shareButtonHandler?()
+        case .coupon:
+            couponButtonHandler?()
+        case .event:
+            eventButtonHandler?()
+        case .mypage:
+            print("mypage")
+            mypageButtonHadler?()
+        }
     }
 }

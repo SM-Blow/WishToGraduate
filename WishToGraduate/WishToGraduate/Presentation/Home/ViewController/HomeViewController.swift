@@ -22,7 +22,7 @@ final class HomeViewController: UIViewController {
     private let shareButton = CustomHomeButton(.share)
     private let couponButton = CustomHomeButton(.coupon)
     private let eventButton = CustomHomeButton(.event)
-    private let myPageButton = CustomHomeButton(.myPage)
+    private let myPageButton = CustomHomeButton(.mypage)
     
     // MARK: - Properties
     
@@ -35,6 +35,7 @@ final class HomeViewController: UIViewController {
         setUI()
         setLayout()
         setDataBind(homeUserDummyData)
+        setButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -137,5 +138,39 @@ extension HomeViewController {
         userNameLabel.partColorChange(targetString: "\(model.userName)", textColor: Color.main_Green)
         pointLabel.text = "씨앗 개수: \(model.point)개"
         pointLabel.partColorChange(targetString: "\(model.point)", textColor: Color.main_Green)
+    }
+    
+    private func pushToShareVC() {
+        self.navigationController?.pushViewController(TabBarController(), animated: true)
+    }
+    
+    private func pushToCouponVC() {
+        self.navigationController?.pushViewController(MyPageViewController(), animated: true)
+    }
+    
+    private func pushToEventVC() {
+        self.navigationController?.pushViewController(MyPageViewController(), animated: true)
+    }
+    
+    private func pushToMypage() {
+        print("ad")
+        self.navigationController?.pushViewController(MyPageViewController(), animated: true)
+    }
+    
+    // MARK: - @objc Methods
+    
+    private func setButton() {
+        shareButton.shareButtonHandler = { [weak self] in
+            self?.pushToShareVC()
+        }
+        couponButton.couponButtonHandler = { [weak self] in
+            self?.pushToCouponVC()
+        }
+        eventButton.eventButtonHandler = { [weak self] in
+            self?.pushToEventVC()
+        }
+        myPageButton.mypageButtonHadler = { [weak self] in
+            self?.pushToMypage()
+        }
     }
 }
