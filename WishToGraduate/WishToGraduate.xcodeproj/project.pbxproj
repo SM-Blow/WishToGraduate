@@ -330,7 +330,7 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		0356155C2A3C89C200CC9A5E /* Home */ = {
+		0356155C2A3C89C200CC9A5E /* Share */ = {
 			isa = PBXGroup;
 			children = (
 				0356155D2A3C89C800CC9A5E /* ViewController */,
@@ -338,7 +338,7 @@
 				035615632A3CA7B400CC9A5E /* Cell */,
 				035615622A3CA7A500CC9A5E /* Model */,
 			);
-			path = Home;
+			path = Share;
 			sourceTree = "<group>";
 		};
 		0356155D2A3C89C800CC9A5E /* ViewController */ = {
@@ -677,7 +677,7 @@
 				0370B4A92A8CF9B000005400 /* Common */,
 				0370B4B82A8E20BB00005400 /* Chat */,
 				98A955F02A60F8E200B9BFD3 /* Detail */,
-				0356155C2A3C89C200CC9A5E /* Home */,
+				0356155C2A3C89C200CC9A5E /* Share */,
 				034650832A49C6900024AEC6 /* Search */,
 				035079252A3DFA82007F28DF /* Write */,
 				035079292A3DFAB5007F28DF /* MyPage */,
