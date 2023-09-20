@@ -153,7 +153,6 @@ extension HomeViewController {
     }
     
     private func pushToMypage() {
-        print("ad")
         self.navigationController?.pushViewController(MyPageViewController(), animated: true)
     }
     

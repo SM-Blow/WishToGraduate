@@ -133,7 +133,6 @@ extension CustomHomeButton {
         case .event:
             eventButtonHandler?()
         case .mypage:
-            print("mypage")
             mypageButtonHadler?()
         }
     }

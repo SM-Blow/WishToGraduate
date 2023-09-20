@@ -418,6 +418,7 @@
 		0366B7A12ABB55C80005BF0F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				0366B7AA2ABB86990005BF0F /* View */,
 				0366B7A22ABB55D00005BF0F /* ViewController */,
 				0366B7A72ABB79780005BF0F /* Model */,
 			);
@@ -438,6 +439,14 @@
 				0366B7A82ABB79960005BF0F /* HomeUserModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0366B7AA2ABB86990005BF0F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0366B7A52ABB5C490005BF0F /* CustomHomeButton.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		0367813B2AB9929700866F31 /* Navigation */ = {
@@ -485,7 +494,6 @@
 			isa = PBXGroup;
 			children = (
 				036781482AB9DF4200866F31 /* CustomButtonView.swift */,
-				0366B7A52ABB5C490005BF0F /* CustomHomeButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
