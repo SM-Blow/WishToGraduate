@@ -31,6 +31,7 @@ final class AddCouponViewController: UIViewController {
         setLayout()
         setupKeyboardEvent()
         setTapScreen()
+        setButton()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -124,6 +125,10 @@ extension AddCouponViewController {
         view.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    private func addCouponButtonDidTapped() {
+        print("addCouponButtonTap")
+    }
+    
     // MARK: - @objc Methods
     
     @objc
@@ -152,6 +157,13 @@ extension AddCouponViewController {
         let touchLocation = gesture.location(in: self.view)
         if !addCouponButton.frame.contains(touchLocation) {
             self.view.endEditing(true)
+        }
+    }
+    
+    @objc
+    private func setButton() {
+        addCouponButton.buttonHandler = { [weak self] in
+            self?.addCouponButtonDidTapped()
         }
     }
 }
