@@ -27,6 +27,7 @@ final class CreateEventTextField: UIView {
     // MARK: - Properties
     
     var maxLength: Int?
+    var createEventType: CreateEventType?
     
     // MARK: - View Life Cycle
     
@@ -96,6 +97,7 @@ extension CreateEventTextField {
     // MARK: - Methods
     
     private func setTextField(_ type: CreateEventType) {
+        createEventType = type
         switch type {
         case .eventName:
             titleLabel.text = "행사 이름 *"
@@ -151,6 +153,21 @@ extension CreateEventTextField: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.makeBorder(width: 1, color: Color.circle_Grey)
+        if !textField.hasText {
+            textField.makeBorder(width: 1, color: Color.circle_Grey)
+            guard let type = createEventType else { return }
+            switch type {
+            case .eventName:
+                textField.placeholder = "행사 이름을 작성해주세요."
+                maxLength = 30
+            case .hostName:
+                textField.placeholder = "주최측 정보를 작성해주세요."
+                maxLength = 20
+            case .eventDate:
+                textField.placeholder = "행사의 일시를 선택해주세요."
+            }
+        } else {
+            textField.makeBorder(width: 1, color: Color.main_Green)
+        }
     }
 }
