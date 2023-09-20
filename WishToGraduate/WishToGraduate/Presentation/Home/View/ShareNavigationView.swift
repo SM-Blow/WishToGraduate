@@ -24,8 +24,6 @@ final class ShareNavigationView: UIView {
     var searchButtonHandler: (() -> Void)?
     var writeButtonHandler: (() -> Void)?
     
-    // MARK: - Initializer
-    
     // MARK: - View Life Cycle
     
     override init(frame: CGRect) {
@@ -84,12 +82,6 @@ extension ShareNavigationView {
             $0.size.equalTo(20)
             $0.trailing.equalTo(searchButton.snp.leading).offset(-2)
         }
-//
-//        notificationButton.snp.makeConstraints {
-//            $0.centerY.equalToSuperview()
-//            $0.trailing.equalTo(writeButton.snp.leading).offset(5)
-//        }
-        
     }
     
     // MARK: - Methods

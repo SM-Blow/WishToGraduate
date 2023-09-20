@@ -26,8 +26,6 @@ final class ShareListView: UIView {
     
     var pushToDetailHandler: (() -> Void)?
     
-    // MARK: - Initializer
-    
     // MARK: - View Life Cycle
     
     override init(frame: CGRect) {

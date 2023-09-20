@@ -35,8 +35,6 @@ final class ShareViewController: UIViewController {
     
     weak var categoryDelegate: CategoryProtocol?
     
-    // MARK: - Initializer
-    
     // MARK: - View Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {

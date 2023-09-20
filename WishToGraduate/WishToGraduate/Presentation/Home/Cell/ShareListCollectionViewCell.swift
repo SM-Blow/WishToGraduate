@@ -20,10 +20,6 @@ final class ShareListCollectionViewCell: UICollectionViewCell {
     private let transactionLabel = UILabel()
     private let timeLabel = UILabel()
     
-    // MARK: - Properties
-    
-    // MARK: - Initializer
-    
     // MARK: - View Life Cycle
     
     override init(frame: CGRect) {
@@ -58,15 +54,6 @@ extension ShareListCollectionViewCell {
             $0.addCharacterSpacing()
         }
         
-//        borrowLabel.do {
-//            $0.font = .fontGuide(.bt1)
-//            $0.textColor = .black
-//            $0.textAlignment = .center
-//            $0.backgroundColor = Color.btn_LightGreen
-//            $0.layer.cornerRadius = 12
-//            $0.clipsToBounds = true
-//        }
-        
         transactionLabel.do {
             $0.text = "거래중"
             $0.font = .fontGuide(.bt1)
@@ -98,8 +85,6 @@ extension ShareListCollectionViewCell {
         borrowLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalTo(titleLabel.snp.trailing).offset(9)
-//            $0.width.equalTo(43)
-//            $0.height.equalTo(22)
         }
         
         transactionLabel.snp.makeConstraints {
@@ -123,6 +108,4 @@ extension ShareListCollectionViewCell {
         transactionLabel.isHidden = model.transaction
         timeLabel.text = model.time
     }
-    
-    // MARK: - @objc Methods
 }
