@@ -125,6 +125,10 @@ extension AddCouponViewController {
         view.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    private func popToHome() {
+        print("popToHomeTap")
+    }
+    
     private func addCouponButtonDidTapped() {
         print("addCouponButtonTap")
     }
@@ -162,6 +166,9 @@ extension AddCouponViewController {
     
     @objc
     private func setButton() {
+        navigationBar.closeButtonHandler = { [weak self] in
+            self?.popToHome()
+        }
         addCouponButton.buttonHandler = { [weak self] in
             self?.addCouponButtonDidTapped()
         }
