@@ -22,10 +22,6 @@ final class ChatViewController: UIViewController {
     private let inputTextFieldView = UITextField()
     private let sendButton = UIButton()
     
-    // MARK: - Properties
-    
-    // MARK: - Initializer
-    
     // MARK: - View Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +35,10 @@ final class ChatViewController: UIViewController {
         setTapScreen()
         setDelegate()
         setAddTarget()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        removeKeyboardEvent()
     }
 }
 
@@ -163,6 +163,11 @@ extension ChatViewController {
             sendButton.setTitleColor(Color.placeholder_Grey, for: .normal)
             sendButton.isUserInteractionEnabled = false
         }
+    }
+    
+    private func removeKeyboardEvent() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // MARK: - @objc Methods

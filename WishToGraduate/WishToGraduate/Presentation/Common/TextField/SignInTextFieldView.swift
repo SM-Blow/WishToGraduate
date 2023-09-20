@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class CustomTextFieldView: UIView {
+class SignInTextFieldView: UIView {
     
     // MARK: - UI Components
     
@@ -38,7 +38,7 @@ class CustomTextFieldView: UIView {
     }
 }
 
-extension CustomTextFieldView {
+extension SignInTextFieldView {
     
     // MARK: - UI Components Property
     
@@ -94,7 +94,7 @@ extension CustomTextFieldView {
     }
 }
 
-extension CustomTextFieldView: UITextFieldDelegate {
+extension SignInTextFieldView: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         textField.textColor = .black

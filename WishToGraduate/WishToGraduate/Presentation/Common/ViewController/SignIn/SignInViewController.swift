@@ -17,8 +17,8 @@ final class SignInViewController: UIViewController {
     
     private let logoImageView = UIImageView()
     private let titleLabel = UILabel()
-    private let idTextField = CustomTextFieldView(type: "아이디")
-    private let passwordTextField = CustomTextFieldView(type: "비밀번호")
+    private let idTextField = SignInTextFieldView(type: "아이디")
+    private let passwordTextField = SignInTextFieldView(type: "비밀번호")
     private let signInButton = CustomCheckButton(title: "로그인")
     private let signupButton = CustomCheckButton(title: "회원가입")
     
