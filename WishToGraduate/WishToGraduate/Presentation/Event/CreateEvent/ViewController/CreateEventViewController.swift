@@ -18,13 +18,13 @@ final class CreateEventViewController: UIViewController {
     private let navigationBar = CustomNavigationBar(title: "행사 생성하기")
     private let stackView = UIStackView()
     
-    private let eventNameView = CreateEventTextField(type: .eventName)
-    private let hostNameView = CreateEventTextField(type: .hostName)
+    private let eventNameView = CustomTextFieldView(type: .eventName)
+    private let hostNameView = CustomTextFieldView(type: .hostName)
     private let eventDetailView = UIView()
     private let eventDetailLabel = UILabel()
     private let eventDetailTextView = UITextView()
     private let eventDetailTextLimitLabel = UILabel()
-    private let eventDateView = CreateEventTextField(type: .eventDate)
+    private let eventDateView = CustomTextFieldView(type: .eventDate)
     
     private let createEventButton = CustomButtonView(title: "행사 생성하기")
     

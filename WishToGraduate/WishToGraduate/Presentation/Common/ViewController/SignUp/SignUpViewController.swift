@@ -17,9 +17,9 @@ final class SignUpViewController: UIViewController {
     
     private let logoImageView = UIImageView()
     private let titleLabel = UILabel()
-    private let idTextField = CustomTextFieldView(type: "아이디")
-    private let passwordTextField = CustomTextFieldView(type: "비밀번호")
-    private let nickNameTextField = CustomTextFieldView(type: "닉네임")
+    private let idTextField = SignInTextFieldView(type: "아이디")
+    private let passwordTextField = SignInTextFieldView(type: "비밀번호")
+    private let nickNameTextField = SignInTextFieldView(type: "닉네임")
     private let signUpButton = CustomCheckButton(title: "회원가입")
     
     // MARK: - View Life Cycle

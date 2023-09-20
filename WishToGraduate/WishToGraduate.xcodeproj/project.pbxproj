@@ -40,7 +40,7 @@
 		036781512AB9FDC700866F31 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781502AB9FDC700866F31 /* CreateEventViewController.swift */; };
 		036781542AB9FE1F00866F31 /* CreateEventTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781532AB9FE1F00866F31 /* CreateEventTextField.swift */; };
 		036781562ABA0FFA00866F31 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781552ABA0FFA00866F31 /* UITextView+.swift */; };
-		0370B4AD2A8CFAF600005400 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4AC2A8CFAF600005400 /* CustomTextFieldView.swift */; };
+		0370B4AD2A8CFAF600005400 /* SignInTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4AC2A8CFAF600005400 /* SignInTextFieldView.swift */; };
 		0370B4AF2A8D151900005400 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4AE2A8D151900005400 /* SignUpViewController.swift */; };
 		0370B4B12A8D17E100005400 /* CustomCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4B02A8D17E100005400 /* CustomCheckButton.swift */; };
 		0370B4B32A8D1DFC00005400 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4B22A8D1DFC00005400 /* SignInViewController.swift */; };
@@ -132,7 +132,7 @@
 		036781502AB9FDC700866F31 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		036781532AB9FE1F00866F31 /* CreateEventTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventTextField.swift; sourceTree = "<group>"; };
 		036781552ABA0FFA00866F31 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
-		0370B4AC2A8CFAF600005400 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTextFieldView.swift; path = WishToGraduate/Presentation/Common/View/CustomTextFieldView.swift; sourceTree = SOURCE_ROOT; };
+		0370B4AC2A8CFAF600005400 /* SignInTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignInTextFieldView.swift; path = WishToGraduate/Presentation/Common/TextField/SignInTextFieldView.swift; sourceTree = SOURCE_ROOT; };
 		0370B4AE2A8D151900005400 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0370B4B02A8D17E100005400 /* CustomCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckButton.swift; sourceTree = "<group>"; };
 		0370B4B22A8D1DFC00005400 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -374,6 +374,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		0366B79A2ABAF1DF0005BF0F /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				036781532AB9FE1F00866F31 /* CreateEventTextField.swift */,
+				0370B4AC2A8CFAF600005400 /* SignInTextFieldView.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
 		0367813B2AB9929700866F31 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,7 +469,6 @@
 		036781522AB9FE0B00866F31 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				036781532AB9FE1F00866F31 /* CreateEventTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -471,6 +479,7 @@
 				0367813B2AB9929700866F31 /* Navigation */,
 				036781472AB9DF2800866F31 /* Button */,
 				0367814A2AB9E88600866F31 /* Alert */,
+				0366B79A2ABAF1DF0005BF0F /* TextField */,
 				0370B4AB2A8CF9DD00005400 /* View */,
 				0370B4AA2A8CF9D000005400 /* ViewController */,
 			);
@@ -489,7 +498,6 @@
 		0370B4AB2A8CF9DD00005400 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0370B4AC2A8CFAF600005400 /* CustomTextFieldView.swift */,
 				0370B4B02A8D17E100005400 /* CustomCheckButton.swift */,
 				3BFA40562AAE0EF000382B9B /* CategoryCollectionView.swift */,
 				3B3677862AAF374400FF4ED1 /* CommonBorrowLabel.swift */,
@@ -973,7 +981,7 @@
 				0308DA522A2DEF9D00B784B9 /* FontLevel.swift in Sources */,
 				03931AF62A2CB35700B235D9 /* UIImageView+.swift in Sources */,
 				036781492AB9DF4200866F31 /* CustomButtonView.swift in Sources */,
-				0370B4AD2A8CFAF600005400 /* CustomTextFieldView.swift in Sources */,
+				0370B4AD2A8CFAF600005400 /* SignInTextFieldView.swift in Sources */,
 				03931AEE2A2CB31C00B235D9 /* UIStackView+.swift in Sources */,
 				0366B7982ABAE6920005BF0F /* UIResponder+.swift in Sources */,
 				0370B4B12A8D17E100005400 /* CustomCheckButton.swift in Sources */,

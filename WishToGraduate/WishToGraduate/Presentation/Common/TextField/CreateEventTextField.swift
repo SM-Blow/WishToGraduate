@@ -1,5 +1,5 @@
 //
-//  CreateEventTextField.swift
+//  CustomTextFieldView.swift
 //  WishToGraduate
 //
 //  Created by KJ on 2023/09/20.
@@ -16,7 +16,7 @@ enum CreateEventType {
     case eventDate
 }
 
-final class CreateEventTextField: UIView {
+final class CustomTextFieldView: UIView {
     
     // MARK: - UI Components
     
@@ -44,7 +44,7 @@ final class CreateEventTextField: UIView {
     }
 }
 
-extension CreateEventTextField {
+extension CustomTextFieldView {
     
     // MARK: - UI Components Property
     
@@ -122,7 +122,7 @@ extension CreateEventTextField {
     // MARK: - @objc Methods
 }
 
-extension CreateEventTextField: UITextFieldDelegate {
+extension CustomTextFieldView: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.makeBorder(width: 1, color: Color.main_Green)
