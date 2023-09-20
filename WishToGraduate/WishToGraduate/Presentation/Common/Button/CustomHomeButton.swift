@@ -29,6 +29,7 @@ final class CustomHomeButton: UIView {
         setUI()
         setLayout()
         setHomeButton(type)
+        setUpTouch()
     }
     
     required init?(coder: NSCoder) {
@@ -87,6 +88,8 @@ extension CustomHomeButton {
         }
     }
     
+    // MARK: - Methods
+    
     private func setHomeButton(_ type: HomeButtonType) {
         switch type {
         case .share:
@@ -108,5 +111,15 @@ extension CustomHomeButton {
             explainLabel.text = "내 정보를 관리해요"
             iconImageView.image = Image.mypageButtonImage
         }
+    }
+    
+    private func setUpTouch() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        self.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    private func handleTap() {
+        print("뷰 터치")
     }
 }
