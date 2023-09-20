@@ -32,6 +32,7 @@
 		035615672A3CAEA600CC9A5E /* HomeListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615662A3CAEA600CC9A5E /* HomeListCollectionViewCell.swift */; };
 		035615692A3CB4A300CC9A5E /* HomeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615682A3CB4A300CC9A5E /* HomeListModel.swift */; };
 		0366B7982ABAE6920005BF0F /* UIResponder+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0366B7972ABAE6920005BF0F /* UIResponder+.swift */; };
+		0366B7A02ABAF6FE0005BF0F /* AddCouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0366B79F2ABAF6FE0005BF0F /* AddCouponViewController.swift */; };
 		0367813E2AB993F400866F31 /* SizeLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367813D2AB993F400866F31 /* SizeLiterals.swift */; };
 		036781412AB998B100866F31 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781402AB998B100866F31 /* EventDetailViewController.swift */; };
 		036781452AB9D6BD00866F31 /* EventDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781442AB9D6BD00866F31 /* EventDetailModel.swift */; };
@@ -124,6 +125,7 @@
 		035615662A3CAEA600CC9A5E /* HomeListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListCollectionViewCell.swift; sourceTree = "<group>"; };
 		035615682A3CB4A300CC9A5E /* HomeListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListModel.swift; sourceTree = "<group>"; };
 		0366B7972ABAE6920005BF0F /* UIResponder+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+.swift"; sourceTree = "<group>"; };
+		0366B79F2ABAF6FE0005BF0F /* AddCouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCouponViewController.swift; sourceTree = "<group>"; };
 		0367813D2AB993F400866F31 /* SizeLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiterals.swift; sourceTree = "<group>"; };
 		036781402AB998B100866F31 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		036781442AB9D6BD00866F31 /* EventDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailModel.swift; sourceTree = "<group>"; };
@@ -381,6 +383,30 @@
 				0370B4AC2A8CFAF600005400 /* SignInTextFieldView.swift */,
 			);
 			path = TextField;
+			sourceTree = "<group>";
+		};
+		0366B79B2ABAF5A50005BF0F /* Coupon */ = {
+			isa = PBXGroup;
+			children = (
+				0366B79C2ABAF6290005BF0F /* AddCoupon */,
+			);
+			path = Coupon;
+			sourceTree = "<group>";
+		};
+		0366B79C2ABAF6290005BF0F /* AddCoupon */ = {
+			isa = PBXGroup;
+			children = (
+				0366B79E2ABAF6E60005BF0F /* ViewController */,
+			);
+			path = AddCoupon;
+			sourceTree = "<group>";
+		};
+		0366B79E2ABAF6E60005BF0F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0366B79F2ABAF6FE0005BF0F /* AddCouponViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		0367813B2AB9929700866F31 /* Navigation */ = {
@@ -657,6 +683,7 @@
 				035079292A3DFAB5007F28DF /* MyPage */,
 				035615542A3C4EB200CC9A5E /* Category */,
 				0367813F2AB9988800866F31 /* Event */,
+				0366B79B2ABAF5A50005BF0F /* Coupon */,
 				035079202A3DF804007F28DF /* TabBar */,
 			);
 			path = Presentation;
@@ -943,6 +970,7 @@
 				03931AD92A2CA76200B235D9 /* Model.swift in Sources */,
 				03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */,
 				03931B122A2CB68B00B235D9 /* NetworkLoggerPlugin.swift in Sources */,
+				0366B7A02ABAF6FE0005BF0F /* AddCouponViewController.swift in Sources */,
 				3B36778A2AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift in Sources */,
 				0370B4BB2A8E20EF00005400 /* ChatListViewController.swift in Sources */,
 				03931B002A2CB39D00B235D9 /* UIViewController+.swift in Sources */,
