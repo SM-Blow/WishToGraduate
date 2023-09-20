@@ -14,6 +14,10 @@ enum CreateEventType {
     case eventName
     case hostName
     case eventDate
+    case storeName
+    case couponContent
+    case dueDate
+    case serialNumber
 }
 
 final class CustomTextFieldView: UIView {
@@ -112,6 +116,24 @@ extension CustomTextFieldView {
         case .eventDate:
             titleLabel.text = "행사 일시 *"
             textField.placeholder = "행사의 일시를 선택해주세요."
+        case .storeName:
+            titleLabel.text = "가게 이름 *"
+            textField.placeholder = "가게 이름을 작성해주세요."
+            textLimit.text = "0/10"
+            maxLength = 10
+        case .couponContent:
+            titleLabel.text = "쿠폰 내역 *"
+            textField.placeholder = "ex). 현금 결제시 1000원 할인"
+            textLimit.text = "0/20"
+            maxLength = 20
+        case .dueDate:
+            titleLabel.text = "기한 *"
+            textField.placeholder = "쿠폰의 사용 기한을 선택해주세요."
+        case .serialNumber:
+            titleLabel.text = "일련번호 *"
+            textField.placeholder = "쿠폰에 적혀있는 8자리 일련번호를 작성해주세요."
+            textLimit.text = "0/8"
+            maxLength = 8
         }
     }
     
@@ -165,6 +187,14 @@ extension CustomTextFieldView: UITextFieldDelegate {
                 maxLength = 20
             case .eventDate:
                 textField.placeholder = "행사의 일시를 선택해주세요."
+            case .storeName:
+                textField.placeholder = "가게 이름을 작성해주세요."
+            case .couponContent:
+                textField.placeholder = "ex). 현금 결제시 1000원 할인"
+            case .dueDate:
+                textField.placeholder = "쿠폰의 사용 기한을 선택해주세요."
+            case .serialNumber:
+                textField.placeholder = "쿠폰에 적혀있는 8자리 일련번호를 작성해주세요."
             }
         } else {
             textField.makeBorder(width: 1, color: Color.main_Green)
