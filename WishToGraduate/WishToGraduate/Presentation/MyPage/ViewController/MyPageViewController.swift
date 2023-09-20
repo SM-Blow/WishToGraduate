@@ -36,7 +36,6 @@ final class MyPageViewController: UIViewController {
     private var myWritingDummyModel: [ShareListModel] = ShareListModel.myWritingDummyData()
     private var myScrapDummyModel: [ShareListModel] = ShareListModel.myScrapDummyData()
     
-    // MARK: - Initializer
     
     // MARK: - View Life Cycle
     
@@ -61,6 +60,10 @@ extension MyPageViewController {
     private func setUI() {
         
         view.backgroundColor = Color.light_Green
+        
+        navigationView.do {
+            $0.isBackButtonIncluded = true
+        }
         
         myWritingCollectionView.do {
             $0.backgroundColor = .clear
@@ -110,6 +113,10 @@ extension MyPageViewController {
         myWritingCollectionView.registerCell(ShareListCollectionViewCell.self)
     }
     
+    private func popToHome() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     private func myWritingTab() {
         myPageTab = .writing
         myWritingCollectionView.reloadData()
@@ -124,10 +131,12 @@ extension MyPageViewController {
     
     @objc
     private func setButton() {
+        navigationView.backButtonHandler = { [weak self] in
+            self?.popToHome()
+        }
         myPageSectionTab.myWritingButtonHandler = { [weak self] in
             self?.myWritingTab()
         }
-        
         myPageSectionTab.myScarpButtonHandler = { [weak self] in
             self?.myScarpTab()
         }
