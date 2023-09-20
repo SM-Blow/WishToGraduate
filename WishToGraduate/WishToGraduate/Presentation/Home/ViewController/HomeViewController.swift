@@ -19,10 +19,10 @@ final class HomeViewController: UIViewController {
     private let logoImageView = UIImageView()
     private let userNameLabel = UILabel()
     private let pointLabel = UILabel()
-    private let shareButton = UIButton()
-    private let couponButton = UIButton()
-    private let eventButton = UIButton()
-    private let myPageButton = UIButton()
+    private let shareButton = CustomHomeButton(.share)
+    private let couponButton = CustomHomeButton(.coupon)
+    private let eventButton = CustomHomeButton(.event)
+    private let myPageButton = CustomHomeButton(.myPage)
     
     // MARK: - View Life Cycle
     
@@ -64,13 +64,65 @@ extension HomeViewController {
             $0.font = .fontGuide(.title_bold)
             $0.textColor = .black
         }
-        
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
         
+        view.addSubviews(navigationView, shareButton,
+                         couponButton, eventButton, myPageButton)
+        navigationView.addSubviews(logoImageView, userNameLabel, pointLabel)
+        
+        navigationView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 176 / 812)
+        }
+        
+        logoImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(SizeLiterals.Screen.screenHeight * 44 / 812)
+            $0.leading.equalToSuperview().inset(23)
+            $0.size.equalTo(41)
+        }
+        
+        userNameLabel.snp.makeConstraints {
+            $0.top.equalTo(logoImageView.snp.bottom).offset(16)
+            $0.leading.equalToSuperview().inset(31)
+        }
+        
+        pointLabel.snp.makeConstraints {
+            $0.top.equalTo(userNameLabel.snp.bottom).offset(5)
+            $0.leading.equalTo(userNameLabel)
+        }
+        
+        shareButton.snp.makeConstraints {
+            $0.top.equalTo(navigationView.snp.bottom).offset(30)
+            $0.leading.equalToSuperview().inset(SizeLiterals.Screen.screenWidth * 41 / 375)
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 131 / 375)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 156 / 812)
+        }
+        
+        couponButton.snp.makeConstraints {
+            $0.top.equalTo(shareButton)
+            $0.trailing.equalToSuperview().inset(SizeLiterals.Screen.screenWidth * 41 / 375)
+            $0.width.equalTo(shareButton)
+            $0.height.equalTo(shareButton)
+        }
+        
+        eventButton.snp.makeConstraints {
+            $0.top.equalTo(shareButton.snp.bottom).offset(30)
+            $0.leading.equalTo(shareButton)
+            $0.width.equalTo(shareButton)
+            $0.height.equalTo(shareButton)
+        }
+        
+        myPageButton.snp.makeConstraints {
+            $0.top.equalTo(eventButton)
+            $0.trailing.equalTo(couponButton)
+            $0.width.equalTo(shareButton)
+            $0.height.equalTo(shareButton)
+        }
     }
     
     // MARK: - Methods
