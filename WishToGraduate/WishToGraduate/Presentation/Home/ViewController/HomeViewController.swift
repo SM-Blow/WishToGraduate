@@ -24,12 +24,17 @@ final class HomeViewController: UIViewController {
     private let eventButton = CustomHomeButton(.event)
     private let myPageButton = CustomHomeButton(.myPage)
     
+    // MARK: - Properties
+    
+    private let homeUserDummyData: HomeUserModel = HomeUserModel.homeUserModelDummyData()
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setDataBind(homeUserDummyData)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -127,5 +132,10 @@ extension HomeViewController {
     
     // MARK: - Methods
     
-    // MARK: - @objc Methods
+    private func setDataBind(_ model: HomeUserModel) {
+        userNameLabel.text = "반가워요 \(model.userName)님!"
+        userNameLabel.partColorChange(targetString: "\(model.userName)", textColor: Color.main_Green)
+        pointLabel.text = "씨앗 개수: \(model.point)개"
+        pointLabel.partColorChange(targetString: "\(model.point)", textColor: Color.main_Green)
+    }
 }
