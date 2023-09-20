@@ -33,6 +33,8 @@
 		035615692A3CB4A300CC9A5E /* ShareListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615682A3CB4A300CC9A5E /* ShareListModel.swift */; };
 		0366B7982ABAE6920005BF0F /* UIResponder+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0366B7972ABAE6920005BF0F /* UIResponder+.swift */; };
 		0366B7A02ABAF6FE0005BF0F /* AddCouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0366B79F2ABAF6FE0005BF0F /* AddCouponViewController.swift */; };
+		0366B7A42ABB55E10005BF0F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0366B7A32ABB55E10005BF0F /* HomeViewController.swift */; };
+		0366B7A62ABB5C490005BF0F /* CustomHomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0366B7A52ABB5C490005BF0F /* CustomHomeButton.swift */; };
 		0367813E2AB993F400866F31 /* SizeLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367813D2AB993F400866F31 /* SizeLiterals.swift */; };
 		036781412AB998B100866F31 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781402AB998B100866F31 /* EventDetailViewController.swift */; };
 		036781452AB9D6BD00866F31 /* EventDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781442AB9D6BD00866F31 /* EventDetailModel.swift */; };
@@ -126,6 +128,8 @@
 		035615682A3CB4A300CC9A5E /* ShareListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareListModel.swift; sourceTree = "<group>"; };
 		0366B7972ABAE6920005BF0F /* UIResponder+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+.swift"; sourceTree = "<group>"; };
 		0366B79F2ABAF6FE0005BF0F /* AddCouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCouponViewController.swift; sourceTree = "<group>"; };
+		0366B7A32ABB55E10005BF0F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0366B7A52ABB5C490005BF0F /* CustomHomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHomeButton.swift; sourceTree = "<group>"; };
 		0367813D2AB993F400866F31 /* SizeLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiterals.swift; sourceTree = "<group>"; };
 		036781402AB998B100866F31 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		036781442AB9D6BD00866F31 /* EventDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailModel.swift; sourceTree = "<group>"; };
@@ -409,6 +413,22 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		0366B7A12ABB55C80005BF0F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0366B7A22ABB55D00005BF0F /* ViewController */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0366B7A22ABB55D00005BF0F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0366B7A32ABB55E10005BF0F /* HomeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		0367813B2AB9929700866F31 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,6 +474,7 @@
 			isa = PBXGroup;
 			children = (
 				036781482AB9DF4200866F31 /* CustomButtonView.swift */,
+				0366B7A52ABB5C490005BF0F /* CustomHomeButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -675,6 +696,7 @@
 			isa = PBXGroup;
 			children = (
 				0370B4A92A8CF9B000005400 /* Common */,
+				0366B7A12ABB55C80005BF0F /* Home */,
 				0370B4B82A8E20BB00005400 /* Chat */,
 				98A955F02A60F8E200B9BFD3 /* Detail */,
 				0356155C2A3C89C200CC9A5E /* Share */,
@@ -969,6 +991,7 @@
 				3B3677872AAF374400FF4ED1 /* CommonBorrowLabel.swift in Sources */,
 				03931AD92A2CA76200B235D9 /* Model.swift in Sources */,
 				03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */,
+				0366B7A42ABB55E10005BF0F /* HomeViewController.swift in Sources */,
 				03931B122A2CB68B00B235D9 /* NetworkLoggerPlugin.swift in Sources */,
 				0366B7A02ABAF6FE0005BF0F /* AddCouponViewController.swift in Sources */,
 				3B36778A2AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift in Sources */,
@@ -1032,6 +1055,7 @@
 				0308DA562A2DF82C00B784B9 /* NSMutableAttributedString+.swift in Sources */,
 				0370B4C12A8E274400005400 /* ChatListCollectionViewCell.swift in Sources */,
 				0308DA4F2A2DEEB300B784B9 /* NotoSansKRType.swift in Sources */,
+				0366B7A62ABB5C490005BF0F /* CustomHomeButton.swift in Sources */,
 				03931AD72A2CA75B00B235D9 /* DTO.swift in Sources */,
 				03931AFE2A2CB39100B235D9 /* UIImage+.swift in Sources */,
 				3BFA40542AADF77A00382B9B /* WriteNavigationView.swift in Sources */,
