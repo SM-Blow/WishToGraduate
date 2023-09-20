@@ -11,7 +11,7 @@ import Moya
 import SnapKit
 import Then
 
-final class HomeListCollectionViewCell: UICollectionViewCell {
+final class ShareListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
     
@@ -37,7 +37,7 @@ final class HomeListCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension HomeListCollectionViewCell {
+extension ShareListCollectionViewCell {
     
     // MARK: - UI Components Property
     
@@ -117,7 +117,7 @@ extension HomeListCollectionViewCell {
     
     // MARK: - Methods
     
-    func setDataBind(model: HomeListModel) {
+    func setDataBind(model: ShareListModel) {
         titleLabel.text = model.title
         borrowLabel.text = model.borrow == 1 ? "빌려요" : "빌려줄게요"
         transactionLabel.isHidden = model.transaction

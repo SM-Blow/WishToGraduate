@@ -16,7 +16,7 @@
 		0308DA522A2DEF9D00B784B9 /* FontLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA512A2DEF9D00B784B9 /* FontLevel.swift */; };
 		0308DA542A2DF7CF00B784B9 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA532A2DF7CF00B784B9 /* UIFont+.swift */; };
 		0308DA562A2DF82C00B784B9 /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA552A2DF82C00B784B9 /* NSMutableAttributedString+.swift */; };
-		031CBDFF2A6FE45100301F06 /* HomeNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CBDFE2A6FE45100301F06 /* HomeNavigationView.swift */; };
+		031CBDFF2A6FE45100301F06 /* ShareNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CBDFE2A6FE45100301F06 /* ShareNavigationView.swift */; };
 		031CBE022A6FE90600301F06 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CBE012A6FE90600301F06 /* CustomNavigationBar.swift */; };
 		0330CA702A761AFB004CE2D7 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0330CA6F2A761AFB004CE2D7 /* MyProfileView.swift */; };
 		034650852A49C6AB0024AEC6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034650842A49C6AB0024AEC6 /* SearchViewController.swift */; };
@@ -27,10 +27,10 @@
 		0350792E2A3EDE29007F28DF /* CategorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0350792D2A3EDE29007F28DF /* CategorySection.swift */; };
 		035615572A3C4F1500CC9A5E /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615562A3C4F1500CC9A5E /* CategoryCollectionViewCell.swift */; };
 		0356155A2A3C55BE00CC9A5E /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615592A3C55BE00CC9A5E /* CategoryModel.swift */; };
-		035615602A3C89E300CC9A5E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0356155F2A3C89E300CC9A5E /* HomeViewController.swift */; };
-		035615652A3CAABC00CC9A5E /* HomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615642A3CAABC00CC9A5E /* HomeListView.swift */; };
-		035615672A3CAEA600CC9A5E /* HomeListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615662A3CAEA600CC9A5E /* HomeListCollectionViewCell.swift */; };
-		035615692A3CB4A300CC9A5E /* HomeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615682A3CB4A300CC9A5E /* HomeListModel.swift */; };
+		035615602A3C89E300CC9A5E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0356155F2A3C89E300CC9A5E /* ShareViewController.swift */; };
+		035615652A3CAABC00CC9A5E /* ShareListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615642A3CAABC00CC9A5E /* ShareListView.swift */; };
+		035615672A3CAEA600CC9A5E /* ShareListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615662A3CAEA600CC9A5E /* ShareListCollectionViewCell.swift */; };
+		035615692A3CB4A300CC9A5E /* ShareListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035615682A3CB4A300CC9A5E /* ShareListModel.swift */; };
 		0366B7982ABAE6920005BF0F /* UIResponder+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0366B7972ABAE6920005BF0F /* UIResponder+.swift */; };
 		0366B7A02ABAF6FE0005BF0F /* AddCouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0366B79F2ABAF6FE0005BF0F /* AddCouponViewController.swift */; };
 		0367813E2AB993F400866F31 /* SizeLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367813D2AB993F400866F31 /* SizeLiterals.swift */; };
@@ -109,7 +109,7 @@
 		0308DA512A2DEF9D00B784B9 /* FontLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLevel.swift; sourceTree = "<group>"; };
 		0308DA532A2DF7CF00B784B9 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		0308DA552A2DF82C00B784B9 /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
-		031CBDFE2A6FE45100301F06 /* HomeNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationView.swift; sourceTree = "<group>"; };
+		031CBDFE2A6FE45100301F06 /* ShareNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareNavigationView.swift; sourceTree = "<group>"; };
 		031CBE012A6FE90600301F06 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		0330CA6F2A761AFB004CE2D7 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		034650842A49C6AB0024AEC6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -120,10 +120,10 @@
 		0350792D2A3EDE29007F28DF /* CategorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySection.swift; sourceTree = "<group>"; };
 		035615562A3C4F1500CC9A5E /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		035615592A3C55BE00CC9A5E /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
-		0356155F2A3C89E300CC9A5E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		035615642A3CAABC00CC9A5E /* HomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListView.swift; sourceTree = "<group>"; };
-		035615662A3CAEA600CC9A5E /* HomeListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListCollectionViewCell.swift; sourceTree = "<group>"; };
-		035615682A3CB4A300CC9A5E /* HomeListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListModel.swift; sourceTree = "<group>"; };
+		0356155F2A3C89E300CC9A5E /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		035615642A3CAABC00CC9A5E /* ShareListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareListView.swift; sourceTree = "<group>"; };
+		035615662A3CAEA600CC9A5E /* ShareListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareListCollectionViewCell.swift; sourceTree = "<group>"; };
+		035615682A3CB4A300CC9A5E /* ShareListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareListModel.swift; sourceTree = "<group>"; };
 		0366B7972ABAE6920005BF0F /* UIResponder+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+.swift"; sourceTree = "<group>"; };
 		0366B79F2ABAF6FE0005BF0F /* AddCouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCouponViewController.swift; sourceTree = "<group>"; };
 		0367813D2AB993F400866F31 /* SizeLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiterals.swift; sourceTree = "<group>"; };
@@ -344,7 +344,7 @@
 		0356155D2A3C89C800CC9A5E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				0356155F2A3C89E300CC9A5E /* HomeViewController.swift */,
+				0356155F2A3C89E300CC9A5E /* ShareViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -352,8 +352,8 @@
 		035615612A3CA78A00CC9A5E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				035615642A3CAABC00CC9A5E /* HomeListView.swift */,
-				031CBDFE2A6FE45100301F06 /* HomeNavigationView.swift */,
+				035615642A3CAABC00CC9A5E /* ShareListView.swift */,
+				031CBDFE2A6FE45100301F06 /* ShareNavigationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -361,7 +361,7 @@
 		035615622A3CA7A500CC9A5E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				035615682A3CB4A300CC9A5E /* HomeListModel.swift */,
+				035615682A3CB4A300CC9A5E /* ShareListModel.swift */,
 				0350792D2A3EDE29007F28DF /* CategorySection.swift */,
 				0370F39F2A442A9C00A9AF28 /* LabelStatusModel.swift */,
 			);
@@ -371,7 +371,7 @@
 		035615632A3CA7B400CC9A5E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				035615662A3CAEA600CC9A5E /* HomeListCollectionViewCell.swift */,
+				035615662A3CAEA600CC9A5E /* ShareListCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -961,7 +961,7 @@
 				03931AF22A2CB33B00B235D9 /* UICollectionView+.swift in Sources */,
 				03B169122AAF52DE00FC4891 /* MyPageSectionTab.swift in Sources */,
 				0308DA542A2DF7CF00B784B9 /* UIFont+.swift in Sources */,
-				035615602A3C89E300CC9A5E /* HomeViewController.swift in Sources */,
+				035615602A3C89E300CC9A5E /* ShareViewController.swift in Sources */,
 				3B3677872AAF374400FF4ED1 /* CommonBorrowLabel.swift in Sources */,
 				036781512AB9FDC700866F31 /* CreateEventViewController.swift in Sources */,
 				03FD52A32AA34B1F00899F4F /* ChatViewController.swift in Sources */,
@@ -992,7 +992,7 @@
 				03931AC32A2CA5F700B235D9 /* CategoryViewController.swift in Sources */,
 				0367814C2AB9E8AA00866F31 /* CustomAlertView.swift in Sources */,
 				036781542AB9FE1F00866F31 /* CustomTextFieldView.swift in Sources */,
-				035615652A3CAABC00CC9A5E /* HomeListView.swift in Sources */,
+				035615652A3CAABC00CC9A5E /* ShareListView.swift in Sources */,
 				03931ABF2A2CA5F700B235D9 /* AppDelegate.swift in Sources */,
 				0356155A2A3C55BE00CC9A5E /* CategoryModel.swift in Sources */,
 				03931AE82A2CB2E200B235D9 /* UIView+.swift in Sources */,
@@ -1020,13 +1020,13 @@
 				03931AEA2A2CB2F000B235D9 /* NSObject+.swift in Sources */,
 				0370B4AF2A8D151900005400 /* SignUpViewController.swift in Sources */,
 				03931AF42A2CB34A00B235D9 /* String+.swift in Sources */,
-				035615692A3CB4A300CC9A5E /* HomeListModel.swift in Sources */,
+				035615692A3CB4A300CC9A5E /* ShareListModel.swift in Sources */,
 				035079242A3DF881007F28DF /* TabBarItem.swift in Sources */,
-				035615672A3CAEA600CC9A5E /* HomeListCollectionViewCell.swift in Sources */,
+				035615672A3CAEA600CC9A5E /* ShareListCollectionViewCell.swift in Sources */,
 				3BD2E38D2AAE48B400220B44 /* BorrowTypeCollectionViewCell.swift in Sources */,
 				034650852A49C6AB0024AEC6 /* SearchViewController.swift in Sources */,
 				035079272A3DFA9E007F28DF /* WriteViewController.swift in Sources */,
-				031CBDFF2A6FE45100301F06 /* HomeNavigationView.swift in Sources */,
+				031CBDFF2A6FE45100301F06 /* ShareNavigationView.swift in Sources */,
 				3B45268E2AB0C65200D8CE37 /* BorrowTypeModel.swift in Sources */,
 				3B36778C2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift in Sources */,
 				0308DA562A2DF82C00B784B9 /* NSMutableAttributedString+.swift in Sources */,

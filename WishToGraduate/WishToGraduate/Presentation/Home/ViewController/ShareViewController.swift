@@ -15,11 +15,11 @@ protocol CategoryProtocol: AnyObject {
     func categoryType(category: CategorySection)
 }
 
-final class HomeViewController: UIViewController {
+final class ShareViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let navigationView = HomeNavigationView()
+    private let navigationView = ShareNavigationView()
     let categoryModel = CategoryModel.categoryModelData()
     let selectedCategoryModel = CategoryModel.selectedCategoryModelData()
     private lazy var categoryCollectionView: CategoryCollectionView = {
@@ -29,7 +29,7 @@ final class HomeViewController: UIViewController {
         return collectionView
     }()
     private let underLineView = UIView()
-    private let homeListView = HomeListView()
+    private let homeListView = ShareListView()
     
     // MARK: - Properties
     
@@ -54,7 +54,7 @@ final class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController {
+extension ShareViewController {
     
     // MARK: - UI Components Property
     
@@ -148,7 +148,7 @@ extension HomeViewController {
     }
 }
 
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
+extension ShareViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 59, height: 59)
     }
@@ -190,7 +190,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension HomeViewController: CategoryProtocol {
+extension ShareViewController: CategoryProtocol {
     
     func categoryType(category: CategorySection) {
         homeListView.setListModel(category: category)

@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class HomeListView: UIView {
+final class ShareListView: UIView {
     
     // MARK: - UI Components
     
@@ -20,7 +20,7 @@ final class HomeListView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
-    private var homeListDummyModel: [HomeListModel] = HomeListModel.homeListModelDummyData()
+    private var homeListDummyModel: [ShareListModel] = ShareListModel.shareListModelDummyData()
     
     // MARK: - Properties
     
@@ -43,7 +43,7 @@ final class HomeListView: UIView {
     }
 }
 
-extension HomeListView {
+extension ShareListView {
     
     // MARK: - UI Components Property
     
@@ -76,23 +76,23 @@ extension HomeListView {
     }
     
     private func setRegister() {
-        listCollectionView.registerCell(HomeListCollectionViewCell.self)
+        listCollectionView.registerCell(ShareListCollectionViewCell.self)
     }
     
     func setListModel(category: CategorySection) {
         switch category {
         case .all:
-            homeListDummyModel = HomeListModel.homeListModelDummyData()
+            homeListDummyModel = ShareListModel.shareListModelDummyData()
         case .pill:
-            homeListDummyModel = HomeListModel.fillDummyData()
+            homeListDummyModel = ShareListModel.fillDummyData()
         case .sanitaryPad:
-            homeListDummyModel = HomeListModel.homeListModelDummyData()
+            homeListDummyModel = ShareListModel.shareListModelDummyData()
         case .charger:
-            homeListDummyModel = HomeListModel.fillDummyData()
+            homeListDummyModel = ShareListModel.fillDummyData()
         case .book:
-            homeListDummyModel = HomeListModel.homeListModelDummyData()
+            homeListDummyModel = ShareListModel.shareListModelDummyData()
         case .other:
-            homeListDummyModel = HomeListModel.fillDummyData()
+            homeListDummyModel = ShareListModel.fillDummyData()
         }
         listCollectionView.reloadData()
     }
@@ -100,9 +100,9 @@ extension HomeListView {
     func setSearchListModel(type: SearchSection) {
         switch type {
         case .empty:
-            homeListDummyModel = HomeListModel.emptyDummyData()
+            homeListDummyModel = ShareListModel.emptyDummyData()
         case .search:
-            homeListDummyModel = HomeListModel.homeListModelDummyData()
+            homeListDummyModel = ShareListModel.shareListModelDummyData()
         }
         listCollectionView.reloadData()
     }
@@ -110,7 +110,7 @@ extension HomeListView {
     // MARK: - @objc Methods
 }
 
-extension HomeListView: UICollectionViewDelegateFlowLayout {
+extension ShareListView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: bounds.width - 40, height: 69)
@@ -129,14 +129,14 @@ extension HomeListView: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension HomeListView: UICollectionViewDataSource {
+extension ShareListView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return homeListDummyModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(type: HomeListCollectionViewCell.self, indexPath: indexPath)
+        let cell = collectionView.dequeueCell(type: ShareListCollectionViewCell.self, indexPath: indexPath)
         cell.setDataBind(model: homeListDummyModel[indexPath.row])
         return cell
     }

@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class HomeNavigationView: UIView {
+final class ShareNavigationView: UIView {
     
     // MARK: - UI Components
     
@@ -40,7 +40,7 @@ final class HomeNavigationView: UIView {
     }
 }
 
-extension HomeNavigationView {
+extension ShareNavigationView {
     
     // MARK: - UI Components Property
     
