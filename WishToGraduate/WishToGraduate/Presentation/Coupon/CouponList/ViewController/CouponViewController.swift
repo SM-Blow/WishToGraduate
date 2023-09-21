@@ -7,23 +7,96 @@
 
 import UIKit
 
-class CouponViewController: UIViewController {
+import SnapKit
+import Then
 
+final class CouponViewController: UIViewController {
+
+    // MARK: - Properties
+    
+    private let navigationBar = CustomNavigationBar(title: "쿠폰 관리하기")
+    private lazy var coupontListCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return collectionView
+    }()
+    private var couponDummyData: [CouponListModel] = CouponListModel.couponListDummyData()
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
+        setLayout()
+        setRegister()
+        setDelegate()
+    }
+}
 
-        // Do any additional setup after loading the view.
+extension CouponViewController {
+    private func setUI() {
+        view.backgroundColor = .white
+        
+        navigationBar.do {
+            $0.isCloseButtonIncluded = true
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setLayout() {
+        view.addSubviews(navigationBar, coupontListCollectionView, coupontListCollectionView)
+        
+        navigationBar.snp.makeConstraints {
+            $0.top.directionalHorizontalEdges.equalToSuperview()
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 96 / 812)
+        }
+        
+        coupontListCollectionView.snp.makeConstraints {
+            $0.top.equalTo(navigationBar.snp.bottom)
+            $0.directionalHorizontalEdges.bottom.equalToSuperview()
+        }
     }
-    */
+    
+    private func setRegister() {
+        coupontListCollectionView.registerCell(CouponAddCollectionViewCell.self)
+        coupontListCollectionView.registerCell(CouponCollectionViewCell.self)
+    }
+    
+    private func setDelegate() {
+        coupontListCollectionView.dataSource = self
+        coupontListCollectionView.delegate = self
+    }
+}
 
+extension CouponViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: 69)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 19
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    }
+}
+
+extension CouponViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return couponDummyData.count + 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.row != couponDummyData.count {
+            let cell = coupontListCollectionView.dequeueCell(type: CouponCollectionViewCell.self, indexPath: indexPath)
+            cell.setData(couponDummyData[indexPath.row])
+            return cell
+        } else {
+            let cell = coupontListCollectionView.dequeueCell(type: CouponAddCollectionViewCell.self, indexPath: indexPath)
+            return cell
+        }
+    }
 }
