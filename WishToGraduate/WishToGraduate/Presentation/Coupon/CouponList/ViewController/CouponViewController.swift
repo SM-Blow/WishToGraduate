@@ -44,7 +44,7 @@ extension CouponViewController {
     }
     
     private func setLayout() {
-        view.addSubviews(navigationBar, coupontListCollectionView, coupontListCollectionView)
+        view.addSubviews(navigationBar, coupontListCollectionView)
         
         navigationBar.snp.makeConstraints {
             $0.top.directionalHorizontalEdges.equalToSuperview()
@@ -58,7 +58,7 @@ extension CouponViewController {
     }
     
     private func setRegister() {
-        coupontListCollectionView.registerCell(CouponAddCollectionViewCell.self)
+        coupontListCollectionView.registerCell(AddCollectionViewCell.self)
         coupontListCollectionView.registerCell(CouponCollectionViewCell.self)
     }
     
@@ -95,7 +95,7 @@ extension CouponViewController: UICollectionViewDataSource {
             cell.setData(couponDummyData[indexPath.row])
             return cell
         } else {
-            let cell = coupontListCollectionView.dequeueCell(type: CouponAddCollectionViewCell.self, indexPath: indexPath)
+            let cell = coupontListCollectionView.dequeueCell(type: AddCollectionViewCell.self, indexPath: indexPath)
             return cell
         }
     }

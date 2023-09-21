@@ -54,6 +54,7 @@ extension CouponCollectionViewCell {
         untilLabel.do {
             $0.font = .fontGuide(.date1)
             $0.textColor = Color.main2_Green
+            $0.text = "Until"
         }
     }
 
@@ -74,7 +75,7 @@ extension CouponCollectionViewCell {
         }
         
         untilLabel.snp.makeConstraints {
-            $0.trailing.equalTo(timeoutLabel.snp.leading).offset(7)
+            $0.trailing.equalTo(timeoutLabel.snp.leading).offset(-7)
             $0.bottom.equalToSuperview().inset(15)
         }
     }
