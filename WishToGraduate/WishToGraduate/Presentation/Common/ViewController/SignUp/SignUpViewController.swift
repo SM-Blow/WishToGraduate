@@ -113,7 +113,7 @@ extension SignUpViewController {
     
     @objc
     func signupButtonDidTap() {
-        var text = idTextField.textField.text ?? ""
+        let text = idTextField.textField.text ?? ""
         if text.isValidSookmyungEmail() {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                let sceneDelegate = windowScene.delegate as? SceneDelegate,

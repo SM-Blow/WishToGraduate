@@ -53,6 +53,9 @@ public enum Image {
     // MARK: - Writing
     public static let example = UIImage(named: "examplePhoto")!
     
+    // MARK: - Icon
+    public static let ic_plus = UIImage(named: "ic_add")
+
     // MARK: - HomeButton
     
     public static let shareButtonImage = UIImage(named: "icn_share")!

@@ -32,4 +32,5 @@ public enum Color {
     public static let circle_Grey = UIColor(named: "circle_grey")!
     public static let placeholder_Grey = UIColor(named: "placeholder_grey")!
     public static let background_Grey = UIColor(named: "background_grey")!
+    public static let date_Grey = UIColor(named: "date_grey")!
 }

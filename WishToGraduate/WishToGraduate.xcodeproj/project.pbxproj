@@ -93,6 +93,10 @@
 		3B36778A2AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3677892AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift */; };
 		3B36778C2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B36778B2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift */; };
 		3B45268E2AB0C65200D8CE37 /* BorrowTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45268D2AB0C65200D8CE37 /* BorrowTypeModel.swift */; };
+		3B6C6FBA2ABB65E000B4141B /* CouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C6FB92ABB65E000B4141B /* CouponViewController.swift */; };
+		3B6C6FBD2ABB6B6300B4141B /* CouponAddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C6FBC2ABB6B6300B4141B /* CouponAddCollectionViewCell.swift */; };
+		3B6C6FBF2ABB710900B4141B /* CouponCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C6FBE2ABB710900B4141B /* CouponCollectionViewCell.swift */; };
+		3B7311752ABC89F7002726E4 /* CouponListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7311742ABC89F7002726E4 /* CouponListModel.swift */; };
 		3BA183F72AB3FC5C00C3D2D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BA183F62AB3FC5C00C3D2D6 /* GoogleService-Info.plist */; };
 		3BA183FA2AB4059100C3D2D6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3BA183F92AB4059100C3D2D6 /* FirebaseAnalytics */; };
 		3BA183FC2AB4059100C3D2D6 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 3BA183FB2AB4059100C3D2D6 /* FirebaseMessaging */; };
@@ -187,6 +191,10 @@
 		3B3677892AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowTypeCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		3B36778B2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		3B45268D2AB0C65200D8CE37 /* BorrowTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowTypeModel.swift; sourceTree = "<group>"; };
+		3B6C6FB92ABB65E000B4141B /* CouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponViewController.swift; sourceTree = "<group>"; };
+		3B6C6FBC2ABB6B6300B4141B /* CouponAddCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponAddCollectionViewCell.swift; sourceTree = "<group>"; };
+		3B6C6FBE2ABB710900B4141B /* CouponCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponCollectionViewCell.swift; sourceTree = "<group>"; };
+		3B7311742ABC89F7002726E4 /* CouponListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListModel.swift; sourceTree = "<group>"; };
 		3BA183EE2AB3ECB300C3D2D6 /* WishToGraduate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WishToGraduate.entitlements; sourceTree = "<group>"; };
 		3BA183F62AB3FC5C00C3D2D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3BD2E38C2AAE48B400220B44 /* BorrowTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowTypeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -394,6 +402,7 @@
 		0366B79B2ABAF5A50005BF0F /* Coupon */ = {
 			isa = PBXGroup;
 			children = (
+				3B6C6FB72ABB64A100B4141B /* CouponList */,
 				0366B79C2ABAF6290005BF0F /* AddCoupon */,
 			);
 			path = Coupon;
@@ -876,6 +885,41 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3B6C6FB72ABB64A100B4141B /* CouponList */ = {
+			isa = PBXGroup;
+			children = (
+				3B7311732ABC896A002726E4 /* Model */,
+				3B6C6FBB2ABB6B4E00B4141B /* Cell */,
+				3B6C6FB82ABB65BA00B4141B /* ViewController */,
+			);
+			path = CouponList;
+			sourceTree = "<group>";
+		};
+		3B6C6FB82ABB65BA00B4141B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3B6C6FB92ABB65E000B4141B /* CouponViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		3B6C6FBB2ABB6B4E00B4141B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3B6C6FBC2ABB6B6300B4141B /* CouponAddCollectionViewCell.swift */,
+				3B6C6FBE2ABB710900B4141B /* CouponCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3B7311732ABC896A002726E4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3B7311742ABC89F7002726E4 /* CouponListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3BD2E38B2AAE489E00220B44 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1008,6 +1052,7 @@
 				03FD52A32AA34B1F00899F4F /* ChatViewController.swift in Sources */,
 				03FD52A72AA4739200899F4F /* ChatCollectionViewCell.swift in Sources */,
 				3B3677872AAF374400FF4ED1 /* CommonBorrowLabel.swift in Sources */,
+				3B6C6FBD2ABB6B6300B4141B /* CouponAddCollectionViewCell.swift in Sources */,
 				03931AD92A2CA76200B235D9 /* Model.swift in Sources */,
 				03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */,
 				0366B7A42ABB55E10005BF0F /* HomeViewController.swift in Sources */,
@@ -1028,6 +1073,7 @@
 				0370F3A02A442A9C00A9AF28 /* LabelStatusModel.swift in Sources */,
 				03931AFA2A2CB37700B235D9 /* UIButton+.swift in Sources */,
 				03931AE02A2CAD6D00B235D9 /* GeneralResponse.swift in Sources */,
+				3B7311752ABC89F7002726E4 /* CouponListModel.swift in Sources */,
 				03931B022A2CB3D100B235D9 /* Image.swift in Sources */,
 				0330CA702A761AFB004CE2D7 /* MyProfileView.swift in Sources */,
 				031CBE022A6FE90600301F06 /* CustomNavigationBar.swift in Sources */,
@@ -1045,12 +1091,14 @@
 				036781452AB9D6BD00866F31 /* EventDetailModel.swift in Sources */,
 				035079222A3DF831007F28DF /* TabBarController.swift in Sources */,
 				0367813E2AB993F400866F31 /* SizeLiterals.swift in Sources */,
+				3B6C6FBA2ABB65E000B4141B /* CouponViewController.swift in Sources */,
 				0350792B2A3DFAE5007F28DF /* MyPageViewController.swift in Sources */,
 				03931ADD2A2CAD5700B235D9 /* APIService.swift in Sources */,
 				03FD52AA2AA476AF00899F4F /* ChatModel.swift in Sources */,
 				03931B042A2CB3D700B235D9 /* Color.swift in Sources */,
 				0308DA522A2DEF9D00B784B9 /* FontLevel.swift in Sources */,
 				03931AF62A2CB35700B235D9 /* UIImageView+.swift in Sources */,
+				3B6C6FBF2ABB710900B4141B /* CouponCollectionViewCell.swift in Sources */,
 				036781492AB9DF4200866F31 /* CustomButtonView.swift in Sources */,
 				0370B4AD2A8CFAF600005400 /* SignInTextFieldView.swift in Sources */,
 				03931AEE2A2CB31C00B235D9 /* UIStackView+.swift in Sources */,
