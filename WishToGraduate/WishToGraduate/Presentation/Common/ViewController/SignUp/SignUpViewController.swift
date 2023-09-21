@@ -118,7 +118,7 @@ extension SignUpViewController {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                let sceneDelegate = windowScene.delegate as? SceneDelegate,
                let window = sceneDelegate.window {
-                let vc = TabBarController()
+                let vc = HomeViewController()
                 let rootVC = UINavigationController(rootViewController: vc)
                 rootVC.navigationController?.isNavigationBarHidden = true
                 window.rootViewController = rootVC

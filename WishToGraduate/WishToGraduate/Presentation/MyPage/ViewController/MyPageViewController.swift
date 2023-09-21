@@ -33,10 +33,9 @@ final class MyPageViewController: UIViewController {
     // MARK: - Properties
     
     private var myPageTab: MyPageTab = .writing
-    private var myWritingDummyModel: [HomeListModel] = HomeListModel.myWritingDummyData()
-    private var myScrapDummyModel: [HomeListModel] = HomeListModel.myScrapDummyData()
+    private var myWritingDummyModel: [ShareListModel] = ShareListModel.myWritingDummyData()
+    private var myScrapDummyModel: [ShareListModel] = ShareListModel.myScrapDummyData()
     
-    // MARK: - Initializer
     
     // MARK: - View Life Cycle
     
@@ -61,6 +60,10 @@ extension MyPageViewController {
     private func setUI() {
         
         view.backgroundColor = Color.light_Green
+        
+        navigationView.do {
+            $0.isBackButtonIncluded = true
+        }
         
         myWritingCollectionView.do {
             $0.backgroundColor = .clear
@@ -107,7 +110,11 @@ extension MyPageViewController {
     }
     
     private func setRegister() {
-        myWritingCollectionView.registerCell(HomeListCollectionViewCell.self)
+        myWritingCollectionView.registerCell(ShareListCollectionViewCell.self)
+    }
+    
+    private func popToHome() {
+        navigationController?.popViewController(animated: true)
     }
     
     private func myWritingTab() {
@@ -124,10 +131,12 @@ extension MyPageViewController {
     
     @objc
     private func setButton() {
+        navigationView.backButtonHandler = { [weak self] in
+            self?.popToHome()
+        }
         myPageSectionTab.myWritingButtonHandler = { [weak self] in
             self?.myWritingTab()
         }
-        
         myPageSectionTab.myScarpButtonHandler = { [weak self] in
             self?.myScarpTab()
         }
@@ -161,7 +170,7 @@ extension MyPageViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(type: HomeListCollectionViewCell.self, indexPath: indexPath)
+        let cell = collectionView.dequeueCell(type: ShareListCollectionViewCell.self, indexPath: indexPath)
         switch (myPageTab) {
         case .writing:
             cell.setDataBind(model: myWritingDummyModel[indexPath.row])

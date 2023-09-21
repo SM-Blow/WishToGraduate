@@ -11,7 +11,7 @@ import Moya
 import SnapKit
 import Then
 
-final class HomeListCollectionViewCell: UICollectionViewCell {
+final class ShareListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
     
@@ -19,10 +19,6 @@ final class HomeListCollectionViewCell: UICollectionViewCell {
     private let borrowLabel = CommonBorrowLabel()
     private let transactionLabel = UILabel()
     private let timeLabel = UILabel()
-    
-    // MARK: - Properties
-    
-    // MARK: - Initializer
     
     // MARK: - View Life Cycle
     
@@ -37,7 +33,7 @@ final class HomeListCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension HomeListCollectionViewCell {
+extension ShareListCollectionViewCell {
     
     // MARK: - UI Components Property
     
@@ -57,15 +53,6 @@ extension HomeListCollectionViewCell {
             $0.textColor = .black
             $0.addCharacterSpacing()
         }
-        
-//        borrowLabel.do {
-//            $0.font = .fontGuide(.bt1)
-//            $0.textColor = .black
-//            $0.textAlignment = .center
-//            $0.backgroundColor = Color.btn_LightGreen
-//            $0.layer.cornerRadius = 12
-//            $0.clipsToBounds = true
-//        }
         
         transactionLabel.do {
             $0.text = "거래중"
@@ -98,8 +85,6 @@ extension HomeListCollectionViewCell {
         borrowLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalTo(titleLabel.snp.trailing).offset(9)
-//            $0.width.equalTo(43)
-//            $0.height.equalTo(22)
         }
         
         transactionLabel.snp.makeConstraints {
@@ -117,12 +102,10 @@ extension HomeListCollectionViewCell {
     
     // MARK: - Methods
     
-    func setDataBind(model: HomeListModel) {
+    func setDataBind(model: ShareListModel) {
         titleLabel.text = model.title
         borrowLabel.text = model.borrow == 1 ? "빌려요" : "빌려줄게요"
         transactionLabel.isHidden = model.transaction
         timeLabel.text = model.time
     }
-    
-    // MARK: - @objc Methods
 }

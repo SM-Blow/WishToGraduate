@@ -2,7 +2,7 @@
 //  HomeViewController.swift
 //  WishToGraduate
 //
-//  Created by KJ on 2023/06/16.
+//  Created by KJ on 2023/09/21.
 //
 
 import UIKit
@@ -11,46 +11,35 @@ import Moya
 import SnapKit
 import Then
 
-protocol CategoryProtocol: AnyObject {
-    func categoryType(category: CategorySection)
-}
-
 final class HomeViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let navigationView = HomeNavigationView()
-    let categoryModel = CategoryModel.categoryModelData()
-    let selectedCategoryModel = CategoryModel.selectedCategoryModelData()
-    private lazy var categoryCollectionView: CategoryCollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let collectionView = CategoryCollectionView(frame: .zero, collectionViewLayout: layout)
-        return collectionView
-    }()
-    private let underLineView = UIView()
-    private let homeListView = HomeListView()
+    private let navigationView = UIView()
+    private let logoImageView = UIImageView()
+    private let userNameLabel = UILabel()
+    private let pointLabel = UILabel()
+    private let shareButton = CustomHomeButton(.share)
+    private let couponButton = CustomHomeButton(.coupon)
+    private let eventButton = CustomHomeButton(.event)
+    private let myPageButton = CustomHomeButton(.mypage)
     
     // MARK: - Properties
     
-    weak var categoryDelegate: CategoryProtocol?
-    
-    // MARK: - Initializer
+    private let homeUserDummyData: HomeUserModel = HomeUserModel.homeUserModelDummyData()
     
     // MARK: - View Life Cycle
-    
-    override func viewWillAppear(_ animated: Bool) {
-        tabBarController?.tabBar.isHidden = false
-        navigationController?.isNavigationBarHidden = true
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setLayout()
-        setDelegate()
+        setDataBind(homeUserDummyData)
         setButton()
-        setHandler()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
     }
 }
 
@@ -60,142 +49,127 @@ extension HomeViewController {
     
     private func setUI() {
         
-        view.backgroundColor = Color.light_Green
+        view.backgroundColor = .white
         
-        underLineView.do {
-            $0.backgroundColor = Color.line_Grey
+        navigationView.do {
+            $0.backgroundColor = Color.light_Green
         }
         
-        categoryCollectionView.do {
-            $0.isScrollEnabled = true
-            $0.backgroundColor = .clear
-            $0.showsHorizontalScrollIndicator = false
+        logoImageView.do {
+            $0.image = Image.profileImage
+        }
+        
+        userNameLabel.do {
+            $0.text = "반가워요 블로우님!"
+            $0.font = .fontGuide(.title_bold)
+            $0.textColor = .black
+        }
+        
+        pointLabel.do {
+            $0.text = "씨앗 개수: 5개"
+            $0.font = .fontGuide(.title_bold)
+            $0.textColor = .black
         }
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
-    
-        view.addSubviews(navigationView, categoryCollectionView, underLineView, homeListView)
+        
+        view.addSubviews(navigationView, shareButton,
+                         couponButton, eventButton, myPageButton)
+        navigationView.addSubviews(logoImageView, userNameLabel, pointLabel)
         
         navigationView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(52)
+            $0.top.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 176 / 812)
         }
         
-        categoryCollectionView.snp.makeConstraints {
-            $0.top.equalTo(navigationView.snp.bottom).offset(10)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(65)
+        logoImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(SizeLiterals.Screen.screenHeight * 44 / 812)
+            $0.leading.equalToSuperview().inset(23)
+            $0.size.equalTo(41)
         }
         
-        underLineView.snp.makeConstraints {
-            $0.bottom.equalTo(homeListView.snp.top)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(1)
+        userNameLabel.snp.makeConstraints {
+            $0.top.equalTo(logoImageView.snp.bottom).offset(16)
+            $0.leading.equalToSuperview().inset(31)
         }
         
-        homeListView.snp.makeConstraints {
-            $0.top.equalTo(categoryCollectionView.snp.bottom).offset(20)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.bottom.equalToSuperview()
+        pointLabel.snp.makeConstraints {
+            $0.top.equalTo(userNameLabel.snp.bottom).offset(5)
+            $0.leading.equalTo(userNameLabel)
+        }
+        
+        shareButton.snp.makeConstraints {
+            $0.top.equalTo(navigationView.snp.bottom).offset(30)
+            $0.leading.equalToSuperview().inset(SizeLiterals.Screen.screenWidth * 41 / 375)
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 131 / 375)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 156 / 812)
+        }
+        
+        couponButton.snp.makeConstraints {
+            $0.top.equalTo(shareButton)
+            $0.trailing.equalToSuperview().inset(SizeLiterals.Screen.screenWidth * 41 / 375)
+            $0.width.equalTo(shareButton)
+            $0.height.equalTo(shareButton)
+        }
+        
+        eventButton.snp.makeConstraints {
+            $0.top.equalTo(shareButton.snp.bottom).offset(30)
+            $0.leading.equalTo(shareButton)
+            $0.width.equalTo(shareButton)
+            $0.height.equalTo(shareButton)
+        }
+        
+        myPageButton.snp.makeConstraints {
+            $0.top.equalTo(eventButton)
+            $0.trailing.equalTo(couponButton)
+            $0.width.equalTo(shareButton)
+            $0.height.equalTo(shareButton)
         }
     }
     
     // MARK: - Methods
     
-    private func setDelegate() {
-        categoryCollectionView.delegate = self
-        categoryDelegate = self
+    private func setDataBind(_ model: HomeUserModel) {
+        userNameLabel.text = "반가워요 \(model.userName)님!"
+        userNameLabel.partColorChange(targetString: "\(model.userName)", textColor: Color.main_Green)
+        pointLabel.text = "씨앗 개수: \(model.point)개"
+        pointLabel.partColorChange(targetString: "\(model.point)", textColor: Color.main_Green)
     }
     
-    private func presentToSearchVC() {
-        let searchVC = SearchViewController()
-        searchVC.modalPresentationStyle = .fullScreen
-        self.present(searchVC, animated: true)
+    private func pushToShareVC() {
+        self.navigationController?.pushViewController(TabBarController(), animated: true)
     }
     
-    private func pushToDetailVC() {
-        let detailVC = DetailViewController()
-        self.navigationController?.pushViewController(detailVC, animated: true)
+    private func pushToCouponVC() {
+        self.navigationController?.pushViewController(MyPageViewController(), animated: true)
     }
     
-    func presentToWriteVC() {
-        let writeVC = WriteViewController()
-        writeVC.modalPresentationStyle = .fullScreen
-        self.present(writeVC, animated: true)
+    private func pushToEventVC() {
+        self.navigationController?.pushViewController(MyPageViewController(), animated: true)
+    }
+    
+    private func pushToMypage() {
+        self.navigationController?.pushViewController(MyPageViewController(), animated: true)
     }
     
     // MARK: - @objc Methods
     
-    @objc
     private func setButton() {
-        navigationView.searchButtonHandler  = { [weak self] in
-            self?.presentToSearchVC()
+        shareButton.shareButtonHandler = { [weak self] in
+            self?.pushToShareVC()
         }
-        navigationView.writeButtonHandler = { [weak self] in
-            self?.presentToWriteVC()
+        couponButton.couponButtonHandler = { [weak self] in
+            self?.pushToCouponVC()
         }
-    }
-    
-    @objc
-    private func setHandler() {
-        homeListView.pushToDetailHandler = { [weak self] in
-            self?.pushToDetailVC()
+        eventButton.eventButtonHandler = { [weak self] in
+            self?.pushToEventVC()
         }
-    }
-}
-
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 59, height: 59)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 6
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
-            cell.imageDataBind(model: categoryModel[indexPath.row])
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
-            cell.imageDataBind(model: selectedCategoryModel[indexPath.row])
-        }
-        
-        let category = CategorySection.allCases[indexPath.row]
-        switch category {
-        case .all:
-            categoryDelegate?.categoryType(category: .all)
-        case .pill:
-            categoryDelegate?.categoryType(category: .pill)
-        case .sanitaryPad:
-            categoryDelegate?.categoryType(category: .sanitaryPad)
-        case .charger:
-            categoryDelegate?.categoryType(category: .charger)
-        case .book:
-            categoryDelegate?.categoryType(category: .book)
-        case .other:
-            categoryDelegate?.categoryType(category: .other)
-        }
-    }
-}
-
-extension HomeViewController: CategoryProtocol {
-    
-    func categoryType(category: CategorySection) {
-        homeListView.setListModel(category: category)
-        UIView.animate(withDuration: 0.2) {
-            self.view.layoutIfNeeded()
+        myPageButton.mypageButtonHadler = { [weak self] in
+            self?.pushToMypage()
         }
     }
 }
