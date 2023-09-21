@@ -1,5 +1,5 @@
 //
-//  CouponAddCollectionViewCell.swift
+//  AddCollectionViewCell.swift
 //  WishToGraduate
 //
 //  Created by 강윤서 on 2023/09/21.
@@ -10,10 +10,10 @@ import UIKit
 import SnapKit
 import Then
 
-final class CouponAddCollectionViewCell: UICollectionViewCell {
+final class AddCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
-    private let addCouponLabel = UILabel()
+    private let addLabel = UILabel()
     private let addButton = UIButton()
     
     // MARK: - Life Cycle
@@ -28,7 +28,7 @@ final class CouponAddCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension CouponAddCollectionViewCell {
+extension AddCollectionViewCell {
     private func setUI() {
         backgroundColor = .white
         layer.cornerRadius = 10
@@ -39,7 +39,7 @@ extension CouponAddCollectionViewCell {
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.masksToBounds = false
         
-        addCouponLabel.do {
+        addLabel.do {
             $0.text = "쿠폰 추가하기"
             $0.font = .fontGuide(.h4)
             $0.textAlignment = .center
@@ -48,7 +48,7 @@ extension CouponAddCollectionViewCell {
     }
     
     private func setLayout() {
-        contentView.addSubviews(addButton, addCouponLabel)
+        contentView.addSubviews(addButton, addLabel)
         
         addButton.snp.makeConstraints {
             $0.size.equalTo(35)
@@ -56,9 +56,13 @@ extension CouponAddCollectionViewCell {
             $0.centerX.equalToSuperview()
         }
         
-        addCouponLabel.snp.makeConstraints {
+        addLabel.snp.makeConstraints {
             $0.top.equalTo(addButton.snp.bottom)
             $0.directionalHorizontalEdges.equalToSuperview()
         }
+    }
+    
+    func setText(_ text: String) {
+        addLabel.text = text
     }
 }

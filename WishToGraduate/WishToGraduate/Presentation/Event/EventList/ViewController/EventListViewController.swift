@@ -1,5 +1,5 @@
 //
-//  CouponViewController.swift
+//  EventListViewController.swift
 //  WishToGraduate
 //
 //  Created by 강윤서 on 2023/09/21.
@@ -10,18 +10,17 @@ import UIKit
 import SnapKit
 import Then
 
-final class CouponViewController: UIViewController {
+final class EventListViewController: UIViewController {
 
-    // MARK: - Properties
-    
-    private let navigationBar = CustomNavigationBar(title: "쿠폰 관리하기")
-    private lazy var coupontListCollectionView: UICollectionView = {
+    // MARK: - UI Components
+    private let navigationBar = CustomNavigationBar(title: "우리학교 행사")
+    private lazy var eventListCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
-    private var couponDummyData: [CouponListModel] = CouponListModel.couponListDummyData()
+    private var eventDummyData: [EventListModel] = EventListModel.eventListDummyData()
     
     // MARK: - Life Cycle
     
@@ -29,12 +28,12 @@ final class CouponViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
-        setRegister()
         setDelegate()
+        setRegister()
     }
 }
 
-extension CouponViewController {
+extension EventListViewController {
     private func setUI() {
         view.backgroundColor = .white
         
@@ -44,31 +43,31 @@ extension CouponViewController {
     }
     
     private func setLayout() {
-        view.addSubviews(navigationBar, coupontListCollectionView)
+        view.addSubviews(navigationBar, eventListCollectionView)
         
         navigationBar.snp.makeConstraints {
             $0.top.directionalHorizontalEdges.equalToSuperview()
             $0.height.equalTo(SizeLiterals.Screen.screenHeight * 96 / 812)
         }
         
-        coupontListCollectionView.snp.makeConstraints {
+        eventListCollectionView.snp.makeConstraints {
             $0.top.equalTo(navigationBar.snp.bottom)
             $0.directionalHorizontalEdges.bottom.equalToSuperview()
         }
     }
     
     private func setRegister() {
-        coupontListCollectionView.registerCell(AddCollectionViewCell.self)
-        coupontListCollectionView.registerCell(CouponCollectionViewCell.self)
+        eventListCollectionView.registerCell(AddCollectionViewCell.self)
+        eventListCollectionView.registerCell(EventCollectionViewCell.self)
     }
     
     private func setDelegate() {
-        coupontListCollectionView.dataSource = self
-        coupontListCollectionView.delegate = self
+        eventListCollectionView.dataSource = self
+        eventListCollectionView.delegate = self
     }
 }
 
-extension CouponViewController: UICollectionViewDelegateFlowLayout {
+extension EventListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: 69)
@@ -83,20 +82,22 @@ extension CouponViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension CouponViewController: UICollectionViewDataSource {
+extension EventListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return couponDummyData.count + 1
+        return eventDummyData.count + 1
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row != couponDummyData.count {
-            let cell = coupontListCollectionView.dequeueCell(type: CouponCollectionViewCell.self, indexPath: indexPath)
-            cell.setData(couponDummyData[indexPath.row])
+        if indexPath.row != eventDummyData.count {
+            let cell = eventListCollectionView.dequeueCell(type: EventCollectionViewCell.self, indexPath: indexPath)
+            cell.setData(eventDummyData[indexPath.row])
             return cell
         } else {
-            let cell = coupontListCollectionView.dequeueCell(type: AddCollectionViewCell.self, indexPath: indexPath)
+            let cell = eventListCollectionView.dequeueCell(type: AddCollectionViewCell.self, indexPath: indexPath)
+            cell.setText("행사 생성하기")
             return cell
         }
     }
 }
+
