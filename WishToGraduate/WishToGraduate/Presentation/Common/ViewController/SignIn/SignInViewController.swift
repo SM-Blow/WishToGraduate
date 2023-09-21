@@ -106,7 +106,7 @@ extension SignInViewController {
     
     @objc
     func signinButtonDidTap() {
-        var text = idTextField.textField.text ?? ""
+        let text = idTextField.textField.text ?? ""
         if text.isValidSookmyungEmail() {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                let sceneDelegate = windowScene.delegate as? SceneDelegate,
