@@ -31,6 +31,7 @@ final class CouponViewController: UIViewController {
         setLayout()
         setRegister()
         setDelegate()
+        setButton()
     }
 }
 
@@ -39,7 +40,7 @@ extension CouponViewController {
         view.backgroundColor = .white
         
         navigationBar.do {
-            $0.isCloseButtonIncluded = true
+            $0.isBackButtonIncluded = true
         }
     }
     
@@ -66,6 +67,27 @@ extension CouponViewController {
         coupontListCollectionView.dataSource = self
         coupontListCollectionView.delegate = self
     }
+    
+    private func backToHomeVC() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func useCoupon(title: String) {
+        let alert = CustomAlertView(alertType: .useCoupon, title: title)
+        alert.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(alert)
+        alert.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        alert.isUserInteractionEnabled = true
+    }
+    
+    @objc
+    private func setButton() {
+        navigationBar.backButtonHandler = { [weak self] in
+            self?.backToHomeVC()
+        }
+    }
 }
 
 extension CouponViewController: UICollectionViewDelegateFlowLayout {
@@ -80,6 +102,10 @@ extension CouponViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        useCoupon(title: couponDummyData[indexPath.row].title)
     }
 }
 

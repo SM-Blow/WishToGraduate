@@ -213,7 +213,7 @@ extension EventDetailViewController {
     // MARK: - Methods
     
     private func popToHome() {
-        print("popToHome")
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func applicationButtonDidTapped() {

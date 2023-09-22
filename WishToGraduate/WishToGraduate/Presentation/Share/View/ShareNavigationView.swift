@@ -14,13 +14,15 @@ final class ShareNavigationView: UIView {
     
     // MARK: - UI Components
     
-    private let logoImage = UIImageView()
+    private let backButton = UIButton()
+    private let shareLabel = UILabel()
     private let notificationButton = UIButton()
     private let writeButton = UIButton()
     private let searchButton = UIButton()
     
     // MARK: - Properties
     
+    var backButtonHandler: (() -> Void)?
     var searchButtonHandler: (() -> Void)?
     var writeButtonHandler: (() -> Void)?
     
@@ -46,8 +48,14 @@ extension ShareNavigationView {
         
         backgroundColor = Color.light_Green
         
-        logoImage.do {
-            $0.image = Image.profileImage
+        backButton.do {
+            $0.setImage(Image.backButton, for: .normal)
+        }
+        
+        shareLabel.do {
+            $0.text = "공유하기"
+            $0.font = .fontGuide(.h1)
+            $0.textColor = Color.main_Green
         }
         
         notificationButton.do {
@@ -65,11 +73,16 @@ extension ShareNavigationView {
     
     private func setLayout() {
         
-        addSubviews(logoImage, notificationButton, writeButton, searchButton)
+        addSubviews(backButton, notificationButton, writeButton, searchButton, shareLabel)
         
-        logoImage.snp.makeConstraints {
+        backButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().inset(23)
+            $0.leading.equalToSuperview().inset(9)
+        }
+        
+        shareLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
         }
         
         searchButton.snp.makeConstraints {
@@ -79,7 +92,7 @@ extension ShareNavigationView {
         
         writeButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.size.equalTo(20)
+            $0.size.equalTo(25)
             $0.trailing.equalTo(searchButton.snp.leading).offset(-2)
         }
     }
@@ -89,6 +102,7 @@ extension ShareNavigationView {
     private func setAddTarget() {
         searchButton.addTarget(self, action: #selector(searchButtonDidTapped), for: .touchUpInside)
         writeButton.addTarget(self, action: #selector(writeButtonDidTapped), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(backButtonDidTapped), for: .touchUpInside)
     }
     
     // MARK: - @objc Methods
@@ -101,5 +115,10 @@ extension ShareNavigationView {
     @objc
     private func writeButtonDidTapped() {
         writeButtonHandler?()
+    }
+    
+    @objc
+    private func backButtonDidTapped() {
+        backButtonHandler?()
     }
 }
