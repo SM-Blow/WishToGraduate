@@ -166,7 +166,7 @@ extension SearchViewController {
     
     @objc
     private func setButton() {
-        navigationView.closeButtonHandler  = { [weak self] in
+        navigationView.backButtonHandler = { [weak self] in
             self?.popToShareVC()
         }
     }
