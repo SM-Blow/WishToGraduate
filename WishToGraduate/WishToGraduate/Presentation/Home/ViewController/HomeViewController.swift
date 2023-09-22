@@ -145,11 +145,11 @@ extension HomeViewController {
     }
     
     private func pushToCouponVC() {
-        self.navigationController?.pushViewController(MyPageViewController(), animated: true)
+        self.navigationController?.pushViewController(CouponViewController(), animated: true)
     }
     
     private func pushToEventVC() {
-        self.navigationController?.pushViewController(MyPageViewController(), animated: true)
+        self.navigationController?.pushViewController(EventListViewController(), animated: true)
     }
     
     private func pushToMypage() {

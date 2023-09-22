@@ -30,6 +30,7 @@ final class EventListViewController: UIViewController {
         setLayout()
         setDelegate()
         setRegister()
+        setButton()
     }
 }
 
@@ -38,7 +39,7 @@ extension EventListViewController {
         view.backgroundColor = .white
         
         navigationBar.do {
-            $0.isCloseButtonIncluded = true
+            $0.isBackButtonIncluded = true
         }
     }
     
@@ -64,6 +65,17 @@ extension EventListViewController {
     private func setDelegate() {
         eventListCollectionView.dataSource = self
         eventListCollectionView.delegate = self
+    }
+    
+    private func backToHomeVC() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func setButton() {
+        navigationBar.backButtonHandler = { [weak self] in
+            self?.backToHomeVC()
+        }
     }
 }
 

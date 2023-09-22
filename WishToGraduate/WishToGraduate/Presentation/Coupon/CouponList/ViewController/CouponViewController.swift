@@ -31,6 +31,7 @@ final class CouponViewController: UIViewController {
         setLayout()
         setRegister()
         setDelegate()
+        setButton()
     }
 }
 
@@ -39,7 +40,7 @@ extension CouponViewController {
         view.backgroundColor = .white
         
         navigationBar.do {
-            $0.isCloseButtonIncluded = true
+            $0.isBackButtonIncluded = true
         }
     }
     
@@ -65,6 +66,17 @@ extension CouponViewController {
     private func setDelegate() {
         coupontListCollectionView.dataSource = self
         coupontListCollectionView.delegate = self
+    }
+    
+    private func backToHomeVC() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func setButton() {
+        navigationBar.backButtonHandler = { [weak self] in
+            self?.backToHomeVC()
+        }
     }
 }
 
