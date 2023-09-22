@@ -15,6 +15,7 @@ final class ShareNavigationView: UIView {
     // MARK: - UI Components
     
     private let backButton = UIButton()
+    private let shareLabel = UILabel()
     private let notificationButton = UIButton()
     private let writeButton = UIButton()
     private let searchButton = UIButton()
@@ -51,6 +52,12 @@ extension ShareNavigationView {
             $0.setImage(Image.backButton, for: .normal)
         }
         
+        shareLabel.do {
+            $0.text = "공유하기"
+            $0.font = .fontGuide(.h1)
+            $0.textColor = Color.main_Green
+        }
+        
         notificationButton.do {
             $0.setImage(Image.notificationButton, for: .normal)
         }
@@ -66,11 +73,16 @@ extension ShareNavigationView {
     
     private func setLayout() {
         
-        addSubviews(backButton, notificationButton, writeButton, searchButton)
+        addSubviews(backButton, notificationButton, writeButton, searchButton, shareLabel)
         
         backButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().inset(9)
+        }
+        
+        shareLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
         }
         
         searchButton.snp.makeConstraints {
