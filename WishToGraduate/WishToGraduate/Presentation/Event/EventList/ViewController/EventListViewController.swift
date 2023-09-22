@@ -71,6 +71,10 @@ extension EventListViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    private func pushToEventDetail() {
+        self.navigationController?.pushViewController(EventDetailViewController(), animated: true)
+    }
+    
     @objc
     private func setButton() {
         navigationBar.backButtonHandler = { [weak self] in
@@ -91,6 +95,10 @@ extension EventListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        pushToEventDetail()
     }
 }
 
