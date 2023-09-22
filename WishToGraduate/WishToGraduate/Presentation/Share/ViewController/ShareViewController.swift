@@ -120,6 +120,10 @@ extension ShareViewController {
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
+    private func backToHomeVC() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     func presentToWriteVC() {
         let writeVC = WriteViewController()
         writeVC.modalPresentationStyle = .fullScreen
@@ -135,6 +139,9 @@ extension ShareViewController {
         }
         navigationView.writeButtonHandler = { [weak self] in
             self?.presentToWriteVC()
+        }
+        navigationView.backButtonHandler = { [weak self] in
+            self?.backToHomeVC()
         }
     }
     

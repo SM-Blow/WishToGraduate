@@ -14,13 +14,14 @@ final class ShareNavigationView: UIView {
     
     // MARK: - UI Components
     
-    private let logoImage = UIImageView()
+    private let backButton = UIButton()
     private let notificationButton = UIButton()
     private let writeButton = UIButton()
     private let searchButton = UIButton()
     
     // MARK: - Properties
     
+    var backButtonHandler: (() -> Void)?
     var searchButtonHandler: (() -> Void)?
     var writeButtonHandler: (() -> Void)?
     
@@ -46,8 +47,8 @@ extension ShareNavigationView {
         
         backgroundColor = Color.light_Green
         
-        logoImage.do {
-            $0.image = Image.profileImage
+        backButton.do {
+            $0.setImage(Image.backButton, for: .normal)
         }
         
         notificationButton.do {
@@ -65,11 +66,11 @@ extension ShareNavigationView {
     
     private func setLayout() {
         
-        addSubviews(logoImage, notificationButton, writeButton, searchButton)
+        addSubviews(backButton, notificationButton, writeButton, searchButton)
         
-        logoImage.snp.makeConstraints {
+        backButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().inset(23)
+            $0.leading.equalToSuperview().inset(9)
         }
         
         searchButton.snp.makeConstraints {
@@ -79,7 +80,7 @@ extension ShareNavigationView {
         
         writeButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.size.equalTo(20)
+            $0.size.equalTo(25)
             $0.trailing.equalTo(searchButton.snp.leading).offset(-2)
         }
     }
@@ -89,6 +90,7 @@ extension ShareNavigationView {
     private func setAddTarget() {
         searchButton.addTarget(self, action: #selector(searchButtonDidTapped), for: .touchUpInside)
         writeButton.addTarget(self, action: #selector(writeButtonDidTapped), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(backButtonDidTapped), for: .touchUpInside)
     }
     
     // MARK: - @objc Methods
@@ -101,5 +103,10 @@ extension ShareNavigationView {
     @objc
     private func writeButtonDidTapped() {
         writeButtonHandler?()
+    }
+    
+    @objc
+    private func backButtonDidTapped() {
+        backButtonHandler?()
     }
 }
