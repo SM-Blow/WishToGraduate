@@ -57,7 +57,7 @@ extension SearchViewController {
         view.backgroundColor = Color.light_Green
         
         navigationView.do {
-            $0.isCloseButtonIncluded = true
+            $0.isBackButtonIncluded = true
         }
         
         backImageView.do {
@@ -141,8 +141,8 @@ extension SearchViewController {
         searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
     }
     
-    private func dismissToHomeVC() {
-        dismiss(animated: true)
+    private func popToShareVC() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func emptyListActivation() {
@@ -151,6 +151,10 @@ extension SearchViewController {
     
     private func searchListActivation() {
         searchDelegate?.searchType(type: .search)
+    }
+    
+    private func pushToDetailVC() {
+        self.navigationController?.pushViewController(DetailViewController(), animated: true)
     }
     
     // MARK: - @objc Methods
@@ -163,7 +167,14 @@ extension SearchViewController {
     @objc
     private func setButton() {
         navigationView.closeButtonHandler  = { [weak self] in
-            self?.dismissToHomeVC()
+            self?.popToShareVC()
+        }
+    }
+    
+    @objc
+    private func setHandler() {
+        searchListView.pushToDetailHandler = { [weak self] in
+            self?.pushToDetailVC()
         }
     }
 }

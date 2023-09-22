@@ -110,14 +110,11 @@ extension ShareViewController {
     }
     
     private func presentToSearchVC() {
-        let searchVC = SearchViewController()
-        searchVC.modalPresentationStyle = .fullScreen
-        self.present(searchVC, animated: true)
+        self.navigationController?.pushViewController(SearchViewController(), animated: true)
     }
     
     private func pushToDetailVC() {
-        let detailVC = DetailViewController()
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        self.navigationController?.pushViewController(DetailViewController(), animated: true)
     }
     
     private func backToHomeVC() {
