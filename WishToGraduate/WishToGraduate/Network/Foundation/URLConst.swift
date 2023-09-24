@@ -53,4 +53,6 @@ public enum URLConst {
     
     // 푸시알림
     static let notification = "/api/v1/notification"
+    
+    static let bearer = "Bearer "
 }
