@@ -25,20 +25,29 @@ enum APIConstants {
     //MARK: - Header
     
     static var headerWithOutToken: [String: String] {
-        [NetworkHeaderKey.contentType.rawValue: APIConstants.applicationJSON]
+        [
+            NetworkHeaderKey.contentType.rawValue: APIConstants.applicationJSON
+        ]
     }
     
     static var headerWithDeviceToken: [String: String] {
         [
             NetworkHeaderKey.contentType.rawValue: APIConstants.applicationJSON,
-            NetworkHeaderKey.deviceToken.rawValue: APIConstants.deviceToken
+            NetworkHeaderKey.authorization.rawValue: URLConst.bearer + APIConstants.jwtToken
         ]
     }
     
     static var headerWithAuthorization: [String: String] {
         [
             NetworkHeaderKey.contentType.rawValue: APIConstants.applicationJSON,
-            NetworkHeaderKey.authorization.rawValue: APIConstants.jwtToken
+            NetworkHeaderKey.authorization.rawValue: URLConst.bearer + APIConstants.jwtToken
+        ]
+    }
+    
+    static var headerWithRefresh: [String: String] {
+        [
+            NetworkHeaderKey.contentType.rawValue: APIConstants.applicationJSON,
+            NetworkHeaderKey.authorization.rawValue: URLConst.bearer + APIConstants.jwtToken
         ]
     }
 }
