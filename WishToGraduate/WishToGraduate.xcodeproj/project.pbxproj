@@ -44,6 +44,7 @@
 		036781512AB9FDC700866F31 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781502AB9FDC700866F31 /* CreateEventViewController.swift */; };
 		036781542AB9FE1F00866F31 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781532AB9FE1F00866F31 /* CustomTextFieldView.swift */; };
 		036781562ABA0FFA00866F31 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036781552ABA0FFA00866F31 /* UITextView+.swift */; };
+		036E4B492AC04FAD0045802D /* Config+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E4B482AC04FAD0045802D /* Config+.swift */; };
 		0370B4AD2A8CFAF600005400 /* SignInTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4AC2A8CFAF600005400 /* SignInTextFieldView.swift */; };
 		0370B4AF2A8D151900005400 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4AE2A8D151900005400 /* SignUpViewController.swift */; };
 		0370B4B12A8D17E100005400 /* CustomCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4B02A8D17E100005400 /* CustomCheckButton.swift */; };
@@ -147,6 +148,7 @@
 		036781502AB9FDC700866F31 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		036781532AB9FE1F00866F31 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		036781552ABA0FFA00866F31 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
+		036E4B482AC04FAD0045802D /* Config+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Config+.swift"; sourceTree = "<group>"; };
 		0370B4AC2A8CFAF600005400 /* SignInTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignInTextFieldView.swift; path = WishToGraduate/Presentation/Common/TextField/SignInTextFieldView.swift; sourceTree = SOURCE_ROOT; };
 		0370B4AE2A8D151900005400 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0370B4B02A8D17E100005400 /* CustomCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckButton.swift; sourceTree = "<group>"; };
@@ -800,6 +802,7 @@
 				03B1691B2AB3701900FC4891 /* UIAlertController+.swift */,
 				036781552ABA0FFA00866F31 /* UITextView+.swift */,
 				0366B7972ABAE6920005BF0F /* UIResponder+.swift */,
+				036E4B482AC04FAD0045802D /* Config+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1133,6 +1136,7 @@
 				03931AC12A2CA5F700B235D9 /* SceneDelegate.swift in Sources */,
 				036781412AB998B100866F31 /* EventDetailViewController.swift in Sources */,
 				036781452AB9D6BD00866F31 /* EventDetailModel.swift in Sources */,
+				036E4B492AC04FAD0045802D /* Config+.swift in Sources */,
 				035079222A3DF831007F28DF /* TabBarController.swift in Sources */,
 				0367813E2AB993F400866F31 /* SizeLiterals.swift in Sources */,
 				3B6C6FBA2ABB65E000B4141B /* CouponViewController.swift in Sources */,
@@ -1309,6 +1313,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "http://3.37.142.60:8080";
 				CODE_SIGN_ENTITLEMENTS = WishToGraduate/WishToGraduate.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -1344,6 +1349,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "http://3.37.142.60:8080";
 				CODE_SIGN_ENTITLEMENTS = WishToGraduate/WishToGraduate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
