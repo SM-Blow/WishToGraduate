@@ -104,7 +104,7 @@ extension AddCouponViewController {
     }
     
     private func popToHome() {
-        print("popToHomeTap")
+        self.dismiss(animated: true)
     }
     
     private func addCouponButtonDidTapped() {
