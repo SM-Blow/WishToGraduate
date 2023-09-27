@@ -62,6 +62,10 @@ extension SignInTextFieldView {
             $0.makeShadow(radius: 5, offset: CGSize(width: 0, height: 0), opacity: 0.08)
             $0.backgroundColor = .white
             $0.setLeftPaddingPoints(14)
+            
+            if type == "비밀번호" {
+                $0.isSecureTextEntry = true
+            }
         }
     }
     

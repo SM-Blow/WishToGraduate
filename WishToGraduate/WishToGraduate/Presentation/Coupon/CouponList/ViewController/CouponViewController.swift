@@ -105,7 +105,15 @@ extension CouponViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        useCoupon(title: couponDummyData[indexPath.row].title)
+        switch indexPath.row {
+        case couponDummyData.count:
+            let addCouponViewController = AddCouponViewController()
+            addCouponViewController.modalTransitionStyle = .coverVertical
+            addCouponViewController.modalPresentationStyle = .overFullScreen
+            self.present(addCouponViewController, animated: true)
+        default:
+            useCoupon(title: couponDummyData[indexPath.row].title)
+        }
     }
 }
 

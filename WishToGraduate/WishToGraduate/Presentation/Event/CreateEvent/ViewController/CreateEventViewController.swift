@@ -45,6 +45,7 @@ final class CreateEventViewController: UIViewController {
         setDelegate()
         setupKeyboardEvent()
         setTapScreen()
+        setButton()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -180,6 +181,12 @@ extension CreateEventViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapScreen))
         tapGestureRecognizer.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    private func setButton() {
+        navigationBar.closeButtonHandler = { [weak self] in
+            self?.dismiss(animated: true)
+        }
     }
     
     // MARK: - @objc Methods

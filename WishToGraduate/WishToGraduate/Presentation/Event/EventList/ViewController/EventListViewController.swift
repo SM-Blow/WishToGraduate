@@ -98,7 +98,15 @@ extension EventListViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        pushToEventDetail()
+        switch indexPath.row {
+        case eventDummyData.count:
+            let createEventViewController = CreateEventViewController()
+            createEventViewController.modalTransitionStyle = .coverVertical
+            createEventViewController.modalPresentationStyle = .overFullScreen
+            self.present(createEventViewController, animated: true)
+        default:
+            pushToEventDetail()
+        }
     }
 }
 
