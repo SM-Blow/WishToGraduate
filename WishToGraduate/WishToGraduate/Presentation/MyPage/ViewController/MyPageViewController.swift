@@ -35,6 +35,8 @@ final class MyPageViewController: UIViewController {
     private var myPageTab: MyPageTab = .writing
     private var myWritingDummyModel: [ShareListModel] = ShareListModel.myWritingDummyData()
     private var myScrapDummyModel: [ShareListModel] = ShareListModel.myScrapDummyData()
+    private var mypageModel: MypageModel = MypageModel.init(userId: 0, nickName: "", seed: 0, post: [], scrap: [])
+    private let mypageProvider = MoyaProvider<MyPageService>(plugins: [NetworkLoggerPlugin(verbose: true)])
     
     
     // MARK: - View Life Cycle
@@ -50,6 +52,7 @@ final class MyPageViewController: UIViewController {
         setDelegate()
         setRegister()
         setButton()
+        fetchMypage()
     }
 }
 
@@ -186,5 +189,33 @@ extension MyPageViewController: UICollectionViewDataSource {
             cell.setDataBind(model: myScrapDummyModel[indexPath.row])
         }
         return cell
+    }
+}
+
+extension MyPageViewController {
+    
+    private func fetchMypage() {
+        mypageProvider.request(.myPage) { response in
+            switch response {
+            case .success(let result):
+                let status = result.statusCode
+                if status >= 200 && status < 300 {
+                    do {
+                        guard let mypage = try result.map(GeneralResponse<MyPageResponse>.self).data else { return }
+                        self.mypageModel = mypage.convertToMypage()
+                        print(self.mypageModel)
+                        self.myProfileView.myPointLabel.text = "나의 씨앗     |    \(self.mypageModel.seed ?? 0)개"
+                        self.myProfileView.nicknameLabel.text = self.mypageModel.nickName
+                    } catch (let error) {
+                        print(error.localizedDescription)
+                    }
+                }
+                else if status >= 400 {
+                    print("requestError")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }

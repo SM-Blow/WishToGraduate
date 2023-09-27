@@ -33,21 +33,21 @@ enum APIConstants {
     static var headerWithDeviceToken: [String: String] {
         [
             NetworkHeaderKey.contentType.rawValue: APIConstants.applicationJSON,
-            NetworkHeaderKey.authorization.rawValue: URLConst.bearer + APIConstants.jwtToken
+            NetworkHeaderKey.authorization.rawValue: APIConstants.jwtToken
         ]
     }
     
     static var headerWithAuthorization: [String: String] {
         [
             NetworkHeaderKey.contentType.rawValue: APIConstants.applicationJSON,
-            NetworkHeaderKey.authorization.rawValue: URLConst.bearer + APIConstants.jwtToken
+            NetworkHeaderKey.authorization.rawValue: APIConstants.jwtToken
         ]
     }
     
     static var headerWithRefresh: [String: String] {
         [
             NetworkHeaderKey.contentType.rawValue: APIConstants.applicationJSON,
-            NetworkHeaderKey.authorization.rawValue: URLConst.bearer + APIConstants.jwtToken
+            NetworkHeaderKey.authorization.rawValue: APIConstants.jwtToken
         ]
     }
 }

@@ -15,8 +15,8 @@ final class MyProfileView: UIView {
     // MARK: - UI Components
     
     private let profileImage = UIImageView()
-    private let nicknameLabel = UILabel()
-    private let myPointLabel = UILabel()
+    let nicknameLabel = UILabel()
+    let myPointLabel = UILabel()
     
     // MARK: - View Life Cycle
     
