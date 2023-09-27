@@ -47,6 +47,8 @@
 		036E4B492AC04FAD0045802D /* Config+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E4B482AC04FAD0045802D /* Config+.swift */; };
 		036E4B4B2AC050400045802D /* URLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E4B4A2AC050400045802D /* URLConst.swift */; };
 		036E4B4E2AC19D800045802D /* MyPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E4B4D2AC19D800045802D /* MyPageService.swift */; };
+		036E4B512AC1A0050045802D /* MyPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E4B502AC1A0050045802D /* MyPageResponse.swift */; };
+		036E4B542AC3F71B0045802D /* MypageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E4B532AC3F71B0045802D /* MypageModel.swift */; };
 		0370B4AD2A8CFAF600005400 /* SignInTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4AC2A8CFAF600005400 /* SignInTextFieldView.swift */; };
 		0370B4AF2A8D151900005400 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4AE2A8D151900005400 /* SignUpViewController.swift */; };
 		0370B4B12A8D17E100005400 /* CustomCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4B02A8D17E100005400 /* CustomCheckButton.swift */; };
@@ -153,6 +155,8 @@
 		036E4B482AC04FAD0045802D /* Config+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Config+.swift"; sourceTree = "<group>"; };
 		036E4B4A2AC050400045802D /* URLConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConst.swift; sourceTree = "<group>"; };
 		036E4B4D2AC19D800045802D /* MyPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageService.swift; sourceTree = "<group>"; };
+		036E4B502AC1A0050045802D /* MyPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageResponse.swift; sourceTree = "<group>"; };
+		036E4B532AC3F71B0045802D /* MypageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageModel.swift; sourceTree = "<group>"; };
 		0370B4AC2A8CFAF600005400 /* SignInTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignInTextFieldView.swift; path = WishToGraduate/Presentation/Common/TextField/SignInTextFieldView.swift; sourceTree = SOURCE_ROOT; };
 		0370B4AE2A8D151900005400 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0370B4B02A8D17E100005400 /* CustomCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckButton.swift; sourceTree = "<group>"; };
@@ -310,6 +314,9 @@
 			children = (
 				0330CA6C2A7616D1004CE2D7 /* View */,
 				0350792C2A3DFAE8007F28DF /* ViewController */,
+				035615542A3C4EB200CC9A5E /* Category */,
+				036E4B522AC3F6F40045802D /* Model */,
+				036E4B4F2AC19FF00045802D /* DTO */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -569,6 +576,22 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		036E4B4F2AC19FF00045802D /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				036E4B502AC1A0050045802D /* MyPageResponse.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		036E4B522AC3F6F40045802D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				036E4B532AC3F71B0045802D /* MypageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0370B4A92A8CF9B000005400 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -754,7 +777,6 @@
 				034650832A49C6900024AEC6 /* Search */,
 				035079252A3DFA82007F28DF /* Write */,
 				035079292A3DFAB5007F28DF /* MyPage */,
-				035615542A3C4EB200CC9A5E /* Category */,
 				0367813F2AB9988800866F31 /* Event */,
 				0366B79B2ABAF5A50005BF0F /* Coupon */,
 				035079202A3DF804007F28DF /* TabBar */,
@@ -1157,6 +1179,7 @@
 				0367813E2AB993F400866F31 /* SizeLiterals.swift in Sources */,
 				3B6C6FBA2ABB65E000B4141B /* CouponViewController.swift in Sources */,
 				0350792B2A3DFAE5007F28DF /* MyPageViewController.swift in Sources */,
+				036E4B542AC3F71B0045802D /* MypageModel.swift in Sources */,
 				03931ADD2A2CAD5700B235D9 /* APIService.swift in Sources */,
 				03FD52AA2AA476AF00899F4F /* ChatModel.swift in Sources */,
 				03931B042A2CB3D700B235D9 /* Color.swift in Sources */,
@@ -1173,6 +1196,7 @@
 				036781562ABA0FFA00866F31 /* UITextView+.swift in Sources */,
 				03931AF02A2CB32E00B235D9 /* UITableView+.swift in Sources */,
 				03931AEA2A2CB2F000B235D9 /* NSObject+.swift in Sources */,
+				036E4B512AC1A0050045802D /* MyPageResponse.swift in Sources */,
 				0370B4AF2A8D151900005400 /* SignUpViewController.swift in Sources */,
 				03931AF42A2CB34A00B235D9 /* String+.swift in Sources */,
 				035615692A3CB4A300CC9A5E /* ShareListModel.swift in Sources */,
