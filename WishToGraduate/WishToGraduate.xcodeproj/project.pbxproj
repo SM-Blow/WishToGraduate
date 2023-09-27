@@ -64,7 +64,6 @@
 		03931ACB2A2CA5F900B235D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03931AC92A2CA5F900B235D9 /* LaunchScreen.storyboard */; };
 		03931AD72A2CA75B00B235D9 /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AD62A2CA75B00B235D9 /* DTO.swift */; };
 		03931AD92A2CA76200B235D9 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AD82A2CA76200B235D9 /* Model.swift */; };
-		03931ADD2A2CAD5700B235D9 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931ADC2A2CAD5700B235D9 /* APIService.swift */; };
 		03931AE02A2CAD6D00B235D9 /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931ADF2A2CAD6D00B235D9 /* GeneralResponse.swift */; };
 		03931AE82A2CB2E200B235D9 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AE72A2CB2E200B235D9 /* UIView+.swift */; };
 		03931AEA2A2CB2F000B235D9 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AE92A2CB2F000B235D9 /* NSObject+.swift */; };
@@ -174,7 +173,6 @@
 		03931ACC2A2CA5F900B235D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03931AD62A2CA75B00B235D9 /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
 		03931AD82A2CA76200B235D9 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		03931ADC2A2CAD5700B235D9 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		03931ADF2A2CAD6D00B235D9 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
 		03931AE72A2CB2E200B235D9 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		03931AE92A2CB2F000B235D9 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
@@ -314,7 +312,6 @@
 			children = (
 				0330CA6C2A7616D1004CE2D7 /* View */,
 				0350792C2A3DFAE8007F28DF /* ViewController */,
-				035615542A3C4EB200CC9A5E /* Category */,
 				036E4B522AC3F6F40045802D /* Model */,
 				036E4B4F2AC19FF00045802D /* DTO */,
 			);
@@ -750,7 +747,6 @@
 			isa = PBXGroup;
 			children = (
 				036E4B4C2AC05E050045802D /* User */,
-				03931ADC2A2CAD5700B235D9 /* APIService.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -776,6 +772,7 @@
 				0356155C2A3C89C200CC9A5E /* Share */,
 				034650832A49C6900024AEC6 /* Search */,
 				035079252A3DFA82007F28DF /* Write */,
+				035615542A3C4EB200CC9A5E /* Category */,
 				035079292A3DFAB5007F28DF /* MyPage */,
 				0367813F2AB9988800866F31 /* Event */,
 				0366B79B2ABAF5A50005BF0F /* Coupon */,
@@ -1180,7 +1177,6 @@
 				3B6C6FBA2ABB65E000B4141B /* CouponViewController.swift in Sources */,
 				0350792B2A3DFAE5007F28DF /* MyPageViewController.swift in Sources */,
 				036E4B542AC3F71B0045802D /* MypageModel.swift in Sources */,
-				03931ADD2A2CAD5700B235D9 /* APIService.swift in Sources */,
 				03FD52AA2AA476AF00899F4F /* ChatModel.swift in Sources */,
 				03931B042A2CB3D700B235D9 /* Color.swift in Sources */,
 				0308DA522A2DEF9D00B784B9 /* FontLevel.swift in Sources */,
