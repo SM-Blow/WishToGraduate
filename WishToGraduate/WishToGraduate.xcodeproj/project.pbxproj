@@ -49,6 +49,7 @@
 		036E4B4E2AC19D800045802D /* MyPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E4B4D2AC19D800045802D /* MyPageService.swift */; };
 		036E4B512AC1A0050045802D /* MyPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E4B502AC1A0050045802D /* MyPageResponse.swift */; };
 		036E4B542AC3F71B0045802D /* MypageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E4B532AC3F71B0045802D /* MypageModel.swift */; };
+		036E4B572AC598CF0045802D /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E4B562AC598CF0045802D /* LoginService.swift */; };
 		0370B4AD2A8CFAF600005400 /* SignInTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4AC2A8CFAF600005400 /* SignInTextFieldView.swift */; };
 		0370B4AF2A8D151900005400 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4AE2A8D151900005400 /* SignUpViewController.swift */; };
 		0370B4B12A8D17E100005400 /* CustomCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4B02A8D17E100005400 /* CustomCheckButton.swift */; };
@@ -156,6 +157,7 @@
 		036E4B4D2AC19D800045802D /* MyPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageService.swift; sourceTree = "<group>"; };
 		036E4B502AC1A0050045802D /* MyPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageResponse.swift; sourceTree = "<group>"; };
 		036E4B532AC3F71B0045802D /* MypageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageModel.swift; sourceTree = "<group>"; };
+		036E4B562AC598CF0045802D /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		0370B4AC2A8CFAF600005400 /* SignInTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignInTextFieldView.swift; path = WishToGraduate/Presentation/Common/TextField/SignInTextFieldView.swift; sourceTree = SOURCE_ROOT; };
 		0370B4AE2A8D151900005400 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0370B4B02A8D17E100005400 /* CustomCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckButton.swift; sourceTree = "<group>"; };
@@ -589,6 +591,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		036E4B552AC5987B0045802D /* Sign */ = {
+			isa = PBXGroup;
+			children = (
+				036E4B562AC598CF0045802D /* LoginService.swift */,
+			);
+			path = Sign;
+			sourceTree = "<group>";
+		};
 		0370B4A92A8CF9B000005400 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,6 +756,7 @@
 		03931ADB2A2CAD4A00B235D9 /* APIService */ = {
 			isa = PBXGroup;
 			children = (
+				036E4B552AC5987B0045802D /* Sign */,
 				036E4B4C2AC05E050045802D /* User */,
 			);
 			path = APIService;
@@ -1133,6 +1144,7 @@
 				3B6C6FBD2ABB6B6300B4141B /* AddCollectionViewCell.swift in Sources */,
 				03931AD92A2CA76200B235D9 /* Model.swift in Sources */,
 				03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */,
+				036E4B572AC598CF0045802D /* LoginService.swift in Sources */,
 				0366B7A42ABB55E10005BF0F /* HomeViewController.swift in Sources */,
 				03931B122A2CB68B00B235D9 /* NetworkLoggerPlugin.swift in Sources */,
 				0366B7A02ABAF6FE0005BF0F /* AddCouponViewController.swift in Sources */,
