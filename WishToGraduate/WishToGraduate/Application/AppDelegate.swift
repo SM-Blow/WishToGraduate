@@ -76,11 +76,9 @@ extension AppDelegate: MessagingDelegate {
         
         // 델리게이트에 FCM 토큰을 전달합니다.
         if let token = fcmToken {
-            print("lllllllllllllllllllllll")
             let signUpVC = SignUpViewController()
             signUpVC.didReceiveFCMToken(token)
             self.fcmToken = token
-            fcmTokenDelegate?.didReceiveFCMToken(token)
         } else { print("토큰 전달 안됨 ") }
     }
 }
