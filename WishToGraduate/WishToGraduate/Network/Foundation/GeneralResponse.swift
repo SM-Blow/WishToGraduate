@@ -9,7 +9,7 @@ import Foundation
 
 struct GeneralResponse<T: Decodable>: Decodable {
     var success: Bool
-    var message: String
+    var message: String?
     var data: T?
 
     enum CodingKeys: String, CodingKey {

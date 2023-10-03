@@ -17,10 +17,10 @@ extension CategoryModel {
     static func categoryModelData() -> [CategoryModel] {
         return [
             CategoryModel(image: Image.allCategory, title: "전체"),
-            CategoryModel(image: Image.pill, title: "배달"),
-            CategoryModel(image: Image.sanitaryPad, title: "벌레"),
-            CategoryModel(image: Image.charger, title: "전자기기"),
             CategoryModel(image: Image.book, title: "도서"),
+            CategoryModel(image: Image.charger, title: "전자기기"),
+            CategoryModel(image: Image.delivery, title: "배달"),
+            CategoryModel(image: Image.insecticide, title: "벌레"),
             CategoryModel(image: Image.other, title: "기타")
         ]
     }
@@ -28,10 +28,10 @@ extension CategoryModel {
     static func selectedCategoryModelData() -> [CategoryModel] {
         return [
             CategoryModel(image: Image.selectedAllCategory, title: "전체"),
-            CategoryModel(image: Image.selectedPill, title: "배달"),
-            CategoryModel(image: Image.selectedSanitaryPad, title: "벌레"),
-            CategoryModel(image: Image.selectedCharger, title: "전자기기"),
             CategoryModel(image: Image.selectedBook, title: "도서"),
+            CategoryModel(image: Image.selectedCharger, title: "전자기기"),
+            CategoryModel(image: Image.selectedDelivery, title: "배달"),
+            CategoryModel(image: Image.selectedInsecticide, title: "벌레"),
             CategoryModel(image: Image.selectedOther, title: "기타")
         ]
     }

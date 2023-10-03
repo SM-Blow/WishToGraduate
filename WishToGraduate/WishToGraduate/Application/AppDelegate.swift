@@ -9,8 +9,16 @@ import UIKit
 import Firebase
 import FirebaseMessaging
 
+protocol FCMTokenDelegate: AnyObject {
+    func didReceiveFCMToken(_ token: String)
+}
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    weak var fcmTokenDelegate: FCMTokenDelegate?
+    var fcmToken = ""
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
@@ -58,13 +66,19 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
       Messaging.messaging().apnsToken = deviceToken
     }
-    
 }
 
 extension AppDelegate: MessagingDelegate {
     
+    // FCM 토큰을 받았을 때 호출됩니다.
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        print("fcmToken: \(fcmToken)")
+        print("FCM Token: \(fcmToken)")
+        
+        // 델리게이트에 FCM 토큰을 전달합니다.
+        if let token = fcmToken {
+            let signUpVC = SignUpViewController()
+            signUpVC.didReceiveFCMToken(token)
+            self.fcmToken = token
+        } else { print("토큰 전달 안됨 ") }
     }
-    
 }

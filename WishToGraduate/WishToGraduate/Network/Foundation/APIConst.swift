@@ -20,7 +20,7 @@ enum APIConstants {
     static let auth: String = "x-auth-token"
     static let applicationJSON = "application/json"
     static var deviceToken: String = ""
-    static var jwtToken: String = ""
+    static var jwtToken: String = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMCIsImV4cCI6MTY5NjM3MzIxN30.BMN1Xycc0rF_GxNXpxkpsA2A2vjtE-IM7RAXANvni_8"
     
     //MARK: - Header
     
