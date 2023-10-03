@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum LoginService {
-    case signUp
+    case signUp(param: SignUpRequest)
     case signIn
 }
 
