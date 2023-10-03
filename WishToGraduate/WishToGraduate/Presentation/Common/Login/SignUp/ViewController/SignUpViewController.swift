@@ -21,6 +21,12 @@ final class SignUpViewController: UIViewController {
     private let passwordTextField = SignInTextFieldView(type: "비밀번호")
     private let nickNameTextField = SignInTextFieldView(type: "닉네임")
     private let signUpButton = CustomCheckButton(title: "회원가입")
+
+    // MARK: - Properties
+    
+    private var fcmToken: String?
+    private var userModel: SignUpModel = SignUpModel(email: "", password: "", userName: "", deviceToken: "")
+    private let userProvider = MoyaProvider<LoginService>(plugins:[NetworkLoggerPlugin()])
     
     // MARK: - View Life Cycle
     
@@ -29,6 +35,8 @@ final class SignUpViewController: UIViewController {
         setUI()
         setLayout()
         setAddTarget()
+        print("-----------------------------")
+        print(fcmToken)
     }
 }
 
@@ -115,17 +123,65 @@ extension SignUpViewController {
     func signupButtonDidTap() {
         let text = idTextField.textField.text ?? ""
         if text.isValidSookmyungEmail() {
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-               let sceneDelegate = windowScene.delegate as? SceneDelegate,
-               let window = sceneDelegate.window {
-                let vc = HomeViewController()
-                let rootVC = UINavigationController(rootViewController: vc)
-                rootVC.navigationController?.isNavigationBarHidden = true
-                window.rootViewController = rootVC
-                window.makeKeyAndVisible()
-            }
+            postUserInfo()
         } else {
             UIAlertController.showAlert(title: "잘못된 이메일입니다.", message: "숙명 이메일을 입력해주세요.")
         }
+    }
+}
+
+extension SignUpViewController {
+    
+    private func postUserInfo() {
+        userModel.email = idTextField.textField.text ?? ""
+        userModel.password = passwordTextField.textField.text ?? ""
+        userModel.userName = nickNameTextField.textField.text ?? ""
+        print(self.fcmToken)
+        userModel.deviceToken = self.fcmToken ?? ""
+        print("☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️")
+        print(userModel.deviceToken)
+        userProvider.request(.signUp(param: userModel.makeSignUpRequest())) { response in
+            switch response {
+            case .success(let result):
+                let status = result.statusCode
+                if status >= 200 && status < 300 {
+                    do {
+                        guard let data = try result.map(GeneralResponse<SignUpResponse>.self).data else { return }
+                        APIConstants.deviceToken = self.userModel.deviceToken
+                        APIConstants.jwtToken = data.accessToken
+                        
+                        // 화면전환
+                        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                           let sceneDelegate = windowScene.delegate as? SceneDelegate,
+                           let window = sceneDelegate.window {
+                            let vc = HomeViewController()
+                            let rootVC = UINavigationController(rootViewController: vc)
+                            rootVC.navigationController?.isNavigationBarHidden = true
+                            window.rootViewController = rootVC
+                            window.makeKeyAndVisible()
+                        }
+                    } catch(let error) {
+                        print(error.localizedDescription)
+                    }
+                }
+                else if status >= 400 {
+                    print("400 error")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+}
+
+extension SignUpViewController: FCMTokenDelegate {
+    
+    // FCM 토큰을 받았을 때 호출되는 메서드
+    func didReceiveFCMToken(_ token: String) {
+        // FCM 토큰을 이용하여 원하는 작업을 수행합니다.
+        print("🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸")
+        print("전달되냐?", token)
+        self.fcmToken = token
+        print(self.fcmToken)
     }
 }
