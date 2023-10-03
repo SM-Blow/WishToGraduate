@@ -18,6 +18,7 @@
 		0308DA562A2DF82C00B784B9 /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA552A2DF82C00B784B9 /* NSMutableAttributedString+.swift */; };
 		031CBDFF2A6FE45100301F06 /* ShareNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CBDFE2A6FE45100301F06 /* ShareNavigationView.swift */; };
 		031CBE022A6FE90600301F06 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CBE012A6FE90600301F06 /* CustomNavigationBar.swift */; };
+		032AE0312ACC88780099049C /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032AE0302ACC88780099049C /* Encodable+.swift */; };
 		0330CA702A761AFB004CE2D7 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0330CA6F2A761AFB004CE2D7 /* MyProfileView.swift */; };
 		034650852A49C6AB0024AEC6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034650842A49C6AB0024AEC6 /* SearchViewController.swift */; };
 		035079222A3DF831007F28DF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035079212A3DF831007F28DF /* TabBarController.swift */; };
@@ -127,6 +128,7 @@
 		0308DA552A2DF82C00B784B9 /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
 		031CBDFE2A6FE45100301F06 /* ShareNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareNavigationView.swift; sourceTree = "<group>"; };
 		031CBE012A6FE90600301F06 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		032AE0302ACC88780099049C /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
 		0330CA6F2A761AFB004CE2D7 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		034650842A49C6AB0024AEC6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		035079212A3DF831007F28DF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -882,6 +884,7 @@
 				036781552ABA0FFA00866F31 /* UITextView+.swift */,
 				0366B7972ABAE6920005BF0F /* UIResponder+.swift */,
 				036E4B482AC04FAD0045802D /* Config+.swift */,
+				032AE0302ACC88780099049C /* Encodable+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1221,6 +1224,7 @@
 				036781452AB9D6BD00866F31 /* EventDetailModel.swift in Sources */,
 				036E4B492AC04FAD0045802D /* Config+.swift in Sources */,
 				035079222A3DF831007F28DF /* TabBarController.swift in Sources */,
+				032AE0312ACC88780099049C /* Encodable+.swift in Sources */,
 				0367813E2AB993F400866F31 /* SizeLiterals.swift in Sources */,
 				3B6C6FBA2ABB65E000B4141B /* CouponViewController.swift in Sources */,
 				0350792B2A3DFAE5007F28DF /* MyPageViewController.swift in Sources */,

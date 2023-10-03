@@ -11,6 +11,8 @@ import Moya
 import SnapKit
 import Then
 
+var fcmToken: String?
+
 final class SignUpViewController: UIViewController {
     
     // MARK: - UI Components
@@ -23,8 +25,7 @@ final class SignUpViewController: UIViewController {
     private let signUpButton = CustomCheckButton(title: "회원가입")
 
     // MARK: - Properties
-    
-    private var fcmToken: String?
+
     private var userModel: SignUpModel = SignUpModel(email: "", password: "", userName: "", deviceToken: "")
     private let userProvider = MoyaProvider<LoginService>(plugins:[NetworkLoggerPlugin()])
     
@@ -121,23 +122,23 @@ extension SignUpViewController {
     
     @objc
     func signupButtonDidTap() {
-        let text = idTextField.textField.text ?? ""
-        if text.isValidSookmyungEmail() {
-            postUserInfo()
-        } else {
-            UIAlertController.showAlert(title: "잘못된 이메일입니다.", message: "숙명 이메일을 입력해주세요.")
-        }
+        postUserInfo()
+//        let text = idTextField.textField.text ?? ""
+//        if text.isValidSookmyungEmail() {
+//            postUserInfo()
+//        } else {
+//            UIAlertController.showAlert(title: "잘못된 이메일입니다.", message: "숙명 이메일을 입력해주세요.")
+//        }
     }
 }
 
 extension SignUpViewController {
     
     private func postUserInfo() {
-        userModel.email = idTextField.textField.text ?? ""
-        userModel.password = passwordTextField.textField.text ?? ""
-        userModel.userName = nickNameTextField.textField.text ?? ""
-        print(self.fcmToken)
-        userModel.deviceToken = self.fcmToken ?? ""
+        userModel.email = self.idTextField.textField.text ?? ""
+        userModel.password = self.passwordTextField.textField.text ?? ""
+        userModel.userName = self.nickNameTextField.textField.text ?? ""
+        userModel.deviceToken = fcmToken ?? ""
         print("☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️")
         print(userModel.deviceToken)
         userProvider.request(.signUp(param: userModel.makeSignUpRequest())) { response in
@@ -164,8 +165,16 @@ extension SignUpViewController {
                         print(error.localizedDescription)
                     }
                 }
-                else if status >= 400 {
+                else if status == 400 {
+                    print("🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢")
                     print("400 error")
+                    do {
+                        let generalResponse = try result.map(GeneralResponse<SignUpRequest>.self)
+                        guard let message = generalResponse.message else { return }
+                        print(message)
+                    } catch(let error) {
+                        print(error.localizedDescription)
+                    }
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -179,9 +188,9 @@ extension SignUpViewController: FCMTokenDelegate {
     // FCM 토큰을 받았을 때 호출되는 메서드
     func didReceiveFCMToken(_ token: String) {
         // FCM 토큰을 이용하여 원하는 작업을 수행합니다.
-        print("🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸")
         print("전달되냐?", token)
-        self.fcmToken = token
-        print(self.fcmToken)
+        fcmToken = token
+        print("🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸")
+        print(fcmToken)
     }
 }

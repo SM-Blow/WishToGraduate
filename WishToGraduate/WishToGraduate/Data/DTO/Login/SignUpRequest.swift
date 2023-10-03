@@ -11,5 +11,5 @@ struct SignUpRequest: Codable {
     let email: String
     let password: String
     let userName: String
-    let deviceToken: String
+    let fcmDeviceToken: String
 }

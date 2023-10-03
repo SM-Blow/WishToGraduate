@@ -17,7 +17,7 @@ struct SignUpModel {
         return SignUpRequest(email: self.email,
                              password: self.password,
                              userName: self.userName,
-                             deviceToken: self.deviceToken
+                             fcmDeviceToken: self.deviceToken
         )
     }
 }

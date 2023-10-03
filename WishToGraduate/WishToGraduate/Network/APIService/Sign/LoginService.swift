@@ -32,7 +32,12 @@ extension LoginService: TargetType {
     }
     
     var task: Moya.Task {
-        return .requestPlain
+        switch self {
+        case .signUp(let param):
+            return .requestParameters(parameters: try! param.asParameter(), encoding: JSONEncoding.default)
+        case .signIn:
+            return .requestPlain
+        }
     }
     
     var headers: [String : String]? {
