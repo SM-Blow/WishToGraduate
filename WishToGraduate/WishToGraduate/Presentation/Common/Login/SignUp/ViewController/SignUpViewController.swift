@@ -11,6 +11,8 @@ import Moya
 import SnapKit
 import Then
 
+var fcmToken: String?
+
 final class SignUpViewController: UIViewController {
     
     // MARK: - UI Components
@@ -21,6 +23,11 @@ final class SignUpViewController: UIViewController {
     private let passwordTextField = SignInTextFieldView(type: "비밀번호")
     private let nickNameTextField = SignInTextFieldView(type: "닉네임")
     private let signUpButton = CustomCheckButton(title: "회원가입")
+
+    // MARK: - Properties
+
+    private var userModel: SignUpModel = SignUpModel(email: "", password: "", userName: "", deviceToken: "")
+    private let userProvider = MoyaProvider<LoginService>(plugins:[NetworkLoggerPlugin()])
     
     // MARK: - View Life Cycle
     
@@ -115,17 +122,68 @@ extension SignUpViewController {
     func signupButtonDidTap() {
         let text = idTextField.textField.text ?? ""
         if text.isValidSookmyungEmail() {
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-               let sceneDelegate = windowScene.delegate as? SceneDelegate,
-               let window = sceneDelegate.window {
-                let vc = HomeViewController()
-                let rootVC = UINavigationController(rootViewController: vc)
-                rootVC.navigationController?.isNavigationBarHidden = true
-                window.rootViewController = rootVC
-                window.makeKeyAndVisible()
-            }
+            postUserInfo()
         } else {
             UIAlertController.showAlert(title: "잘못된 이메일입니다.", message: "숙명 이메일을 입력해주세요.")
         }
+    }
+}
+
+extension SignUpViewController {
+    
+    private func postUserInfo() {
+        userModel.email = self.idTextField.textField.text ?? ""
+        userModel.password = self.passwordTextField.textField.text ?? ""
+        userModel.userName = self.nickNameTextField.textField.text ?? ""
+        userModel.deviceToken = fcmToken ?? ""
+        print("☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️")
+        print(userModel.deviceToken)
+        userProvider.request(.signUp(param: userModel.makeSignUpRequest())) { response in
+            switch response {
+            case .success(let result):
+                let status = result.statusCode
+                if status >= 200 && status < 300 {
+                    do {
+                        guard let data = try result.map(GeneralResponse<SignUpResponse>.self).data else { return }
+                        APIConstants.deviceToken = self.userModel.deviceToken
+                        APIConstants.jwtToken = data.accessToken
+                        
+                        // 화면전환
+                        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                           let sceneDelegate = windowScene.delegate as? SceneDelegate,
+                           let window = sceneDelegate.window {
+                            let vc = HomeViewController()
+                            let rootVC = UINavigationController(rootViewController: vc)
+                            rootVC.navigationController?.isNavigationBarHidden = true
+                            window.rootViewController = rootVC
+                            window.makeKeyAndVisible()
+                        }
+                    } catch(let error) {
+                        print(error.localizedDescription)
+                    }
+                }
+                else if status == 400 {
+                    print("🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢🤢")
+                    print("400 error")
+                    do {
+                        let generalResponse = try result.map(GeneralResponse<SignUpRequest>.self)
+                        guard let message = generalResponse.message else { return }
+                        print(message)
+                    } catch(let error) {
+                        print(error.localizedDescription)
+                    }
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+}
+
+extension SignUpViewController: FCMTokenDelegate {
+    
+    // FCM 토큰을 받았을 때 호출되는 메서드
+    func didReceiveFCMToken(_ token: String) {
+        fcmToken = token
     }
 }
