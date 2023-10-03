@@ -36,8 +36,6 @@ final class SignUpViewController: UIViewController {
         setUI()
         setLayout()
         setAddTarget()
-        print("-----------------------------")
-        print(fcmToken)
     }
 }
 
@@ -122,13 +120,12 @@ extension SignUpViewController {
     
     @objc
     func signupButtonDidTap() {
-        postUserInfo()
-//        let text = idTextField.textField.text ?? ""
-//        if text.isValidSookmyungEmail() {
-//            postUserInfo()
-//        } else {
-//            UIAlertController.showAlert(title: "잘못된 이메일입니다.", message: "숙명 이메일을 입력해주세요.")
-//        }
+        let text = idTextField.textField.text ?? ""
+        if text.isValidSookmyungEmail() {
+            postUserInfo()
+        } else {
+            UIAlertController.showAlert(title: "잘못된 이메일입니다.", message: "숙명 이메일을 입력해주세요.")
+        }
     }
 }
 
@@ -187,10 +184,6 @@ extension SignUpViewController: FCMTokenDelegate {
     
     // FCM 토큰을 받았을 때 호출되는 메서드
     func didReceiveFCMToken(_ token: String) {
-        // FCM 토큰을 이용하여 원하는 작업을 수행합니다.
-        print("전달되냐?", token)
         fcmToken = token
-        print("🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸")
-        print(fcmToken)
     }
 }
