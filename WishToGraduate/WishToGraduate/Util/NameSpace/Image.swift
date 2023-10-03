@@ -35,12 +35,17 @@ public enum Image {
     public static let other = UIImage(named: "other")!
     public static let pill = UIImage(named: "pill")!
     public static let sanitaryPad = UIImage(named: "sanitaryPad")!
+    public static let delivery = UIImage(named: "delivery")!
+    public static let insecticide = UIImage(named: "insecticide")!
+    
     public static let selectedAllCategory = UIImage(named: "selectedAllCategory")!
     public static let selectedBook = UIImage(named: "selectedBook")!
     public static let selectedCharger = UIImage(named: "selectedCharger")!
     public static let selectedOther = UIImage(named: "selectedOther")!
     public static let selectedPill = UIImage(named: "selectedPill")!
     public static let selectedSanitaryPad = UIImage(named: "selectedSanitaryPad")!
+    public static let selectedDelivery = UIImage(named: "selectedDelivery")!
+    public static let selectedInsecticide = UIImage(named: "selectedInsecticide")!
     
     // MARK: - Profile
     
