@@ -79,14 +79,17 @@ extension CouponViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    private func useCoupon(title: String) {
-        let alert = CustomAlertView(alertType: .useCoupon, title: title)
-        alert.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(alert)
-        alert.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+    private func useCoupon(title: String, couponId: Int) {
+        let alertViewController = CustomAlertViewController()
+        alertViewController.setTitle(title)
+        alertViewController.setAlert(.useCoupon)
+        alertViewController.modalPresentationStyle = .overFullScreen
+        alertViewController.modalTransitionStyle = .crossDissolve
+        self.present(alertViewController, animated: true)
+        alertViewController.allowButtonHandler = { [weak self] in
+            self?.requestPostCouponUse(couponId: couponId)
+            self?.dismiss(animated: true)
         }
-        alert.isUserInteractionEnabled = true
     }
     
     @objc
@@ -107,11 +110,22 @@ extension CouponViewController {
         }
     }
     
+    private func requestPostCouponUse(couponId: Int) {
+        CouponAPI.shared.postCouponUse(id: couponId) { [weak self] response in
+            guard self != nil else { return }
+            guard (response?.data) != nil else { return }
+            DispatchQueue.main.async { [weak self] in
+                self?.requestGetCouponList()
+                self?.coupontListCollectionView.reloadData()
+            }
+        }
+    }
+    
     private func loadCollectionView() {
         isCollectionViewLoaded = true
     
-        DispatchQueue.main.async {
-            self.coupontListCollectionView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.coupontListCollectionView.reloadData()
         }
     }
 }
@@ -138,7 +152,7 @@ extension CouponViewController: UICollectionViewDelegateFlowLayout {
             addCouponViewController.modalPresentationStyle = .overFullScreen
             self.present(addCouponViewController, animated: true)
         default:
-            useCoupon(title: couponList[indexPath.row].storeName)
+            useCoupon(title: couponList[indexPath.row].storeName, couponId: couponList[indexPath.row].couponId)
         }
     }
 }
