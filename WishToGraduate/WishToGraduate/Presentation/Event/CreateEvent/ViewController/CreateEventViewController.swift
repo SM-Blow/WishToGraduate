@@ -13,6 +13,8 @@ import Then
 
 final class CreateEventViewController: UIViewController {
     
+    var popHandler: (() -> Void)?
+    
     // MARK: - UI Components
     
     private let navigationBar = CustomNavigationBar(title: "행사 생성하기")
@@ -157,32 +159,33 @@ extension CreateEventViewController {
         eventDetailTextView.delegate = self
     }
     
+    @objc
     private func addCouponButtonDidTapped() {
-//        requestPostAddEvent()
-//        popHandler?()
+        requestPostAddEvent()
+        popHandler?()
         self.dismiss(animated: true)
     }
 
-//    private func requestPostAddEvent() {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy.MM.dd"
-//        if let date = dateFormatter.date(from: dueDateView.getText()) {
-//            // Date를 ISO 8601 형식의 문자열로 변환
-//            let isoDateFormatter = ISO8601DateFormatter()
-//            isoDateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-//            let isoDateString = isoDateFormatter.string(from: date)
-//            EventAPI.shared.postAddEvent(acceptCount: <#T##Int#>,
-//                                         content: eve,
-//                                         dueDate: eventDateView.getText(),
-//                                         host: hostNameView.getText(),
-//                                         title: eventNameView.getText(),
-//                                         completion: { [weak self] response in
-//                guard self != nil else { return }
-//                guard (response?.data) != nil else { return }
-//            })
-//        }
-//
-//    }
+    private func requestPostAddEvent() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        if let date = dateFormatter.date(from: eventDateView.getText()) {
+            // Date를 ISO 8601 형식의 문자열로 변환
+            let isoDateFormatter = ISO8601DateFormatter()
+            isoDateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+            let isoDateString = isoDateFormatter.string(from: date)
+            EventAPI.shared.postAddEvent(acceptCount: Int(eventPeopleCountView.getText())!,
+                                         content: eventDetailTextView.text,
+                                         dueDate: isoDateString,
+                                         host: hostNameView.getText(),
+                                         title: eventNameView.getText(),
+                                         completion: { [weak self] response in
+                guard self != nil else { return }
+                guard (response?.data) != nil else { return }
+            })
+        }
+
+    }
     
     private func setupKeyboardEvent() {
         NotificationCenter.default.addObserver(self,
@@ -212,6 +215,9 @@ extension CreateEventViewController {
     private func setButton() {
         navigationBar.closeButtonHandler = { [weak self] in
             self?.dismiss(animated: true)
+        }
+        createEventButton.buttonHandler = { [weak self] in
+            self?.addCouponButtonDidTapped()
         }
     }
     

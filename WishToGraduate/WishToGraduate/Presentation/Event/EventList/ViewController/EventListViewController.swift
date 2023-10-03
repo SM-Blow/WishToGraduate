@@ -129,6 +129,12 @@ extension EventListViewController: UICollectionViewDelegateFlowLayout {
             createEventViewController.modalTransitionStyle = .coverVertical
             createEventViewController.modalPresentationStyle = .overFullScreen
             self.present(createEventViewController, animated: true)
+            createEventViewController.popHandler = { [weak self] in
+                DispatchQueue.main.async { [weak self] in
+                    self?.requestGetEventList()
+                    self?.eventListCollectionView.reloadData()
+                }
+            }
         default:
             pushToEventDetail()
         }
