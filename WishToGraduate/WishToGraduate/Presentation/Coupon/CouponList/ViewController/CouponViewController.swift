@@ -150,7 +150,13 @@ extension CouponViewController: UICollectionViewDelegateFlowLayout {
             let addCouponViewController = AddCouponViewController()
             addCouponViewController.modalTransitionStyle = .coverVertical
             addCouponViewController.modalPresentationStyle = .overFullScreen
-            self.present(addCouponViewController, animated: true)
+            self.navigationController?.pushViewController(addCouponViewController, animated: true)
+            addCouponViewController.popHandler = { [weak self] in
+                DispatchQueue.main.async { [weak self] in
+                    self?.requestGetCouponList()
+                    self?.coupontListCollectionView.reloadData()
+                }
+            }
         default:
             useCoupon(title: couponList[indexPath.row].storeName, couponId: couponList[indexPath.row].couponId)
         }
