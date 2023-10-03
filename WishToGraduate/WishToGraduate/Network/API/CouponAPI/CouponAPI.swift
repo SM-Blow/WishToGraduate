@@ -16,16 +16,15 @@ final class CouponAPI {
     
     private init() {}
     
-    public private(set) var couponListData: GeneralArrayResponse<CouponListResponseDto>?
+    public private(set) var couponListData: GeneralResponse<CouponListResponseDto>?
     
     // MARK: - GET
-    func getCouponList(completion: @escaping (GeneralArrayResponse<CouponListResponseDto>?) -> Void) {
+    func getCouponList(completion: @escaping (GeneralResponse<CouponListResponseDto>?) -> Void) {
         couponProvider.request(.couponList) { result in
             switch result {
             case .success(let response):
                 do {
-                    self.couponListData = try
-                    response.map(GeneralArrayResponse<CouponListResponseDto>?.self)
+                    self.couponListData = try response.map(GeneralResponse<CouponListResponseDto>?.self)
                     guard let couponListData = self.couponListData else { return }
                     completion(couponListData)
                 } catch let err {
