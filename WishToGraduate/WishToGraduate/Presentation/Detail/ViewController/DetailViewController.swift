@@ -297,8 +297,8 @@ extension DetailViewController {
         case .text:
             photoImageView.isHidden = true
             setLayout()
-            DispatchQueue.main.async {
-                self.setTextLayout()
+            DispatchQueue.main.async { [weak self] in
+                self?.setTextLayout()
             }
         }
     }
@@ -361,24 +361,24 @@ extension DetailViewController {
         actionSheet.addAction(UIAlertAction(title: "거래전", style: .default, handler: {(ACTION: UIAlertAction) in
             print("거래전")
             self.stateType = .yet
-            DispatchQueue.main.async {
-                self.setTransactionLabel()
+            DispatchQueue.main.async { [weak self] in
+                self?.setTransactionLabel()
             }
         }))
         
         actionSheet.addAction(UIAlertAction(title: "거래중", style: .default, handler: {(ACTION: UIAlertAction) in
             print("거래중")
             self.stateType = .ing
-            DispatchQueue.main.async {
-                self.setTransactionLabel()
+            DispatchQueue.main.async { [weak self] in
+                self?.setTransactionLabel()
             }
         }))
         
         actionSheet.addAction(UIAlertAction(title: "거래완료", style: .default, handler: {(ACTION: UIAlertAction) in
             print("거래완료")
             self.stateType = .end
-            DispatchQueue.main.async {
-                self.setTransactionLabel()
+            DispatchQueue.main.async { [weak self] in
+                self?.setTransactionLabel()
             }
         }))
         
