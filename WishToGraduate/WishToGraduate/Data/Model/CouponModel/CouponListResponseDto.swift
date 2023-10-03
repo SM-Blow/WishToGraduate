@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct CouponListResponseDto: Codable {
+    let couponList: [Coupon]
+}
+
+struct Coupon: Codable {
+    let couponId: Int
+    let storeName: String
+    let content: String
+    let dueDate: [Int]
+}

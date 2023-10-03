@@ -63,7 +63,7 @@
 		03931AC82A2CA5F900B235D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03931AC72A2CA5F900B235D9 /* Assets.xcassets */; };
 		03931ACB2A2CA5F900B235D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03931AC92A2CA5F900B235D9 /* LaunchScreen.storyboard */; };
 		03931AD72A2CA75B00B235D9 /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AD62A2CA75B00B235D9 /* DTO.swift */; };
-		03931AD92A2CA76200B235D9 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AD82A2CA76200B235D9 /* Model.swift */; };
+		03931AD92A2CA76200B235D9 /* CouponListResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AD82A2CA76200B235D9 /* CouponListResponseDto.swift */; };
 		03931AE02A2CAD6D00B235D9 /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931ADF2A2CAD6D00B235D9 /* GeneralResponse.swift */; };
 		03931AE82A2CB2E200B235D9 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AE72A2CB2E200B235D9 /* UIView+.swift */; };
 		03931AEA2A2CB2F000B235D9 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AE92A2CB2F000B235D9 /* NSObject+.swift */; };
@@ -173,7 +173,7 @@
 		03931ACA2A2CA5F900B235D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03931ACC2A2CA5F900B235D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03931AD62A2CA75B00B235D9 /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
-		03931AD82A2CA76200B235D9 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		03931AD82A2CA76200B235D9 /* CouponListResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListResponseDto.swift; sourceTree = "<group>"; };
 		03931ADF2A2CAD6D00B235D9 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
 		03931AE72A2CB2E200B235D9 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		03931AE92A2CB2F000B235D9 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
@@ -723,7 +723,7 @@
 		03931AD52A2CA74300B235D9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				03931AD82A2CA76200B235D9 /* Model.swift */,
+				3B615A6B2ACC6F11004CC6EB /* CouponModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -931,6 +931,14 @@
 			path = Coupon;
 			sourceTree = "<group>";
 		};
+		3B615A6B2ACC6F11004CC6EB /* CouponModel */ = {
+			isa = PBXGroup;
+			children = (
+				03931AD82A2CA76200B235D9 /* CouponListResponseDto.swift */,
+			);
+			path = CouponModel;
+			sourceTree = "<group>";
+		};
 		3B6C6FB72ABB64A100B4141B /* CouponList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1134,7 +1142,7 @@
 				03FD52A72AA4739200899F4F /* ChatCollectionViewCell.swift in Sources */,
 				3B3677872AAF374400FF4ED1 /* CommonBorrowLabel.swift in Sources */,
 				3B6C6FBD2ABB6B6300B4141B /* AddCollectionViewCell.swift in Sources */,
-				03931AD92A2CA76200B235D9 /* Model.swift in Sources */,
+				03931AD92A2CA76200B235D9 /* CouponListResponseDto.swift in Sources */,
 				03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */,
 				0366B7A42ABB55E10005BF0F /* HomeViewController.swift in Sources */,
 				03931B122A2CB68B00B235D9 /* NetworkLoggerPlugin.swift in Sources */,
