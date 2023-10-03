@@ -22,11 +22,11 @@ extension CouponService: TargetType {
     var path: String {
         switch self {
         case .couponAdd:
-            return URLConst.couponAdd
+            return URLConst.coupon
         case .couponList:
             return URLConst.couponList
         case .couponUse(let id):
-            return URLConst.couponUse + "/\(id)"
+            return URLConst.coupon + "/\(id)"
         }
     }
     
