@@ -69,6 +69,8 @@
 		03931AC32A2CA5F700B235D9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AC22A2CA5F700B235D9 /* CategoryViewController.swift */; };
 		03931AC82A2CA5F900B235D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03931AC72A2CA5F900B235D9 /* Assets.xcassets */; };
 		03931ACB2A2CA5F900B235D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03931AC92A2CA5F900B235D9 /* LaunchScreen.storyboard */; };
+		03931AD72A2CA75B00B235D9 /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AD62A2CA75B00B235D9 /* DTO.swift */; };
+		03931AD92A2CA76200B235D9 /* CouponListResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AD82A2CA76200B235D9 /* CouponListResponseDto.swift */; };
 		03931AE02A2CAD6D00B235D9 /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931ADF2A2CAD6D00B235D9 /* GeneralResponse.swift */; };
 		03931AE82A2CB2E200B235D9 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AE72A2CB2E200B235D9 /* UIView+.swift */; };
 		03931AEA2A2CB2F000B235D9 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AE92A2CB2F000B235D9 /* NSObject+.swift */; };
@@ -85,10 +87,6 @@
 		03931B002A2CB39D00B235D9 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AFF2A2CB39D00B235D9 /* UIViewController+.swift */; };
 		03931B022A2CB3D100B235D9 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B012A2CB3D100B235D9 /* Image.swift */; };
 		03931B042A2CB3D700B235D9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B032A2CB3D700B235D9 /* Color.swift */; };
-		03931B072A2CB4FC00B235D9 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 03931B062A2CB4FC00B235D9 /* Then */; };
-		03931B0A2A2CB50E00B235D9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 03931B092A2CB50E00B235D9 /* SnapKit */; };
-		03931B0D2A2CB56600B235D9 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 03931B0C2A2CB56600B235D9 /* Moya */; };
-		03931B102A2CB57900B235D9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 03931B0F2A2CB57900B235D9 /* Kingfisher */; };
 		03931B122A2CB68B00B235D9 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B112A2CB68B00B235D9 /* NetworkLoggerPlugin.swift */; };
 		03931B142A2CB85600B235D9 /* APIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B132A2CB85600B235D9 /* APIConst.swift */; };
 		03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B004A62A546ECD00E71CA7 /* SearchSection.swift */; };
@@ -102,10 +100,15 @@
 		3B36778A2AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3677892AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift */; };
 		3B36778C2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B36778B2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift */; };
 		3B45268E2AB0C65200D8CE37 /* BorrowTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45268D2AB0C65200D8CE37 /* BorrowTypeModel.swift */; };
+		3B615A5E2ACC60D9004CC6EB /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3B615A5D2ACC60D9004CC6EB /* Then */; };
+		3B615A612ACC6110004CC6EB /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 3B615A602ACC6110004CC6EB /* Moya */; };
+		3B615A642ACC6134004CC6EB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3B615A632ACC6134004CC6EB /* Kingfisher */; };
+		3B615A672ACC6148004CC6EB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3B615A662ACC6148004CC6EB /* SnapKit */; };
+		3B615A6A2ACC6851004CC6EB /* CouponService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B615A692ACC6851004CC6EB /* CouponService.swift */; };
+		3B615A702ACC7132004CC6EB /* CouponAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B615A6F2ACC7132004CC6EB /* CouponAPI.swift */; };
 		3B6C6FBA2ABB65E000B4141B /* CouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C6FB92ABB65E000B4141B /* CouponViewController.swift */; };
 		3B6C6FBD2ABB6B6300B4141B /* AddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C6FBC2ABB6B6300B4141B /* AddCollectionViewCell.swift */; };
 		3B6C6FBF2ABB710900B4141B /* CouponCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C6FBE2ABB710900B4141B /* CouponCollectionViewCell.swift */; };
-		3B7311752ABC89F7002726E4 /* CouponListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7311742ABC89F7002726E4 /* CouponListModel.swift */; };
 		3BA183F72AB3FC5C00C3D2D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BA183F62AB3FC5C00C3D2D6 /* GoogleService-Info.plist */; };
 		3BA183FA2AB4059100C3D2D6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3BA183F92AB4059100C3D2D6 /* FirebaseAnalytics */; };
 		3BA183FC2AB4059100C3D2D6 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 3BA183FB2AB4059100C3D2D6 /* FirebaseMessaging */; };
@@ -183,6 +186,8 @@
 		03931AC72A2CA5F900B235D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03931ACA2A2CA5F900B235D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03931ACC2A2CA5F900B235D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03931AD62A2CA75B00B235D9 /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
+		03931AD82A2CA76200B235D9 /* CouponListResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListResponseDto.swift; sourceTree = "<group>"; };
 		03931ADF2A2CAD6D00B235D9 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
 		03931AE72A2CB2E200B235D9 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		03931AE92A2CB2F000B235D9 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
@@ -212,10 +217,11 @@
 		3B3677892AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowTypeCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		3B36778B2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		3B45268D2AB0C65200D8CE37 /* BorrowTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowTypeModel.swift; sourceTree = "<group>"; };
+		3B615A692ACC6851004CC6EB /* CouponService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponService.swift; sourceTree = "<group>"; };
+		3B615A6F2ACC7132004CC6EB /* CouponAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponAPI.swift; sourceTree = "<group>"; };
 		3B6C6FB92ABB65E000B4141B /* CouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponViewController.swift; sourceTree = "<group>"; };
 		3B6C6FBC2ABB6B6300B4141B /* AddCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionViewCell.swift; sourceTree = "<group>"; };
 		3B6C6FBE2ABB710900B4141B /* CouponCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponCollectionViewCell.swift; sourceTree = "<group>"; };
-		3B7311742ABC89F7002726E4 /* CouponListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListModel.swift; sourceTree = "<group>"; };
 		3BA183EE2AB3ECB300C3D2D6 /* WishToGraduate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WishToGraduate.entitlements; sourceTree = "<group>"; };
 		3BA183F62AB3FC5C00C3D2D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3BBF95022ABC8EA1000F51B1 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
@@ -233,11 +239,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BA183FC2AB4059100C3D2D6 /* FirebaseMessaging in Frameworks */,
-				03931B102A2CB57900B235D9 /* Kingfisher in Frameworks */,
-				03931B072A2CB4FC00B235D9 /* Then in Frameworks */,
-				03931B0A2A2CB50E00B235D9 /* SnapKit in Frameworks */,
+				3B615A5E2ACC60D9004CC6EB /* Then in Frameworks */,
+				3B615A612ACC6110004CC6EB /* Moya in Frameworks */,
+				3B615A672ACC6148004CC6EB /* SnapKit in Frameworks */,
 				3BA183FA2AB4059100C3D2D6 /* FirebaseAnalytics in Frameworks */,
-				03931B0D2A2CB56600B235D9 /* Moya in Frameworks */,
+				3B615A642ACC6134004CC6EB /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,7 +560,6 @@
 		0367814E2AB9FDA500866F31 /* CreateEvent */ = {
 			isa = PBXGroup;
 			children = (
-				036781522AB9FE0B00866F31 /* View */,
 				0367814F2AB9FDB700866F31 /* ViewController */,
 			);
 			path = CreateEvent;
@@ -566,13 +571,6 @@
 				036781502AB9FDC700866F31 /* CreateEventViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		036781522AB9FE0B00866F31 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		036E4B4C2AC05E050045802D /* User */ = {
@@ -782,6 +780,7 @@
 		03931AD52A2CA74300B235D9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3B615A6B2ACC6F11004CC6EB /* CouponModel */,
 				036E4B5F2AC59EE30045802D /* Login */,
 			);
 			path = Model;
@@ -790,6 +789,7 @@
 		03931ADA2A2CA76900B235D9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				3B615A6D2ACC7116004CC6EB /* API */,
 				03931ADB2A2CAD4A00B235D9 /* APIService */,
 				03931ADE2A2CAD5B00B235D9 /* Foundation */,
 			);
@@ -799,6 +799,7 @@
 		03931ADB2A2CAD4A00B235D9 /* APIService */ = {
 			isa = PBXGroup;
 			children = (
+				3B615A682ACC683E004CC6EB /* Coupon */,
 				036E4B552AC5987B0045802D /* Sign */,
 				036E4B4C2AC05E050045802D /* User */,
 			);
@@ -983,10 +984,41 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3B615A682ACC683E004CC6EB /* Coupon */ = {
+			isa = PBXGroup;
+			children = (
+				3B615A692ACC6851004CC6EB /* CouponService.swift */,
+			);
+			path = Coupon;
+			sourceTree = "<group>";
+		};
+		3B615A6B2ACC6F11004CC6EB /* CouponModel */ = {
+			isa = PBXGroup;
+			children = (
+				03931AD82A2CA76200B235D9 /* CouponListResponseDto.swift */,
+			);
+			path = CouponModel;
+			sourceTree = "<group>";
+		};
+		3B615A6D2ACC7116004CC6EB /* API */ = {
+			isa = PBXGroup;
+			children = (
+				3B615A6E2ACC711B004CC6EB /* CouponAPI */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		3B615A6E2ACC711B004CC6EB /* CouponAPI */ = {
+			isa = PBXGroup;
+			children = (
+				3B615A6F2ACC7132004CC6EB /* CouponAPI.swift */,
+			);
+			path = CouponAPI;
+			sourceTree = "<group>";
+		};
 		3B6C6FB72ABB64A100B4141B /* CouponList */ = {
 			isa = PBXGroup;
 			children = (
-				3B7311732ABC896A002726E4 /* Model */,
 				3B6C6FBB2ABB6B4E00B4141B /* Cell */,
 				3B6C6FB82ABB65BA00B4141B /* ViewController */,
 			);
@@ -1008,14 +1040,6 @@
 				3B6C6FBE2ABB710900B4141B /* CouponCollectionViewCell.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		3B7311732ABC896A002726E4 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				3B7311742ABC89F7002726E4 /* CouponListModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		3BBF94FF2ABC8E26000F51B1 /* EventList */ = {
@@ -1101,12 +1125,12 @@
 			);
 			name = WishToGraduate;
 			packageProductDependencies = (
-				03931B062A2CB4FC00B235D9 /* Then */,
-				03931B092A2CB50E00B235D9 /* SnapKit */,
-				03931B0C2A2CB56600B235D9 /* Moya */,
-				03931B0F2A2CB57900B235D9 /* Kingfisher */,
 				3BA183F92AB4059100C3D2D6 /* FirebaseAnalytics */,
 				3BA183FB2AB4059100C3D2D6 /* FirebaseMessaging */,
+				3B615A5D2ACC60D9004CC6EB /* Then */,
+				3B615A602ACC6110004CC6EB /* Moya */,
+				3B615A632ACC6134004CC6EB /* Kingfisher */,
+				3B615A662ACC6148004CC6EB /* SnapKit */,
 			);
 			productName = WishToGraduate;
 			productReference = 03931ABB2A2CA5F700B235D9 /* WishToGraduate.app */;
@@ -1137,11 +1161,11 @@
 			);
 			mainGroup = 03931AB22A2CA5F700B235D9;
 			packageReferences = (
-				03931B052A2CB4FC00B235D9 /* XCRemoteSwiftPackageReference "Then" */,
-				03931B082A2CB50D00B235D9 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				03931B0B2A2CB56600B235D9 /* XCRemoteSwiftPackageReference "Moya" */,
-				03931B0E2A2CB57900B235D9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				3BA183F82AB4059100C3D2D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3B615A5C2ACC60D9004CC6EB /* XCRemoteSwiftPackageReference "Then" */,
+				3B615A5F2ACC6110004CC6EB /* XCRemoteSwiftPackageReference "Moya" */,
+				3B615A622ACC6134004CC6EB /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				3B615A652ACC6148004CC6EB /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 03931ABC2A2CA5F700B235D9 /* Products */;
 			projectDirPath = "";
@@ -1186,12 +1210,14 @@
 				03FD52A72AA4739200899F4F /* ChatCollectionViewCell.swift in Sources */,
 				3B3677872AAF374400FF4ED1 /* CommonBorrowLabel.swift in Sources */,
 				3B6C6FBD2ABB6B6300B4141B /* AddCollectionViewCell.swift in Sources */,
+				03931AD92A2CA76200B235D9 /* CouponListResponseDto.swift in Sources */,
 				03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */,
 				036E4B572AC598CF0045802D /* LoginService.swift in Sources */,
 				036E4B632AC5A6490045802D /* SignUpResponse.swift in Sources */,
 				0366B7A42ABB55E10005BF0F /* HomeViewController.swift in Sources */,
 				03931B122A2CB68B00B235D9 /* NetworkLoggerPlugin.swift in Sources */,
 				0366B7A02ABAF6FE0005BF0F /* AddCouponViewController.swift in Sources */,
+				3B615A702ACC7132004CC6EB /* CouponAPI.swift in Sources */,
 				3B36778A2AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift in Sources */,
 				0370B4BB2A8E20EF00005400 /* ChatListViewController.swift in Sources */,
 				03931B002A2CB39D00B235D9 /* UIViewController+.swift in Sources */,
@@ -1211,11 +1237,11 @@
 				0370F3A02A442A9C00A9AF28 /* LabelStatusModel.swift in Sources */,
 				03931AFA2A2CB37700B235D9 /* UIButton+.swift in Sources */,
 				03931AE02A2CAD6D00B235D9 /* GeneralResponse.swift in Sources */,
-				3B7311752ABC89F7002726E4 /* CouponListModel.swift in Sources */,
 				03931B022A2CB3D100B235D9 /* Image.swift in Sources */,
 				0330CA702A761AFB004CE2D7 /* MyProfileView.swift in Sources */,
 				3BBF95082ABC9146000F51B1 /* EventListModel.swift in Sources */,
 				031CBE022A6FE90600301F06 /* CustomNavigationBar.swift in Sources */,
+				3B615A6A2ACC6851004CC6EB /* CouponService.swift in Sources */,
 				3BFA40572AAE0EF000382B9B /* CategoryCollectionView.swift in Sources */,
 				036E4B5E2AC59E670045802D /* SignUpRequest.swift in Sources */,
 				03931AC32A2CA5F700B235D9 /* CategoryViewController.swift in Sources */,
@@ -1498,7 +1524,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		03931B052A2CB4FC00B235D9 /* XCRemoteSwiftPackageReference "Then" */ = {
+		3B615A5C2ACC60D9004CC6EB /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then";
 			requirement = {
@@ -1506,15 +1532,7 @@
 				minimumVersion = 3.0.0;
 			};
 		};
-		03931B082A2CB50D00B235D9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		03931B0B2A2CB56600B235D9 /* XCRemoteSwiftPackageReference "Moya" */ = {
+		3B615A5F2ACC6110004CC6EB /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
 			requirement = {
@@ -1522,12 +1540,20 @@
 				minimumVersion = 15.0.0;
 			};
 		};
-		03931B0E2A2CB57900B235D9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		3B615A622ACC6134004CC6EB /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 7.0.0;
+			};
+		};
+		3B615A652ACC6148004CC6EB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
 			};
 		};
 		3BA183F82AB4059100C3D2D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -1541,25 +1567,25 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		03931B062A2CB4FC00B235D9 /* Then */ = {
+		3B615A5D2ACC60D9004CC6EB /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 03931B052A2CB4FC00B235D9 /* XCRemoteSwiftPackageReference "Then" */;
+			package = 3B615A5C2ACC60D9004CC6EB /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
 		};
-		03931B092A2CB50E00B235D9 /* SnapKit */ = {
+		3B615A602ACC6110004CC6EB /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 03931B082A2CB50D00B235D9 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		03931B0C2A2CB56600B235D9 /* Moya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 03931B0B2A2CB56600B235D9 /* XCRemoteSwiftPackageReference "Moya" */;
+			package = 3B615A5F2ACC6110004CC6EB /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
 		};
-		03931B0F2A2CB57900B235D9 /* Kingfisher */ = {
+		3B615A632ACC6134004CC6EB /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 03931B0E2A2CB57900B235D9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 3B615A622ACC6134004CC6EB /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		3B615A662ACC6148004CC6EB /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B615A652ACC6148004CC6EB /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 		3BA183F92AB4059100C3D2D6 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

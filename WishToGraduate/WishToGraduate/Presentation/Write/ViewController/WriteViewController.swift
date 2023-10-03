@@ -431,8 +431,8 @@ extension WriteViewController: PHPickerViewControllerDelegate {
         let imageResult = results[0]
         
         if let assetId = imageResult.assetIdentifier {
-            DispatchQueue.main.async {
-                self.hasPhoto = true
+            DispatchQueue.main.async { [weak self] in
+                self?.hasPhoto = true
             }
         }
         if imageResult.itemProvider.canLoadObject(ofClass: UIImage.self) {
@@ -440,8 +440,8 @@ extension WriteViewController: PHPickerViewControllerDelegate {
                 if let error = error {
                     print(error.localizedDescription)
                 } else {
-                    DispatchQueue.main.async {
-                        self.photoImageView.image = selectedImage as? UIImage
+                    DispatchQueue.main.async { [weak self] in
+                        self?.photoImageView.image = selectedImage as? UIImage
                     }
                 }
             }
