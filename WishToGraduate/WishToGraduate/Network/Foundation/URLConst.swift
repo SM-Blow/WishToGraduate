@@ -41,7 +41,7 @@ public enum URLConst {
     // 쿠폰 이벤트
     static let couponList = "/api/v1/coupon/list"
     static let couponAdd = "/api/v1/coupon"
-    static let couponUse = "/api/v1/coupon/{couponId}"
+    static let couponUse = "/api/v1/coupon/"
     static let couponUsedList = "/api/v1/coupon/used-list"
     
     // 행사

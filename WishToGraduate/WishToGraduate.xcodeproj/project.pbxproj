@@ -80,10 +80,6 @@
 		03931B002A2CB39D00B235D9 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AFF2A2CB39D00B235D9 /* UIViewController+.swift */; };
 		03931B022A2CB3D100B235D9 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B012A2CB3D100B235D9 /* Image.swift */; };
 		03931B042A2CB3D700B235D9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B032A2CB3D700B235D9 /* Color.swift */; };
-		03931B072A2CB4FC00B235D9 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 03931B062A2CB4FC00B235D9 /* Then */; };
-		03931B0A2A2CB50E00B235D9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 03931B092A2CB50E00B235D9 /* SnapKit */; };
-		03931B0D2A2CB56600B235D9 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 03931B0C2A2CB56600B235D9 /* Moya */; };
-		03931B102A2CB57900B235D9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 03931B0F2A2CB57900B235D9 /* Kingfisher */; };
 		03931B122A2CB68B00B235D9 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B112A2CB68B00B235D9 /* NetworkLoggerPlugin.swift */; };
 		03931B142A2CB85600B235D9 /* APIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931B132A2CB85600B235D9 /* APIConst.swift */; };
 		03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B004A62A546ECD00E71CA7 /* SearchSection.swift */; };
@@ -97,6 +93,11 @@
 		3B36778A2AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3677892AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift */; };
 		3B36778C2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B36778B2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift */; };
 		3B45268E2AB0C65200D8CE37 /* BorrowTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45268D2AB0C65200D8CE37 /* BorrowTypeModel.swift */; };
+		3B615A5E2ACC60D9004CC6EB /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3B615A5D2ACC60D9004CC6EB /* Then */; };
+		3B615A612ACC6110004CC6EB /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 3B615A602ACC6110004CC6EB /* Moya */; };
+		3B615A642ACC6134004CC6EB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3B615A632ACC6134004CC6EB /* Kingfisher */; };
+		3B615A672ACC6148004CC6EB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3B615A662ACC6148004CC6EB /* SnapKit */; };
+		3B615A6A2ACC6851004CC6EB /* CouponService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B615A692ACC6851004CC6EB /* CouponService.swift */; };
 		3B6C6FBA2ABB65E000B4141B /* CouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C6FB92ABB65E000B4141B /* CouponViewController.swift */; };
 		3B6C6FBD2ABB6B6300B4141B /* AddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C6FBC2ABB6B6300B4141B /* AddCollectionViewCell.swift */; };
 		3B6C6FBF2ABB710900B4141B /* CouponCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C6FBE2ABB710900B4141B /* CouponCollectionViewCell.swift */; };
@@ -202,6 +203,7 @@
 		3B3677892AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowTypeCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		3B36778B2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		3B45268D2AB0C65200D8CE37 /* BorrowTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowTypeModel.swift; sourceTree = "<group>"; };
+		3B615A692ACC6851004CC6EB /* CouponService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponService.swift; sourceTree = "<group>"; };
 		3B6C6FB92ABB65E000B4141B /* CouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponViewController.swift; sourceTree = "<group>"; };
 		3B6C6FBC2ABB6B6300B4141B /* AddCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionViewCell.swift; sourceTree = "<group>"; };
 		3B6C6FBE2ABB710900B4141B /* CouponCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -223,11 +225,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BA183FC2AB4059100C3D2D6 /* FirebaseMessaging in Frameworks */,
-				03931B102A2CB57900B235D9 /* Kingfisher in Frameworks */,
-				03931B072A2CB4FC00B235D9 /* Then in Frameworks */,
-				03931B0A2A2CB50E00B235D9 /* SnapKit in Frameworks */,
+				3B615A5E2ACC60D9004CC6EB /* Then in Frameworks */,
+				3B615A612ACC6110004CC6EB /* Moya in Frameworks */,
+				3B615A672ACC6148004CC6EB /* SnapKit in Frameworks */,
 				3BA183FA2AB4059100C3D2D6 /* FirebaseAnalytics in Frameworks */,
-				03931B0D2A2CB56600B235D9 /* Moya in Frameworks */,
+				3B615A642ACC6134004CC6EB /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,7 +546,6 @@
 		0367814E2AB9FDA500866F31 /* CreateEvent */ = {
 			isa = PBXGroup;
 			children = (
-				036781522AB9FE0B00866F31 /* View */,
 				0367814F2AB9FDB700866F31 /* ViewController */,
 			);
 			path = CreateEvent;
@@ -556,13 +557,6 @@
 				036781502AB9FDC700866F31 /* CreateEventViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		036781522AB9FE0B00866F31 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		036E4B4C2AC05E050045802D /* User */ = {
@@ -746,6 +740,7 @@
 		03931ADB2A2CAD4A00B235D9 /* APIService */ = {
 			isa = PBXGroup;
 			children = (
+				3B615A682ACC683E004CC6EB /* Coupon */,
 				036E4B4C2AC05E050045802D /* User */,
 			);
 			path = APIService;
@@ -928,6 +923,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3B615A682ACC683E004CC6EB /* Coupon */ = {
+			isa = PBXGroup;
+			children = (
+				3B615A692ACC6851004CC6EB /* CouponService.swift */,
+			);
+			path = Coupon;
+			sourceTree = "<group>";
+		};
 		3B6C6FB72ABB64A100B4141B /* CouponList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1046,12 +1049,12 @@
 			);
 			name = WishToGraduate;
 			packageProductDependencies = (
-				03931B062A2CB4FC00B235D9 /* Then */,
-				03931B092A2CB50E00B235D9 /* SnapKit */,
-				03931B0C2A2CB56600B235D9 /* Moya */,
-				03931B0F2A2CB57900B235D9 /* Kingfisher */,
 				3BA183F92AB4059100C3D2D6 /* FirebaseAnalytics */,
 				3BA183FB2AB4059100C3D2D6 /* FirebaseMessaging */,
+				3B615A5D2ACC60D9004CC6EB /* Then */,
+				3B615A602ACC6110004CC6EB /* Moya */,
+				3B615A632ACC6134004CC6EB /* Kingfisher */,
+				3B615A662ACC6148004CC6EB /* SnapKit */,
 			);
 			productName = WishToGraduate;
 			productReference = 03931ABB2A2CA5F700B235D9 /* WishToGraduate.app */;
@@ -1082,11 +1085,11 @@
 			);
 			mainGroup = 03931AB22A2CA5F700B235D9;
 			packageReferences = (
-				03931B052A2CB4FC00B235D9 /* XCRemoteSwiftPackageReference "Then" */,
-				03931B082A2CB50D00B235D9 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				03931B0B2A2CB56600B235D9 /* XCRemoteSwiftPackageReference "Moya" */,
-				03931B0E2A2CB57900B235D9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				3BA183F82AB4059100C3D2D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3B615A5C2ACC60D9004CC6EB /* XCRemoteSwiftPackageReference "Then" */,
+				3B615A5F2ACC6110004CC6EB /* XCRemoteSwiftPackageReference "Moya" */,
+				3B615A622ACC6134004CC6EB /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				3B615A652ACC6148004CC6EB /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 03931ABC2A2CA5F700B235D9 /* Products */;
 			projectDirPath = "";
@@ -1159,6 +1162,7 @@
 				0330CA702A761AFB004CE2D7 /* MyProfileView.swift in Sources */,
 				3BBF95082ABC9146000F51B1 /* EventListModel.swift in Sources */,
 				031CBE022A6FE90600301F06 /* CustomNavigationBar.swift in Sources */,
+				3B615A6A2ACC6851004CC6EB /* CouponService.swift in Sources */,
 				3BFA40572AAE0EF000382B9B /* CategoryCollectionView.swift in Sources */,
 				03931AC32A2CA5F700B235D9 /* CategoryViewController.swift in Sources */,
 				0367814C2AB9E8AA00866F31 /* CustomAlertView.swift in Sources */,
@@ -1438,7 +1442,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		03931B052A2CB4FC00B235D9 /* XCRemoteSwiftPackageReference "Then" */ = {
+		3B615A5C2ACC60D9004CC6EB /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then";
 			requirement = {
@@ -1446,15 +1450,7 @@
 				minimumVersion = 3.0.0;
 			};
 		};
-		03931B082A2CB50D00B235D9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		03931B0B2A2CB56600B235D9 /* XCRemoteSwiftPackageReference "Moya" */ = {
+		3B615A5F2ACC6110004CC6EB /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
 			requirement = {
@@ -1462,12 +1458,20 @@
 				minimumVersion = 15.0.0;
 			};
 		};
-		03931B0E2A2CB57900B235D9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		3B615A622ACC6134004CC6EB /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 7.0.0;
+			};
+		};
+		3B615A652ACC6148004CC6EB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
 			};
 		};
 		3BA183F82AB4059100C3D2D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -1481,25 +1485,25 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		03931B062A2CB4FC00B235D9 /* Then */ = {
+		3B615A5D2ACC60D9004CC6EB /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 03931B052A2CB4FC00B235D9 /* XCRemoteSwiftPackageReference "Then" */;
+			package = 3B615A5C2ACC60D9004CC6EB /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
 		};
-		03931B092A2CB50E00B235D9 /* SnapKit */ = {
+		3B615A602ACC6110004CC6EB /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 03931B082A2CB50D00B235D9 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		03931B0C2A2CB56600B235D9 /* Moya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 03931B0B2A2CB56600B235D9 /* XCRemoteSwiftPackageReference "Moya" */;
+			package = 3B615A5F2ACC6110004CC6EB /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
 		};
-		03931B0F2A2CB57900B235D9 /* Kingfisher */ = {
+		3B615A632ACC6134004CC6EB /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 03931B0E2A2CB57900B235D9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 3B615A622ACC6134004CC6EB /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		3B615A662ACC6148004CC6EB /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B615A652ACC6148004CC6EB /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 		3BA183F92AB4059100C3D2D6 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
