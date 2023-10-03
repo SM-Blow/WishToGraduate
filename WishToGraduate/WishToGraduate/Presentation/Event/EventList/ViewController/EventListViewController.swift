@@ -12,6 +12,8 @@ import Then
 
 final class EventListViewController: UIViewController {
 
+    private var isCollectionViewLoaded = false
+    
     // MARK: - UI Components
     private let navigationBar = CustomNavigationBar(title: "우리학교 행사")
     private lazy var eventListCollectionView: UICollectionView = {
@@ -20,9 +22,13 @@ final class EventListViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
-    private var eventDummyData: [EventListModel] = EventListModel.eventListDummyData()
+    private var eventList: [EventListResponseDto] = []
     
     // MARK: - Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        requestGetEventList()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +89,25 @@ extension EventListViewController {
     }
 }
 
+extension EventListViewController {
+    private func requestGetEventList() {
+        EventAPI.shared.getEventList { [weak self] response in
+            guard self != nil else { return }
+            guard let data = response?.data else { return }
+            self!.eventList = data
+            self!.loadCollectionView()
+        }
+    }
+    
+    private func loadCollectionView() {
+        isCollectionViewLoaded = true
+    
+        DispatchQueue.main.async { [weak self] in
+            self?.eventListCollectionView.reloadData()
+        }
+    }
+}
+
 extension EventListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -99,7 +124,7 @@ extension EventListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
-        case eventDummyData.count:
+        case eventList.count:
             let createEventViewController = CreateEventViewController()
             createEventViewController.modalTransitionStyle = .coverVertical
             createEventViewController.modalPresentationStyle = .overFullScreen
@@ -113,13 +138,13 @@ extension EventListViewController: UICollectionViewDelegateFlowLayout {
 extension EventListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return eventDummyData.count + 1
+        return eventList.count + 1
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row != eventDummyData.count {
+        if indexPath.row != eventList.count {
             let cell = eventListCollectionView.dequeueCell(type: EventCollectionViewCell.self, indexPath: indexPath)
-            cell.setData(eventDummyData[indexPath.row])
+            cell.setData(eventList[indexPath.row])
             return cell
         } else {
             let cell = eventListCollectionView.dequeueCell(type: AddCollectionViewCell.self, indexPath: indexPath)

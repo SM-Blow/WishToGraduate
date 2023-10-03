@@ -113,7 +113,6 @@
 		3BA183FC2AB4059100C3D2D6 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 3BA183FB2AB4059100C3D2D6 /* FirebaseMessaging */; };
 		3BBF95032ABC8EA1000F51B1 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF95022ABC8EA1000F51B1 /* EventListViewController.swift */; };
 		3BBF95052ABC9062000F51B1 /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF95042ABC9062000F51B1 /* EventCollectionViewCell.swift */; };
-		3BBF95082ABC9146000F51B1 /* EventListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF95072ABC9146000F51B1 /* EventListModel.swift */; };
 		3BCF4EC12ACC9D8100E6DB22 /* EventListResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF4EC02ACC9D8100E6DB22 /* EventListResponseDto.swift */; };
 		3BCF4EC32ACC9E5900E6DB22 /* EventDetailResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF4EC22ACC9E5900E6DB22 /* EventDetailResponseDto.swift */; };
 		3BCF4EC62ACC9EC500E6DB22 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF4EC52ACC9EC500E6DB22 /* EventService.swift */; };
@@ -228,7 +227,6 @@
 		3BA183F62AB3FC5C00C3D2D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3BBF95022ABC8EA1000F51B1 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		3BBF95042ABC9062000F51B1 /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
-		3BBF95072ABC9146000F51B1 /* EventListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListModel.swift; sourceTree = "<group>"; };
 		3BCF4EC02ACC9D8100E6DB22 /* EventListResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListResponseDto.swift; sourceTree = "<group>"; };
 		3BCF4EC22ACC9E5900E6DB22 /* EventDetailResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailResponseDto.swift; sourceTree = "<group>"; };
 		3BCF4EC52ACC9EC500E6DB22 /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
@@ -1054,7 +1052,6 @@
 		3BBF94FF2ABC8E26000F51B1 /* EventList */ = {
 			isa = PBXGroup;
 			children = (
-				3BBF95062ABC9137000F51B1 /* Model */,
 				3BBF95012ABC8E3C000F51B1 /* ViewController */,
 				3BBF95002ABC8E37000F51B1 /* Cell */,
 			);
@@ -1075,14 +1072,6 @@
 				3BBF95022ABC8EA1000F51B1 /* EventListViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		3BBF95062ABC9137000F51B1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				3BBF95072ABC9146000F51B1 /* EventListModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		3BCF4EBF2ACC9CFC00E6DB22 /* Event */ = {
@@ -1276,7 +1265,6 @@
 				03931AE02A2CAD6D00B235D9 /* GeneralResponse.swift in Sources */,
 				03931B022A2CB3D100B235D9 /* Image.swift in Sources */,
 				0330CA702A761AFB004CE2D7 /* MyProfileView.swift in Sources */,
-				3BBF95082ABC9146000F51B1 /* EventListModel.swift in Sources */,
 				031CBE022A6FE90600301F06 /* CustomNavigationBar.swift in Sources */,
 				3B615A6A2ACC6851004CC6EB /* CouponService.swift in Sources */,
 				3BFA40572AAE0EF000382B9B /* CategoryCollectionView.swift in Sources */,

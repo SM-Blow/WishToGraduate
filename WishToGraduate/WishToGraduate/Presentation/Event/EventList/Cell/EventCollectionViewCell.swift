@@ -76,9 +76,9 @@ extension EventCollectionViewCell {
 
     }
     
-    func setData(_ model: EventListModel) {
+    func setData(_ model: EventListResponseDto) {
         eventTitleLabel.text = model.title
-        majorLabel.text = model.major
-        timeoutLabel.text = model.timeout
+        majorLabel.text = model.host
+        timeoutLabel.text = "\(model.dueDate[0]).\(model.dueDate[1]).\(model.dueDate[2])"
     }
 }
