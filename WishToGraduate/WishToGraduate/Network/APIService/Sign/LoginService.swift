@@ -10,7 +10,7 @@ import Moya
 
 enum LoginService {
     case signUp(param: SignUpRequest)
-    case signIn
+    case signIn(param: SignInRequest)
 }
 
 extension LoginService: TargetType {
@@ -35,8 +35,8 @@ extension LoginService: TargetType {
         switch self {
         case .signUp(let param):
             return .requestParameters(parameters: try! param.asParameter(), encoding: JSONEncoding.default)
-        case .signIn:
-            return .requestPlain
+        case .signIn(let param):
+            return .requestParameters(parameters: try! param.asParameter(), encoding: JSONEncoding.default)
         }
     }
     

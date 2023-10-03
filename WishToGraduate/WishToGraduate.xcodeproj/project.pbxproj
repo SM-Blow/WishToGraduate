@@ -19,6 +19,8 @@
 		031CBDFF2A6FE45100301F06 /* ShareNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CBDFE2A6FE45100301F06 /* ShareNavigationView.swift */; };
 		031CBE022A6FE90600301F06 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CBE012A6FE90600301F06 /* CustomNavigationBar.swift */; };
 		032AE0312ACC88780099049C /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032AE0302ACC88780099049C /* Encodable+.swift */; };
+		032AE0332ACC8DBC0099049C /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032AE0322ACC8DBC0099049C /* SignInModel.swift */; };
+		032AE0352ACC8E100099049C /* SignInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032AE0342ACC8E100099049C /* SignInRequest.swift */; };
 		0330CA702A761AFB004CE2D7 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0330CA6F2A761AFB004CE2D7 /* MyProfileView.swift */; };
 		034650852A49C6AB0024AEC6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034650842A49C6AB0024AEC6 /* SearchViewController.swift */; };
 		035079222A3DF831007F28DF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035079212A3DF831007F28DF /* TabBarController.swift */; };
@@ -129,6 +131,8 @@
 		031CBDFE2A6FE45100301F06 /* ShareNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareNavigationView.swift; sourceTree = "<group>"; };
 		031CBE012A6FE90600301F06 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		032AE0302ACC88780099049C /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
+		032AE0322ACC8DBC0099049C /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
+		032AE0342ACC8E100099049C /* SignInRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequest.swift; sourceTree = "<group>"; };
 		0330CA6F2A761AFB004CE2D7 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		034650842A49C6AB0024AEC6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		035079212A3DF831007F28DF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -633,6 +637,7 @@
 			children = (
 				036E4B5D2AC59E670045802D /* SignUpRequest.swift */,
 				036E4B622AC5A6490045802D /* SignUpResponse.swift */,
+				032AE0342ACC8E100099049C /* SignInRequest.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -641,6 +646,7 @@
 			isa = PBXGroup;
 			children = (
 				036E4B602AC59EF20045802D /* SignUpModel.swift */,
+				032AE0322ACC8DBC0099049C /* SignInModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1200,6 +1206,7 @@
 				0350792E2A3EDE29007F28DF /* CategorySection.swift in Sources */,
 				03B1691C2AB3701900FC4891 /* UIAlertController+.swift in Sources */,
 				98A955F32A60F97400B9BFD3 /* DetailViewController.swift in Sources */,
+				032AE0352ACC8E100099049C /* SignInRequest.swift in Sources */,
 				036E4B4E2AC19D800045802D /* MyPageService.swift in Sources */,
 				0370F3A02A442A9C00A9AF28 /* LabelStatusModel.swift in Sources */,
 				03931AFA2A2CB37700B235D9 /* UIButton+.swift in Sources */,
@@ -1236,6 +1243,7 @@
 				3B6C6FBF2ABB710900B4141B /* CouponCollectionViewCell.swift in Sources */,
 				036781492AB9DF4200866F31 /* CustomButtonView.swift in Sources */,
 				0370B4AD2A8CFAF600005400 /* SignInTextFieldView.swift in Sources */,
+				032AE0332ACC8DBC0099049C /* SignInModel.swift in Sources */,
 				03931AEE2A2CB31C00B235D9 /* UIStackView+.swift in Sources */,
 				0366B7982ABAE6920005BF0F /* UIResponder+.swift in Sources */,
 				0370B4B12A8D17E100005400 /* CustomCheckButton.swift in Sources */,
