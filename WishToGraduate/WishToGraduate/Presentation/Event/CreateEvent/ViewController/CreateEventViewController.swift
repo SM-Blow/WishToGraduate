@@ -25,6 +25,7 @@ final class CreateEventViewController: UIViewController {
     private let eventDetailTextView = UITextView()
     private let eventDetailTextLimitLabel = UILabel()
     private let eventDateView = CustomTextFieldView(type: .eventDate)
+    private let eventPeopleCountView = CustomTextFieldView(type: .eventPeople)
     
     private let createEventButton = CustomButtonView(title: "행사 생성하기")
     
@@ -98,7 +99,7 @@ extension CreateEventViewController {
     private func setLayout() {
         
         view.addSubviews(navigationBar, stackView, createEventButton)
-        stackView.addArrangedSubviews(eventNameView, hostNameView, eventDetailView, eventDateView)
+        stackView.addArrangedSubviews(eventNameView, hostNameView, eventDetailView, eventDateView, eventPeopleCountView)
         eventDetailView.addSubviews(eventDetailLabel, eventDetailTextView, eventDetailTextLimitLabel)
         
         navigationBar.snp.makeConstraints {
@@ -110,15 +111,13 @@ extension CreateEventViewController {
         stackView.snp.makeConstraints {
             $0.top.equalTo(navigationBar.snp.bottom).offset(19)
             $0.horizontalEdges.equalToSuperview().inset(23)
-            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 471 / 812)
+            $0.bottom.equalToSuperview().inset(149)
         }
         
-        eventNameView.snp.makeConstraints {
-            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 97 / 812)
-        }
-        
-        hostNameView.snp.makeConstraints {
-            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 97 / 812)
+        [eventNameView, hostNameView, eventPeopleCountView].forEach {
+            $0.snp.makeConstraints {
+                $0.height.equalTo(SizeLiterals.Screen.screenHeight * 97 / 812)
+            }
         }
         
         eventDetailView.snp.makeConstraints {
@@ -157,6 +156,33 @@ extension CreateEventViewController {
     private func setDelegate() {
         eventDetailTextView.delegate = self
     }
+    
+    private func addCouponButtonDidTapped() {
+//        requestPostAddEvent()
+//        popHandler?()
+        self.dismiss(animated: true)
+    }
+
+//    private func requestPostAddEvent() {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy.MM.dd"
+//        if let date = dateFormatter.date(from: dueDateView.getText()) {
+//            // Date를 ISO 8601 형식의 문자열로 변환
+//            let isoDateFormatter = ISO8601DateFormatter()
+//            isoDateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+//            let isoDateString = isoDateFormatter.string(from: date)
+//            EventAPI.shared.postAddEvent(acceptCount: <#T##Int#>,
+//                                         content: eve,
+//                                         dueDate: eventDateView.getText(),
+//                                         host: hostNameView.getText(),
+//                                         title: eventNameView.getText(),
+//                                         completion: { [weak self] response in
+//                guard self != nil else { return }
+//                guard (response?.data) != nil else { return }
+//            })
+//        }
+//
+//    }
     
     private func setupKeyboardEvent() {
         NotificationCenter.default.addObserver(self,
