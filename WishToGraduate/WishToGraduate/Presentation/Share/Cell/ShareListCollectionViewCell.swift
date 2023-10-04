@@ -68,6 +68,7 @@ extension ShareListCollectionViewCell {
             $0.font = .fontGuide(.date1)
             $0.textColor = .black
             $0.addCharacterSpacing()
+            $0.isHidden = true
         }
     }
     
