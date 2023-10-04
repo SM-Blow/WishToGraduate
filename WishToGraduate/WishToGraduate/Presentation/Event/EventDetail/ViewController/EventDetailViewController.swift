@@ -236,6 +236,12 @@ extension EventDetailViewController {
         alertViewController.modalTransitionStyle = .crossDissolve
         alertViewController.modalPresentationStyle = .overFullScreen
         self.present(alertViewController, animated: true)
+        
+        alertViewController.allowButtonHandler = { [weak self] in
+            self?.requestPostApplyEvent()
+            self?.dismiss(animated: true)
+            self?.popToHome()
+        }
     }
     
     private func requestGetEventDetail() {
@@ -243,6 +249,13 @@ extension EventDetailViewController {
             guard self != nil else { return }
             guard let data = response?.data else { return }
             self?.setDataBind(data)
+        }
+    }
+    
+    private func requestPostApplyEvent() {
+        EventAPI.shared.postApplyEvent(eventId: self.eventId ?? 0) { [weak self] response in
+            guard self != nil else { return }
+            guard (response?.data) != nil else { return }
         }
     }
     
