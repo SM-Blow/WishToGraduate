@@ -26,7 +26,7 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let homeUserDummyData: HomeUserModel = HomeUserModel.homeUserModelDummyData()
+    private let homeProvider = MoyaProvider<UserService>(plugins: [NetworkLoggerPlugin(verbose: true)])
     
     // MARK: - View Life Cycle
     
@@ -34,8 +34,8 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
-        setDataBind(homeUserDummyData)
         setButton()
+        fetchHome()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -133,11 +133,11 @@ extension HomeViewController {
     
     // MARK: - Methods
     
-    private func setDataBind(_ model: HomeUserModel) {
-        userNameLabel.text = "반가워요 \(model.userName)님!"
-        userNameLabel.partColorChange(targetString: "\(model.userName)", textColor: Color.main_Green)
-        pointLabel.text = "씨앗 개수: \(model.point)개"
-        pointLabel.partColorChange(targetString: "\(model.point)", textColor: Color.main_Green)
+    private func setDataBind(_ model: HomeResponse) {
+        userNameLabel.text = "반가워요 \(model.nickName)님!"
+        userNameLabel.partColorChange(targetString: "\(model.nickName)", textColor: Color.main_Green)
+        pointLabel.text = "씨앗 개수: \(model.seed)개"
+        pointLabel.partColorChange(targetString: "\(model.seed)", textColor: Color.main_Green)
     }
     
     private func pushToShareVC() {
@@ -170,6 +170,31 @@ extension HomeViewController {
         }
         myPageButton.mypageButtonHadler = { [weak self] in
             self?.pushToMypage()
+        }
+    }
+}
+
+extension HomeViewController {
+    
+    private func fetchHome() {
+        homeProvider.request(.home) { response in
+            switch response {
+            case .success(let result):
+                let status = result.statusCode
+                if status >= 200 && status < 300 {
+                    do {
+                        guard let home = try result.map(GeneralResponse<HomeResponse>.self).data else { return }
+                        self.setDataBind(home)
+                    } catch(let error) {
+                        print(error.localizedDescription)
+                    }
+                }
+                else if status >= 400 {
+                    print("400 error")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
     }
 }

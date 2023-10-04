@@ -8,8 +8,8 @@
 import Foundation
 
 struct SignUpRequest: Codable {
-    let email: String
-    let password: String
-    let userName: String
-    let fcmDeviceToken: String
+    var email: String
+    var password: String
+    var userName: String
+    var fcmDeviceToken: String
 }
