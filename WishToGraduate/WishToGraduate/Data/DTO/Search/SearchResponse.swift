@@ -8,6 +8,10 @@
 import Foundation
 
 struct SearchResponse: Codable {
+    let searchList: [Search]
+}
+
+struct Search: Codable {
     let borrow: Bool
     let category: String
     let content: String

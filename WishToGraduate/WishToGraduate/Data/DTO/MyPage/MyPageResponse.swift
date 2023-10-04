@@ -9,11 +9,11 @@ struct MyPageResponse: Codable {
     let userId: Int
     let nickname: String
     let seed: Int
-    let posts: [Post]
-    let scraps: [Scrap]
+    let posts: [Posts]
+    let scraps: [Scraps]
 }
 
-struct Post: Codable {
+struct Posts: Codable {
     let postId: Int
     let title: String
     let borrow: Bool
@@ -22,7 +22,7 @@ struct Post: Codable {
     let category: String
 }
 
-struct Scrap: Codable {
+struct Scraps: Codable {
     let postId: Int
     let title: String
     let borrow: Bool
