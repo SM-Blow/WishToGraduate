@@ -8,10 +8,10 @@
 import Foundation
 
 struct EventDetailResponseDto: Codable {
-    let currentApplyCount: Int
-    let acceptCount: Int
-    let title: String
-    let dueDate: [Int]
     let host: String
+    let dueDate: [Int]
+    let title: String
+    let acceptCount: Int
+    let currentApplyCount: Int
     let content: String
 }

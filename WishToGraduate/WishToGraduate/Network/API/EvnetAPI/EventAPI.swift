@@ -38,8 +38,8 @@ final class EventAPI {
         }
     }
     
-    func getEventDetail(evnetId: Int, completion: @escaping (GeneralResponse<EventDetailResponseDto>?) -> Void) {
-        eventProvider.request(.getEventDetail(eventId: evnetId)) { result in
+    func getEventDetail(eventId: Int, completion: @escaping (GeneralResponse<EventDetailResponseDto>?) -> Void) {
+        eventProvider.request(.getEventDetail(eventId: eventId)) { result in
             switch result {
             case .success(let response):
                 do {

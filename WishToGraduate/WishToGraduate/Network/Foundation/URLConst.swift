@@ -45,7 +45,7 @@ public enum URLConst {
     
     // 행사
     static let eventList = "/api/v1/event/list"
-    static let event = "/api/v1/event/"
+    static let event = "/api/v1/event"
     static let eventMy = "/api/v1/event/my"
     
     // 푸시알림

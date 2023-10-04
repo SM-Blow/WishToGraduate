@@ -27,9 +27,9 @@ extension EventService: TargetType {
         case .getEventList:
             return URLConst.eventList
         case .getEventDetail(let eventId):
-            return URLConst.event + "\(eventId)"
-        case .applyEvent(let eventID):
-            return URLConst.event + "\(eventID)" + "/apply"
+            return URLConst.event + "/\(eventId)"
+        case .applyEvent(let eventId):
+            return URLConst.event + "/\(eventId)" + "/apply"
         }
     }
     
@@ -61,6 +61,4 @@ extension EventService: TargetType {
     var headers: [String : String]? {
         return APIConstants.headerWithAuthorization
     }
-    
-    
 }
