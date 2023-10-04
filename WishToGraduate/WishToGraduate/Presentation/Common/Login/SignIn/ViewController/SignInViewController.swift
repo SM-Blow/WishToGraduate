@@ -24,7 +24,7 @@ final class SignInViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var userModel: SignInModel = SignInModel(email: "", password: "", fcmDeviceToken: "")
+    private var userModel: SignInRequest = SignInRequest(email: "", password: "", fcmDeviceToken: "")
     private let userProvider = MoyaProvider<LoginService>(plugins:[NetworkLoggerPlugin()])
     
     // MARK: - View Life Cycle
@@ -123,11 +123,10 @@ extension SignInViewController {
 extension SignInViewController {
     
     private func postUserInfo() {
-        userModel.email = self.idTextField.textField.text ?? ""
-        userModel.password = self.passwordTextField.textField.text ?? ""
+        userModel.email = self.idTextField.getTextFieldText()
+        userModel.password = self.passwordTextField.getTextFieldText()
         userModel.fcmDeviceToken = fcmToken ?? ""
-        print("☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️")
-        userProvider.request(.signIn(param: userModel.makeSignInRequest())) { response in
+        userProvider.request(.signIn(param: userModel)) { response in
             switch response {
             case .success(let result):
                 let status = result.statusCode
@@ -136,6 +135,7 @@ extension SignInViewController {
                         guard let data = try result.map(GeneralResponse<SignUpResponse>.self).data else { return }
                         APIConstants.deviceToken = self.userModel.fcmDeviceToken
                         APIConstants.jwtToken = data.accessToken
+                        APIConstants.userID = data.id
                         
                         // 화면전환
                         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,

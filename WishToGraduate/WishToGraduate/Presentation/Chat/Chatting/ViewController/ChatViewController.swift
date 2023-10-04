@@ -15,7 +15,7 @@ final class ChatViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let chattingNavigationBar = CustomNavigationBar(title: "")
+    private let navigationBar = CustomNavigationBar(title: "")
     private let chattingView = ChatView()
     private let messageFieldView = UIView()
     private let messageFieldLineView = UIView()
@@ -35,6 +35,7 @@ final class ChatViewController: UIViewController {
         setTapScreen()
         setDelegate()
         setAddTarget()
+        setNavigationButton()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -50,8 +51,9 @@ extension ChatViewController {
         
         view.backgroundColor = Color.light_Green
         
-        chattingNavigationBar.do {
+        navigationBar.do {
             $0.isBackButtonIncluded = true
+            $0.isReportButtonIncluded = true
         }
         
         messageFieldView.do {
@@ -90,16 +92,16 @@ extension ChatViewController {
     private func setLayout() {
         
         messageFieldView.addSubviews(messageFieldLineView, inputTextFieldView, sendButton)
-        view.addSubviews(chattingNavigationBar, chattingView, messageFieldView)
+        view.addSubviews(navigationBar, chattingView, messageFieldView)
         
-        chattingNavigationBar.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(52)
+        navigationBar.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 96 / 812)
         }
         
         chattingView.snp.makeConstraints {
-            $0.top.equalTo(chattingNavigationBar.snp.bottom)
+            $0.top.equalTo(navigationBar.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.bottom.equalTo(messageFieldView.snp.top)
         }
@@ -170,6 +172,14 @@ extension ChatViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    private func popToChatList() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func pushToReportVC() {
+        self.navigationController?.pushViewController(ReportViewController(), animated: true)
+    }
+    
     // MARK: - @objc Methods
     
     @objc
@@ -184,6 +194,16 @@ extension ChatViewController {
     private func sendButtonDidTapped() {
         print("전송버튼 탭")
         print(inputTextFieldView.text ?? "")
+    }
+    
+    @objc
+    private func setNavigationButton() {
+        navigationBar.backButtonHandler = { [weak self] in
+            self?.popToChatList()
+        }
+        navigationBar.reportButtonHandler = { [weak self] in
+            self?.pushToReportVC()
+        }
     }
 }
 

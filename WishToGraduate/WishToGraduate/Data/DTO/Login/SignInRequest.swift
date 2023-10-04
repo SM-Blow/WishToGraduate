@@ -8,7 +8,7 @@
 import Foundation
 
 struct SignInRequest: Codable {
-    let email: String
-    let password: String
-    let fcmDeviceToken: String
+    var email: String
+    var password: String
+    var fcmDeviceToken: String
 }

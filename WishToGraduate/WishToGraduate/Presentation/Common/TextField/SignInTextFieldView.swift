@@ -96,6 +96,10 @@ extension SignInTextFieldView {
     func nickNamePlaceholder() {
         textField.placeholder = "닉네임을 입력하세요."
     }
+    
+    func getTextFieldText() -> String {
+        return textField.text ?? ""
+    }
 }
 
 extension SignInTextFieldView: UITextFieldDelegate {

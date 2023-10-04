@@ -11,7 +11,7 @@ final class CommonBorrowLabel: UILabel {
 
     // MARK: - Properties
     
-    private var padding = UIEdgeInsets(top: 5, left: 13, bottom: 5, right: 13)
+    private var padding = UIEdgeInsets(top: 5, left: 9, bottom: 5, right: 9)
 
     // MARK: - Life Cycle
     
