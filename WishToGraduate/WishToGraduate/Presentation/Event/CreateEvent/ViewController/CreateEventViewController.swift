@@ -28,10 +28,6 @@ final class CreateEventViewController: UIViewController {
     
     private let createEventButton = CustomButtonView(title: "행사 생성하기")
     
-    // MARK: - Properties
-    
-    // MARK: - Initializer
-    
     // MARK: - View Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
