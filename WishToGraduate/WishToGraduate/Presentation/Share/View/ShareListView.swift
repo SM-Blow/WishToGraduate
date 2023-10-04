@@ -78,20 +78,7 @@ extension ShareListView {
     }
     
     func setListModel(category: CategorySection, model: [Post]) {
-        switch category {
-        case .all:
-            shareList = model
-        case .pill:
-            shareList = []
-        case .sanitaryPad:
-            shareList = []
-        case .charger:
-            shareList = []
-        case .book:
-            shareList = []
-        case .other:
-            shareList = []
-        }
+        shareList = model
         listCollectionView.reloadData()
     }
     
