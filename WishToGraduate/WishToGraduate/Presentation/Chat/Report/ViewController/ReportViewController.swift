@@ -32,6 +32,7 @@ final class ReportViewController: UIViewController {
         setDelegate()
         setupKeyboardEvent()
         setTapScreen()
+        setReportButtonHandler()
     }
 }
 
@@ -122,6 +123,13 @@ extension ReportViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    private func reportButtonDidTapped() {
+        let alertVC = ReportAlertViewController()
+        alertVC.modalTransitionStyle = .crossDissolve
+        alertVC.modalPresentationStyle = .overFullScreen
+        self.present(alertVC, animated: true)
+    }
+    
     private func setDelegate() {
         reportTextView.delegate = self
     }
@@ -155,6 +163,13 @@ extension ReportViewController {
     private func setNavigationButton() {
         navigationBar.backButtonHandler = { [weak self] in
             self?.popToChatVC()
+        }
+    }
+    
+    @objc
+    private func setReportButtonHandler() {
+        reportButton.buttonHandler = { [weak self] in
+            self?.reportButtonDidTapped()
         }
     }
     
