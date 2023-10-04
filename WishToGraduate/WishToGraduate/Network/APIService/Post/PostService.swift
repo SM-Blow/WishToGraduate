@@ -14,6 +14,7 @@ enum PostService {
     case getScrapPost                                   // 스크랩한 게시물 조회
     case postScrap(currentScrapStatus: Bool, targetPostId: Int)                  // 게시물 스크랩
     case postChangeStatus(postId: Int, status: Bool)                             // 게시물 상태 변경
+    case getSearch(keyword: String)
 }
 
 extension PostService: TargetType {
@@ -33,12 +34,14 @@ extension PostService: TargetType {
             return URLConst.postScrap
         case .postChangeStatus:
             return URLConst.postStatus
+        case .getSearch(let keyword):
+            return URLConst.postKeyword + "\(keyword)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getAllPosts, .getScrapPost, .getPostByCategory:
+        case .getAllPosts, .getScrapPost, .getPostByCategory, .getSearch:
             return .get
         default:
             return .post
@@ -65,6 +68,4 @@ extension PostService: TargetType {
     var headers: [String : String]? {
         return APIConstants.headerWithAuthorization
     }
-    
-    
 }

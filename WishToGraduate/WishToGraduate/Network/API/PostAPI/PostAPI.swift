@@ -20,6 +20,7 @@ final class PostAPI {
     public private(set) var postListByCategoryData: GeneralResponse<GetPostsResponseDto>?
     public private(set) var scrapPostListData: GeneralResponse<GetScrapPostResponseDto>?
     public private(set) var scrapPost: GeneralResponse<PostScrapResponseDto>?
+    public private(set) var searchListData: GeneralResponse<SearchResponse>?
     
     // MARK: - GET
     /// 게시물 전체 조회
@@ -70,6 +71,28 @@ final class PostAPI {
                     self.scrapPostListData = try response.map(GeneralResponse<GetScrapPostResponseDto>?.self)
                     guard let scrapPostListData = self.scrapPostListData else { return }
                     completion(scrapPostListData)
+                } catch let err {
+                    print(err.localizedDescription, 500)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                completion(nil)
+            }
+        }
+    }
+    
+    
+    /// 검색 게시글
+    func getSearchPost(keyword: String,
+                       completion: @escaping (GeneralResponse<SearchResponse>?) -> Void) {
+        postProvider.request(.getSearch(keyword: keyword)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    self.searchListData = try
+                    response.map(GeneralResponse<SearchResponse>?.self)
+                    guard let searchListData = self.searchListData else { return }
+                    completion(searchListData)
                 } catch let err {
                     print(err.localizedDescription, 500)
                 }

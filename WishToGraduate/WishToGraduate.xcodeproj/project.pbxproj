@@ -788,13 +788,6 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		0378F90D2ACDD07800D625B9 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
 		03931AB22A2CA5F700B235D9 = {
 			isa = PBXGroup;
 			children = (
@@ -870,7 +863,6 @@
 		03931ADB2A2CAD4A00B235D9 /* APIService */ = {
 			isa = PBXGroup;
 			children = (
-				0378F90D2ACDD07800D625B9 /* Search */,
 				3B42CE8E2ACDB81600914453 /* Post */,
 				3BCF4EC42ACC9EBC00E6DB22 /* Event */,
 				3B615A682ACC683E004CC6EB /* Coupon */,
