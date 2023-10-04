@@ -13,6 +13,10 @@ import Then
 
 final class EventDetailViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    private var eventId: Int?
+    
     // MARK: - UI Components
     
     private let navigationBar = CustomNavigationBar(title: "")
@@ -29,18 +33,15 @@ final class EventDetailViewController: UIViewController {
     
     private let contentView = UIView()
     private let titleLabel = UILabel()
-    private let applicantPersonLabel = UILabel()
+    private let peopleCountLabel = UILabel()
     private let contentBackView = UIView()
     private let contentLabel = UILabel()
-    
-    // MARK: - Properties
-    
-    private var eventDetailDummy: EventDetailModel = EventDetailModel.eventDetailModelDummyData()
     
     // MARK: - View Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+        requestGetEventDetail()
     }
     
     override func viewDidLoad() {
@@ -48,7 +49,17 @@ final class EventDetailViewController: UIViewController {
         setUI()
         setLayout()
         setButton()
-        setDateBind(eventDetailDummy)
+    }
+    
+    // MARK: - Initialization
+    
+    init(eventId: Int) {
+        self.eventId = eventId
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -80,6 +91,7 @@ extension EventDetailViewController {
         }
         
         dateLabel.do {
+            $0.text = "Date"
             $0.font = .fontGuide(.h2_bold)
             $0.textColor = Color.main2_Green
         }
@@ -98,7 +110,7 @@ extension EventDetailViewController {
             $0.textColor = .black
         }
         
-        applicantPersonLabel.do {
+        peopleCountLabel.do {
             $0.font = .fontGuide(.bt1)
             $0.backgroundColor = Color.main_Green
             $0.textColor = .white
@@ -124,7 +136,7 @@ extension EventDetailViewController {
         
         userView.addSubviews(userProfileImageView, userNameLabel, dateLabel, dueDateLabel, underLine)
         contentBackView.addSubviews(contentLabel)
-        contentView.addSubviews(titleLabel, applicantPersonLabel, contentBackView)
+        contentView.addSubviews(titleLabel, peopleCountLabel, contentBackView)
         stackView.addArrangedSubviews(userView, contentView)
         scrollView.addSubviews(stackView)
         view.addSubviews(navigationBar, scrollView, applicationButton)
@@ -186,7 +198,7 @@ extension EventDetailViewController {
             $0.leading.equalToSuperview().inset(23)
         }
         
-        applicantPersonLabel.snp.makeConstraints {
+        peopleCountLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel)
             $0.leading.equalTo(titleLabel.snp.trailing).offset(15)
             $0.width.equalTo(49)
@@ -224,13 +236,34 @@ extension EventDetailViewController {
         alertViewController.modalTransitionStyle = .crossDissolve
         alertViewController.modalPresentationStyle = .overFullScreen
         self.present(alertViewController, animated: true)
+        
+        alertViewController.allowButtonHandler = { [weak self] in
+            self?.requestPostApplyEvent()
+            self?.dismiss(animated: true)
+            self?.popToHome()
+        }
     }
     
-    private func setDateBind(_ model: EventDetailModel) {
-        userNameLabel.text = model.userName
-        dueDateLabel.text = model.date
+    private func requestGetEventDetail() {
+        EventAPI.shared.getEventDetail(eventId: self.eventId ?? 0) { [weak self] response in
+            guard self != nil else { return }
+            guard let data = response?.data else { return }
+            self?.setDataBind(data)
+        }
+    }
+    
+    private func requestPostApplyEvent() {
+        EventAPI.shared.postApplyEvent(eventId: self.eventId ?? 0) { [weak self] response in
+            guard self != nil else { return }
+            guard (response?.data) != nil else { return }
+        }
+    }
+    
+    private func setDataBind(_ model: EventDetailResponseDto) {
+        userNameLabel.text = model.host
+        dueDateLabel.text = "\(model.dueDate[0]).\(model.dueDate[1]).\(model.dueDate[2]) \(model.dueDate[3]):\(model.dueDate[4])"
         titleLabel.text = model.title
-        applicantPersonLabel.text = model.applicantPersonLabel
+        peopleCountLabel.text = "\(String(model.currentApplyCount)) / \(String(model.acceptCount))"
         contentLabel.text = model.content
         setContentLayout(model.content)
     }

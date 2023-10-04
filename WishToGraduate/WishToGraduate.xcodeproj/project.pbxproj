@@ -115,7 +115,10 @@
 		3BA183FC2AB4059100C3D2D6 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 3BA183FB2AB4059100C3D2D6 /* FirebaseMessaging */; };
 		3BBF95032ABC8EA1000F51B1 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF95022ABC8EA1000F51B1 /* EventListViewController.swift */; };
 		3BBF95052ABC9062000F51B1 /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF95042ABC9062000F51B1 /* EventCollectionViewCell.swift */; };
-		3BBF95082ABC9146000F51B1 /* EventListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF95072ABC9146000F51B1 /* EventListModel.swift */; };
+		3BCF4EC12ACC9D8100E6DB22 /* EventListResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF4EC02ACC9D8100E6DB22 /* EventListResponseDto.swift */; };
+		3BCF4EC32ACC9E5900E6DB22 /* EventDetailResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF4EC22ACC9E5900E6DB22 /* EventDetailResponseDto.swift */; };
+		3BCF4EC62ACC9EC500E6DB22 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF4EC52ACC9EC500E6DB22 /* EventService.swift */; };
+		3BCF4EC92ACCA0C800E6DB22 /* EventAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF4EC82ACCA0C800E6DB22 /* EventAPI.swift */; };
 		3BD2E38D2AAE48B400220B44 /* BorrowTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD2E38C2AAE48B400220B44 /* BorrowTypeCollectionViewCell.swift */; };
 		3BFA40542AADF77A00382B9B /* WriteNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFA40532AADF77A00382B9B /* WriteNavigationView.swift */; };
 		3BFA40572AAE0EF000382B9B /* CategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFA40562AAE0EF000382B9B /* CategoryCollectionView.swift */; };
@@ -190,7 +193,6 @@
 		03931AC72A2CA5F900B235D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03931ACA2A2CA5F900B235D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03931ACC2A2CA5F900B235D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		03931AD82A2CA76200B235D9 /* CouponListResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListResponseDto.swift; sourceTree = "<group>"; };
 		03931ADF2A2CAD6D00B235D9 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
 		03931AE72A2CB2E200B235D9 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		03931AE92A2CB2F000B235D9 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
@@ -229,7 +231,10 @@
 		3BA183F62AB3FC5C00C3D2D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3BBF95022ABC8EA1000F51B1 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		3BBF95042ABC9062000F51B1 /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
-		3BBF95072ABC9146000F51B1 /* EventListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListModel.swift; sourceTree = "<group>"; };
+		3BCF4EC02ACC9D8100E6DB22 /* EventListResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListResponseDto.swift; sourceTree = "<group>"; };
+		3BCF4EC22ACC9E5900E6DB22 /* EventDetailResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailResponseDto.swift; sourceTree = "<group>"; };
+		3BCF4EC52ACC9EC500E6DB22 /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
+		3BCF4EC82ACCA0C800E6DB22 /* EventAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPI.swift; sourceTree = "<group>"; };
 		3BD2E38C2AAE48B400220B44 /* BorrowTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BFA40532AADF77A00382B9B /* WriteNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNavigationView.swift; sourceTree = "<group>"; };
 		3BFA40562AAE0EF000382B9B /* CategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionView.swift; sourceTree = "<group>"; };
@@ -714,14 +719,6 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		0378F8F82ACD692000D625B9 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				03931AD82A2CA76200B235D9 /* CouponListResponseDto.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		0378F8F92ACD697800D625B9 /* CouponList */ = {
 			isa = PBXGroup;
 			children = (
@@ -822,6 +819,7 @@
 		03931AD42A2CA73F00B235D9 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				3BCF4EBF2ACC9CFC00E6DB22 /* Event */,
 				0378F8F92ACD697800D625B9 /* CouponList */,
 				036E4B5C2AC59E560045802D /* Login */,
 				0378F8F32ACD320D00D625B9 /* Home */,
@@ -844,6 +842,7 @@
 		03931ADB2A2CAD4A00B235D9 /* APIService */ = {
 			isa = PBXGroup;
 			children = (
+				3BCF4EC42ACC9EBC00E6DB22 /* Event */,
 				3B615A682ACC683E004CC6EB /* Coupon */,
 				036E4B552AC5987B0045802D /* Sign */,
 				036E4B4C2AC05E050045802D /* User */,
@@ -1041,6 +1040,7 @@
 		3B615A6D2ACC7116004CC6EB /* API */ = {
 			isa = PBXGroup;
 			children = (
+				3BCF4EC72ACCA0BC00E6DB22 /* EvnetAPI */,
 				3B615A6E2ACC711B004CC6EB /* CouponAPI */,
 			);
 			path = API;
@@ -1083,7 +1083,6 @@
 		3BBF94FF2ABC8E26000F51B1 /* EventList */ = {
 			isa = PBXGroup;
 			children = (
-				3BBF95062ABC9137000F51B1 /* Model */,
 				3BBF95012ABC8E3C000F51B1 /* ViewController */,
 				3BBF95002ABC8E37000F51B1 /* Cell */,
 			);
@@ -1106,12 +1105,29 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		3BBF95062ABC9137000F51B1 /* Model */ = {
+		3BCF4EBF2ACC9CFC00E6DB22 /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				3BBF95072ABC9146000F51B1 /* EventListModel.swift */,
+				3BCF4EC02ACC9D8100E6DB22 /* EventListResponseDto.swift */,
+				3BCF4EC22ACC9E5900E6DB22 /* EventDetailResponseDto.swift */,
 			);
-			path = Model;
+			path = Event;
+			sourceTree = "<group>";
+		};
+		3BCF4EC42ACC9EBC00E6DB22 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				3BCF4EC52ACC9EC500E6DB22 /* EventService.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		3BCF4EC72ACCA0BC00E6DB22 /* EvnetAPI */ = {
+			isa = PBXGroup;
+			children = (
+				3BCF4EC82ACCA0C800E6DB22 /* EventAPI.swift */,
+			);
+			path = EvnetAPI;
 			sourceTree = "<group>";
 		};
 		3BD2E38B2AAE489E00220B44 /* Cell */ = {
@@ -1249,8 +1265,11 @@
 				03FD52A72AA4739200899F4F /* ChatCollectionViewCell.swift in Sources */,
 				3B3677872AAF374400FF4ED1 /* CommonBorrowLabel.swift in Sources */,
 				3B6C6FBD2ABB6B6300B4141B /* AddCollectionViewCell.swift in Sources */,
+				3BCF4EC12ACC9D8100E6DB22 /* EventListResponseDto.swift in Sources */,
 				0378F9002ACD6FAD00D625B9 /* ReportViewController.swift in Sources */,
 				03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */,
+				3BCF4EC32ACC9E5900E6DB22 /* EventDetailResponseDto.swift in Sources */,
+				3BCF4EC92ACCA0C800E6DB22 /* EventAPI.swift in Sources */,
 				036E4B572AC598CF0045802D /* LoginService.swift in Sources */,
 				036E4B632AC5A6490045802D /* SignUpResponse.swift in Sources */,
 				0366B7A42ABB55E10005BF0F /* HomeViewController.swift in Sources */,
@@ -1277,7 +1296,6 @@
 				03931AE02A2CAD6D00B235D9 /* GeneralResponse.swift in Sources */,
 				03931B022A2CB3D100B235D9 /* Image.swift in Sources */,
 				0330CA702A761AFB004CE2D7 /* MyProfileView.swift in Sources */,
-				3BBF95082ABC9146000F51B1 /* EventListModel.swift in Sources */,
 				031CBE022A6FE90600301F06 /* CustomNavigationBar.swift in Sources */,
 				3B615A6A2ACC6851004CC6EB /* CouponService.swift in Sources */,
 				3BFA40572AAE0EF000382B9B /* CategoryCollectionView.swift in Sources */,
@@ -1300,6 +1318,7 @@
 				0367813E2AB993F400866F31 /* SizeLiterals.swift in Sources */,
 				3B6C6FBA2ABB65E000B4141B /* CouponViewController.swift in Sources */,
 				0350792B2A3DFAE5007F28DF /* MyPageViewController.swift in Sources */,
+				3BCF4EC62ACC9EC500E6DB22 /* EventService.swift in Sources */,
 				036E4B542AC3F71B0045802D /* MypageModel.swift in Sources */,
 				03FD52AA2AA476AF00899F4F /* ChatModel.swift in Sources */,
 				03931B042A2CB3D700B235D9 /* Color.swift in Sources */,

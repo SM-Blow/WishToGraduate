@@ -14,6 +14,7 @@ enum CreateEventType {
     case eventName
     case hostName
     case eventDate
+    case eventPeople
     case storeName
     case couponContent
     case dueDate
@@ -120,6 +121,10 @@ extension CustomTextFieldView {
         case .eventDate:
             titleLabel.text = "행사 일시 *"
             textField.placeholder = "행사의 일시를 선택해주세요."
+        case .eventPeople:
+            titleLabel.text = "행사 인원 *"
+            textField.placeholder = "행사 인원을 작성해주세요."
+            maxLength = 5
         case .storeName:
             titleLabel.text = "가게 이름 *"
             textField.placeholder = "가게 이름을 작성해주세요."
@@ -191,6 +196,8 @@ extension CustomTextFieldView: UITextFieldDelegate {
                 maxLength = 20
             case .eventDate:
                 textField.placeholder = "행사의 일시를 선택해주세요."
+            case .eventPeople:
+                textField.placeholder = "행사 인원을 작성해주세요."
             case .storeName:
                 textField.placeholder = "가게 이름을 작성해주세요."
             case .couponContent:
