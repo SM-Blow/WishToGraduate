@@ -62,13 +62,12 @@
 		0370B4C12A8E274400005400 /* ChatListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370B4C02A8E274400005400 /* ChatListCollectionViewCell.swift */; };
 		0370F3A02A442A9C00A9AF28 /* LabelStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370F39F2A442A9C00A9AF28 /* LabelStatusModel.swift */; };
 		0378F8F52ACD324800D625B9 /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0378F8F42ACD324800D625B9 /* HomeResponse.swift */; };
+		0378F8FC2ACD6AD000D625B9 /* CouponListResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0378F8FA2ACD69AD00D625B9 /* CouponListResponseDto.swift */; };
 		03931ABF2A2CA5F700B235D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931ABE2A2CA5F700B235D9 /* AppDelegate.swift */; };
 		03931AC12A2CA5F700B235D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AC02A2CA5F700B235D9 /* SceneDelegate.swift */; };
 		03931AC32A2CA5F700B235D9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AC22A2CA5F700B235D9 /* CategoryViewController.swift */; };
 		03931AC82A2CA5F900B235D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03931AC72A2CA5F900B235D9 /* Assets.xcassets */; };
 		03931ACB2A2CA5F900B235D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03931AC92A2CA5F900B235D9 /* LaunchScreen.storyboard */; };
-		03931AD72A2CA75B00B235D9 /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AD62A2CA75B00B235D9 /* DTO.swift */; };
-		03931AD92A2CA76200B235D9 /* CouponListResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AD82A2CA76200B235D9 /* CouponListResponseDto.swift */; };
 		03931AE02A2CAD6D00B235D9 /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931ADF2A2CAD6D00B235D9 /* GeneralResponse.swift */; };
 		03931AE82A2CB2E200B235D9 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AE72A2CB2E200B235D9 /* UIView+.swift */; };
 		03931AEA2A2CB2F000B235D9 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AE92A2CB2F000B235D9 /* NSObject+.swift */; };
@@ -175,6 +174,7 @@
 		0370B4C02A8E274400005400 /* ChatListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCollectionViewCell.swift; sourceTree = "<group>"; };
 		0370F39F2A442A9C00A9AF28 /* LabelStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStatusModel.swift; sourceTree = "<group>"; };
 		0378F8F42ACD324800D625B9 /* HomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResponse.swift; sourceTree = "<group>"; };
+		0378F8FA2ACD69AD00D625B9 /* CouponListResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListResponseDto.swift; sourceTree = "<group>"; };
 		03931ABB2A2CA5F700B235D9 /* WishToGraduate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WishToGraduate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03931ABE2A2CA5F700B235D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03931AC02A2CA5F700B235D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -182,7 +182,6 @@
 		03931AC72A2CA5F900B235D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03931ACA2A2CA5F900B235D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03931ACC2A2CA5F900B235D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		03931AD62A2CA75B00B235D9 /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
 		03931AD82A2CA76200B235D9 /* CouponListResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListResponseDto.swift; sourceTree = "<group>"; };
 		03931ADF2A2CAD6D00B235D9 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
 		03931AE72A2CB2E200B235D9 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -706,11 +705,28 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		0378F8F82ACD692000D625B9 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				03931AD82A2CA76200B235D9 /* CouponListResponseDto.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		0378F8F92ACD697800D625B9 /* CouponList */ = {
+			isa = PBXGroup;
+			children = (
+				0378F8FA2ACD69AD00D625B9 /* CouponListResponseDto.swift */,
+			);
+			path = CouponList;
+			sourceTree = "<group>";
+		};
 		03931AB22A2CA5F700B235D9 = {
 			isa = PBXGroup;
 			children = (
 				03931ABD2A2CA5F700B235D9 /* WishToGraduate */,
 				03931ABC2A2CA5F700B235D9 /* Products */,
+				0378F8F82ACD692000D625B9 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -756,20 +772,12 @@
 		03931AD42A2CA73F00B235D9 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				0378F8F92ACD697800D625B9 /* CouponList */,
 				036E4B5C2AC59E560045802D /* Login */,
 				0378F8F32ACD320D00D625B9 /* Home */,
 				0378F8F22ACD31BA00D625B9 /* MyPage */,
 			);
 			path = DTO;
-			sourceTree = "<group>";
-		};
-		03931AD52A2CA74300B235D9 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				3B615A6B2ACC6F11004CC6EB /* CouponModel */,
-				036E4B5F2AC59EE30045802D /* Login */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		03931ADA2A2CA76900B235D9 /* Network */ = {
@@ -978,14 +986,6 @@
 			path = Coupon;
 			sourceTree = "<group>";
 		};
-		3B615A6B2ACC6F11004CC6EB /* CouponModel */ = {
-			isa = PBXGroup;
-			children = (
-				03931AD82A2CA76200B235D9 /* CouponListResponseDto.swift */,
-			);
-			path = CouponModel;
-			sourceTree = "<group>";
-		};
 		3B615A6D2ACC7116004CC6EB /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -1192,11 +1192,11 @@
 				035615602A3C89E300CC9A5E /* ShareViewController.swift in Sources */,
 				3B3677872AAF374400FF4ED1 /* CommonBorrowLabel.swift in Sources */,
 				036781512AB9FDC700866F31 /* CreateEventViewController.swift in Sources */,
+				0378F8FC2ACD6AD000D625B9 /* CouponListResponseDto.swift in Sources */,
 				03FD52A32AA34B1F00899F4F /* ChatViewController.swift in Sources */,
 				03FD52A72AA4739200899F4F /* ChatCollectionViewCell.swift in Sources */,
 				3B3677872AAF374400FF4ED1 /* CommonBorrowLabel.swift in Sources */,
 				3B6C6FBD2ABB6B6300B4141B /* AddCollectionViewCell.swift in Sources */,
-				03931AD92A2CA76200B235D9 /* CouponListResponseDto.swift in Sources */,
 				03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */,
 				036E4B572AC598CF0045802D /* LoginService.swift in Sources */,
 				036E4B632AC5A6490045802D /* SignUpResponse.swift in Sources */,
