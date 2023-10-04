@@ -77,10 +77,6 @@ extension EventListViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    private func pushToEventDetail() {
-        self.navigationController?.pushViewController(EventDetailViewController(), animated: true)
-    }
-    
     @objc
     private func setButton() {
         navigationBar.backButtonHandler = { [weak self] in
@@ -136,7 +132,8 @@ extension EventListViewController: UICollectionViewDelegateFlowLayout {
                 }
             }
         default:
-            pushToEventDetail()
+            let eventDetailViewController = EventDetailViewController(eventId: eventList[indexPath.row].eventId)
+            self.navigationController?.pushViewController(eventDetailViewController, animated: true)
         }
     }
 }

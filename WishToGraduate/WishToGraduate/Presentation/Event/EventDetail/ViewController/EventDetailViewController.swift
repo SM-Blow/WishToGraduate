@@ -13,6 +13,10 @@ import Then
 
 final class EventDetailViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    private var eventId: Int?
+    
     // MARK: - UI Components
     
     private let navigationBar = CustomNavigationBar(title: "")
@@ -33,14 +37,11 @@ final class EventDetailViewController: UIViewController {
     private let contentBackView = UIView()
     private let contentLabel = UILabel()
     
-    // MARK: - Properties
-    
-    private var eventDetailDummy: EventDetailModel = EventDetailModel.eventDetailModelDummyData()
-    
     // MARK: - View Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+        requestGetEventDetail()
     }
     
     override func viewDidLoad() {
@@ -48,7 +49,17 @@ final class EventDetailViewController: UIViewController {
         setUI()
         setLayout()
         setButton()
-        setDateBind(eventDetailDummy)
+    }
+    
+    // MARK: - Initialization
+    
+    init(eventId: Int) {
+        self.eventId = eventId
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -226,11 +237,19 @@ extension EventDetailViewController {
         self.present(alertViewController, animated: true)
     }
     
-    private func setDateBind(_ model: EventDetailModel) {
-        userNameLabel.text = model.userName
-        dueDateLabel.text = model.date
+    private func requestGetEventDetail() {
+        EventAPI.shared.getEventDetail(eventId: self.eventId ?? 0) { [weak self] response in
+            guard self != nil else { return }
+            guard let data = response?.data else { return }
+            self?.setDataBind(data)
+        }
+    }
+    
+    private func setDataBind(_ model: EventDetailResponseDto) {
+        userNameLabel.text = model.host
+        dueDateLabel.text = "\(model.dueDate[0]).\(model.dueDate[1]).\(model.dueDate[2])"
         titleLabel.text = model.title
-        applicantPersonLabel.text = model.applicantPersonLabel
+        applicantPersonLabel.text = String(model.currentApplyCount)
         contentLabel.text = model.content
         setContentLayout(model.content)
     }
