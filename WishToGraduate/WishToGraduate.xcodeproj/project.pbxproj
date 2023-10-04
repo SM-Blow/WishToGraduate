@@ -65,6 +65,7 @@
 		0378F8FC2ACD6AD000D625B9 /* CouponListResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0378F8FA2ACD69AD00D625B9 /* CouponListResponseDto.swift */; };
 		0378F9002ACD6FAD00D625B9 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0378F8FF2ACD6FAD00D625B9 /* ReportViewController.swift */; };
 		0378F9032ACD7C9900D625B9 /* ReportAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0378F9022ACD7C9900D625B9 /* ReportAlertViewController.swift */; };
+		0378F9052ACD846B00D625B9 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0378F9042ACD846B00D625B9 /* ReportService.swift */; };
 		03931ABF2A2CA5F700B235D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931ABE2A2CA5F700B235D9 /* AppDelegate.swift */; };
 		03931AC12A2CA5F700B235D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AC02A2CA5F700B235D9 /* SceneDelegate.swift */; };
 		03931AC32A2CA5F700B235D9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AC22A2CA5F700B235D9 /* CategoryViewController.swift */; };
@@ -179,6 +180,7 @@
 		0378F8FA2ACD69AD00D625B9 /* CouponListResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListResponseDto.swift; sourceTree = "<group>"; };
 		0378F8FF2ACD6FAD00D625B9 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		0378F9022ACD7C9900D625B9 /* ReportAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAlertViewController.swift; sourceTree = "<group>"; };
+		0378F9042ACD846B00D625B9 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
 		03931ABB2A2CA5F700B235D9 /* WishToGraduate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WishToGraduate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03931ABE2A2CA5F700B235D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03931AC02A2CA5F700B235D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -751,6 +753,14 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
+		0378F9062ACD846F00D625B9 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				0378F9042ACD846B00D625B9 /* ReportService.swift */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
 		03931AB22A2CA5F700B235D9 = {
 			isa = PBXGroup;
 			children = (
@@ -826,6 +836,7 @@
 				3B615A682ACC683E004CC6EB /* Coupon */,
 				036E4B552AC5987B0045802D /* Sign */,
 				036E4B4C2AC05E050045802D /* User */,
+				0378F9062ACD846F00D625B9 /* Report */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -1292,6 +1303,7 @@
 				0370B4B12A8D17E100005400 /* CustomCheckButton.swift in Sources */,
 				03931AFC2A2CB38300B235D9 /* UITabBar+.swift in Sources */,
 				03931B142A2CB85600B235D9 /* APIConst.swift in Sources */,
+				0378F9052ACD846B00D625B9 /* ReportService.swift in Sources */,
 				036781562ABA0FFA00866F31 /* UITextView+.swift in Sources */,
 				03931AF02A2CB32E00B235D9 /* UITableView+.swift in Sources */,
 				03931AEA2A2CB2F000B235D9 /* NSObject+.swift in Sources */,
