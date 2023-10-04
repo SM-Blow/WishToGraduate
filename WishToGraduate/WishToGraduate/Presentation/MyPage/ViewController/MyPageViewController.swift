@@ -36,7 +36,7 @@ final class MyPageViewController: UIViewController {
     private var myWritingDummyModel: [ShareListModel] = ShareListModel.myWritingDummyData()
     private var myScrapDummyModel: [ShareListModel] = ShareListModel.myScrapDummyData()
     private var mypageModel: MypageModel = MypageModel.init(userId: 0, nickName: "", seed: 0, post: [], scrap: [])
-    private let mypageProvider = MoyaProvider<MyPageService>(plugins: [NetworkLoggerPlugin(verbose: true)])
+    private let mypageProvider = MoyaProvider<UserService>(plugins: [NetworkLoggerPlugin(verbose: true)])
     
     
     // MARK: - View Life Cycle

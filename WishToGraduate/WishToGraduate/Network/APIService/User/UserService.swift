@@ -8,17 +8,23 @@
 import Foundation
 import Moya
 
-enum MyPageService {
+enum UserService {
+    case home
     case myPage
 }
 
-extension MyPageService: TargetType {
+extension UserService: TargetType {
     var baseURL: URL {
         return URL(string: URLConst.baseURL)!
     }
     
     var path: String {
-        return URLConst.userMypage
+        switch self {
+        case .home:
+            return URLConst.userHome
+        case .myPage:
+            return URLConst.userMypage
+        }
     }
     
     var method: Moya.Method {
