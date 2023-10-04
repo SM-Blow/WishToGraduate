@@ -23,8 +23,7 @@ final class ShareListView: UIView {
     
     // MARK: - Properties
     
-    private var homeListDummyModel: [ShareListModel] = ShareListModel.shareListModelDummyData()
-    private var searchList: [Search] = []
+    private var shareList: [Post] = []
     var pushToDetailHandler: (() -> Void)?
     
     // MARK: - View Life Cycle
@@ -81,28 +80,29 @@ extension ShareListView {
     func setListModel(category: CategorySection) {
         switch category {
         case .all:
-            homeListDummyModel = ShareListModel.shareListModelDummyData()
+            shareList = []
         case .pill:
-            homeListDummyModel = ShareListModel.fillDummyData()
+            shareList = []
         case .sanitaryPad:
-            homeListDummyModel = ShareListModel.shareListModelDummyData()
+            shareList = []
         case .charger:
-            homeListDummyModel = ShareListModel.fillDummyData()
+            shareList = []
         case .book:
-            homeListDummyModel = ShareListModel.shareListModelDummyData()
+            shareList = []
         case .other:
-            homeListDummyModel = ShareListModel.fillDummyData()
+            shareList = []
         }
         listCollectionView.reloadData()
     }
     
-    func setSearchListModel(type: SearchSection) {
+    func setSearchListModel(type: SearchSection, model: [Post]) {
         switch type {
         case .empty:
-            homeListDummyModel = ShareListModel.emptyDummyData()
+            shareList = []
         case .search:
-            homeListDummyModel = ShareListModel.shareListModelDummyData()
+            shareList = model
         }
+        print(model)
         listCollectionView.reloadData()
     }
 }
@@ -129,12 +129,12 @@ extension ShareListView: UICollectionViewDelegateFlowLayout {
 extension ShareListView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return homeListDummyModel.count
+        return shareList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: ShareListCollectionViewCell.self, indexPath: indexPath)
-        cell.setDataBind(model: homeListDummyModel[indexPath.row])
+        cell.setDataBind(shareList[indexPath.row])
         return cell
     }
 }

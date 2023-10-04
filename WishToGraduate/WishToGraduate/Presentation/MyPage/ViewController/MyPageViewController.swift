@@ -109,7 +109,7 @@ extension MyPageViewController {
     
     private func setDelegate() {
         myWritingCollectionView.delegate = self
-        myWritingCollectionView.dataSource = self
+//        myWritingCollectionView.dataSource = self
     }
     
     private func setRegister() {
@@ -169,28 +169,28 @@ extension MyPageViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension MyPageViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch (myPageTab) {
-        case .writing:
-            return myPostDummyModel.count
-        case .scrap:
-            return myScrapDummyModel.count
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(type: ShareListCollectionViewCell.self, indexPath: indexPath)
-        switch (myPageTab) {
-        case .writing:
-            cell.setDataBind(model: myPostDummyModel[indexPath.row])
-        case .scrap:
-            cell.setDataBind(model: myScrapDummyModel[indexPath.row])
-        }
-        return cell
-    }
-}
+//extension MyPageViewController: UICollectionViewDataSource {
+//    
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        switch (myPageTab) {
+//        case .writing:
+//            return myPostDummyModel.count
+//        case .scrap:
+//            return myScrapDummyModel.count
+//        }
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueCell(type: ShareListCollectionViewCell.self, indexPath: indexPath)
+//        switch (myPageTab) {
+//        case .writing:
+//            cell.setDataBind([model: myPostDummyModel[indexPath.row]])
+//        case .scrap:
+//            cell.setDataBind(model: myScrapDummyModel[indexPath.row])
+//        }
+//        return cell
+//    }
+//}
 
 extension MyPageViewController {
     

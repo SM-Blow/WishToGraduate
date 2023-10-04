@@ -16,6 +16,5 @@ struct Post: Codable {
     let title: String
     let borrow: Bool
     let status: Int
-    let category: String
     let duedate: [Int]
 }
