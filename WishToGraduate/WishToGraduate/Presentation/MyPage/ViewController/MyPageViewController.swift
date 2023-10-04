@@ -33,7 +33,7 @@ final class MyPageViewController: UIViewController {
     // MARK: - Properties
     
     private var myPageTab: MyPageTab = .writing
-    private var myWritingDummyModel: [ShareListModel] = ShareListModel.myWritingDummyData()
+    private var myPostDummyModel: [ShareListModel] = ShareListModel.myPostDummyData()
     private var myScrapDummyModel: [ShareListModel] = ShareListModel.myScrapDummyData()
     private var mypageModel: MypageModel = MypageModel.init(userId: 0, nickName: "", seed: 0, post: [], scrap: [])
     private let mypageProvider = MoyaProvider<UserService>(plugins: [NetworkLoggerPlugin(verbose: true)])
@@ -49,10 +49,10 @@ final class MyPageViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        fetchMypage()
         setDelegate()
         setRegister()
         setButton()
-        fetchMypage()
     }
 }
 
@@ -174,7 +174,7 @@ extension MyPageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch (myPageTab) {
         case .writing:
-            return myWritingDummyModel.count
+            return myPostDummyModel.count
         case .scrap:
             return myScrapDummyModel.count
         }
@@ -184,7 +184,7 @@ extension MyPageViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueCell(type: ShareListCollectionViewCell.self, indexPath: indexPath)
         switch (myPageTab) {
         case .writing:
-            cell.setDataBind(model: myWritingDummyModel[indexPath.row])
+            cell.setDataBind(model: myPostDummyModel[indexPath.row])
         case .scrap:
             cell.setDataBind(model: myScrapDummyModel[indexPath.row])
         }
@@ -202,10 +202,8 @@ extension MyPageViewController {
                 if status >= 200 && status < 300 {
                     do {
                         guard let mypage = try result.map(GeneralResponse<MyPageResponse>.self).data else { return }
-                        self.mypageModel = mypage.convertToMypage()
-                        print(self.mypageModel)
-                        self.myProfileView.myPointLabel.text = "나의 씨앗     |    \(self.mypageModel.seed ?? 0)개"
-                        self.myProfileView.nicknameLabel.text = self.mypageModel.nickName
+                        self.myProfileView.setDataBind(nickName: mypage.nickname, seed: mypage.seed)
+                        self.myProfileView.setNeedsLayout()
                     } catch (let error) {
                         print(error.localizedDescription)
                     }
