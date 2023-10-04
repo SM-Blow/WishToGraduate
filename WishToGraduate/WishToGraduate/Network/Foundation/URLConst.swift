@@ -30,7 +30,7 @@ public enum URLConst {
     static let post = "/api/v1/post"
     static let postPostId = "/api/v1/post/{postId}"
     static let postCategory = "api/v1/post/filter?category="
-    static let postKeyword = "/api/v1/post?keyword="
+    static let postKeyword = "/api/v1/post/search"
     static let postScrap = "/api/v1/post/scrap"
     static let postStatus = "/api/vi/post/status"
     

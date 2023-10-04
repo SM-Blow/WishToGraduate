@@ -162,6 +162,7 @@ extension SearchViewController {
     @objc
     private func searchButtonTapped() {
         searchListActivation()
+        requestGetSearchList()
     }
     
     @objc
@@ -183,5 +184,15 @@ extension SearchViewController: SearchProtocol {
     
     func searchType(type: SearchSection) {
         searchListView.setSearchListModel(type: type)
+    }
+}
+
+extension SearchViewController {
+    private func requestGetSearchList() {
+        PostAPI.shared.getSearchPost(keyword: searchTextField.text ?? "") { [weak self] response in
+            guard self != nil else { return }
+            guard let data = response?.data else { return }
+            print(data)
+        }
     }
 }

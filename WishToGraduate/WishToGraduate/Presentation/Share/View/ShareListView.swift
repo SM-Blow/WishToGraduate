@@ -20,10 +20,11 @@ final class ShareListView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
-    private var homeListDummyModel: [ShareListModel] = ShareListModel.shareListModelDummyData()
     
     // MARK: - Properties
     
+    private var homeListDummyModel: [ShareListModel] = ShareListModel.shareListModelDummyData()
+    private var searchList: [Search] = []
     var pushToDetailHandler: (() -> Void)?
     
     // MARK: - View Life Cycle
@@ -104,8 +105,6 @@ extension ShareListView {
         }
         listCollectionView.reloadData()
     }
-    
-    // MARK: - @objc Methods
 }
 
 extension ShareListView: UICollectionViewDelegateFlowLayout {

@@ -34,8 +34,8 @@ extension PostService: TargetType {
             return URLConst.postScrap
         case .postChangeStatus:
             return URLConst.postStatus
-        case .getSearch(let keyword):
-            return URLConst.postKeyword + "\(keyword)"
+        case .getSearch:
+            return URLConst.postKeyword
         }
     }
     
@@ -60,6 +60,11 @@ extension PostService: TargetType {
                 parameters: ["currentScrapStatus": currentScrapStatus,
                              "targetPostId": targetPostId],
                 encoding: JSONEncoding.default)
+        case .getSearch(let keyword):
+            let param: [String: Any] = [
+                "keyword" : keyword
+            ]
+            return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
         default:
             return .requestPlain
         }
