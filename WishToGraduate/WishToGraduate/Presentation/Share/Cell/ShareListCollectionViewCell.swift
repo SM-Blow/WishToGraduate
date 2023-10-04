@@ -103,6 +103,13 @@ extension ShareListCollectionViewCell {
     
     // MARK: - Methods
     
+    /// 이거로 변경하면 될듯!
+//    func setDataBind(model: ShareListModel) {
+//        titleLabel.text = model.title
+//        borrowLabel.text = model.borrow ? "빌려요" : "빌려줄게요"
+//        transactionLabel.isHidden = model.status == 2
+//        timeLabel.text = "\(model.duedate[0]).\(model.duedate[1]).\(model.duedate[2]) \(model.duedate[3]):\(model.duedate[4])까지"
+//    }
     func setDataBind(model: ShareListModel) {
         titleLabel.text = model.title
         var text = ""
