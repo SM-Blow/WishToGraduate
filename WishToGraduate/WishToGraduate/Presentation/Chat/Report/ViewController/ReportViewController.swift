@@ -50,6 +50,7 @@ extension ReportViewController {
         
         view.addSubviews(navigationView)
         
+        
     }
     
     // MARK: - Methods
