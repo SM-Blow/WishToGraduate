@@ -26,7 +26,7 @@ final class SignUpViewController: UIViewController {
 
     // MARK: - Properties
 
-    private var userModel: SignUpModel = SignUpModel(email: "", password: "", userName: "", deviceToken: "")
+    private var userModel: SignUpRequest = SignUpRequest(email: "", password: "", userName: "", fcmDeviceToken: "")
     private let userProvider = MoyaProvider<LoginService>(plugins:[NetworkLoggerPlugin()])
     
     // MARK: - View Life Cycle
@@ -118,6 +118,21 @@ extension SignUpViewController {
         signUpButton.addTarget(self, action: #selector(signupButtonDidTap), for: .touchUpInside)
     }
     
+    private func loginToHomeVC() {
+        // 화면전환
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let sceneDelegate = windowScene.delegate as? SceneDelegate,
+           let window = sceneDelegate.window {
+            let vc = HomeViewController()
+            let rootVC = UINavigationController(rootViewController: vc)
+            rootVC.navigationController?.isNavigationBarHidden = true
+            window.rootViewController = rootVC
+            window.makeKeyAndVisible()
+        }
+    }
+    
+    // MARK: - @objc Methods
+    
     @objc
     func signupButtonDidTap() {
         let text = idTextField.textField.text ?? ""
@@ -132,32 +147,20 @@ extension SignUpViewController {
 extension SignUpViewController {
     
     private func postUserInfo() {
-        userModel.email = self.idTextField.textField.text ?? ""
-        userModel.password = self.passwordTextField.textField.text ?? ""
-        userModel.userName = self.nickNameTextField.textField.text ?? ""
-        userModel.deviceToken = fcmToken ?? ""
-        print("☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️")
-        print(userModel.deviceToken)
-        userProvider.request(.signUp(param: userModel.makeSignUpRequest())) { response in
+        userModel.email = self.idTextField.getTextFieldText()
+        userModel.password = self.passwordTextField.getTextFieldText()
+        userModel.userName = self.nickNameTextField.getTextFieldText()
+        userModel.fcmDeviceToken = fcmToken ?? ""
+        userProvider.request(.signUp(param: userModel)) { response in
             switch response {
             case .success(let result):
                 let status = result.statusCode
                 if status >= 200 && status < 300 {
                     do {
                         guard let data = try result.map(GeneralResponse<SignUpResponse>.self).data else { return }
-                        APIConstants.deviceToken = self.userModel.deviceToken
+                        APIConstants.deviceToken = self.userModel.fcmDeviceToken
                         APIConstants.jwtToken = data.accessToken
-                        
-                        // 화면전환
-                        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                           let sceneDelegate = windowScene.delegate as? SceneDelegate,
-                           let window = sceneDelegate.window {
-                            let vc = HomeViewController()
-                            let rootVC = UINavigationController(rootViewController: vc)
-                            rootVC.navigationController?.isNavigationBarHidden = true
-                            window.rootViewController = rootVC
-                            window.makeKeyAndVisible()
-                        }
+                        self.loginToHomeVC()
                     } catch(let error) {
                         print(error.localizedDescription)
                     }
