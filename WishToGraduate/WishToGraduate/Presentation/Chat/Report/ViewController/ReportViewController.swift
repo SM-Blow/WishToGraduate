@@ -22,6 +22,11 @@ final class ReportViewController: UIViewController {
     private let explainLabel = UILabel()
     private let reportButton = CustomButtonView(title: "신고하기")
     
+    // MARK: - Properties
+    
+    private var reportRequest: ReportRequest = ReportRequest(content: "", targetUserId: 0)
+    private let reportProvider = MoyaProvider<ReportService>(plugins: [NetworkLoggerPlugin()])
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -169,7 +174,7 @@ extension ReportViewController {
     @objc
     private func setReportButtonHandler() {
         reportButton.buttonHandler = { [weak self] in
-            self?.reportButtonDidTapped()
+            self?.postReport()
         }
     }
     
@@ -229,5 +234,29 @@ extension ReportViewController: UITextViewDelegate {
         } else {
             textView.makeBorder(width: 1, color: Color.main_Green)
         }
+    }
+}
+
+extension ReportViewController {
+    
+    private func postReport() {
+        reportRequest.content = self.reportTextView.text ?? ""
+        reportRequest.targetUserId = 25
+        print(reportRequest)
+        reportProvider.request(.report(param: reportRequest)) { response in
+            switch response {
+            case .success(let result):
+                let status = result.statusCode
+                print(status)
+                do {
+                    self.reportButtonDidTapped()
+                } catch(let error) {
+                    print(error.localizedDescription)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        self.reportButtonDidTapped()
     }
 }

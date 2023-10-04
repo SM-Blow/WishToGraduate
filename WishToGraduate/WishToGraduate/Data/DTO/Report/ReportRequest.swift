@@ -9,5 +9,5 @@ import Foundation
 
 struct ReportRequest: Codable {
     var content: String
-    var userId: Int
+    var targetUserId: Int
 }
