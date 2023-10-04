@@ -101,6 +101,23 @@ final class PostAPI {
         }
     }
     
+    func createPost(borrow: Bool, category: String, content: String, duedate: String, photoUrl: String, title: String, completion: @escaping(GeneralResponse<VoidType>?) -> Void) {
+        postProvider.request(.addPost(borrow: borrow, category: category, content: content, duedate: duedate, photoUrl: photoUrl, title: title)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let data = try response.map(GeneralResponse<VoidType>.self)
+                    completion(data)
+                } catch let err {
+                    print(err.localizedDescription, 500)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                completion(nil)
+            }
+        }
+    }
+    
     
     // MARK: - PATCH
     /// 게시물 상태 변경

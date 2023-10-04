@@ -11,6 +11,7 @@ final class CategoryCollectionViewDelegate: NSObject, UICollectionViewDelegateFl
     
     let categoryModel = CategoryModel.categoryModelData()
     let selectedCategoryModel = CategoryModel.selectedCategoryModelData()
+    weak var writeViewController: WriteViewController?
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 59, height: 59)
@@ -33,6 +34,7 @@ final class CategoryCollectionViewDelegate: NSObject, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
             cell.imageDataBind(model: selectedCategoryModel[indexPath.row])
+            writeViewController?.category = selectedCategoryModel[indexPath.row].title
         }
     }
 }
