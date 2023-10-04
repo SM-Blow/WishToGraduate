@@ -15,8 +15,8 @@ final class MyProfileView: UIView {
     // MARK: - UI Components
     
     private let profileImage = UIImageView()
-    let nicknameLabel = UILabel()
-    let myPointLabel = UILabel()
+    private let nicknameLabel = UILabel()
+    private let myPointLabel = UILabel()
     
     // MARK: - View Life Cycle
     
@@ -44,13 +44,11 @@ extension MyProfileView {
         }
         
         nicknameLabel.do {
-            $0.text = "정이는포켓몬"
             $0.font = .fontGuide(.m1)
             $0.textColor = .black
         }
         
         myPointLabel.do {
-            $0.text = "나의 씨앗     |    9개"
             $0.font = .fontGuide(.h2)
             $0.textColor = .black
         }
@@ -77,5 +75,13 @@ extension MyProfileView {
             $0.top.equalTo(nicknameLabel.snp.bottom).offset(27)
             $0.centerX.equalToSuperview()
         }
+    }
+    
+    // MARK: - Methods
+    
+    func setDataBind(nickName: String, seed: Int) {
+        print("aseflija;eifj;ailjef;laj")
+        myPointLabel.text = "나의 씨앗     |    \(seed)개"
+        nicknameLabel.text = nickName
     }
 }

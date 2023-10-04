@@ -49,10 +49,10 @@ final class MyPageViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        fetchMypage()
         setDelegate()
         setRegister()
         setButton()
-        fetchMypage()
     }
 }
 
@@ -202,10 +202,8 @@ extension MyPageViewController {
                 if status >= 200 && status < 300 {
                     do {
                         guard let mypage = try result.map(GeneralResponse<MyPageResponse>.self).data else { return }
-                        self.mypageModel = mypage.convertToMypage()
-                        print(self.mypageModel)
-                        self.myProfileView.myPointLabel.text = "나의 씨앗     |    \(self.mypageModel.seed ?? 0)개"
-                        self.myProfileView.nicknameLabel.text = self.mypageModel.nickName
+                        self.myProfileView.setDataBind(nickName: mypage.nickname, seed: mypage.seed)
+                        self.myProfileView.setNeedsLayout()
                     } catch (let error) {
                         print(error.localizedDescription)
                     }

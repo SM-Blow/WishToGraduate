@@ -6,13 +6,27 @@
 //
 
 struct MyPageResponse: Codable {
-    let user: Int
-    let nickName: String
-    let seed: Int?
-    let posts: [String]?
-    let scraps: [String]?
-    
-    func convertToMypage() -> MypageModel {
-        return MypageModel(userId: self.user, nickName: self.nickName, seed: self.seed ?? 0, post: self.posts ?? [], scrap: self.scraps ?? [])
-    }
+    let userId: Int
+    let nickname: String
+    let seed: Int
+    let posts: [Post]
+    let scraps: [Scrap]
+}
+
+struct Post: Codable {
+    let postId: Int
+    let title: String
+    let borrow: Bool
+    let dueDate: String
+    let status: Bool
+    let category: String
+}
+
+struct Scrap: Codable {
+    let postId: Int
+    let title: String
+    let borrow: Bool
+    let dueDate: String
+    let status: Bool
+    let category: String
 }
