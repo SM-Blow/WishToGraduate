@@ -26,8 +26,8 @@ extension PostService: TargetType {
         switch self {
         case .getAllPosts:
             return URLConst.post
-        case .getPostByCategory(let category):
-            return URLConst.postCategory + "\(category)"
+        case .getPostByCategory:
+            return URLConst.postCategory
         case .getScrapPost:
             return URLConst.postScraps
         case .postScrap:
@@ -50,6 +50,9 @@ extension PostService: TargetType {
     
     var task: Moya.Task {
         switch self {
+        case .getPostByCategory(let category):
+            let param: [String: Any] = ["category": category]
+            return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
         case .postChangeStatus(let postId, let status):
             return .requestParameters(
                 parameters: ["postId": postId, "status": status],
@@ -61,9 +64,7 @@ extension PostService: TargetType {
                              "targetPostId": targetPostId],
                 encoding: JSONEncoding.default)
         case .getSearch(let keyword):
-            let param: [String: Any] = [
-                "keyword" : keyword
-            ]
+            let param: [String: Any] = ["keyword": keyword]
             return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
         default:
             return .requestPlain
