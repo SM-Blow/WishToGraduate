@@ -67,6 +67,7 @@
 		0378F9032ACD7C9900D625B9 /* ReportAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0378F9022ACD7C9900D625B9 /* ReportAlertViewController.swift */; };
 		0378F9052ACD846B00D625B9 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0378F9042ACD846B00D625B9 /* ReportService.swift */; };
 		0378F9092ACD863E00D625B9 /* ReportRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0378F9082ACD863E00D625B9 /* ReportRequest.swift */; };
+		0378F90C2ACDCF8B00D625B9 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0378F90B2ACDCF8B00D625B9 /* SearchResponse.swift */; };
 		03931ABF2A2CA5F700B235D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931ABE2A2CA5F700B235D9 /* AppDelegate.swift */; };
 		03931AC12A2CA5F700B235D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AC02A2CA5F700B235D9 /* SceneDelegate.swift */; };
 		03931AC32A2CA5F700B235D9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AC22A2CA5F700B235D9 /* CategoryViewController.swift */; };
@@ -186,6 +187,7 @@
 		0378F9022ACD7C9900D625B9 /* ReportAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAlertViewController.swift; sourceTree = "<group>"; };
 		0378F9042ACD846B00D625B9 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
 		0378F9082ACD863E00D625B9 /* ReportRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRequest.swift; sourceTree = "<group>"; };
+		0378F90B2ACDCF8B00D625B9 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		03931ABB2A2CA5F700B235D9 /* WishToGraduate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WishToGraduate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03931ABE2A2CA5F700B235D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03931AC02A2CA5F700B235D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -768,12 +770,26 @@
 			path = Report;
 			sourceTree = "<group>";
 		};
+		0378F90A2ACDCF7600D625B9 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				0378F90B2ACDCF8B00D625B9 /* SearchResponse.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		0378F90D2ACDD07800D625B9 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		03931AB22A2CA5F700B235D9 = {
 			isa = PBXGroup;
 			children = (
 				03931ABD2A2CA5F700B235D9 /* WishToGraduate */,
 				03931ABC2A2CA5F700B235D9 /* Products */,
-				0378F8F82ACD692000D625B9 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -823,6 +839,7 @@
 				0378F8F92ACD697800D625B9 /* CouponList */,
 				036E4B5C2AC59E560045802D /* Login */,
 				0378F8F32ACD320D00D625B9 /* Home */,
+				0378F90A2ACDCF7600D625B9 /* Search */,
 				0378F9072ACD862F00D625B9 /* Report */,
 				0378F8F22ACD31BA00D625B9 /* MyPage */,
 			);
@@ -842,6 +859,7 @@
 		03931ADB2A2CAD4A00B235D9 /* APIService */ = {
 			isa = PBXGroup;
 			children = (
+				0378F90D2ACDD07800D625B9 /* Search */,
 				3BCF4EC42ACC9EBC00E6DB22 /* Event */,
 				3B615A682ACC683E004CC6EB /* Coupon */,
 				036E4B552AC5987B0045802D /* Sign */,
@@ -1305,6 +1323,7 @@
 				036781542AB9FE1F00866F31 /* CustomTextFieldView.swift in Sources */,
 				035615652A3CAABC00CC9A5E /* ShareListView.swift in Sources */,
 				03931ABF2A2CA5F700B235D9 /* AppDelegate.swift in Sources */,
+				0378F90C2ACDCF8B00D625B9 /* SearchResponse.swift in Sources */,
 				0356155A2A3C55BE00CC9A5E /* CategoryModel.swift in Sources */,
 				0378F9032ACD7C9900D625B9 /* ReportAlertViewController.swift in Sources */,
 				03931AE82A2CB2E200B235D9 /* UIView+.swift in Sources */,
