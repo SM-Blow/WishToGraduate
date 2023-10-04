@@ -116,7 +116,6 @@ extension ShareListCollectionViewCell {
             text = ""
         }
         borrowLabel.text = text
-//        borrowLabel.text = model.borrow == 1 ? "빌려요" : "빌려줄게요"
         transactionLabel.isHidden = model.transaction
         timeLabel.text = model.time
     }
