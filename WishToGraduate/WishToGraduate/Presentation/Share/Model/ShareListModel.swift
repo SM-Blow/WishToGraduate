@@ -42,7 +42,7 @@ extension ShareListModel {
         return []
     }
     
-    static func myWritingDummyData() -> [ShareListModel] {
+    static func myPostDummyData() -> [ShareListModel] {
         return [
             ShareListModel(title: "생리대 중형 한 개", borrow: 1, transaction: false, time: "2023.05.20 13:00까지"),
             ShareListModel(title: "생리대 중형 한 개", borrow: 1, transaction: false, time: "2023.05.20 13:00까지"),
