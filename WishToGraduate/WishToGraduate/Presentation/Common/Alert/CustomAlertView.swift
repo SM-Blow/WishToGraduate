@@ -15,7 +15,7 @@ enum CustomAlertType {
     case applicationEvent
 }
 
-final class CustomAlertView: UIView {
+final class CustomAlertViewController: UIViewController {
     
     // MARK: - UI Components
     
@@ -25,29 +25,27 @@ final class CustomAlertView: UIView {
     private let explainLabel = UILabel()
     private let allowButton = UIButton()
     private let cancelButton = UIButton()
+    var allowButtonHandler: (() -> Void)?
     
     // MARK: - View Life Cycle
     
-    init(alertType: CustomAlertType, title: String) {
-        super.init(frame: .zero)
-        setUI(title)
+    override func viewDidLoad() {
         setLayout()
         setAddTarget()
-        setAlert(alertType)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 
-extension CustomAlertView {
+extension CustomAlertViewController {
     
     // MARK: - UI Components Property
     
+    func setTitle(_ title: String) {
+        setUI(title)
+    }
+    
     private func setUI(_ title: String) {
         
-        self.backgroundColor = Color.background_Grey
+        view.backgroundColor = Color.background_Grey
         
         containerView.do {
             $0.backgroundColor = .white
@@ -86,15 +84,8 @@ extension CustomAlertView {
     
     private func setLayout() {
         
-        addSubviews(containerView)
+        view.addSubviews(containerView)
         containerView.addSubviews(titleLabel, explainLabel, cancelButton, allowButton)
-        
-        self.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: SizeLiterals.Screen.screenWidth * 292 / 375,
-            height: SizeLiterals.Screen.screenHeight * 158 / 812
-        )
         
         containerView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(43)
@@ -129,7 +120,7 @@ extension CustomAlertView {
     
     // MARK: - Methods
     
-    private func setAlert(_ alertType: CustomAlertType) {
+    func setAlert(_ alertType: CustomAlertType) {
         switch alertType {
         case .useCoupon:
             explainLabel.text = "쿠폰을 사용 처리합니다."
@@ -146,11 +137,11 @@ extension CustomAlertView {
     }
     
     private func closeAlertView() {
-        removeFromSuperview()
+        self.dismiss(animated: true)
     }
     
     private func allowAlert() {
-        print("allow")
+        allowButtonHandler?()
     }
     
     // MARK: - @objc Methods

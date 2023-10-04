@@ -80,9 +80,10 @@ extension CouponCollectionViewCell {
         }
     }
     
-    func setData(_ model: CouponListModel) {
-        couponTitleLabel.text = model.title
+    func setData(_ model: Coupon) {
+        couponTitleLabel.text = model.storeName
         couponContentLabel.text = model.content
-        timeoutLabel.text = model.timeout
+        timeoutLabel.text =
+        "\(model.dueDate[0]).\(model.dueDate[1]).\(model.dueDate[2])"
     }
 }

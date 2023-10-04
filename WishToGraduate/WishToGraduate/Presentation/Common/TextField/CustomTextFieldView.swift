@@ -22,6 +22,10 @@ enum CreateEventType {
 
 final class CustomTextFieldView: UIView {
     
+    func getText() -> String {
+        return textField.text ?? ""
+    }
+    
     // MARK: - UI Components
     
     private let titleLabel = UILabel()

@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 final class CouponViewController: UIViewController {
-
+    
     // MARK: - Properties
     
     private let navigationBar = CustomNavigationBar(title: "쿠폰 관리하기")
@@ -21,9 +21,16 @@ final class CouponViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
-    private var couponDummyData: [CouponListModel] = CouponListModel.couponListDummyData()
+    private var couponList: [Coupon] = []
+    private var isCollectionViewLoaded = false
     
     // MARK: - Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if !isCollectionViewLoaded {
+                requestGetCouponList()
+            }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,20 +79,53 @@ extension CouponViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    private func useCoupon(title: String) {
-        let alert = CustomAlertView(alertType: .useCoupon, title: title)
-        alert.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(alert)
-        alert.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+    private func useCoupon(title: String, couponId: Int) {
+        let alertViewController = CustomAlertViewController()
+        alertViewController.setTitle(title)
+        alertViewController.setAlert(.useCoupon)
+        alertViewController.modalPresentationStyle = .overFullScreen
+        alertViewController.modalTransitionStyle = .crossDissolve
+        self.present(alertViewController, animated: true)
+        alertViewController.allowButtonHandler = { [weak self] in
+            self?.requestPostCouponUse(couponId: couponId)
+            self?.dismiss(animated: true)
         }
-        alert.isUserInteractionEnabled = true
     }
     
     @objc
     private func setButton() {
         navigationBar.backButtonHandler = { [weak self] in
             self?.backToHomeVC()
+        }
+    }
+}
+
+extension CouponViewController {
+    private func requestGetCouponList() {
+        CouponAPI.shared.getCouponList { [weak self] response in
+            guard self != nil else { return }
+            guard let data = response?.data else { return }
+            self!.couponList = data.couponList
+            self!.loadCollectionView()
+        }
+    }
+    
+    private func requestPostCouponUse(couponId: Int) {
+        CouponAPI.shared.postCouponUse(id: couponId) { [weak self] response in
+            guard self != nil else { return }
+            guard (response?.data) != nil else { return }
+            DispatchQueue.main.async { [weak self] in
+                self?.requestGetCouponList()
+                self?.coupontListCollectionView.reloadData()
+            }
+        }
+    }
+    
+    private func loadCollectionView() {
+        isCollectionViewLoaded = true
+    
+        DispatchQueue.main.async { [weak self] in
+            self?.coupontListCollectionView.reloadData()
         }
     }
 }
@@ -106,13 +146,19 @@ extension CouponViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
-        case couponDummyData.count:
+        case couponList.count:
             let addCouponViewController = AddCouponViewController()
             addCouponViewController.modalTransitionStyle = .coverVertical
             addCouponViewController.modalPresentationStyle = .overFullScreen
-            self.present(addCouponViewController, animated: true)
+            self.navigationController?.pushViewController(addCouponViewController, animated: true)
+            addCouponViewController.popHandler = { [weak self] in
+                DispatchQueue.main.async { [weak self] in
+                    self?.requestGetCouponList()
+                    self?.coupontListCollectionView.reloadData()
+                }
+            }
         default:
-            useCoupon(title: couponDummyData[indexPath.row].title)
+            useCoupon(title: couponList[indexPath.row].storeName, couponId: couponList[indexPath.row].couponId)
         }
     }
 }
@@ -120,13 +166,13 @@ extension CouponViewController: UICollectionViewDelegateFlowLayout {
 extension CouponViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return couponDummyData.count + 1
+        return couponList.count + 1
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row != couponDummyData.count {
+        if indexPath.row != couponList.count {
             let cell = coupontListCollectionView.dequeueCell(type: CouponCollectionViewCell.self, indexPath: indexPath)
-            cell.setData(couponDummyData[indexPath.row])
+            cell.setData(couponList[indexPath.row])
             return cell
         } else {
             let cell = coupontListCollectionView.dequeueCell(type: AddCollectionViewCell.self, indexPath: indexPath)

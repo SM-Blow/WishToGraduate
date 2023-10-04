@@ -22,6 +22,7 @@ final class AddCouponViewController: UIViewController {
     private let dueDateView = CustomTextFieldView(type: .dueDate)
     private let serialNumberView = CustomTextFieldView(type: .serialNumber)
     private let addCouponButton = CustomButtonView(title: "쿠폰 등록하기")
+    var popHandler: (() -> Void)?
     
     // MARK: - View Life Cycle
     
@@ -45,6 +46,8 @@ extension AddCouponViewController {
         navigationBar.do {
             $0.isCloseButtonIncluded = true
         }
+        
+        self.navigationController?.navigationBar.isHidden = true
         
         stackView.do {
             $0.axis = .vertical
@@ -108,7 +111,29 @@ extension AddCouponViewController {
     }
     
     private func addCouponButtonDidTapped() {
-        print("addCouponButtonTap")
+        requestPostAddCoupon()
+        popHandler?()
+        navigationController?.popViewController(animated: true)
+    }
+    
+    private func requestPostAddCoupon() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        if let date = dateFormatter.date(from: dueDateView.getText()) {
+            // Date를 ISO 8601 형식의 문자열로 변환
+            let isoDateFormatter = ISO8601DateFormatter()
+            isoDateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+            let isoDateString = isoDateFormatter.string(from: date)
+            CouponAPI.shared.postCouponAdd(
+                storeName: storeNameView.getText(),
+                content: couponContentView.getText(),
+                dueDate: isoDateString,
+                couponCode: serialNumberView.getText()) { [weak self] response in
+                    guard self != nil else { return }
+                    guard (response?.data) != nil else { return }
+                }
+        }
+        
     }
     
     // MARK: - @objc Methods
