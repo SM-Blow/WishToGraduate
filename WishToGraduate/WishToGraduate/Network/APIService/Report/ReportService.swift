@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum ReportService {
-    case report
+    case report(param: ReportRequest)
 }
 
 extension ReportService: TargetType {
@@ -26,7 +26,10 @@ extension ReportService: TargetType {
     }
     
     var task: Moya.Task {
-        return .requestPlain
+        switch self {
+        case .report(let param):
+            return .requestParameters(parameters: try! param.asParameter(), encoding: JSONEncoding.default)
+        }
     }
     
     var headers: [String : String]? {
