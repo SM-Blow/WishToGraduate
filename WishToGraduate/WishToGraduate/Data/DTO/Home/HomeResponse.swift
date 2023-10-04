@@ -10,8 +10,4 @@ import Foundation
 struct HomeResponse: Codable {
     let nickName: String
     let seed: Int
-    
-    func convertToHome() -> HomeUserModel {
-        return HomeUserModel(userName: self.nickName, point: self.seed)
-    }
 }
