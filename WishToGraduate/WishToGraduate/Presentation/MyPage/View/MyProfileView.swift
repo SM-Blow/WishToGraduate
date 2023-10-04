@@ -80,7 +80,6 @@ extension MyProfileView {
     // MARK: - Methods
     
     func setDataBind(nickName: String, seed: Int) {
-        print("aseflija;eifj;ailjef;laj")
         myPointLabel.text = "나의 씨앗     |    \(seed)개"
         nicknameLabel.text = nickName
     }
