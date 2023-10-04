@@ -35,6 +35,7 @@ final class ChatViewController: UIViewController {
         setTapScreen()
         setDelegate()
         setAddTarget()
+        setNavigationButton()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -52,6 +53,7 @@ extension ChatViewController {
         
         chattingNavigationBar.do {
             $0.isBackButtonIncluded = true
+            $0.isReportButtonIncluded = true
         }
         
         messageFieldView.do {
@@ -170,6 +172,14 @@ extension ChatViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    private func popToChatList() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func pushToReportVC() {
+        self.navigationController?.pushViewController(ReportViewController(), animated: true)
+    }
+    
     // MARK: - @objc Methods
     
     @objc
@@ -184,6 +194,16 @@ extension ChatViewController {
     private func sendButtonDidTapped() {
         print("전송버튼 탭")
         print(inputTextFieldView.text ?? "")
+    }
+    
+    @objc
+    private func setNavigationButton() {
+        chattingNavigationBar.backButtonHandler = { [weak self] in
+            self?.popToChatList()
+        }
+        chattingNavigationBar.reportButtonHandler = { [weak self] in
+            self?.pushToReportVC()
+        }
     }
 }
 
