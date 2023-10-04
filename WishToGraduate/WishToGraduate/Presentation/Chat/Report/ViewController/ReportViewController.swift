@@ -15,7 +15,7 @@ final class ReportViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let navigationView = CustomNavigationBar(title: "사용자 신고하기")
+    private let navigationBar = CustomNavigationBar(title: "사용자 신고하기")
     
     // MARK: - Properties
     
@@ -27,6 +27,7 @@ final class ReportViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setNavigationButton()
     }
 }
 
@@ -38,7 +39,7 @@ extension ReportViewController {
         
         view.backgroundColor = .white
         
-        navigationView.do {
+        navigationBar.do {
             $0.isBackButtonIncluded = true
         }
         
@@ -48,12 +49,27 @@ extension ReportViewController {
     
     private func setLayout() {
         
-        view.addSubviews(navigationView)
+        view.addSubviews(navigationBar)
         
-        
+        navigationBar.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 96 / 812)
+        }
     }
     
     // MARK: - Methods
     
+    private func popToChatVC() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - @objc Methods
+    
+    @objc
+    private func setNavigationButton() {
+        navigationBar.backButtonHandler = { [weak self] in
+            self?.popToChatVC()
+        }
+    }
 }
