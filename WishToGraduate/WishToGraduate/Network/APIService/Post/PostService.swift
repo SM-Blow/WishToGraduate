@@ -14,6 +14,8 @@ enum PostService {
     case getScrapPost                                   // 스크랩한 게시물 조회
     case postScrap(currentScrapStatus: Bool, targetPostId: Int)                  // 게시물 스크랩
     case postChangeStatus(postId: Int, status: Bool)                             // 게시물 상태 변경
+    case addPost(borrow: Bool, category: String, content: String, duedate: String, photoUrl: String, title: String)
+    
 }
 
 extension PostService: TargetType {
@@ -23,7 +25,7 @@ extension PostService: TargetType {
     
     var path: String {
         switch self {
-        case .getAllPosts:
+        case .getAllPosts, .addPost:
             return URLConst.post
         case .getPostByCategory(let category):
             return URLConst.postCategory + "\(category)"
@@ -57,6 +59,11 @@ extension PostService: TargetType {
                 parameters: ["currentScrapStatus": currentScrapStatus,
                              "targetPostId": targetPostId],
                 encoding: JSONEncoding.default)
+        case .addPost(let borrow, let category, let content, let duedate, let photoUrl, let title):
+            return .requestParameters(
+                parameters: ["borrow": borrow, "category": category, "content": content, "duedate": duedate,
+                             "photoUrl": photoUrl, "title": title],
+                encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }
@@ -65,6 +72,4 @@ extension PostService: TargetType {
     var headers: [String : String]? {
         return APIConstants.headerWithAuthorization
     }
-    
-    
 }
