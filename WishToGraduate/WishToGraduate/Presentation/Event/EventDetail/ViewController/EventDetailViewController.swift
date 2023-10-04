@@ -33,7 +33,7 @@ final class EventDetailViewController: UIViewController {
     
     private let contentView = UIView()
     private let titleLabel = UILabel()
-    private let applicantPersonLabel = UILabel()
+    private let peopleCountLabel = UILabel()
     private let contentBackView = UIView()
     private let contentLabel = UILabel()
     
@@ -91,6 +91,7 @@ extension EventDetailViewController {
         }
         
         dateLabel.do {
+            $0.text = "Date"
             $0.font = .fontGuide(.h2_bold)
             $0.textColor = Color.main2_Green
         }
@@ -109,7 +110,7 @@ extension EventDetailViewController {
             $0.textColor = .black
         }
         
-        applicantPersonLabel.do {
+        peopleCountLabel.do {
             $0.font = .fontGuide(.bt1)
             $0.backgroundColor = Color.main_Green
             $0.textColor = .white
@@ -135,7 +136,7 @@ extension EventDetailViewController {
         
         userView.addSubviews(userProfileImageView, userNameLabel, dateLabel, dueDateLabel, underLine)
         contentBackView.addSubviews(contentLabel)
-        contentView.addSubviews(titleLabel, applicantPersonLabel, contentBackView)
+        contentView.addSubviews(titleLabel, peopleCountLabel, contentBackView)
         stackView.addArrangedSubviews(userView, contentView)
         scrollView.addSubviews(stackView)
         view.addSubviews(navigationBar, scrollView, applicationButton)
@@ -197,7 +198,7 @@ extension EventDetailViewController {
             $0.leading.equalToSuperview().inset(23)
         }
         
-        applicantPersonLabel.snp.makeConstraints {
+        peopleCountLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel)
             $0.leading.equalTo(titleLabel.snp.trailing).offset(15)
             $0.width.equalTo(49)
@@ -247,9 +248,9 @@ extension EventDetailViewController {
     
     private func setDataBind(_ model: EventDetailResponseDto) {
         userNameLabel.text = model.host
-        dueDateLabel.text = "\(model.dueDate[0]).\(model.dueDate[1]).\(model.dueDate[2])"
+        dueDateLabel.text = "\(model.dueDate[0]).\(model.dueDate[1]).\(model.dueDate[2]) \(model.dueDate[3]):\(model.dueDate[4])"
         titleLabel.text = model.title
-        applicantPersonLabel.text = String(model.currentApplyCount)
+        peopleCountLabel.text = "\(String(model.currentApplyCount)) / \(String(model.acceptCount))"
         contentLabel.text = model.content
         setContentLayout(model.content)
     }
