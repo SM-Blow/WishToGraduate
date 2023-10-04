@@ -34,6 +34,7 @@ final class ShareViewController: UIViewController {
     // MARK: - Properties
     
     weak var categoryDelegate: CategoryProtocol?
+    private var shareList: [Post] = []
     
     // MARK: - View Life Cycle
     
@@ -49,6 +50,7 @@ final class ShareViewController: UIViewController {
         setDelegate()
         setButton()
         setCellHandler()
+        requestGetPostList()
     }
 }
 
@@ -150,6 +152,16 @@ extension ShareViewController {
     }
 }
 
+extension ShareViewController {
+    private func requestGetPostList() {
+        PostAPI.shared.getAllPost { [weak self] response in
+            guard self != nil else { return }
+            guard let data = response?.data else { return }
+            self?.homeListView.setListModel(category: .all, model: data.postList)
+        }
+    }
+}
+
 extension ShareViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 59, height: 59)
@@ -195,7 +207,7 @@ extension ShareViewController: UICollectionViewDelegateFlowLayout {
 extension ShareViewController: CategoryProtocol {
     
     func categoryType(category: CategorySection) {
-        homeListView.setListModel(category: category)
+        homeListView.setListModel(category: category, model: shareList)
         UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
         }

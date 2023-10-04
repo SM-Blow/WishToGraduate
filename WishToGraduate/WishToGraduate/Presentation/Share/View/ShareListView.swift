@@ -14,7 +14,7 @@ final class ShareListView: UIView {
     
     // MARK: - UI Components
     
-    private lazy var listCollectionView: UICollectionView = {
+    lazy var listCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -77,10 +77,10 @@ extension ShareListView {
         listCollectionView.registerCell(ShareListCollectionViewCell.self)
     }
     
-    func setListModel(category: CategorySection) {
+    func setListModel(category: CategorySection, model: [Post]) {
         switch category {
         case .all:
-            shareList = []
+            shareList = model
         case .pill:
             shareList = []
         case .sanitaryPad:
