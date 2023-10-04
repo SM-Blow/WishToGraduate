@@ -34,7 +34,7 @@ public enum URLConst {
     static let postScrap = "/api/v1/post/scrap"
     
     // 유저
-    static let userHome = "/api/v1/user/home"
+    static let userHome = "/api/v1/home"
     static let userMypage = "/api/v1/user/my"
     static let report = "/api/v1/report"
     
