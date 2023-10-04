@@ -26,7 +26,8 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let homeUserDummyData: HomeUserModel = HomeUserModel.homeUserModelDummyData()
+    private let homeProvider = MoyaProvider<UserService>(plugins: [NetworkLoggerPlugin(verbose: true)])
+    private var homeUserModel: HomeUserModel = HomeUserModel(userName: "", point: 0)
     
     // MARK: - View Life Cycle
     
@@ -34,8 +35,8 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
-        setDataBind(homeUserDummyData)
         setButton()
+        fetchHome()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -170,6 +171,32 @@ extension HomeViewController {
         }
         myPageButton.mypageButtonHadler = { [weak self] in
             self?.pushToMypage()
+        }
+    }
+}
+
+extension HomeViewController {
+    
+    private func fetchHome() {
+        homeProvider.request(.home) { response in
+            switch response {
+            case .success(let result):
+                let status = result.statusCode
+                if status >= 200 && status < 300 {
+                    do {
+                        guard let home = try result.map(GeneralResponse<HomeResponse>.self).data else { return }
+                        self.homeUserModel = home.convertToHome()
+                        self.setDataBind(self.homeUserModel)
+                    } catch(let error) {
+                        print(error.localizedDescription)
+                    }
+                }
+                else if status >= 400 {
+                    print("400 error")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
     }
 }
