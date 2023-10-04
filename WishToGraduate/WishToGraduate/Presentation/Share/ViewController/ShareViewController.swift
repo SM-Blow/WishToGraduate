@@ -48,7 +48,7 @@ final class ShareViewController: UIViewController {
         setLayout()
         setDelegate()
         setButton()
-        setHandler()
+        setCellHandler()
     }
 }
 
@@ -143,7 +143,7 @@ extension ShareViewController {
     }
     
     @objc
-    private func setHandler() {
+    private func setCellHandler() {
         homeListView.pushToDetailHandler = { [weak self] in
             self?.pushToDetailVC()
         }
