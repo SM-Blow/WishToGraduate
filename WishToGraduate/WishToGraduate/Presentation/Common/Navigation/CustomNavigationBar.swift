@@ -19,12 +19,14 @@ final class CustomNavigationBar: UIView {
     private let titleLabel = UILabel()
     private let closeButton = UIButton()
     private let backButton = UIButton()
+    private let reportButton = UIButton()
     private let underLineView = UIView()
     
     // MARK: - Properties
     
     var closeButtonHandler: (() -> Void)?
     var backButtonHandler: (() -> Void)?
+    var reportButtonHandler: (() -> Void)?
     
     var isBackButtonIncluded: Bool {
         get { !backButton.isHidden }
@@ -34,6 +36,11 @@ final class CustomNavigationBar: UIView {
     var isCloseButtonIncluded: Bool {
         get { !closeButton.isHidden }
         set { closeButton.isHidden = !newValue }
+    }
+    
+    var isReportButtonIncluded: Bool {
+        get { !reportButton.isHidden }
+        set { reportButton.isHidden = !newValue }
     }
     
     // MARK: - View Life Cycle
@@ -80,6 +87,11 @@ extension CustomNavigationBar {
             $0.isHidden = true
         }
         
+        reportButton.do {
+            $0.setImage(Image.reportButton, for: .normal)
+            $0.isHidden = true
+        }
+        
         underLineView.do {
             $0.backgroundColor = Color.line_Grey
         }
@@ -89,7 +101,7 @@ extension CustomNavigationBar {
     
     private func setLayout() {
         
-        navigationView.addSubviews(titleLabel, closeButton, backButton, underLineView)
+        navigationView.addSubviews(titleLabel, closeButton, backButton, reportButton, underLineView)
         addSubviews(navigationView, backgroundView)
         
         backgroundView.snp.makeConstraints {
@@ -120,6 +132,12 @@ extension CustomNavigationBar {
             $0.size.equalTo(35)
         }
         
+        reportButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(21)
+            $0.centerY.equalToSuperview()
+            $0.size.equalTo(23)
+        }
+        
         underLineView.snp.makeConstraints {
             $0.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
@@ -132,6 +150,7 @@ extension CustomNavigationBar {
     private func setAddTarget() {
         closeButton.addTarget(self, action: #selector(closeButtonDidTapped), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(backButtonDidTapped), for: .touchUpInside)
+        reportButton.addTarget(self, action: #selector(reportButtonDidTapped), for: .touchUpInside)
     }
     
     // MARK: - @objc Methods
@@ -144,5 +163,10 @@ extension CustomNavigationBar {
     @objc
     private func backButtonDidTapped() {
         backButtonHandler?()
+    }
+    
+    @objc
+    private func reportButtonDidTapped() {
+        reportButtonHandler?()
     }
 }

@@ -160,6 +160,7 @@ extension SignUpViewController {
                         guard let data = try result.map(GeneralResponse<SignUpResponse>.self).data else { return }
                         APIConstants.deviceToken = self.userModel.fcmDeviceToken
                         APIConstants.jwtToken = data.accessToken
+                        APIConstants.userID = data.id
                         self.loginToHomeVC()
                     } catch(let error) {
                         print(error.localizedDescription)

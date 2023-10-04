@@ -63,6 +63,10 @@
 		0370F3A02A442A9C00A9AF28 /* LabelStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370F39F2A442A9C00A9AF28 /* LabelStatusModel.swift */; };
 		0378F8F52ACD324800D625B9 /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0378F8F42ACD324800D625B9 /* HomeResponse.swift */; };
 		0378F8FC2ACD6AD000D625B9 /* CouponListResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0378F8FA2ACD69AD00D625B9 /* CouponListResponseDto.swift */; };
+		0378F9002ACD6FAD00D625B9 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0378F8FF2ACD6FAD00D625B9 /* ReportViewController.swift */; };
+		0378F9032ACD7C9900D625B9 /* ReportAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0378F9022ACD7C9900D625B9 /* ReportAlertViewController.swift */; };
+		0378F9052ACD846B00D625B9 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0378F9042ACD846B00D625B9 /* ReportService.swift */; };
+		0378F9092ACD863E00D625B9 /* ReportRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0378F9082ACD863E00D625B9 /* ReportRequest.swift */; };
 		03931ABF2A2CA5F700B235D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931ABE2A2CA5F700B235D9 /* AppDelegate.swift */; };
 		03931AC12A2CA5F700B235D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AC02A2CA5F700B235D9 /* SceneDelegate.swift */; };
 		03931AC32A2CA5F700B235D9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03931AC22A2CA5F700B235D9 /* CategoryViewController.swift */; };
@@ -175,6 +179,10 @@
 		0370F39F2A442A9C00A9AF28 /* LabelStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStatusModel.swift; sourceTree = "<group>"; };
 		0378F8F42ACD324800D625B9 /* HomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResponse.swift; sourceTree = "<group>"; };
 		0378F8FA2ACD69AD00D625B9 /* CouponListResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListResponseDto.swift; sourceTree = "<group>"; };
+		0378F8FF2ACD6FAD00D625B9 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		0378F9022ACD7C9900D625B9 /* ReportAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAlertViewController.swift; sourceTree = "<group>"; };
+		0378F9042ACD846B00D625B9 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
+		0378F9082ACD863E00D625B9 /* ReportRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRequest.swift; sourceTree = "<group>"; };
 		03931ABB2A2CA5F700B235D9 /* WishToGraduate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WishToGraduate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03931ABE2A2CA5F700B235D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03931AC02A2CA5F700B235D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -661,6 +669,7 @@
 			children = (
 				03FD529D2AA3496300899F4F /* List */,
 				03FD529E2AA3497200899F4F /* Chatting */,
+				0378F8FD2ACD6F8D00D625B9 /* Report */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -721,6 +730,47 @@
 			path = CouponList;
 			sourceTree = "<group>";
 		};
+		0378F8FD2ACD6F8D00D625B9 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				0378F9012ACD7C8700D625B9 /* Alert */,
+				0378F8FE2ACD6F9B00D625B9 /* ViewController */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+		0378F8FE2ACD6F9B00D625B9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0378F8FF2ACD6FAD00D625B9 /* ReportViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0378F9012ACD7C8700D625B9 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				0378F9022ACD7C9900D625B9 /* ReportAlertViewController.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		0378F9062ACD846F00D625B9 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				0378F9042ACD846B00D625B9 /* ReportService.swift */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+		0378F9072ACD862F00D625B9 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				0378F9082ACD863E00D625B9 /* ReportRequest.swift */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
 		03931AB22A2CA5F700B235D9 = {
 			isa = PBXGroup;
 			children = (
@@ -775,6 +825,7 @@
 				0378F8F92ACD697800D625B9 /* CouponList */,
 				036E4B5C2AC59E560045802D /* Login */,
 				0378F8F32ACD320D00D625B9 /* Home */,
+				0378F9072ACD862F00D625B9 /* Report */,
 				0378F8F22ACD31BA00D625B9 /* MyPage */,
 			);
 			path = DTO;
@@ -796,6 +847,7 @@
 				3B615A682ACC683E004CC6EB /* Coupon */,
 				036E4B552AC5987B0045802D /* Sign */,
 				036E4B4C2AC05E050045802D /* User */,
+				0378F9062ACD846F00D625B9 /* Report */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -1197,6 +1249,7 @@
 				03FD52A72AA4739200899F4F /* ChatCollectionViewCell.swift in Sources */,
 				3B3677872AAF374400FF4ED1 /* CommonBorrowLabel.swift in Sources */,
 				3B6C6FBD2ABB6B6300B4141B /* AddCollectionViewCell.swift in Sources */,
+				0378F9002ACD6FAD00D625B9 /* ReportViewController.swift in Sources */,
 				03B004A72A546ECD00E71CA7 /* SearchSection.swift in Sources */,
 				036E4B572AC598CF0045802D /* LoginService.swift in Sources */,
 				036E4B632AC5A6490045802D /* SignUpResponse.swift in Sources */,
@@ -1235,6 +1288,7 @@
 				035615652A3CAABC00CC9A5E /* ShareListView.swift in Sources */,
 				03931ABF2A2CA5F700B235D9 /* AppDelegate.swift in Sources */,
 				0356155A2A3C55BE00CC9A5E /* CategoryModel.swift in Sources */,
+				0378F9032ACD7C9900D625B9 /* ReportAlertViewController.swift in Sources */,
 				03931AE82A2CB2E200B235D9 /* UIView+.swift in Sources */,
 				0370B4B32A8D1DFC00005400 /* SignInViewController.swift in Sources */,
 				03931AC12A2CA5F700B235D9 /* SceneDelegate.swift in Sources */,
@@ -1260,7 +1314,9 @@
 				0370B4B12A8D17E100005400 /* CustomCheckButton.swift in Sources */,
 				03931AFC2A2CB38300B235D9 /* UITabBar+.swift in Sources */,
 				03931B142A2CB85600B235D9 /* APIConst.swift in Sources */,
+				0378F9052ACD846B00D625B9 /* ReportService.swift in Sources */,
 				036781562ABA0FFA00866F31 /* UITextView+.swift in Sources */,
+				0378F9092ACD863E00D625B9 /* ReportRequest.swift in Sources */,
 				03931AF02A2CB32E00B235D9 /* UITableView+.swift in Sources */,
 				03931AEA2A2CB2F000B235D9 /* NSObject+.swift in Sources */,
 				036E4B512AC1A0050045802D /* MyPageResponse.swift in Sources */,

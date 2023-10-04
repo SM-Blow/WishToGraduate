@@ -25,6 +25,9 @@ final class CustomAlertViewController: UIViewController {
     private let explainLabel = UILabel()
     private let allowButton = UIButton()
     private let cancelButton = UIButton()
+    
+    // MARK: - Properties
+    
     var allowButtonHandler: (() -> Void)?
     
     // MARK: - View Life Cycle

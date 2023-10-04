@@ -28,6 +28,7 @@ final class ChatListViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setCellHandler()
     }
 }
 
@@ -57,6 +58,20 @@ extension ChatListViewController {
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.bottom.equalToSuperview()
         }
-        
+    }
+    
+    // MARK: - Methods
+    
+    private func pushToChatVC() {
+        self.navigationController?.pushViewController(ChatViewController(), animated: true)
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc
+    private func setCellHandler() {
+        chatListView.pushToChatHandler = { [weak self] in
+            self?.pushToChatVC()
+        }
     }
 }
