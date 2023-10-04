@@ -323,7 +323,6 @@
 				0330CA6C2A7616D1004CE2D7 /* View */,
 				0350792C2A3DFAE8007F28DF /* ViewController */,
 				036E4B522AC3F6F40045802D /* Model */,
-				036E4B4F2AC19FF00045802D /* DTO */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -583,14 +582,6 @@
 			path = User;
 			sourceTree = "<group>";
 		};
-		036E4B4F2AC19FF00045802D /* DTO */ = {
-			isa = PBXGroup;
-			children = (
-				036E4B502AC1A0050045802D /* MyPageResponse.swift */,
-			);
-			path = DTO;
-			sourceTree = "<group>";
-		};
 		036E4B522AC3F6F40045802D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -723,6 +714,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		0378F8F22ACD31BA00D625B9 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				036E4B502AC1A0050045802D /* MyPageResponse.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
 		03931AB22A2CA5F700B235D9 = {
 			isa = PBXGroup;
 			children = (
@@ -775,6 +774,7 @@
 			isa = PBXGroup;
 			children = (
 				036E4B5C2AC59E560045802D /* Login */,
+				0378F8F22ACD31BA00D625B9 /* MyPage */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
