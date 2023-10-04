@@ -29,6 +29,7 @@ final class ReportViewController: UIViewController {
         setUI()
         setLayout()
         setNavigationButton()
+        setDelegate()
     }
 }
 
@@ -119,12 +120,45 @@ extension ReportViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    private func setDelegate() {
+        reportTextView.delegate = self
+    }
+    
     // MARK: - @objc Methods
     
     @objc
     private func setNavigationButton() {
         navigationBar.backButtonHandler = { [weak self] in
             self?.popToChatVC()
+        }
+    }
+}
+
+extension ReportViewController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.textColor == Color.placeholder_Grey {
+            textView.text = ""
+            textView.textColor = .black
+            textView.makeBorder(width: 1, color: Color.main_Green)
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "구체적인 신고 사유를 작성해주세요." {
+            textView.text = ""
+            textView.textColor = .black
+            textView.makeBorder(width: 1, color: Color.main_Green)
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if !textView.hasText {
+            textView.makeBorder(width: 1, color: Color.circle_Grey)
+            textView.text = "구체적인 신고 사유를 작성해주세요."
+            textView.textColor = Color.placeholder_Grey
+        } else {
+            textView.makeBorder(width: 1, color: Color.main_Green)
         }
     }
 }
