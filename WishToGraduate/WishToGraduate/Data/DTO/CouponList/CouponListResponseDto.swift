@@ -1,8 +1,8 @@
 //
-//  Model.swift
+//  CouponListResponseDto.swift
 //  WishToGraduate
 //
-//  Created by KJ on 2023/06/04.
+//  Created by KJ on 2023/10/04.
 //
 
 import Foundation

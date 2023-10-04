@@ -104,7 +104,18 @@ extension ShareListCollectionViewCell {
     
     func setDataBind(model: ShareListModel) {
         titleLabel.text = model.title
-        borrowLabel.text = model.borrow == 1 ? "빌려요" : "빌려줄게요"
+        var text = ""
+        switch model.borrow {
+        case 1:
+            text = "빌려요"
+        case 2:
+            text = "빌려줄게요"
+        case 3:
+            text = "구해요"
+        default:
+            text = ""
+        }
+        borrowLabel.text = text
         transactionLabel.isHidden = model.transaction
         timeLabel.text = model.time
     }
