@@ -184,6 +184,13 @@ extension ChatViewController {
         return inputTextFieldView.text ?? ""
     }
     
+    private func getCurrentTime() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let currentTime = dateFormatter.string(from: Date())
+        return currentTime
+    }
+    
     // MARK: - @objc Methods
     
     @objc
@@ -199,7 +206,7 @@ extension ChatViewController {
         print("전송버튼 탭")
         print(inputTextFieldView.text ?? "")
         print(chattingView.chatModel)
-        chattingView.chatModel.append(ChatModel(message: getInputText(), chatType: .send))
+        chattingView.chatModel.append(ChatModel(message: getInputText(), chatType: .send, time: getCurrentTime()))
         chattingView.reloadChatCollectionView()
         inputTextFieldView.text = ""
         chattingView.scrollToBottom()

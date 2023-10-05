@@ -116,6 +116,7 @@ extension ChatCollectionViewCell {
     func setDataBind(_ model: ChatModel) {
         messageTextView.text = model.message
         cellType = model.chatType
+        timeLabel.text = model.time
         
         guard let font = messageTextView.font else { return }
         let estimatedFrame = model.message.getEstimatedFrame(with: font)
