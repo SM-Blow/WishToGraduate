@@ -34,7 +34,7 @@ final class DetailViewController: UIViewController {
     private var detailType: DetailType = .text
     private var stateType: StateType?
     private var userType: UserType?
-    private var isScrapped: Bool = true {
+    private var isScrapped: Bool = false {
         didSet {
             scrapImageView.image = isScrapped ? Image.scrapFill : Image.scrapEmpty
         }
