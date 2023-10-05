@@ -61,6 +61,8 @@ public enum Image {
     // MARK: - Icon
     public static let ic_plus = UIImage(named: "ic_add")
     public static let reportButton = UIImage(named: "icn_report")
+    public static let scrapEmpty = UIImage(named: "scrapIcon")
+    public static let scrapFill = UIImage(named: "fillScrap")
 
     // MARK: - HomeButton
     
