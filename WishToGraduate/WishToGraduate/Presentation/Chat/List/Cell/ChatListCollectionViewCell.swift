@@ -94,4 +94,12 @@ extension ChatListCollectionViewCell {
             $0.trailing.equalToSuperview().inset(13)
         }
     }
+    
+    // MARK: - Methods
+    
+    func setDataBind(_ model: ChatListModel) {
+        nickNameLabel.text = model.nickName
+        messagePreviewLabel.text = model.messagePreview
+        dateLabel.text = model.date
+    }
 }

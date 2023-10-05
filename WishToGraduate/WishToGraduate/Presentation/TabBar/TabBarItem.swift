@@ -10,7 +10,6 @@ import UIKit
 enum TabBarItemType: Int, CaseIterable {
     case home
     case chat
-    case myprofile
 }
 
 extension TabBarItemType {
@@ -20,8 +19,6 @@ extension TabBarItemType {
             return "홈"
         case .chat:
             return "채팅"
-        case .myprofile:
-            return "마이"
         }
     }
     
@@ -31,8 +28,6 @@ extension TabBarItemType {
             return Image.home
         case .chat:
             return Image.chat
-        case .myprofile:
-            return Image.myProfile
         }
     }
     
@@ -42,8 +37,6 @@ extension TabBarItemType {
             return Image.selectedHome
         case .chat:
             return Image.selectedChat
-        case .myprofile:
-            return Image.selectedMyProfile
         }
     }
     

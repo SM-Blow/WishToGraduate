@@ -24,6 +24,7 @@ final class ChatListView: UIView {
     // MARK: - Properties
     
     var pushToChatHandler: (() -> Void)?
+    private let chatListModel: [ChatListModel] = ChatListModel.chatListDummyData()
     
     // MARK: - View Life Cycle
     
@@ -80,11 +81,12 @@ extension ChatListView {
 extension ChatListView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return chatListModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: ChatListCollectionViewCell.self, indexPath: indexPath)
+        cell.setDataBind(chatListModel[indexPath.row])
         return cell
     }
 }
