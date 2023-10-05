@@ -13,7 +13,7 @@ enum PostService {
     case getPostByCategory(category: String)         // 게시물 카테고리별 조회
     case getScrapPost                                   // 스크랩한 게시물 조회
     case postScrap(currentScrapStatus: Bool, targetPostId: Int)                  // 게시물 스크랩
-    case postChangeStatus(postId: Int, status: Bool)                             // 게시물 상태 변경
+    case patchChangeStatus(postId: Int, status: Int)                             // 게시물 상태 변경
     case addPost(borrow: Bool, category: String, content: String, duedate: String, photoUrl: String, title: String)
     case getSearch(keyword: String)
     case getPostDetail(postId: Int)
@@ -34,7 +34,7 @@ extension PostService: TargetType {
             return URLConst.postScraps
         case .postScrap:
             return URLConst.postScrap
-        case .postChangeStatus:
+        case .patchChangeStatus:
             return URLConst.postStatus
         case .getSearch:
             return URLConst.postKeyword
@@ -47,6 +47,8 @@ extension PostService: TargetType {
         switch self {
         case .getAllPosts, .getScrapPost, .getPostByCategory, .getSearch, .getPostDetail:
             return .get
+        case .patchChangeStatus:
+            return .patch
         default:
             return .post
         }
@@ -57,7 +59,7 @@ extension PostService: TargetType {
         case .getPostByCategory(let category):
             let param: [String: Any] = ["category": category]
             return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
-        case .postChangeStatus(let postId, let status):
+        case .patchChangeStatus(let postId, let status):
             return .requestParameters(
                 parameters: ["postId": postId, "status": status],
                 encoding: JSONEncoding.default

@@ -155,7 +155,7 @@ extension ShareViewController {
 }
 
 extension ShareViewController {
-    private func requestGetPostList() {
+    func requestGetPostList() {
         PostAPI.shared.getAllPost { [weak self] response in
             guard self != nil else { return }
             guard let data = response?.data else { return }

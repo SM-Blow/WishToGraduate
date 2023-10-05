@@ -163,9 +163,9 @@ final class PostAPI {
     
     // MARK: - PATCH
     /// 게시물 상태 변경
-    func patchUpdatePostStatus(postId: Int, status: Bool
+    func patchUpdatePostStatus(postId: Int, status: Int
                                , completion: @escaping(GeneralResponse<VoidType>?) -> Void) {
-        postProvider.request(.postChangeStatus(postId: postId, status: status)) { result in
+        postProvider.request(.patchChangeStatus(postId: postId, status: status)) { result in
             switch result {
             case .success(let response):
                 do {

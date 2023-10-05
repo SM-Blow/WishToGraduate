@@ -288,6 +288,9 @@ extension DetailViewController {
     }
     
     private func popToHome() {
+        if let presentedViewController = self.presentedViewController as? ShareViewController {
+            presentedViewController.requestGetPostList()
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -300,7 +303,7 @@ extension DetailViewController {
             self?.titleLabel.text = data.title
             self?.borrowLabel.text = data.borrow ? "빌려요" : "빌려줄게요"
             self?.transactionLabel.text = data.status == 2 ? "거래중" : (data.status == 3 ? "거래 완료" : "")
-            self?.stateType = data.status == 2 ? .ing : (data.status == 3 ? .yet : .end)
+            self?.stateType = data.status == 2 ? .ing : (data.status == 3 ? .end : .yet)
             self?.transactionLabel.isHidden = self?.transactionLabel.text == ""
             self?.setTransactionLabel()
             self?.contentLabel.text = data.content
@@ -387,6 +390,15 @@ extension DetailViewController {
         }
     }
     
+    private func requestChangeStatus() {
+        let status = self.stateType == .yet ? 1 : (self.stateType == .ing) ? 2 : 3
+        PostAPI.shared.patchUpdatePostStatus(postId: self.postId ?? 0, status: status) { [weak self] response in
+            guard self != nil else { return }
+            guard let data = response?.data else { return }
+            self?.setTransactionLabel()
+        }
+    }
+    
     @objc
     private func backButtonTapped() {
         print("이전")
@@ -405,6 +417,7 @@ extension DetailViewController {
             print("거래전")
             self.stateType = .yet
             DispatchQueue.main.async { [weak self] in
+                self?.requestChangeStatus()
                 self?.setTransactionLabel()
             }
         }))
@@ -413,6 +426,7 @@ extension DetailViewController {
             print("거래중")
             self.stateType = .ing
             DispatchQueue.main.async { [weak self] in
+                self?.requestChangeStatus()
                 self?.setTransactionLabel()
             }
         }))
@@ -421,13 +435,12 @@ extension DetailViewController {
             print("거래완료")
             self.stateType = .end
             DispatchQueue.main.async { [weak self] in
-                self?
-                    .setTransactionLabel()
+                self?.setTransactionLabel()
+                self?.requestChangeStatus()
             }
         }))
         
         actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-
         self.present(actionSheet, animated: true, completion: nil)
     }
 }

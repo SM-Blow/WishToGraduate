@@ -109,6 +109,5 @@ extension ShareListCollectionViewCell {
         transactionLabel.text = model.status == 2 ? "거래중" : (model.status == 3 ? "거래 완료" : "")
         transactionLabel.isHidden = transactionLabel.text == ""
         timeLabel.text = "\(model.duedate[0]).\(model.duedate[1]).\(model.duedate[2]) \(model.duedate[3]):\(model.duedate[4])까지"
-        
     }
 }
