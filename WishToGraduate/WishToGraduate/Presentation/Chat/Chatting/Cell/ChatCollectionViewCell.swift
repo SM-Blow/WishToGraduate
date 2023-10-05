@@ -57,7 +57,7 @@ extension ChatCollectionViewCell {
         timeLabel.do {
             $0.font = .fontGuide(.date1)
             $0.textColor = Color.placeholder_Grey
-            $0.text = "14:45"
+            $0.text = "11:45"
         }
     }
     
@@ -84,14 +84,11 @@ extension ChatCollectionViewCell {
                 $0.width.equalTo(estimatedFrame.width + 22)
                 $0.height.equalTo(estimatedFrame.height + 20)
             }
-            
-            print("estimated cellType : ", cellType)
             switch cellType {
             case .receive:
             
                 messageTextView.snp.makeConstraints {
                     $0.leading.equalToSuperview().inset(23)
-//                    $0.width.equalTo(estimatedFrame.width + 22)
                 }
                 timeLabel.snp.makeConstraints {
                     $0.leading.equalTo(messageTextView.snp.trailing).offset(6)
@@ -102,7 +99,6 @@ extension ChatCollectionViewCell {
             
                 messageTextView.snp.makeConstraints {
                     $0.trailing.equalToSuperview().inset(23)
-//                    $0.width.equalTo(estimatedFrame.width + 22)
                 }
                 timeLabel.snp.makeConstraints {
                     $0.trailing.equalTo(messageTextView.snp.leading).offset(-6)
@@ -110,7 +106,7 @@ extension ChatCollectionViewCell {
                 }
                 messageTextView.backgroundColor = Color.light_Green
             case .none:
-                print("nonoe")
+                return
             }
         }
     }
@@ -118,7 +114,6 @@ extension ChatCollectionViewCell {
     // MARK: - Methods
     
     func setDataBind(_ model: ChatModel) {
-        print("databind")
         messageTextView.text = model.message
         cellType = model.chatType
         
@@ -127,13 +122,10 @@ extension ChatCollectionViewCell {
         messageTextView.snp.remakeConstraints {
             $0.width.equalTo(estimatedFrame.width + 22)
         }
-        
-        print("databind cellType : ", cellType)
         switch cellType {
         case .receive:
             messageTextView.snp.remakeConstraints {
                 $0.leading.equalToSuperview().inset(23)
-//                $0.width.equalTo(estimatedFrame.width + 22)
             }
             timeLabel.snp.remakeConstraints {
                 $0.leading.equalTo(messageTextView.snp.trailing).offset(6)
@@ -143,7 +135,6 @@ extension ChatCollectionViewCell {
         case .send:
             messageTextView.snp.remakeConstraints {
                 $0.trailing.equalToSuperview().inset(23)
-//                $0.width.equalTo(estimatedFrame.width + 22)
             }
             timeLabel.snp.remakeConstraints {
                 $0.trailing.equalTo(messageTextView.snp.leading).offset(-6)
@@ -151,7 +142,7 @@ extension ChatCollectionViewCell {
             
             messageTextView.backgroundColor = Color.light_Green
         case .none:
-            print("nin")
+            return
         }
     }
 }
