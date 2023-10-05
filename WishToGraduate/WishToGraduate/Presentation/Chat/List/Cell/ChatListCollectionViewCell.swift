@@ -49,19 +49,16 @@ extension ChatListCollectionViewCell {
         }
         
         nickNameLabel.do {
-            $0.text = "두두"
             $0.font = .fontGuide(.h2_bold)
             $0.textColor = Color.main_Green
         }
         
         messagePreviewLabel.do {
-            $0.text  = "감사합니다! ㅎㅎ"
             $0.font = .fontGuide(.h2)
             $0.textColor = .black
         }
         
         dateLabel.do {
-            $0.text = "05/23"
             $0.font = .fontGuide(.h2)
             $0.textColor = .black
         }

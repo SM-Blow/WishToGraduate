@@ -46,6 +46,7 @@ extension EventListViewController {
         
         navigationBar.do {
             $0.isBackButtonIncluded = true
+            $0.isMyButtonIncluded = true
         }
     }
     

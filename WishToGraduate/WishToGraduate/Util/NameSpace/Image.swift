@@ -26,6 +26,7 @@ public enum Image {
     public static let closeButton = UIImage(named: "icn_close")!
     public static let notificationButton = UIImage(named: "icn_notification")!
     public static let searchButton = UIImage(named: "icn_search")!
+    public static let myButton = UIImage(named: "icn_my")
     
     // MARK: - Category
     
