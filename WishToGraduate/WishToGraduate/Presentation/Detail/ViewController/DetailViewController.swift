@@ -29,14 +29,18 @@ final class DetailViewController: UIViewController {
         case end
     }
     
+    // MARK: - Properties
+    
     private var detailType: DetailType = .text
     private var stateType: StateType = .yet
     private var userType: UserType = .mine
+    private var isScrapped: Bool = true
     
     // MARK: - UI Components
     
     private let navigationView = CustomNavigationBar(title: "").then {
         $0.isBackButtonIncluded = true
+        $0.isReportButtonIncluded = true
     }
     private let bottomUnderLineView = UIView()
     private let naviView = UIView().then {
@@ -101,8 +105,7 @@ final class DetailViewController: UIViewController {
         $0.numberOfLines = 0
     }
     private let photoImageView = UIImageView()
-    
-    // MARK: - Properties
+    private let scrapImageView = UIImageView()
     
     // MARK: - Initializer
     
@@ -134,7 +137,7 @@ extension DetailViewController {
         contentView.backgroundColor = Color.textview_Grey
         profileImageView.image = Image.profileImage
         photoImageView.image = Image.example
-        
+        scrapImageView.image = isScrapped ? Image.scrapFill : Image.scrapEmpty
     }
     
     // MARK: - Methods
@@ -286,6 +289,10 @@ extension DetailViewController {
         navigationView.backButtonHandler = { [weak self] in
             self?.popToHome()
         }
+        
+        navigationView.reportButtonHandler = { [weak self] in
+            self?.navigationController?.pushViewController(ReportViewController(), animated: true)
+        }
     }
     
     // 사진, 글만 있는 글 레이아웃 분기처리
@@ -378,7 +385,8 @@ extension DetailViewController {
             print("거래완료")
             self.stateType = .end
             DispatchQueue.main.async { [weak self] in
-                self?.setTransactionLabel()
+                self?
+                    .setTransactionLabel()
             }
         }))
         
