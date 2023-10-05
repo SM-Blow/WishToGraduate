@@ -180,6 +180,10 @@ extension ChatViewController {
         self.navigationController?.pushViewController(ReportViewController(), animated: true)
     }
     
+    private func getInputText() -> String {
+        return inputTextFieldView.text ?? ""
+    }
+    
     // MARK: - @objc Methods
     
     @objc
@@ -194,6 +198,11 @@ extension ChatViewController {
     private func sendButtonDidTapped() {
         print("전송버튼 탭")
         print(inputTextFieldView.text ?? "")
+        print(chattingView.chatModel)
+        chattingView.chatModel.append(ChatModel(message: getInputText(), chatType: .send))
+        chattingView.reloadChatCollectionView()
+        inputTextFieldView.text = ""
+        chattingView.scrollToBottom()
     }
     
     @objc

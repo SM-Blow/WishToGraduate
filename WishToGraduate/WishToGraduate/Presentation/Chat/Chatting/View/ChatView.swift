@@ -23,7 +23,7 @@ final class ChatView: UIView {
     
     // MARK: - Properties
     
-    let chatModel: [ChatModel] = ChatModel.chatModelDummyData()
+    var chatModel: [ChatModel] = ChatModel.chatModelDummyData()
     
     // MARK: - View Life Cycle
     
@@ -88,6 +88,11 @@ extension ChatView {
         chatCollectionView.reloadData()
     }
     
+    func scrollToBottom() {
+        let lastItemIndex = IndexPath(item: chatModel.count - 1, section: 0)
+        chatCollectionView.scrollToItem(at: lastItemIndex, at: .bottom, animated: true)
+    }
+    
     // MARK: - @objc Methods
     
     @objc
@@ -100,11 +105,11 @@ extension ChatView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let estimatedFrame = chatModel[indexPath.row].message.getEstimatedFrame(with: .fontGuide(.h2))
-        return CGSize(width: bounds.width, height: estimatedFrame.height + 20)
+        return CGSize(width: bounds.width, height: estimatedFrame.height + 20 + 23)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 23
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
