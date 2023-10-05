@@ -14,7 +14,8 @@ final class ChatCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
     
-    private let messageTextView = UITextView()
+    private let messageTextView = UIView()
+    private let messageLabel = UILabel()
     private let timeLabel = UILabel()
     
     // MARK: - Properties
@@ -44,20 +45,21 @@ extension ChatCollectionViewCell {
         backgroundColor = .white
         
         messageTextView.do {
-            $0.font = .fontGuide(.h2)
-            $0.textColor = .black
             $0.backgroundColor = .black
             $0.layer.cornerRadius = 10
             $0.clipsToBounds = true
-            $0.textAlignment = .natural
-            $0.isEditable = false
             $0.makeShadow(radius: 8, offset: CGSize(width: 0, height: 0), opacity: 0.12)
+        }
+        
+        messageLabel.do {
+            $0.font = .fontGuide(.h2)
+            $0.textColor = .black
+            $0.numberOfLines = 0
         }
         
         timeLabel.do {
             $0.font = .fontGuide(.date1)
             $0.textColor = Color.placeholder_Grey
-            $0.text = "11:45"
         }
     }
     
@@ -66,6 +68,7 @@ extension ChatCollectionViewCell {
     private func setLayout() {
         
         addSubviews(messageTextView, timeLabel)
+        messageTextView.addSubviews(messageLabel)
         
         messageTextView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
@@ -74,13 +77,18 @@ extension ChatCollectionViewCell {
         timeLabel.snp.makeConstraints {
             $0.bottom.equalTo(messageTextView.snp.bottom)
         }
+        
+        messageLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.centerX.equalToSuperview()
+        }
     }
     
     // MARK: - Methods
     
     func setEstimatedFrame() {
-        if let text = messageTextView.text {
-            guard let font = messageTextView.font else { return }
+        if let text = messageLabel.text {
+            guard let font = messageLabel.font else { return }
             let estimatedFrame = text.getEstimatedFrame(with: font)
             messageTextView.snp.makeConstraints {
                 $0.width.equalTo(estimatedFrame.width + 22)
@@ -114,11 +122,11 @@ extension ChatCollectionViewCell {
     }
     
     func setDataBind(_ model: ChatModel) {
-        messageTextView.text = model.message
+        messageLabel.text = model.message
         cellType = model.chatType
         timeLabel.text = model.time
         
-        guard let font = messageTextView.font else { return }
+        guard let font = messageLabel.font else { return }
         let estimatedFrame = model.message.getEstimatedFrame(with: font)
         messageTextView.snp.remakeConstraints {
             $0.width.equalTo(estimatedFrame.width + 22)
