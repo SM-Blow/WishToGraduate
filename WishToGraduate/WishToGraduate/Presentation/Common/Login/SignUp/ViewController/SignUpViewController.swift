@@ -36,6 +36,7 @@ final class SignUpViewController: UIViewController {
         setUI()
         setLayout()
         setAddTarget()
+        self.navigationController?.isNavigationBarHidden = true
     }
 }
 
