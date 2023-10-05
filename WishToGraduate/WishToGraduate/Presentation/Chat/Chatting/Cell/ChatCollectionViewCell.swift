@@ -76,6 +76,8 @@ extension ChatCollectionViewCell {
         }
     }
     
+    // MARK: - Methods
+    
     func setEstimatedFrame() {
         if let text = messageTextView.text {
             guard let font = messageTextView.font else { return }
@@ -110,8 +112,6 @@ extension ChatCollectionViewCell {
             }
         }
     }
-    
-    // MARK: - Methods
     
     func setDataBind(_ model: ChatModel) {
         messageTextView.text = model.message
