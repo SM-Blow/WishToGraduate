@@ -23,7 +23,7 @@ final class ChatView: UIView {
     
     // MARK: - Properties
     
-    private let chatModel: [ChatModel] = ChatModel.chatModelDummyData()
+    let chatModel: [ChatModel] = ChatModel.chatModelDummyData()
     
     // MARK: - View Life Cycle
     
@@ -82,6 +82,10 @@ extension ChatView {
             selector: #selector(keyboardWillShow),
             name: UIResponder.keyboardWillShowNotification,
             object: nil)
+    }
+    
+    func reloadChatCollectionView() {
+        chatCollectionView.reloadData()
     }
     
     // MARK: - @objc Methods
