@@ -154,8 +154,9 @@ extension SearchViewController {
         searchDelegate?.searchType(type: .search)
     }
     
-    private func pushToDetailVC() {
-        self.navigationController?.pushViewController(DetailViewController(), animated: true)
+    private func pushToDetailVC(postId: Int) {
+        let detailViewController = DetailViewController(postId: postId)
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     // MARK: - @objc Methods
@@ -174,8 +175,8 @@ extension SearchViewController {
     
     @objc
     private func setHandler() {
-        searchListView.pushToDetailHandler = { [weak self] in
-            self?.pushToDetailVC()
+        searchListView.pushToDetailHandler = { [weak self] postId in
+            self?.pushToDetailVC(postId: postId)
         }
     }
 }

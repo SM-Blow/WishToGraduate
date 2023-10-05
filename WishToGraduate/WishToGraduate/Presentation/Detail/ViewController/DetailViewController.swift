@@ -11,32 +11,41 @@ import Moya
 import SnapKit
 import Then
 
+enum UserType: CaseIterable {
+    case mine
+    case other
+}
+
+enum DetailType: CaseIterable {
+    case photo
+    case text
+}
+
+enum StateType: CaseIterable {
+    case yet
+    case ing
+    case end
+}
+
 final class DetailViewController: UIViewController {
     
-    enum UserType: CaseIterable {
-        case mine
-        case other
-    }
-    
-    enum DetailType: CaseIterable {
-        case photo
-        case text
-    }
-    
-    enum StateType: CaseIterable {
-        case yet
-        case ing
-        case end
-    }
+    // MARK: - Properties
     
     private var detailType: DetailType = .text
-    private var stateType: StateType = .yet
-    private var userType: UserType = .mine
+    private var stateType: StateType?
+    private var userType: UserType?
+    private var isScrapped: Bool = false {
+        didSet {
+            scrapImageView.image = isScrapped ? Image.scrapFill : Image.scrapEmpty
+        }
+    }
+    private var postId: Int?
     
     // MARK: - UI Components
     
     private let navigationView = CustomNavigationBar(title: "").then {
         $0.isBackButtonIncluded = true
+        $0.isReportButtonIncluded = true
     }
     private let bottomUnderLineView = UIView()
     private let naviView = UIView().then {
@@ -63,28 +72,23 @@ final class DetailViewController: UIViewController {
     private let middleUnderLineView = UIView()
     private let profileImageView = UIImageView()
     private let nicknameLabel = UILabel().then {
-        $0.text = "두두"
         $0.textColor = .black
         $0.font = .fontGuide(.title_bold)
     }
     private let duedateLabel = UILabel().then {
-        $0.text = "2023.05.20 13:30까지"
         $0.textColor = .black
         $0.font = .fontGuide(.h2)
     }
     private let untilLabel = UILabel().then {
-        $0.text = "Until"
         $0.textColor = Color.main2_Green
         $0.font = .fontGuide(.h2_bold)
     }
     private let titleLabel = UILabel().then {
-        $0.text = "생리대 중형 한 개"
         $0.textColor = .black
         $0.font = .fontGuide(.title_bold)
     }
     private let borrowLabel = CommonBorrowLabel(frame: .zero)
     private let transactionLabel = UILabel().then {
-        $0.text = "거래중"
         $0.font = .fontGuide(.bt1)
         $0.textColor = .white
         $0.textAlignment = .center
@@ -93,28 +97,39 @@ final class DetailViewController: UIViewController {
         $0.clipsToBounds = true
     }
     
-    private let contentLabel = UILabel().then {
-        $0.text = "생리대 아무거나 중형 빌려요\n아무 브랜드 상관없어요\n지금 도서관인데 학교 어디든지 괜찮아요!"
+    private var contentLabel = UILabel().then {
         $0.font = .fontGuide(.h2)
         $0.textColor = .black
         $0.lineBreakMode = .byWordWrapping
         $0.numberOfLines = 0
     }
     private let photoImageView = UIImageView()
-    
-    // MARK: - Properties
+    private lazy var scrapImageView = UIImageView().then {
+        $0.isUserInteractionEnabled = true
+        $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(scrapButtonDidTapped)))
+    }
     
     // MARK: - Initializer
+    init(postId: Int) {
+        super.init(nibName: nil, bundle: nil)
+        self.postId = postId
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - View Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        requestGetPostDetail()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setBottomButton()
         setUI()
         photoOrTextLayout()
-        setBorrowBtn()
-        setTransactionLabel()
         setButton()
     }
 }
@@ -134,18 +149,10 @@ extension DetailViewController {
         contentView.backgroundColor = Color.textview_Grey
         profileImageView.image = Image.profileImage
         photoImageView.image = Image.example
-        
+        scrapImageView.image = isScrapped ? Image.scrapFill : Image.scrapEmpty
     }
     
     // MARK: - Methods
-    
-    // 빌려요, 빌려줄게요 버튼 분기처리
-    private func setBorrowBtn() {
-        // 일단 1로 세팅
-        let borrow = 1
-        borrowLabel.text = borrow == 1 ? "빌려요" : "빌려줄게요"
-        borrowLabel.font = .fontGuide(.h2_bold)
-    }
     
     private func setLayout() {
         
@@ -153,7 +160,7 @@ extension DetailViewController {
         containerView.addSubviews(photoImageView, headerView, titleView, contentView, middleUnderLineView)
         contentView.addSubview(contentLabel)
         headerView.addSubviews(profileImageView, nicknameLabel, duedateLabel, untilLabel)
-        titleView.addSubviews(titleLabel, borrowLabel, transactionLabel)
+        titleView.addSubviews(titleLabel, borrowLabel, transactionLabel, scrapImageView)
         view.addSubviews(navigationView, naviView, containerView, bottomButtonView, bottomUnderLineView)
         
         navigationView.snp.makeConstraints {
@@ -260,6 +267,12 @@ extension DetailViewController {
             $0.height.equalTo(19)
         }
         
+        scrapImageView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(22)
+            $0.size.equalTo(22)
+        }
+        
         contentLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(14)
             $0.leading.equalToSuperview().offset(16)
@@ -276,7 +289,27 @@ extension DetailViewController {
     }
     
     private func popToHome() {
+        if let presentedViewController = self.presentedViewController as? ShareViewController {
+            presentedViewController.requestGetPostList()
+        }
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func requestGetPostDetail() {
+        PostAPI.shared.getPostDetail(postId: self.postId ?? 1) { [weak self] response in
+            guard self != nil else { return }
+            guard let data = response?.data else { return }
+            self?.nicknameLabel.text = data.nickname
+            self?.duedateLabel.text = "\(data.duedate[0]).\(data.duedate[1]).\(data.duedate[2]) \(data.duedate[3]):\(data.duedate[4])까지"
+            self?.titleLabel.text = data.title
+            self?.isScrapped = data.currentScrapStatus
+            self?.borrowLabel.text = data.borrow ? "빌려요" : "빌려줄게요"
+            self?.transactionLabel.text = data.status == 2 ? "거래중" : (data.status == 3 ? "거래 완료" : "")
+            self?.stateType = data.status == 2 ? .ing : (data.status == 3 ? .end : .yet)
+            self?.transactionLabel.isHidden = self?.transactionLabel.text == ""
+            self?.setTransactionLabel()
+            self?.contentLabel.text = data.content
+        }
     }
     
     // MARK: - @objc Methods
@@ -285,6 +318,21 @@ extension DetailViewController {
     private func setButton() {
         navigationView.backButtonHandler = { [weak self] in
             self?.popToHome()
+        }
+        
+        navigationView.reportButtonHandler = { [weak self] in
+            self?.navigationController?.pushViewController(ReportViewController(), animated: true)
+        }
+    }
+    
+    
+    @objc
+    private func scrapButtonDidTapped(_ gesture: UITapGestureRecognizer) {
+        PostAPI.shared.postScrap(currentScrapStatus: self.isScrapped, targetPostId: self.postId!) { [weak self] response in
+            guard self != nil else { return }
+            guard let data = response?.data else { return }
+            self?.postId = data.targetPostId
+            self?.isScrapped = data.currentScrapStatus
         }
     }
     
@@ -319,7 +367,7 @@ extension DetailViewController {
                 $0.width.equalTo(39)
                 $0.height.equalTo(19)
             }
-        case .end:
+        default:
             transactionLabel.isHidden = false
             transactionLabel.text = "완료"
             transactionLabel.backgroundColor = Color.btn_darkGrey
@@ -335,12 +383,21 @@ extension DetailViewController {
     
     private func setBottomButton() {
         switch userType {
-        case .mine:
-            bottomButton.setTitle("거래 상태 바꾸기", for: .normal)
-            bottomButton.addTarget(self, action: #selector(changeTransactionState), for: .touchUpInside)
         case .other:
             bottomButton.setTitle("연락하기", for: .normal)
             bottomButton.addTarget(self, action: #selector(contactButtonTapped), for: .touchUpInside)
+        default:
+            bottomButton.setTitle("거래 상태 바꾸기", for: .normal)
+            bottomButton.addTarget(self, action: #selector(changeTransactionState), for: .touchUpInside)
+        }
+    }
+    
+    private func requestChangeStatus() {
+        let status = self.stateType == .yet ? 1 : (self.stateType == .ing) ? 2 : 3
+        PostAPI.shared.patchUpdatePostStatus(postId: self.postId ?? 0, status: status) { [weak self] response in
+            guard self != nil else { return }
+            guard let data = response?.data else { return }
+            self?.setTransactionLabel()
         }
     }
     
@@ -362,6 +419,7 @@ extension DetailViewController {
             print("거래전")
             self.stateType = .yet
             DispatchQueue.main.async { [weak self] in
+                self?.requestChangeStatus()
                 self?.setTransactionLabel()
             }
         }))
@@ -370,6 +428,7 @@ extension DetailViewController {
             print("거래중")
             self.stateType = .ing
             DispatchQueue.main.async { [weak self] in
+                self?.requestChangeStatus()
                 self?.setTransactionLabel()
             }
         }))
@@ -379,11 +438,11 @@ extension DetailViewController {
             self.stateType = .end
             DispatchQueue.main.async { [weak self] in
                 self?.setTransactionLabel()
+                self?.requestChangeStatus()
             }
         }))
         
         actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-
         self.present(actionSheet, animated: true, completion: nil)
     }
 }

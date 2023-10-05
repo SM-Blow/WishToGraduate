@@ -116,8 +116,9 @@ extension ShareViewController {
         self.navigationController?.pushViewController(SearchViewController(), animated: true)
     }
     
-    private func pushToDetailVC() {
-        self.navigationController?.pushViewController(DetailViewController(), animated: true)
+    private func pushToDetailVC(postId: Int) {
+        let detailViewController = DetailViewController(postId: postId)
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     private func backToHomeVC() {
@@ -147,14 +148,14 @@ extension ShareViewController {
     
     @objc
     private func setCellHandler() {
-        homeListView.pushToDetailHandler = { [weak self] in
-            self?.pushToDetailVC()
+        homeListView.pushToDetailHandler = { [weak self] postId in
+            self?.pushToDetailVC(postId: postId)
         }
     }
 }
 
 extension ShareViewController {
-    private func requestGetPostList() {
+    func requestGetPostList() {
         PostAPI.shared.getAllPost { [weak self] response in
             guard self != nil else { return }
             guard let data = response?.data else { return }

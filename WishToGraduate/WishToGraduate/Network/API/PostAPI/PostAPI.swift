@@ -21,6 +21,7 @@ final class PostAPI {
     public private(set) var scrapPostListData: GeneralResponse<GetScrapPostResponseDto>?
     public private(set) var scrapPost: GeneralResponse<PostScrapResponseDto>?
     public private(set) var searchListData: GeneralResponse<GetPostsResponseDto>?
+    public private(set) var postDetail: GeneralResponse<GetPostDetailResponseDto>?
     
     // MARK: - GET
     /// 게시물 전체 조회
@@ -103,6 +104,24 @@ final class PostAPI {
         }
     }
     
+    func getPostDetail(postId: Int, completion: @escaping (GeneralResponse<GetPostDetailResponseDto>?) -> Void) {
+        postProvider.request(.getPostDetail(postId: postId)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    self.postDetail = try response.map(GeneralResponse<GetPostDetailResponseDto>?.self)
+                    guard let postDetail = self.postDetail else { return }
+                    completion(postDetail)
+                } catch let err {
+                    print(err.localizedDescription, 500)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                completion(nil)
+            }
+        }
+    }
+    
     // MARK: POST
     /// 게시물 스크랩
     func postScrap(currentScrapStatus: Bool, targetPostId: Int,
@@ -144,9 +163,9 @@ final class PostAPI {
     
     // MARK: - PATCH
     /// 게시물 상태 변경
-    func patchUpdatePostStatus(postId: Int, status: Bool
+    func patchUpdatePostStatus(postId: Int, status: Int
                                , completion: @escaping(GeneralResponse<VoidType>?) -> Void) {
-        postProvider.request(.postChangeStatus(postId: postId, status: status)) { result in
+        postProvider.request(.patchChangeStatus(postId: postId, status: status)) { result in
             switch result {
             case .success(let response):
                 do {

@@ -19,7 +19,7 @@ final class WriteViewController: UIViewController {
     private var borrowTypeCollectionViewDelegate: BorrowTypeCollectionViewDelegate?
     private var categoryCollectionViewDelegate: CategoryCollectionViewDelegate?
     var isBorrow: Bool = true
-    var category = "기타"
+    var category: String?
     private var date = ""
     
     // MARK: - UI Components
@@ -300,6 +300,7 @@ private extension WriteViewController {
         borrowTypeCollectionViewDelegate = BorrowTypeCollectionViewDelegate()
         borrowTypeCollectionViewDelegate?.writeViewController = self
         categoryCollectionViewDelegate = CategoryCollectionViewDelegate()
+        categoryCollectionViewDelegate?.writeViewController = self
         borrowTypeCollectionView.delegate = borrowTypeCollectionViewDelegate
         borrowTypeCollectionView.dataSource = borrowTypeCollectionViewDelegate
         categoryCollectionView.delegate = categoryCollectionViewDelegate
@@ -397,7 +398,7 @@ private extension WriteViewController {
     
     @objc
     func writeButtonDidTap() {
-        createPost(borrow: self.isBorrow, category: self.category, content: contentsTextView.text, duedate: self.date, photoUrl: "", title: titleTextField.text ?? "")
+        createPost(borrow: self.isBorrow, category: self.category ?? "", content: contentsTextView.text, duedate: self.date, photoUrl: "", title: titleTextField.text ?? "")
         self.dismiss(animated: true)
     }
 }
