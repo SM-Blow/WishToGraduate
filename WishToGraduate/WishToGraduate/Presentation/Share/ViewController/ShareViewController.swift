@@ -217,7 +217,7 @@ extension ShareViewController: UICollectionViewDelegateFlowLayout {
         shareCategory = category
         switch category {
         case .all:
-            categoryDelegate?.categoryType(category: .all)
+            requestGetPostList()
         case .book:
             categoryDelegate?.categoryType(category: .book)
         case .charger:
