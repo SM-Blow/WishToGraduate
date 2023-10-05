@@ -206,6 +206,7 @@ extension MyPageViewController {
                         self.myProfileView.setNeedsLayout()
                         self.myPostList = mypage.posts
                         self.myScrapList = mypage.scraps
+                        self.myWritingCollectionView.reloadData()
                     } catch (let error) {
                         print(error.localizedDescription)
                     }
