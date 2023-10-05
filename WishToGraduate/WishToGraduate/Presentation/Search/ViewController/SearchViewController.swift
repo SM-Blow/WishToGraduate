@@ -29,6 +29,7 @@ class SearchViewController: UIViewController {
     // MARK: - Properties
     
     weak var searchDelegate: SearchProtocol?
+    private var searchList: [Post] = []
     
     // MARK: - View Life Cycle
     
@@ -161,7 +162,7 @@ extension SearchViewController {
     
     @objc
     private func searchButtonTapped() {
-        searchListActivation()
+        requestGetSearchList()
     }
     
     @objc
@@ -182,6 +183,17 @@ extension SearchViewController {
 extension SearchViewController: SearchProtocol {
     
     func searchType(type: SearchSection) {
-        searchListView.setSearchListModel(type: type)
+        searchListView.setSearchListModel(type: type, model: searchList)
+    }
+}
+
+extension SearchViewController {
+    private func requestGetSearchList() {
+        PostAPI.shared.getSearchPost(keyword: searchTextField.text ?? "") { [weak self] response in
+            guard self != nil else { return }
+            guard let data = response?.data else { return }
+            self?.searchList = data.postList
+            self?.searchListActivation()
+        }
     }
 }

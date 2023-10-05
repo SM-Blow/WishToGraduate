@@ -10,23 +10,5 @@ struct MyPageResponse: Codable {
     let nickname: String
     let seed: Int
     let posts: [Post]
-    let scraps: [Scrap]
-}
-
-struct Post: Codable {
-    let postId: Int
-    let title: String
-    let borrow: Bool
-    let dueDate: String
-    let status: Bool
-    let category: String
-}
-
-struct Scrap: Codable {
-    let postId: Int
-    let title: String
-    let borrow: Bool
-    let dueDate: String
-    let status: Bool
-    let category: String
+    let scraps: [Post]
 }

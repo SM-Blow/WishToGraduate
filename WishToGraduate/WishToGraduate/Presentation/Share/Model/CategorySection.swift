@@ -8,5 +8,5 @@
 import UIKit
 
 enum CategorySection: CaseIterable {
-    case all, pill, sanitaryPad, charger, book, other
+    case all, book, charger, delivery, insecticide, other
 }

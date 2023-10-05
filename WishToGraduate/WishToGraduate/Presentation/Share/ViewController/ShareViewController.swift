@@ -34,6 +34,8 @@ final class ShareViewController: UIViewController {
     // MARK: - Properties
     
     weak var categoryDelegate: CategoryProtocol?
+    private var shareList: [Post] = []
+    private var shareCategory: CategorySection = .all
     
     // MARK: - View Life Cycle
     
@@ -49,6 +51,7 @@ final class ShareViewController: UIViewController {
         setDelegate()
         setButton()
         setCellHandler()
+        requestGetPostList()
     }
 }
 
@@ -150,6 +153,41 @@ extension ShareViewController {
     }
 }
 
+extension ShareViewController {
+    private func requestGetPostList() {
+        PostAPI.shared.getAllPost { [weak self] response in
+            guard self != nil else { return }
+            guard let data = response?.data else { return }
+            self?.homeListView.setListModel(category: .all, model: data.postList)
+        }
+    }
+    
+    private func requestCategoryPostList() {
+        PostAPI.shared.getPostByCategory(category: categoryToString(shareCategory)) { [weak self] response in
+            guard self != nil else { return }
+            guard let data = response?.data else { return }
+            self?.homeListView.setListModel(category: self?.shareCategory ?? .all, model: data.postList)
+        }
+    }
+    
+    private func categoryToString(_ category: CategorySection) -> String {
+        switch category {
+        case .all:
+            return "전체"
+        case .book:
+            return "도서"
+        case .charger:
+            return "전자기기"
+        case .delivery:
+            return "배달"
+        case .insecticide:
+            return "벌레"
+        case .other:
+            return "기타"
+        }
+    }
+}
+
 extension ShareViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 59, height: 59)
@@ -175,27 +213,29 @@ extension ShareViewController: UICollectionViewDelegateFlowLayout {
         }
         
         let category = CategorySection.allCases[indexPath.row]
+        shareCategory = category
         switch category {
         case .all:
             categoryDelegate?.categoryType(category: .all)
-        case .pill:
-            categoryDelegate?.categoryType(category: .pill)
-        case .sanitaryPad:
-            categoryDelegate?.categoryType(category: .sanitaryPad)
-        case .charger:
-            categoryDelegate?.categoryType(category: .charger)
         case .book:
             categoryDelegate?.categoryType(category: .book)
+        case .charger:
+            categoryDelegate?.categoryType(category: .charger)
+        case .delivery:
+            categoryDelegate?.categoryType(category: .delivery)
+        case .insecticide:
+            categoryDelegate?.categoryType(category: .insecticide)
         case .other:
             categoryDelegate?.categoryType(category: .other)
         }
+        requestCategoryPostList()
     }
 }
 
 extension ShareViewController: CategoryProtocol {
     
     func categoryType(category: CategorySection) {
-        homeListView.setListModel(category: category)
+        homeListView.setListModel(category: category, model: shareList)
         UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
         }

@@ -14,7 +14,7 @@ import Then
 final class MyPageViewController: UIViewController {
     
     private enum MyPageTab {
-        case writing
+        case post
         case scrap
     }
     
@@ -32,9 +32,9 @@ final class MyPageViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var myPageTab: MyPageTab = .writing
-    private var myPostDummyModel: [ShareListModel] = ShareListModel.myPostDummyData()
-    private var myScrapDummyModel: [ShareListModel] = ShareListModel.myScrapDummyData()
+    private var myPageTab: MyPageTab = .post
+    private var myPostList: [Post] = []
+    private var myScrapList: [Post] = []
     private var mypageModel: MypageModel = MypageModel.init(userId: 0, nickName: "", seed: 0, post: [], scrap: [])
     private let mypageProvider = MoyaProvider<UserService>(plugins: [NetworkLoggerPlugin(verbose: true)])
     
@@ -121,7 +121,7 @@ extension MyPageViewController {
     }
     
     private func myWritingTab() {
-        myPageTab = .writing
+        myPageTab = .post
         myWritingCollectionView.reloadData()
     }
     
@@ -173,20 +173,20 @@ extension MyPageViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch (myPageTab) {
-        case .writing:
-            return myPostDummyModel.count
+        case .post:
+            return myPostList.count
         case .scrap:
-            return myScrapDummyModel.count
+            return myScrapList.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: ShareListCollectionViewCell.self, indexPath: indexPath)
         switch (myPageTab) {
-        case .writing:
-            cell.setDataBind(model: myPostDummyModel[indexPath.row])
+        case .post:
+            cell.setDataBind(myPostList[indexPath.row])
         case .scrap:
-            cell.setDataBind(model: myScrapDummyModel[indexPath.row])
+            cell.setDataBind(myScrapList[indexPath.row])
         }
         return cell
     }
@@ -204,6 +204,9 @@ extension MyPageViewController {
                         guard let mypage = try result.map(GeneralResponse<MyPageResponse>.self).data else { return }
                         self.myProfileView.setDataBind(nickName: mypage.nickname, seed: mypage.seed)
                         self.myProfileView.setNeedsLayout()
+                        self.myPostList = mypage.posts
+                        self.myScrapList = mypage.scraps
+                        self.myWritingCollectionView.reloadData()
                     } catch (let error) {
                         print(error.localizedDescription)
                     }

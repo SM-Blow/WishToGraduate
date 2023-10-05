@@ -14,16 +14,16 @@ final class ShareListView: UIView {
     
     // MARK: - UI Components
     
-    private lazy var listCollectionView: UICollectionView = {
+    lazy var listCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
-    private var homeListDummyModel: [ShareListModel] = ShareListModel.shareListModelDummyData()
     
     // MARK: - Properties
     
+    private var shareList: [Post] = []
     var pushToDetailHandler: (() -> Void)?
     
     // MARK: - View Life Cycle
@@ -77,35 +77,21 @@ extension ShareListView {
         listCollectionView.registerCell(ShareListCollectionViewCell.self)
     }
     
-    func setListModel(category: CategorySection) {
-        switch category {
-        case .all:
-            homeListDummyModel = ShareListModel.shareListModelDummyData()
-        case .pill:
-            homeListDummyModel = ShareListModel.fillDummyData()
-        case .sanitaryPad:
-            homeListDummyModel = ShareListModel.shareListModelDummyData()
-        case .charger:
-            homeListDummyModel = ShareListModel.fillDummyData()
-        case .book:
-            homeListDummyModel = ShareListModel.shareListModelDummyData()
-        case .other:
-            homeListDummyModel = ShareListModel.fillDummyData()
-        }
+    func setListModel(category: CategorySection, model: [Post]) {
+        shareList = model
         listCollectionView.reloadData()
     }
     
-    func setSearchListModel(type: SearchSection) {
+    func setSearchListModel(type: SearchSection, model: [Post]) {
         switch type {
         case .empty:
-            homeListDummyModel = ShareListModel.emptyDummyData()
+            shareList = []
         case .search:
-            homeListDummyModel = ShareListModel.shareListModelDummyData()
+            shareList = model
         }
+        print(model)
         listCollectionView.reloadData()
     }
-    
-    // MARK: - @objc Methods
 }
 
 extension ShareListView: UICollectionViewDelegateFlowLayout {
@@ -130,12 +116,12 @@ extension ShareListView: UICollectionViewDelegateFlowLayout {
 extension ShareListView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return homeListDummyModel.count
+        return shareList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: ShareListCollectionViewCell.self, indexPath: indexPath)
-        cell.setDataBind(model: homeListDummyModel[indexPath.row])
+        cell.setDataBind(shareList[indexPath.row])
         return cell
     }
 }

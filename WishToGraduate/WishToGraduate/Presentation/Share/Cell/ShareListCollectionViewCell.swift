@@ -104,27 +104,35 @@ extension ShareListCollectionViewCell {
     // MARK: - Methods
     
     /// 이거로 변경하면 될듯!
+    //    func setDataBind(model: ShareListModel) {
+    //        titleLabel.text = model.title
+    //        borrowLabel.text = model.borrow ? "빌려요" : "빌려줄게요"
+    //        transactionLabel.isHidden = model.status == 2
+    //        timeLabel.text = "\(model.duedate[0]).\(model.duedate[1]).\(model.duedate[2]) \(model.duedate[3]):\(model.duedate[4])까지"
+    //    }
 //    func setDataBind(model: ShareListModel) {
 //        titleLabel.text = model.title
-//        borrowLabel.text = model.borrow ? "빌려요" : "빌려줄게요"
-//        transactionLabel.isHidden = model.status == 2
-//        timeLabel.text = "\(model.duedate[0]).\(model.duedate[1]).\(model.duedate[2]) \(model.duedate[3]):\(model.duedate[4])까지"
+//        var text = ""
+//        switch model.borrow {
+//        case 1:
+//            text = "빌려요"
+//        case 2:
+//            text = "빌려줄게요"
+//        case 3:
+//            text = "구해요"
+//        default:
+//            text = ""
+//        }
+//        borrowLabel.text = text
+//        transactionLabel.isHidden = model.transaction
+//        timeLabel.text = model.time
 //    }
-    func setDataBind(model: ShareListModel) {
+    
+    func setDataBind(_ model: Post) {
         titleLabel.text = model.title
-        var text = ""
-        switch model.borrow {
-        case 1:
-            text = "빌려요"
-        case 2:
-            text = "빌려줄게요"
-        case 3:
-            text = "구해요"
-        default:
-            text = ""
-        }
-        borrowLabel.text = text
-        transactionLabel.isHidden = model.transaction
-        timeLabel.text = model.time
+        titleLabel.text = model.title
+        borrowLabel.text = model.borrow ? "빌려요" : "빌려줄게요"
+        transactionLabel.isHidden = model.status == 2
+        timeLabel.text = "\(model.duedate[0]).\(model.duedate[1]).\(model.duedate[2]) \(model.duedate[3]):\(model.duedate[4])까지"
     }
 }
