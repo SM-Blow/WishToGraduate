@@ -97,6 +97,7 @@
 		03FD52A52AA3647500899F4F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD52A42AA3647500899F4F /* ChatView.swift */; };
 		03FD52A72AA4739200899F4F /* ChatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD52A62AA4739200899F4F /* ChatCollectionViewCell.swift */; };
 		03FD52AA2AA476AF00899F4F /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FD52A92AA476AF00899F4F /* ChatModel.swift */; };
+		3B0881332ACED5A000284345 /* GetPostDetailResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0881322ACED5A000284345 /* GetPostDetailResponseDto.swift */; };
 		3B3677872AAF374400FF4ED1 /* CommonBorrowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3677862AAF374400FF4ED1 /* CommonBorrowLabel.swift */; };
 		3B36778A2AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3677892AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift */; };
 		3B36778C2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B36778B2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift */; };
@@ -223,6 +224,7 @@
 		03FD52A42AA3647500899F4F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		03FD52A62AA4739200899F4F /* ChatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCollectionViewCell.swift; sourceTree = "<group>"; };
 		03FD52A92AA476AF00899F4F /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		3B0881322ACED5A000284345 /* GetPostDetailResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostDetailResponseDto.swift; sourceTree = "<group>"; };
 		3B3677862AAF374400FF4ED1 /* CommonBorrowLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonBorrowLabel.swift; sourceTree = "<group>"; };
 		3B3677892AAF42E400FF4ED1 /* BorrowTypeCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowTypeCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		3B36778B2AAF4B3900FF4ED1 /* CategoryCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewDelegate.swift; sourceTree = "<group>"; };
@@ -1038,6 +1040,7 @@
 				3B42CE912ACDBED500914453 /* GetPostsResponseDto.swift */,
 				3B42CE932ACDBFF300914453 /* GetScrapPostResponseDto.swift */,
 				3B42CE952ACDC11300914453 /* PostScrapResponseDto.swift */,
+				3B0881322ACED5A000284345 /* GetPostDetailResponseDto.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -1359,6 +1362,7 @@
 				3B6C6FBA2ABB65E000B4141B /* CouponViewController.swift in Sources */,
 				0350792B2A3DFAE5007F28DF /* MyPageViewController.swift in Sources */,
 				3BCF4EC62ACC9EC500E6DB22 /* EventService.swift in Sources */,
+				3B0881332ACED5A000284345 /* GetPostDetailResponseDto.swift in Sources */,
 				036E4B542AC3F71B0045802D /* MypageModel.swift in Sources */,
 				03FD52AA2AA476AF00899F4F /* ChatModel.swift in Sources */,
 				03931B042A2CB3D700B235D9 /* Color.swift in Sources */,

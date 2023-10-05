@@ -24,7 +24,7 @@ final class ShareListView: UIView {
     // MARK: - Properties
     
     private var shareList: [Post] = []
-    var pushToDetailHandler: (() -> Void)?
+    var pushToDetailHandler: ((Int) -> Void)?
     
     // MARK: - View Life Cycle
     
@@ -109,7 +109,7 @@ extension ShareListView: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        pushToDetailHandler?()
+        pushToDetailHandler?(shareList[indexPath.row].postId)
     }
 }
 

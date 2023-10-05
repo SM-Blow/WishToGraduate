@@ -130,8 +130,9 @@ extension MyPageViewController {
         myWritingCollectionView.reloadData()
     }
     
-    private func pushToDetail() {
-        self.navigationController?.pushViewController(DetailViewController(), animated: true)
+    private func pushToDetailVC(postId: Int) {
+        let detailViewController = DetailViewController(postId: postId)
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     // MARK: - @objc Methods
@@ -165,7 +166,7 @@ extension MyPageViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        pushToDetail()
+        pushToDetailVC(postId: myPostList[indexPath.row].postId)
     }
 }
 

@@ -11,30 +11,35 @@ import Moya
 import SnapKit
 import Then
 
+enum UserType: CaseIterable {
+    case mine
+    case other
+}
+
+enum DetailType: CaseIterable {
+    case photo
+    case text
+}
+
+enum StateType: CaseIterable {
+    case yet
+    case ing
+    case end
+}
+
 final class DetailViewController: UIViewController {
-    
-    enum UserType: CaseIterable {
-        case mine
-        case other
-    }
-    
-    enum DetailType: CaseIterable {
-        case photo
-        case text
-    }
-    
-    enum StateType: CaseIterable {
-        case yet
-        case ing
-        case end
-    }
     
     // MARK: - Properties
     
     private var detailType: DetailType = .text
-    private var stateType: StateType = .yet
-    private var userType: UserType = .mine
-    private var isScrapped: Bool = true
+    private var stateType: StateType?
+    private var userType: UserType?
+    private var isScrapped: Bool = true {
+        didSet {
+            self.scrapImageView.image = isScrapped ? Image.scrapFill : Image.scrapEmpty
+        }
+    }
+    private var postId: Int?
     
     // MARK: - UI Components
     
@@ -105,11 +110,25 @@ final class DetailViewController: UIViewController {
         $0.numberOfLines = 0
     }
     private let photoImageView = UIImageView()
-    private let scrapImageView = UIImageView()
+    private lazy var scrapImageView = UIImageView().then {
+        $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(scrapButtonDidTapped)))
+    }
     
     // MARK: - Initializer
+    init(postId: Int) {
+        super.init(nibName: nil, bundle: nil)
+        self.postId = postId
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - View Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        requestGetPostDetail()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,7 +175,7 @@ extension DetailViewController {
         containerView.addSubviews(photoImageView, headerView, titleView, contentView, middleUnderLineView)
         contentView.addSubview(contentLabel)
         headerView.addSubviews(profileImageView, nicknameLabel, duedateLabel, untilLabel)
-        titleView.addSubviews(titleLabel, borrowLabel, transactionLabel)
+        titleView.addSubviews(titleLabel, borrowLabel, transactionLabel, scrapImageView)
         view.addSubviews(navigationView, naviView, containerView, bottomButtonView, bottomUnderLineView)
         
         navigationView.snp.makeConstraints {
@@ -263,6 +282,12 @@ extension DetailViewController {
             $0.height.equalTo(19)
         }
         
+        scrapImageView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(22)
+            $0.size.equalTo(22)
+        }
+        
         contentLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(14)
             $0.leading.equalToSuperview().offset(16)
@@ -282,6 +307,25 @@ extension DetailViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    private func requestGetPostDetail() {
+        PostAPI.shared.getPostDetail(postId: self.postId ?? 1) { [weak self] response in
+            guard self != nil else { return }
+            guard let data = response?.data else { return }
+            self?.nicknameLabel.text = data.nickname
+            self?.duedateLabel.text = "\(data.duedate[0]).\(data.duedate[1]).\(data.duedate[2]) \(data.duedate[3]):\(data.duedate[4])까지"
+            self?.titleLabel.text = data.title
+            switch data.status {
+            case 2:
+                self?.stateType = .ing
+            case 3:
+                self?.stateType = .end
+            default:
+                self?.stateType = .yet
+            }
+            self?.borrowLabel.text = data.borrow ? "빌려요" : "빌려줄게요"
+        }
+    }
+    
     // MARK: - @objc Methods
     
     @objc
@@ -292,6 +336,17 @@ extension DetailViewController {
         
         navigationView.reportButtonHandler = { [weak self] in
             self?.navigationController?.pushViewController(ReportViewController(), animated: true)
+        }
+    }
+    
+    
+    @objc
+    private func scrapButtonDidTapped(_ gesture: UITapGestureRecognizer) {
+        PostAPI.shared.postScrap(currentScrapStatus: self.isScrapped, targetPostId: self.postId!) { [weak self] response in
+            guard self != nil else { return }
+            guard let data = response?.data else { return }
+            self?.postId = data.targetPostId
+            self?.isScrapped = data.currentScrapStatus
         }
     }
     
@@ -326,7 +381,7 @@ extension DetailViewController {
                 $0.width.equalTo(39)
                 $0.height.equalTo(19)
             }
-        case .end:
+        default:
             transactionLabel.isHidden = false
             transactionLabel.text = "완료"
             transactionLabel.backgroundColor = Color.btn_darkGrey
@@ -342,12 +397,12 @@ extension DetailViewController {
     
     private func setBottomButton() {
         switch userType {
-        case .mine:
-            bottomButton.setTitle("거래 상태 바꾸기", for: .normal)
-            bottomButton.addTarget(self, action: #selector(changeTransactionState), for: .touchUpInside)
         case .other:
             bottomButton.setTitle("연락하기", for: .normal)
             bottomButton.addTarget(self, action: #selector(contactButtonTapped), for: .touchUpInside)
+        default:
+            bottomButton.setTitle("거래 상태 바꾸기", for: .normal)
+            bottomButton.addTarget(self, action: #selector(changeTransactionState), for: .touchUpInside)
         }
     }
     
