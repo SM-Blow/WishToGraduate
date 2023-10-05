@@ -22,6 +22,7 @@ enum APIConstants {
     static var deviceToken: String = ""
     static var jwtToken: String = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsImV4cCI6MTY5NjQ0MzkyMX0.zRyONmYrHyxUd02vYe4oB4bYTDGn1N19iXetT26el1Q"
     static var userID: Int = 0
+    static var userName: String = "test"
     
     //MARK: - Header
     

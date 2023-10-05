@@ -16,6 +16,7 @@ enum PostService {
     case postChangeStatus(postId: Int, status: Bool)                             // 게시물 상태 변경
     case addPost(borrow: Bool, category: String, content: String, duedate: String, photoUrl: String, title: String)
     case getSearch(keyword: String)
+    case getPostDetail(postId: Int)
 }
 
 extension PostService: TargetType {
@@ -37,12 +38,14 @@ extension PostService: TargetType {
             return URLConst.postStatus
         case .getSearch:
             return URLConst.postKeyword
+        case .getPostDetail(let postId):
+            return URLConst.postDetail
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getAllPosts, .getScrapPost, .getPostByCategory, .getSearch:
+        case .getAllPosts, .getScrapPost, .getPostByCategory, .getSearch, .getPostDetail:
             return .get
         default:
             return .post
@@ -72,6 +75,8 @@ extension PostService: TargetType {
         case .getSearch(let keyword):
             let param: [String: Any] = ["keyword": keyword]
             return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
+        case .getPostDetail(let postId):
+            return .requestParameters(parameters: ["postId": postId], encoding: URLEncoding.queryString)
         default:
             return .requestPlain
         }

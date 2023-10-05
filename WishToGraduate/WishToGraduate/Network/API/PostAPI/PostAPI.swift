@@ -21,6 +21,7 @@ final class PostAPI {
     public private(set) var scrapPostListData: GeneralResponse<GetScrapPostResponseDto>?
     public private(set) var scrapPost: GeneralResponse<PostScrapResponseDto>?
     public private(set) var searchListData: GeneralResponse<GetPostsResponseDto>?
+    public private(set) var postDetail: GeneralResponse<GetPostDetailResponseDto>?
     
     // MARK: - GET
     /// 게시물 전체 조회
@@ -93,6 +94,24 @@ final class PostAPI {
                     response.map(GeneralResponse<GetPostsResponseDto>?.self)
                     guard let searchListData = self.searchListData else { return }
                     completion(searchListData)
+                } catch let err {
+                    print(err.localizedDescription, 500)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                completion(nil)
+            }
+        }
+    }
+    
+    func getPostDetail(postId: Int, completion: @escaping (GeneralResponse<GetPostDetailResponseDto>?) -> Void) {
+        postProvider.request(.getPostDetail(postId: postId)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    self.postDetail = try response.map(GeneralResponse<GetPostDetailResponseDto>?.self)
+                    guard let postDetail = self.postDetail else { return }
+                    completion(postDetail)
                 } catch let err {
                     print(err.localizedDescription, 500)
                 }
