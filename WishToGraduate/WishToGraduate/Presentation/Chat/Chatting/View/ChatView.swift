@@ -23,7 +23,7 @@ final class ChatView: UIView {
     
     // MARK: - Properties
     
-    private let chatModel: [ChatModel] = ChatModel.chatModelDummyData()
+    var chatModel: [ChatModel] = ChatModel.chatModelDummyData()
     
     // MARK: - View Life Cycle
     
@@ -84,6 +84,15 @@ extension ChatView {
             object: nil)
     }
     
+    func reloadChatCollectionView() {
+        chatCollectionView.reloadData()
+    }
+    
+    func scrollToBottom() {
+        let lastItemIndex = IndexPath(item: chatModel.count - 1, section: 0)
+        chatCollectionView.scrollToItem(at: lastItemIndex, at: .bottom, animated: true)
+    }
+    
     // MARK: - @objc Methods
     
     @objc
@@ -96,15 +105,21 @@ extension ChatView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let estimatedFrame = chatModel[indexPath.row].message.getEstimatedFrame(with: .fontGuide(.h2))
-        return CGSize(width: bounds.width, height: estimatedFrame.height + 20)
+        return CGSize(width: bounds.width, height: estimatedFrame.height + 20 + 23)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 23
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 28, left: 0, bottom: 28, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let chatCell = cell as? ChatCollectionViewCell {
+            chatCell.setEstimatedFrame()
+        }
     }
 }
 
@@ -117,7 +132,6 @@ extension ChatView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: ChatCollectionViewCell.self, indexPath: indexPath)
         cell.setDataBind(chatModel[indexPath.row])
-//        cell.remakeLayout(model: chatModel[indexPath.row])
         return cell
     }
 }
