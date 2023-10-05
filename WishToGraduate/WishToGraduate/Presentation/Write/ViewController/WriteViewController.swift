@@ -18,6 +18,9 @@ final class WriteViewController: UIViewController {
     private let contentsTextViewPlaceholer = "내용을 작성해주세요."
     private var borrowTypeCollectionViewDelegate: BorrowTypeCollectionViewDelegate?
     private var categoryCollectionViewDelegate: CategoryCollectionViewDelegate?
+    var isBorrow: Bool = true
+    var category = "기타"
+    private var date = ""
     
     // MARK: - UI Components
     private let navigationView = WriteNavigationView()
@@ -295,6 +298,7 @@ private extension WriteViewController {
     
     func setDelegate() {
         borrowTypeCollectionViewDelegate = BorrowTypeCollectionViewDelegate()
+        borrowTypeCollectionViewDelegate?.writeViewController = self
         categoryCollectionViewDelegate = CategoryCollectionViewDelegate()
         borrowTypeCollectionView.delegate = borrowTypeCollectionViewDelegate
         borrowTypeCollectionView.dataSource = borrowTypeCollectionViewDelegate
@@ -320,6 +324,11 @@ private extension WriteViewController {
         
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = " HH:mm a"
+        
+        // Date를 ISO 8601 형식의 문자열로 변환
+        let isoDateFormatter = ISO8601DateFormatter()
+        isoDateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        self.date = isoDateFormatter.string(from: date)
         
         return selectFormatter.string(from: date).appending(timeFormatter.string(from: Date()))
     }
@@ -388,7 +397,18 @@ private extension WriteViewController {
     
     @objc
     func writeButtonDidTap() {
+        createPost(borrow: self.isBorrow, category: self.category, content: contentsTextView.text, duedate: self.date, photoUrl: "", title: titleTextField.text ?? "")
         self.dismiss(animated: true)
+    }
+}
+
+extension WriteViewController {
+    
+    func createPost(borrow: Bool, category: String, content: String, duedate: String, photoUrl: String, title: String) {
+        PostAPI.shared.createPost(borrow: borrow, category: category, content: content, duedate: duedate, photoUrl: photoUrl, title: title) { [weak self] result in
+            guard self != nil else { return }
+            guard (result?.data) != nil else { return }
+        }
     }
 }
 
