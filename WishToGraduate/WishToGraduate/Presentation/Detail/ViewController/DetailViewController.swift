@@ -33,7 +33,11 @@ final class DetailViewController: UIViewController {
     
     private var detailType: DetailType = .text
     private var stateType: StateType?
-    private var userType: UserType?
+    private var userType: UserType = .mine {
+        didSet {
+            setBottomButton()
+        }
+    }
     private var isScrapped: Bool = false {
         didSet {
             scrapImageView.image = isScrapped ? Image.scrapFill : Image.scrapEmpty
@@ -309,6 +313,8 @@ extension DetailViewController {
             self?.transactionLabel.isHidden = self?.transactionLabel.text == ""
             self?.setTransactionLabel()
             self?.contentLabel.text = data.content
+            self?.userType = data.nickname != APIConstants.userName ? .other : .mine
+            self?.setBottomButton()
         }
     }
     
@@ -385,10 +391,10 @@ extension DetailViewController {
         switch userType {
         case .other:
             bottomButton.setTitle("연락하기", for: .normal)
-            bottomButton.addTarget(self, action: #selector(contactButtonTapped), for: .touchUpInside)
+            bottomButton.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         default:
             bottomButton.setTitle("거래 상태 바꾸기", for: .normal)
-            bottomButton.addTarget(self, action: #selector(changeTransactionState), for: .touchUpInside)
+            bottomButton.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         }
     }
     
@@ -412,37 +418,41 @@ extension DetailViewController {
     }
     
     @objc
-    private func changeTransactionState(_ sender: UIButton) {
-        
-        let actionSheet = UIAlertController(title: nil, message: "해당하는 항목을 골라주세요.", preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "거래전", style: .default, handler: {(ACTION: UIAlertAction) in
-            print("거래전")
-            self.stateType = .yet
-            DispatchQueue.main.async { [weak self] in
-                self?.requestChangeStatus()
-                self?.setTransactionLabel()
-            }
-        }))
-        
-        actionSheet.addAction(UIAlertAction(title: "거래중", style: .default, handler: {(ACTION: UIAlertAction) in
-            print("거래중")
-            self.stateType = .ing
-            DispatchQueue.main.async { [weak self] in
-                self?.requestChangeStatus()
-                self?.setTransactionLabel()
-            }
-        }))
-        
-        actionSheet.addAction(UIAlertAction(title: "거래완료", style: .default, handler: {(ACTION: UIAlertAction) in
-            print("거래완료")
-            self.stateType = .end
-            DispatchQueue.main.async { [weak self] in
-                self?.setTransactionLabel()
-                self?.requestChangeStatus()
-            }
-        }))
-        
-        actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-        self.present(actionSheet, animated: true, completion: nil)
-    }
+    private func buttonDidTap(_ sender: UIButton) {
+        switch self.userType {
+        case .mine:
+            let actionSheet = UIAlertController(title: nil, message: "해당하는 항목을 골라주세요.", preferredStyle: .actionSheet)
+            actionSheet.addAction(UIAlertAction(title: "거래전", style: .default, handler: {(ACTION: UIAlertAction) in
+                print("거래전")
+                self.stateType = .yet
+                DispatchQueue.main.async { [weak self] in
+                    self?.requestChangeStatus()
+                    self?.setTransactionLabel()
+                }
+            }))
+            
+            actionSheet.addAction(UIAlertAction(title: "거래중", style: .default, handler: {(ACTION: UIAlertAction) in
+                print("거래중")
+                self.stateType = .ing
+                DispatchQueue.main.async { [weak self] in
+                    self?.requestChangeStatus()
+                    self?.setTransactionLabel()
+                }
+            }))
+            
+            actionSheet.addAction(UIAlertAction(title: "거래완료", style: .default, handler: {(ACTION: UIAlertAction) in
+                print("거래완료")
+                self.stateType = .end
+                DispatchQueue.main.async { [weak self] in
+                    self?.setTransactionLabel()
+                    self?.requestChangeStatus()
+                }
+            }))
+            
+            actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+            self.present(actionSheet, animated: true, completion: nil)
+        case .other:
+            print("연락")
+        }
+        }
 }

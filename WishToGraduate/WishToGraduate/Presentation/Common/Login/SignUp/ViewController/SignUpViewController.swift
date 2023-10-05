@@ -161,6 +161,7 @@ extension SignUpViewController {
                         APIConstants.deviceToken = self.userModel.fcmDeviceToken
                         APIConstants.jwtToken = data.accessToken
                         APIConstants.userID = data.id
+                        APIConstants.userName = data.userName
                         self.loginToHomeVC()
                     } catch(let error) {
                         print(error.localizedDescription)

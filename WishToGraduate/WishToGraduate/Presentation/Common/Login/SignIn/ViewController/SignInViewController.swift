@@ -136,6 +136,7 @@ extension SignInViewController {
                         APIConstants.deviceToken = self.userModel.fcmDeviceToken
                         APIConstants.jwtToken = data.accessToken
                         APIConstants.userID = data.id
+                        APIConstants.userName = data.userName
                         
                         // 화면전환
                         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
