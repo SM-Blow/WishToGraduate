@@ -106,6 +106,12 @@ extension ChatView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 28, left: 0, bottom: 28, right: 0)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let chatCell = cell as? ChatCollectionViewCell {
+            chatCell.setEstimatedFrame()
+        }
+    }
 }
 
 extension ChatView: UICollectionViewDataSource {
