@@ -36,7 +36,7 @@ final class DetailViewController: UIViewController {
     private var userType: UserType?
     private var isScrapped: Bool = true {
         didSet {
-            self.scrapImageView.image = isScrapped ? Image.scrapFill : Image.scrapEmpty
+            scrapImageView.image = isScrapped ? Image.scrapFill : Image.scrapEmpty
         }
     }
     private var postId: Int?
@@ -105,6 +105,7 @@ final class DetailViewController: UIViewController {
     }
     private let photoImageView = UIImageView()
     private lazy var scrapImageView = UIImageView().then {
+        $0.isUserInteractionEnabled = true
         $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(scrapButtonDidTapped)))
     }
     
@@ -301,6 +302,7 @@ extension DetailViewController {
             self?.nicknameLabel.text = data.nickname
             self?.duedateLabel.text = "\(data.duedate[0]).\(data.duedate[1]).\(data.duedate[2]) \(data.duedate[3]):\(data.duedate[4])까지"
             self?.titleLabel.text = data.title
+            self?.isScrapped = data.currentScrapStatus
             self?.borrowLabel.text = data.borrow ? "빌려요" : "빌려줄게요"
             self?.transactionLabel.text = data.status == 2 ? "거래중" : (data.status == 3 ? "거래 완료" : "")
             self?.stateType = data.status == 2 ? .ing : (data.status == 3 ? .end : .yet)

@@ -15,4 +15,5 @@ struct GetPostDetailResponseDto: Codable {
     let borrow: Bool
     let status: Int
     let content: String
+    let currentScrapStatus: Bool
 }
