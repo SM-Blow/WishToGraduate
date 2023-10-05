@@ -38,8 +38,7 @@ extension TabBarController {
 
         tabs = [
             ShareViewController(),
-            ChatListViewController(),
-            MyPageViewController()
+            ChatListViewController()
         ]
         
         TabBarItemType.allCases.forEach {
