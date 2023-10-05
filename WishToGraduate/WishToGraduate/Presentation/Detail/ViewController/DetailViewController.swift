@@ -72,28 +72,23 @@ final class DetailViewController: UIViewController {
     private let middleUnderLineView = UIView()
     private let profileImageView = UIImageView()
     private let nicknameLabel = UILabel().then {
-        $0.text = "두두"
         $0.textColor = .black
         $0.font = .fontGuide(.title_bold)
     }
     private let duedateLabel = UILabel().then {
-        $0.text = "2023.05.20 13:30까지"
         $0.textColor = .black
         $0.font = .fontGuide(.h2)
     }
     private let untilLabel = UILabel().then {
-        $0.text = "Until"
         $0.textColor = Color.main2_Green
         $0.font = .fontGuide(.h2_bold)
     }
     private let titleLabel = UILabel().then {
-        $0.text = "생리대 중형 한 개"
         $0.textColor = .black
         $0.font = .fontGuide(.title_bold)
     }
     private let borrowLabel = CommonBorrowLabel(frame: .zero)
     private let transactionLabel = UILabel().then {
-        $0.text = "거래중"
         $0.font = .fontGuide(.bt1)
         $0.textColor = .white
         $0.textAlignment = .center
@@ -102,8 +97,7 @@ final class DetailViewController: UIViewController {
         $0.clipsToBounds = true
     }
     
-    private let contentLabel = UILabel().then {
-        $0.text = "생리대 아무거나 중형 빌려요\n아무 브랜드 상관없어요\n지금 도서관인데 학교 어디든지 괜찮아요!"
+    private var contentLabel = UILabel().then {
         $0.font = .fontGuide(.h2)
         $0.textColor = .black
         $0.lineBreakMode = .byWordWrapping
@@ -135,8 +129,6 @@ final class DetailViewController: UIViewController {
         setBottomButton()
         setUI()
         photoOrTextLayout()
-        setBorrowBtn()
-        setTransactionLabel()
         setButton()
     }
 }
@@ -160,14 +152,6 @@ extension DetailViewController {
     }
     
     // MARK: - Methods
-    
-    // 빌려요, 빌려줄게요 버튼 분기처리
-    private func setBorrowBtn() {
-        // 일단 1로 세팅
-        let borrow = 1
-        borrowLabel.text = borrow == 1 ? "빌려요" : "빌려줄게요"
-        borrowLabel.font = .fontGuide(.h2_bold)
-    }
     
     private func setLayout() {
         
@@ -314,15 +298,12 @@ extension DetailViewController {
             self?.nicknameLabel.text = data.nickname
             self?.duedateLabel.text = "\(data.duedate[0]).\(data.duedate[1]).\(data.duedate[2]) \(data.duedate[3]):\(data.duedate[4])까지"
             self?.titleLabel.text = data.title
-            switch data.status {
-            case 2:
-                self?.stateType = .ing
-            case 3:
-                self?.stateType = .end
-            default:
-                self?.stateType = .yet
-            }
             self?.borrowLabel.text = data.borrow ? "빌려요" : "빌려줄게요"
+            self?.transactionLabel.text = data.status == 2 ? "거래중" : (data.status == 3 ? "거래 완료" : "")
+            self?.stateType = data.status == 2 ? .ing : (data.status == 3 ? .yet : .end)
+            self?.transactionLabel.isHidden = self?.transactionLabel.text == ""
+            self?.setTransactionLabel()
+            self?.contentLabel.text = data.content
         }
     }
     

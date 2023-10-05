@@ -17,7 +17,7 @@ final class ShareListCollectionViewCell: UICollectionViewCell {
     
     private let titleLabel = UILabel()
     private let borrowLabel = CommonBorrowLabel()
-    private let transactionLabel = UILabel()
+    private lazy var transactionLabel = UILabel()
     private let timeLabel = UILabel()
     
     // MARK: - View Life Cycle
@@ -55,7 +55,6 @@ extension ShareListCollectionViewCell {
         }
         
         transactionLabel.do {
-            $0.text = "거래중"
             $0.font = .fontGuide(.bt1)
             $0.textColor = .white
             $0.textAlignment = .center
@@ -107,7 +106,9 @@ extension ShareListCollectionViewCell {
         titleLabel.text = model.title
         titleLabel.text = model.title
         borrowLabel.text = model.borrow ? "빌려요" : "빌려줄게요"
-        transactionLabel.isHidden = model.status == 2
+        transactionLabel.text = model.status == 2 ? "거래중" : (model.status == 3 ? "거래 완료" : "")
+        transactionLabel.isHidden = transactionLabel.text == ""
         timeLabel.text = "\(model.duedate[0]).\(model.duedate[1]).\(model.duedate[2]) \(model.duedate[3]):\(model.duedate[4])까지"
+        
     }
 }
