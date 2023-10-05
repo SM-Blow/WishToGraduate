@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+struct GetPostDetailResponseDto: Codable {
+    let nickname: String
+    let postId: Int
+    let duedate: [Int]
+    let title: String
+    let borrow: Bool
+    let status: Int
+    let content: String
+}
